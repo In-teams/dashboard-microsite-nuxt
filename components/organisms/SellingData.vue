@@ -127,7 +127,7 @@ export default {
     },
     getKeyword(value) {
       if (+this.tabCategories === 0) {
-        const data = this.dataWilayah.filter((data) => {
+        const data = this.dataTableWilayah.filter((data) => {
           return data.wilayah.toLowerCase().includes(value.toLowerCase())
         })
         this.dataWilayah = data
