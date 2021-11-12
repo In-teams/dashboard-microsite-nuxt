@@ -22,16 +22,16 @@
           :sisa-poin="dataTableNational.diffconvert"
         >
           <template #tableTitle>
-            <div class="px-2 py-3 bg-red-600 border-2 rounded-t-2xl p-20">
+            <div class="px-2 py-3 bg-red-600 rounded-t-2xl p-20">
               <div class="max-w-md mx-auto">
                 <p class="text-center text-white font-bold">NASIONAL</p>
               </div>
             </div>
           </template>
           <template #tableContent>
-            <div class="grid grid-cols-2 border-r-2 border-l-2">
+            <div class="grid grid-cols-2 border-r-2 border-l-2 py-2">
               <div>
-                <p class="text-gray-400 font-bold text-xs text-center">
+                <p class="text-gray-400 font-bold text-xs text-center py-1">
                   TARGET PENJUALAN
                 </p>
                 <p class="text-gray-900 font-bold text-sm text-center">
@@ -39,7 +39,7 @@
                 </p>
               </div>
               <div>
-                <p class="text-gray-400 font-bold text-xs text-center">
+                <p class="text-gray-400 font-bold text-xs text-center py-1">
                   AKTUAL PENJUALAN
                 </p>
                 <p class="text-gray-900 font-bold text-sm text-center">
@@ -59,7 +59,7 @@
                 </p>
               </div>
             </div>
-            <div class="grid grid-cols-2 gap-1 px-1 py-2 border-r-2 border-l-2">
+            <div class="grid grid-cols-2 gap-1 px-2 py-2 border-r-2 border-l-2">
               <CardWithThreeColoumn
                 :title="'Pencapaian'"
                 :icons="'image/trophy-icon.png'"
@@ -110,59 +110,41 @@
               <nuxt-link to="/selling-detail">
                 <Button
                   :title-button="'Detail'"
-                  :style-button="'border-2 rounded-full py-1 bg-pink-300'"
-                  :style-title-button="'text-xs text-black font-bold text-center'"
+                  :style-button="'border-2 rounded-full py-1 bg-pink-300 text-center'"
+                  :style-title-button="'text-xs text-black font-bold'"
                 />
               </nuxt-link>
             </div>
           </template>
         </TableTwoColoumn>
+
         <TableFourColoumn
           :title-header="'KLUSTER PERSENTASE PENCAPAIAN'"
-          :style-header="'px-2 py-3 bg-red-600 border-2 rounded-t-2xl'"
+          :style-header="' py-3 bg-red-600 rounded-t-2xl'"
           :data-table-cluster="dataTableCluster"
         >
-          <template #thead>
-            <thead>
-              <tr class="">
-                <th
-                  v-for="list in listTheadCluster"
-                  :key="list"
-                  class="px-1 py-1"
-                >
-                  <p
-                    class="
-                      bg-purple-50
-                      rounded-full
-                      text-gray-400
-                      px-4
-                      py-2
-                      text-xxs
-                    "
-                  >
-                    {{ list }}
-                  </p>
-                </th>
-              </tr>
-            </thead>
-          </template>
           <template #trow>
-            <tr
+            <h2 class="font-bold text-lg px-1">Bulan</h2>
+            <Accordion
+              class="p-2"
               v-for="data in dataTableCluster"
               :key="data.cluster"
-              class="py-2"
+              :title="data.cluster"
+              :pencapaian="data.pencapaian"
             >
-              <td class="px-1 py-1 text-left text-xs">{{ data.cluster }}</td>
-              <td class="py-1 text-left proportional-nums text-xxs">
-                Rp. {{ data.aktualconvert }}
-              </td>
-              <td class="py-1 proportional-nums text-xxs text-left">
-                Rp. {{ data.targetconvert }}
-              </td>
-              <td class="px-0 py-1 proportional-nums text-xxs">
-                {{ data.pencapaian }}
-              </td>
-            </tr>
+              <div class="flex justify-between">
+                <h3>Target</h3>
+                <p class="font-bold text-base">Rp. {{ data.targetconvert }}</p>
+              </div>
+              <div class="flex justify-between py-2">
+                <h3>Aktual</h3>
+                <p class="font-bold text-base">Rp. {{ data.aktualconvert }}</p>
+              </div>
+              <div class="flex justify-between">
+                <h3>Pencapaian</h3>
+                <p class="font-bold text-base">{{ data.pencapaian }}</p>
+              </div>
+            </Accordion>
           </template>
         </TableFourColoumn>
         <Title
@@ -181,45 +163,32 @@
               :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
               :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
             >
-              <template #thead>
-                <thead>
-                  <tr>
-                    <th class="px-1 py-1" v-for="list in listThead" :key="list">
-                      <p
-                        class="
-                          bg-purple-50
-                          rounded-full
-                          text-gray-400
-                          px-3.5
-                          py-2
-                          text-xxs
-                        "
-                      >
-                        {{ list }}
-                      </p>
-                    </th>
-                  </tr>
-                </thead>
-              </template>
               <template #trow>
-                <tr
+                <h2 class="font-bold text-lg px-1">Keterangan</h2>
+                <Accordion
                   v-for="data in dataTableWilayah"
                   :key="data.wilayah"
-                  class="py-2"
+                  class="p-2"
+                  :title="data.wilayah"
+                  :pencapaian="data.percentage"
                 >
-                  <td class="px-1 py-1 text-left text-xxs">
-                    {{ data.wilayah || data.outlet_name }}
-                  </td>
-                  <td class="py-1 text-left proportional-nums text-xxs">
-                    Rp. {{ data.targetconvert }}
-                  </td>
-                  <td class="py-1 proportional-nums text-xxs text-left">
-                    Rp. {{ data.aktualconvert }}
-                  </td>
-                  <td class="px-0 py-1 proportional-nums text-xxs">
-                    {{ data.percentage }}
-                  </td>
-                </tr>
+                  <div class="flex justify-between">
+                    <h3>Target</h3>
+                    <p class="font-bold text-base">
+                      Rp. {{ data.targetconvert }}
+                    </p>
+                  </div>
+                  <div class="flex justify-between py-2">
+                    <h3>Aktual</h3>
+                    <p class="font-bold text-base">
+                      Rp. {{ data.aktualconvert }}
+                    </p>
+                  </div>
+                  <div class="flex justify-between">
+                    <h3>Pencapaian</h3>
+                    <p class="font-bold text-base">{{ data.pencapaian }}</p>
+                  </div>
+                </Accordion>
               </template>
             </TableFourColoumn>
           </template>
@@ -228,45 +197,32 @@
               :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
               :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
             >
-              <template #thead>
-                <thead>
-                  <tr>
-                    <th class="px-1 py-1" v-for="list in listThead" :key="list">
-                      <p
-                        class="
-                          bg-purple-50
-                          rounded-full
-                          text-gray-400
-                          px-3.5
-                          py-2
-                          text-xxs
-                        "
-                      >
-                        {{ list }}
-                      </p>
-                    </th>
-                  </tr>
-                </thead>
-              </template>
               <template #trow>
-                <tr
+                <h2 class="font-bold text-lg px-1">Keterangan</h2>
+                <Accordion
                   v-for="data in dataTableRegion"
                   :key="data.region"
-                  class="py-2"
+                  class="p-2"
+                  :title="data.region"
+                  :pencapaian="data.percentage"
                 >
-                  <td class="px-1 py-1 text-left text-xxs">
-                    {{ data.region }}
-                  </td>
-                  <td class="py-1 text-left proportional-nums text-xxs">
-                    Rp. {{ data.targetconvert }}
-                  </td>
-                  <td class="py-1 proportional-nums text-xxs text-left">
-                    Rp. {{ data.aktualconvert }}
-                  </td>
-                  <td class="px-0 py-1 proportional-nums text-xxs">
-                    {{ data.pencapaian }}
-                  </td>
-                </tr>
+                  <div class="flex justify-between">
+                    <h3>Target</h3>
+                    <p class="font-bold text-base">
+                      Rp. {{ data.targetconvert }}
+                    </p>
+                  </div>
+                  <div class="flex justify-between py-2">
+                    <h3>Aktual</h3>
+                    <p class="font-bold text-base">
+                      Rp. {{ data.aktualconvert }}
+                    </p>
+                  </div>
+                  <div class="flex justify-between">
+                    <h3>Pencapaian</h3>
+                    <p class="font-bold text-base">{{ data.percentage }}</p>
+                  </div>
+                </Accordion>
               </template>
             </TableFourColoumn>
           </template>
@@ -275,39 +231,32 @@
               :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
               :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
             >
-              <template #thead>
-                <thead>
-                  <tr>
-                    <th class="px-1 py-1" v-for="list in listThead" :key="list">
-                      <p
-                        class="
-                          bg-purple-50
-                          rounded-full
-                          text-gray-400
-                          px-3.5
-                          py-2
-                          text-xxs
-                        "
-                      >
-                        {{ list }}
-                      </p>
-                    </th>
-                  </tr>
-                </thead>
-              </template>
               <template #trow>
-                <tr v-for="data in dataTableArea" :key="data.city" class="py-2">
-                  <td class="px-1 py-1 text-left text-xxs">{{ data.city }}</td>
-                  <td class="py-1 text-left proportional-nums text-xxs">
-                    Rp. {{ data.targetconvert }}
-                  </td>
-                  <td class="py-1 proportional-nums text-xxs text-left">
-                    Rp. {{ data.aktualconvert }}
-                  </td>
-                  <td class="px-0 py-1 proportional-nums text-xxs">
-                    {{ data.pencapaian }}
-                  </td>
-                </tr>
+                <h2 class="font-bold text-lg px-1">Keterangan</h2>
+                <Accordion
+                  v-for="data in dataTableArea"
+                  :key="data.area_name"
+                  class="p-2"
+                  :title="data.area_name"
+                  :pencapaian="data.percentage"
+                >
+                  <div class="flex justify-between">
+                    <h3>Target</h3>
+                    <p class="font-bold text-base">
+                      Rp. {{ data.targetconvert }}
+                    </p>
+                  </div>
+                  <div class="flex justify-between py-2">
+                    <h3>Aktual</h3>
+                    <p class="font-bold text-base">
+                      Rp. {{ data.aktualconvert }}
+                    </p>
+                  </div>
+                  <div class="flex justify-between">
+                    <h3>Pencapaian</h3>
+                    <p class="font-bold text-base">{{ data.percentage }}</p>
+                  </div>
+                </Accordion>
               </template>
             </TableFourColoumn>
           </template>
@@ -316,45 +265,32 @@
               :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
               :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
             >
-              <template #thead>
-                <thead>
-                  <tr>
-                    <th class="px-1 py-1" v-for="list in listThead" :key="list">
-                      <p
-                        class="
-                          bg-purple-50
-                          rounded-full
-                          text-gray-400
-                          px-3.5
-                          py-2
-                          text-xxs
-                        "
-                      >
-                        {{ list }}
-                      </p>
-                    </th>
-                  </tr>
-                </thead>
-              </template>
               <template #trow>
-                <tr
+                <h2 class="font-bold text-lg px-1">Keterangan</h2>
+                <Accordion
                   v-for="data in dataTableDistributor"
                   :key="data.distributor"
-                  class="py-2"
+                  class="p-2"
+                  :title="data.distributor"
+                  :pencapaian="data.percentage"
                 >
-                  <td class="px-1 py-1 text-left text-xxs">
-                    {{ data.distributor }}
-                  </td>
-                  <td class="py-1 text-left proportional-nums text-xxs">
-                    Rp. {{ data.targetconvert }}
-                  </td>
-                  <td class="py-1 proportional-nums text-xxs text-left">
-                    Rp. {{ data.aktualconvert }}
-                  </td>
-                  <td class="px-0 py-1 proportional-nums text-xxs">
-                    {{ data.pencapaian }}
-                  </td>
-                </tr>
+                  <div class="flex justify-between">
+                    <h3>Target</h3>
+                    <p class="font-bold text-base">
+                      Rp. {{ data.targetconvert }}
+                    </p>
+                  </div>
+                  <div class="flex justify-between py-2">
+                    <h3>Aktual</h3>
+                    <p class="font-bold text-base">
+                      Rp. {{ data.aktualconvert }}
+                    </p>
+                  </div>
+                  <div class="flex justify-between">
+                    <h3>Pencapaian</h3>
+                    <p class="font-bold text-base">{{ data.percentage }}</p>
+                  </div>
+                </Accordion>
               </template>
             </TableFourColoumn>
           </template>
@@ -363,45 +299,32 @@
               :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
               :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
             >
-              <template #thead>
-                <thead>
-                  <tr>
-                    <th class="px-1 py-1" v-for="list in listThead" :key="list">
-                      <p
-                        class="
-                          bg-purple-50
-                          rounded-full
-                          text-gray-400
-                          px-3.5
-                          py-2
-                          text-xxs
-                        "
-                      >
-                        {{ list }}
-                      </p>
-                    </th>
-                  </tr>
-                </thead>
-              </template>
               <template #trow>
-                <tr
+                <h2 class="font-bold text-lg px-1">Keterangan</h2>
+                <Accordion
                   v-for="data in dataTableOutlet"
                   :key="data.outlet_name"
-                  class="py-2"
+                  class="p-2"
+                  :title="data.outlet_name"
+                  :pencapaian="data.percentage"
                 >
-                  <td class="px-1 py-1 text-left text-xxs">
-                    {{ data.outlet_name }}
-                  </td>
-                  <td class="py-1 text-left proportional-nums text-xxs">
-                    Rp. {{ data.targetconvert }}
-                  </td>
-                  <td class="py-1 proportional-nums text-xxs text-left">
-                    Rp. {{ data.aktualconvert }}
-                  </td>
-                  <td class="px-0 py-1 proportional-nums text-xxs">
-                    {{ data.percentage }}
-                  </td>
-                </tr>
+                  <div class="flex justify-between">
+                    <h3>Target</h3>
+                    <p class="font-bold text-base">
+                      Rp. {{ data.targetconvert }}
+                    </p>
+                  </div>
+                  <div class="flex justify-between py-2">
+                    <h3>Aktual</h3>
+                    <p class="font-bold text-base">
+                      Rp. {{ data.aktualconvert }}
+                    </p>
+                  </div>
+                  <div class="flex justify-between">
+                    <h3>Pencapaian</h3>
+                    <p class="font-bold text-base">{{ data.percentage }}</p>
+                  </div>
+                </Accordion>
               </template>
             </TableFourColoumn>
           </template>
@@ -412,6 +335,7 @@
 </template>
 
 <script>
+import Accordion from '../molecules/Accordion.vue'
 import CardWithThreeColoumn from '../molecules/CardWithThreeColoumn.vue'
 import Tabs from '../molecules/Tabs.vue'
 import Title from '../atoms/Title.vue'
@@ -425,6 +349,7 @@ import CardWithContent from '../molecules/CardWithContent.vue'
 import Banner from '../molecules/Banner.vue'
 export default {
   components: {
+    Accordion,
     CardWithThreeColoumn,
     Tabs,
     Title,

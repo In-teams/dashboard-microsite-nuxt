@@ -1,14 +1,13 @@
 <template>
-  <div class="container py-0.5">
+  <div class="container py-1">
     <div class="flex justify-between border-2 gap-0 rounded-full shadow-sm">
-      <div class="self-center">
-        <img class="w-8 px-2" :src="icons" />
+      <div class="flex justify-between">
+        <img class="w-9 h-5 px-2 self-center" :src="icons" />
+        <p class="text-xs font-semibold self-center text-left">{{ title }}</p>
       </div>
-      <div class="self-center">
-        <p class="text-xs font-semibold text-left">{{ title }}</p>
-      </div>
-      <div class="bg-gray-300 rounded-full py-1 px-1">
-        <p class="text-xs font-bold">{{ points }}</p>
+      <div class="self-center"></div>
+      <div class="bg-gray-300 rounded-full py-2 px-1 max-w-xs min-w-1/4">
+        <p class="text-xs text-center font-bold">{{ points }}</p>
       </div>
     </div>
   </div>

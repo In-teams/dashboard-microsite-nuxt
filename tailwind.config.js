@@ -43,6 +43,9 @@ module.exports = {
         desktop: '1280px',
         // => @media (min-width: 1280px) { ... }
       },
+      minWidth: {
+        '1/4': '3.7rem',
+      },
     },
   },
   variants: {
