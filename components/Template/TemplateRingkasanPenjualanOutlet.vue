@@ -55,7 +55,7 @@ export default {
               'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOiJzdXBlciIsIm5hbWUiOm51bGwsInVzZXJfcHJvZmlsZSI6IiIsImxldmVsIjoiMSIsImVtYWlsIjpudWxsLCJzY29wZSI6bnVsbCwicGhvdG8iOm51bGwsInJlZ2lkIjpudWxsfSwiaWF0IjoxNjMzMDcyNTA0fQ.C7dt8r4uYaJCaoXmi1hZpSMa3Zs2qyczWn8mvuviRR8',
           },
         })
-        .then((res) => (this.dataTableOutlet = res.data.data))
+        .then((res) => (this.dataTableOutlet = res.data.data.asc))
         .catch((err) => console.log(err))
     },
     getTableQuarter() {

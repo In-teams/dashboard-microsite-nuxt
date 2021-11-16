@@ -3,7 +3,7 @@
     <Navbar :nav-title="'RINGKASAN DATA PENJUALAN'" />
     <div class="px-2">
       <TableTwoColoumn
-        class="border-b-2"
+        class="border-b-2 mt-16"
         v-show="data.outlet_name != 'Total Pencapaian'"
         v-for="data in dataOutlet"
         :key="data.outlet_name"
@@ -55,7 +55,7 @@
           <div class="grid grid-cols-2 gap-1 px-1 py-2 border-r-2 border-l-2">
             <CardWithThreeColoumn
               :title="'Registrasi'"
-              :icons="'image/check-icon.png'"
+              :icons="'image/left_arrow.svg'"
               :points="data.regist"
             />
             <CardWithThreeColoumn
@@ -76,7 +76,7 @@
         >
           <CardRegistrasi
             :data-title="'Foto atau Upload Formulir Registrasi'"
-            :data-img="'image/registrasi-icon.png'"
+            :data-img="'image/down_arrow.png'"
           />
         </nuxt-link>
         <nuxt-link
@@ -116,86 +116,62 @@
             :title-header="'RINGKASAN PENJUALAN PER QUARTER'"
             :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
           >
-            <template #thead>
-              <thead>
-                <tr>
-                  <th
-                    class="px-1 py-1"
-                    v-for="list in listTheadPercent"
-                    :key="list"
-                  >
-                    <p
-                      class="
-                        bg-purple-50
-                        rounded-full
-                        text-gray-400
-                        px-3.5
-                        py-2
-                        text-xxs
-                      "
-                    >
-                      {{ list }}
-                    </p>
-                  </th>
-                </tr>
-              </thead>
-            </template>
             <template #trow>
-              <tr v-for="data in dataQuarter" :key="data.kuartal" class="py-2">
-                <td class="px-1 py-1 text-left text-xxs">{{ data.kuartal }}</td>
-                <td class="py-1 text-left proportional-nums text-xxs">
-                  Rp. {{ data.targetconvert }}
-                </td>
-                <td class="py-1 proportional-nums text-xxs text-left">
-                  Rp. {{ data.aktualconvert }}
-                </td>
-                <td class="px-0 py-1 proportional-nums text-xxs">
-                  {{ data.pencapaian }}
-                </td>
-              </tr>
+              <Accordion
+                v-for="data in dataQuarter"
+                :key="data.kuartal"
+                class="p-2"
+                :title="data.kuartal"
+                :pencapaian="data.pencapaian"
+              >
+                <div class="flex justify-between">
+                  <h3>Target</h3>
+                  <p class="font-bold text-base">
+                    Rp. {{ data.targetconvert }}
+                  </p>
+                </div>
+                <div class="flex justify-between py-2">
+                  <h3>Aktual</h3>
+                  <p class="font-bold text-base">
+                    Rp. {{ data.aktualconvert }}
+                  </p>
+                </div>
+                <div class="flex justify-between">
+                  <h3>Pencapaian</h3>
+                  <p class="font-bold text-base">{{ data.pencapaian }}</p>
+                </div>
+              </Accordion>
             </template>
           </TableFourColoumn>
           <TableFourColoumn
             :title-header="'RINGKASAN PENJUALAN PER TAHUN'"
             :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
           >
-            <template #thead>
-              <thead>
-                <tr>
-                  <th
-                    class="px-1 py-1"
-                    v-for="list in listTheadPercent"
-                    :key="list"
-                  >
-                    <p
-                      class="
-                        bg-purple-50
-                        rounded-full
-                        text-gray-400
-                        px-3.5
-                        py-2
-                        text-xxs
-                      "
-                    >
-                      {{ list }}
-                    </p>
-                  </th>
-                </tr>
-              </thead>
-            </template>
             <template #trow>
-              <tr v-for="data in dataMonth" :key="data.bulan" class="py-2">
-                <td class="px-1 py-1 text-left text-xxs">{{ data.bulan }}</td>
-                <td class="py-1 text-left proportional-nums text-xxs">
-                  Rp. {{ data.targetconvert }}
-                </td>
-                <td class="py-1 proportional-nums text-xxs text-left">
-                  Rp. {{ data.aktualconvert }}
-                </td>
-                <td class="px-0 py-1 proportional-nums text-xxs">
-                  {{ data.pencapaian }}
-                </td>
-              </tr>
+              <Accordion
+                v-for="data in dataMonth"
+                :key="data.bulan"
+                class="p-2"
+                :title="data.bulan"
+                :pencapaian="data.pencapaian"
+              >
+                <div class="flex justify-between">
+                  <h3>Target</h3>
+                  <p class="font-bold text-base">
+                    Rp. {{ data.targetconvert }}
+                  </p>
+                </div>
+                <div class="flex justify-between py-2">
+                  <h3>Aktual</h3>
+                  <p class="font-bold text-base">
+                    Rp. {{ data.aktualconvert }}
+                  </p>
+                </div>
+                <div class="flex justify-between">
+                  <h3>Pencapaian</h3>
+                  <p class="font-bold text-base">{{ data.pencapaian }}</p>
+                </div>
+              </Accordion>
             </template>
           </TableFourColoumn>
         </template>
@@ -204,82 +180,62 @@
             :title-header="'RINGKASAN PENJUALAN PER QUARTER'"
             :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
           >
-            <template #thead>
-              <thead>
-                <tr>
-                  <th class="px-1 py-1" v-for="list in listThead" :key="list">
-                    <p
-                      class="
-                        bg-purple-50
-                        rounded-full
-                        text-gray-400
-                        px-3.5
-                        py-2
-                        text-xxs
-                      "
-                    >
-                      {{ list }}
-                    </p>
-                  </th>
-                </tr>
-              </thead>
-            </template>
             <template #trow>
-              <tr
+              <Accordion
                 v-for="data in dataPoinQuarter"
                 :key="data.quarter"
-                class="py-2"
+                class="p-2"
+                :title="data.quarter"
+                :pencapaian="data.achieveconvert"
               >
-                <td class="px-1 py-1 text-left text-xxs">{{ data.quarter }}</td>
-                <td class="py-1 text-left proportional-nums text-xxs">
-                  Rp. {{ data.targetconvert }}
-                </td>
-                <td class="py-1 proportional-nums text-xxs text-left">
-                  Rp. {{ data.aktualconvert }}
-                </td>
-                <td class="px-0 py-1 proportional-nums text-xxs">
-                  {{ data.pencapaian }}
-                </td>
-              </tr>
+                <div class="flex justify-between">
+                  <h3>Target</h3>
+                  <p class="font-bold text-base">
+                    Rp. {{ data.targetconvert }}
+                  </p>
+                </div>
+                <div class="flex justify-between py-2">
+                  <h3>Aktual</h3>
+                  <p class="font-bold text-base">
+                    Rp. {{ data.aktualconvert }}
+                  </p>
+                </div>
+                <div class="flex justify-between">
+                  <h3>Pencapaian</h3>
+                  <p class="font-bold text-base">{{ data.achieveconvert }}</p>
+                </div>
+              </Accordion>
             </template>
           </TableFourColoumn>
           <TableFourColoumn
             :title-header="'RINGKASAN PENJUALAN PER TAHUN'"
             :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
           >
-            <template #thead>
-              <thead>
-                <tr>
-                  <th class="px-1 py-1" v-for="list in listThead" :key="list">
-                    <p
-                      class="
-                        bg-purple-50
-                        rounded-full
-                        text-gray-400
-                        px-3.5
-                        py-2
-                        text-xxs
-                      "
-                    >
-                      {{ list }}
-                    </p>
-                  </th>
-                </tr>
-              </thead>
-            </template>
             <template #trow>
-              <tr v-for="data in dataPoin" :key="data.month" class="py-2">
-                <td class="px-1 py-1 text-left text-xxs">{{ data.month }}</td>
-                <td class="py-1 text-left proportional-nums text-xxs">
-                  Rp. {{ data.targetconvert }}
-                </td>
-                <td class="py-1 proportional-nums text-xxs text-left">
-                  Rp. {{ data.aktualconvert }}
-                </td>
-                <td class="px-0 py-1 proportional-nums text-xxs">
-                  {{ data.achieveconvert }}
-                </td>
-              </tr>
+              <Accordion
+                v-for="data in dataPoin"
+                :key="data.month"
+                class="p-2"
+                :title="data.month"
+                :pencapaian="data.achieveconvert"
+              >
+                <div class="flex justify-between">
+                  <h3>Target</h3>
+                  <p class="font-bold text-base">
+                    Rp. {{ data.targetconvert }}
+                  </p>
+                </div>
+                <div class="flex justify-between py-2">
+                  <h3>Aktual</h3>
+                  <p class="font-bold text-base">
+                    Rp. {{ data.aktualconvert }}
+                  </p>
+                </div>
+                <div class="flex justify-between">
+                  <h3>Pencapaian</h3>
+                  <p class="font-bold text-base">{{ data.achieveconvert }}</p>
+                </div>
+              </Accordion>
             </template>
           </TableFourColoumn>
         </template>
@@ -289,16 +245,17 @@
 </template>
 
 <script>
-import CardWithThreeColoumn from '../molecules/CardWithThreeColoumn.vue'
+import Accordion from '../../components/molecules/Accordion.vue'
+import CardWithThreeColoumn from '../../components/molecules/CardWithThreeColoumn.vue'
 import listCardRegistrasi from '../../data/list-card-registrasi.json'
-import CardRegistrasi from '../molecules/CardRegistrasi.vue'
-import Title from '../atoms/Title.vue'
-import Subtitle from '../atoms/Subtitle.vue'
-import TableFourColoumn from '../molecules/TableFourColoumn.vue'
-import Tabs from '../molecules/Tabs.vue'
+import CardRegistrasi from '../../components/molecules/CardRegistrasi.vue'
+import Title from '../../components/atoms/Title.vue'
+import Subtitle from '../../components/atoms/Subtitle.vue'
+import TableFourColoumn from '../../components/molecules/TableFourColoumn.vue'
+import Tabs from '../../components/molecules/Tabs.vue'
 import listContentCard from '../../data/list-content-card.json'
-import TableTwoColoumn from '../molecules/TableTwoColoumn.vue'
-import Navbar from '../molecules/Navbar.vue'
+import TableTwoColoumn from '../../components/molecules/TableTwoColoumn.vue'
+import Navbar from '../../components/molecules/Navbar.vue'
 export default {
   props: [
     'dataOutlet',
@@ -308,6 +265,7 @@ export default {
     'dataPoin',
   ],
   components: {
+    Accordion,
     Title,
     Subtitle,
     Navbar,

@@ -5,6 +5,7 @@
         type="text"
         placeholder="Ketik di sini untuk pencarian data"
         class="
+          z-30
           border-opacity-50
           px-3
           py-3

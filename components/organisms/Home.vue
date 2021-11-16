@@ -4,7 +4,7 @@
     <CardWithContent>
       <template #content>
         <p>
-          Hai, <span class="font-bold">{{ userName }}</span>
+          Hai, <span class="font-bold text-xs">{{ userName }}</span>
         </p>
         <p class="text-xs lg:text-blue">
           Tekan tombol dibawah ini untuk lihat detail penjualan lainnya
@@ -117,14 +117,12 @@
             </div>
           </template>
         </TableTwoColoumn>
-
         <TableFourColoumn
           :title-header="'KLUSTER PERSENTASE PENCAPAIAN'"
           :style-header="' py-3 bg-red-600 rounded-t-2xl'"
           :data-table-cluster="dataTableCluster"
         >
           <template #trow>
-            <h2 class="font-bold text-lg px-1">Bulan</h2>
             <Accordion
               class="p-2"
               v-for="data in dataTableCluster"
@@ -154,17 +152,17 @@
         />
 
         <Subtitle
-          :style-subtitle="'font-normal text-sm'"
+          :style-subtitle="'font-normal text-xs'"
           :subtitle="'Pilih tombol yang akan ditampilkan detail penjualannya'"
         />
         <Tabs url="home" :tabs="tabs">
           <template #activeTab_0>
             <TableFourColoumn
+              class="mb-16"
               :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
               :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
             >
               <template #trow>
-                <h2 class="font-bold text-lg px-1">Keterangan</h2>
                 <Accordion
                   v-for="data in dataTableWilayah"
                   :key="data.wilayah"
@@ -194,11 +192,11 @@
           </template>
           <template #activeTab_1>
             <TableFourColoumn
+              class="mb-16"
               :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
               :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
             >
               <template #trow>
-                <h2 class="font-bold text-lg px-1">Keterangan</h2>
                 <Accordion
                   v-for="data in dataTableRegion"
                   :key="data.region"
@@ -228,11 +226,11 @@
           </template>
           <template #activeTab_2>
             <TableFourColoumn
+              class="mb-16"
               :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
               :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
             >
               <template #trow>
-                <h2 class="font-bold text-lg px-1">Keterangan</h2>
                 <Accordion
                   v-for="data in dataTableArea"
                   :key="data.area_name"
@@ -262,11 +260,11 @@
           </template>
           <template #activeTab_3>
             <TableFourColoumn
+              class="mb-16"
               :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
               :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
             >
               <template #trow>
-                <h2 class="font-bold text-lg px-1">Keterangan</h2>
                 <Accordion
                   v-for="data in dataTableDistributor"
                   :key="data.distributor"
@@ -296,11 +294,11 @@
           </template>
           <template #activeTab_4>
             <TableFourColoumn
+              class="mb-16"
               :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
               :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
             >
               <template #trow>
-                <h2 class="font-bold text-lg px-1">Keterangan</h2>
                 <Accordion
                   v-for="data in dataTableOutlet"
                   :key="data.outlet_name"

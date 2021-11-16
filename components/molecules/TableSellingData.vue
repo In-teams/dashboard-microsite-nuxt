@@ -58,7 +58,7 @@
         </div>
       </div>
       <div class="grid grid-cols-12 py-1">
-        <div class="col-span-7 px-2">
+        <div class="col-span-7 px-2 self-center">
           <p
             class="
               text-gray-400
