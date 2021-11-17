@@ -101,7 +101,7 @@
               :style-paragraph="'text-xxs  text-gray-400 font-bold'"
               :paragraph="'Tekan detail untuk lihat ringkasan penjualan'"
             />
-            <nuxt-link to="/selling-detail">
+            <nuxt-link :to="`/selling-detail-wilayah/${data.head_region_id}`">
               <Button
                 :title-button="'Detail'"
                 :style-button="'border-2 rounded-full py-1 bg-pink-300 text-center'"

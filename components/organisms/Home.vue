@@ -329,10 +329,12 @@
         </Tabs>
       </template>
     </CardWithContent>
+    <BottomNav />
   </div>
 </template>
 
 <script>
+import BottomNav from '../molecules/BottomNav.vue'
 import Accordion from '../molecules/Accordion.vue'
 import CardWithThreeColoumn from '../molecules/CardWithThreeColoumn.vue'
 import Tabs from '../molecules/Tabs.vue'
@@ -359,6 +361,7 @@ export default {
     CardWithContent,
     ButtonGroup,
     Button,
+    BottomNav,
   },
   props: [
     'userName',

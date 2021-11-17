@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar :NavTitle="'FORMULIR REGISTRASI'" />
-    <div class="px-2 py-2">
+    <div class="px-2 mt-16">
       <Title
         :styleTitle="'text-black font-bold'"
         :title="'Foto atau Unggah Formulir Registrasi'"
