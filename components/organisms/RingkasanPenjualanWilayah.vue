@@ -289,10 +289,12 @@
         </template>
       </Tabs>
     </div>
+        <BottomNav />
   </div>
 </template>
 
  <script>
+ import BottomNav from '../molecules/BottomNav.vue'
 import Accordion from '../molecules/Accordion.vue'
 import Title from '../atoms/Title.vue'
 import Subtitle from '../atoms/Subtitle.vue'
@@ -314,6 +316,7 @@ export default {
     'dataOutlet',
   ],
   components: {
+    BottomNav,
     Accordion,
     Title,
     Subtitle,

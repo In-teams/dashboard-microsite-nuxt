@@ -68,10 +68,12 @@
         </template>
       </Tabs>
     </div>
+    <BottomNav />
   </div>
 </template>
 
 <script>
+import BottomNav from '../molecules/BottomNav.vue'
 import TableSellingData from '../molecules/TableSellingData.vue'
 import Search from '../molecules/Search.vue'
 import Tabs from '../molecules/Tabs.vue'
@@ -82,6 +84,7 @@ export default {
     TableSellingData,
     Tabs,
     Search,
+    BottomNav,
   },
   props: [
     'dataTableWilayah',

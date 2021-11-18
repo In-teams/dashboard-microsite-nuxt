@@ -241,10 +241,12 @@
         </template>
       </Tabs>
     </div>
+        <BottomNav />
   </div>
 </template>
 
 <script>
+import BottomNav from '../molecules/BottomNav.vue'
 import Accordion from '../../components/molecules/Accordion.vue'
 import CardWithThreeColoumn from '../../components/molecules/CardWithThreeColoumn.vue'
 import listCardRegistrasi from '../../data/list-card-registrasi.json'
@@ -274,6 +276,7 @@ export default {
     TableFourColoumn,
     CardRegistrasi,
     CardWithThreeColoumn,
+    BottomNav
   },
   data() {
     return {

@@ -3,9 +3,7 @@
     <Banner />
     <CardWithContent>
       <template #content>
-        <p>
-          Hai, <span class="font-bold text-xs">{{ userName }}</span>
-        </p>
+        <p>Hai, <span class="font-bold text-xs">{{}}</span></p>
         <p class="text-xs lg:text-blue">
           Tekan tombol dibawah ini untuk lihat detail penjualan lainnya
         </p>
@@ -380,6 +378,7 @@ export default {
       tabs: ['Wilayah', 'Region', 'Area', 'Distributor', 'Outlet'],
     }
   },
+
   methods: {
     getPoint(key) {
       return this.dataTableNational[key]

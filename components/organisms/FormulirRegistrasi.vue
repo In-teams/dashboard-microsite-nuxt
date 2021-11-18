@@ -94,12 +94,14 @@
         />
       </div>
     </div>
+    <BottomNav />
   </div>
 </template>
 
 <script>
 import Swal from 'sweetalert2'
 import axios from 'axios'
+import BottomNav from '../molecules/BottomNav.vue'
 import CardPhoto from '../molecules/CardPhoto.vue'
 import Button from '../atoms/Button.vue'
 import Subtitle from '../atoms/Subtitle.vue'
@@ -112,6 +114,7 @@ export default {
     Subtitle,
     Navbar,
     Title,
+    BottomNav,
   },
   props: ['dataRegistrasi'],
   data() {

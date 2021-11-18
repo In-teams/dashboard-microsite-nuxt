@@ -2,7 +2,7 @@
   <div class="border-solid border-b-2">
     <div
       @click="isOpen = !isOpen"
-      class="cursor-pointer text-center text-black font-bold"
+      class="cursor-pointer text-left text-black font-bold"
     >
       <div
         class="flex justify-between"

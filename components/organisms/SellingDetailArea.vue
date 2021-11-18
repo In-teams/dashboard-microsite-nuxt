@@ -57,10 +57,12 @@
         </template>
       </TableFourColoumn>
     </div>
+    <BottomNav />
   </div>
 </template>
 
 <script>
+import BottomNav from '../molecules/BottomNav.vue'
 import Accordion from '../molecules/Accordion.vue'
 import TableFourColoumn from '../molecules/TableFourColoumn.vue'
 import Navbar from '../molecules/Navbar.vue'
@@ -69,6 +71,7 @@ export default {
     Accordion,
     Navbar,
     TableFourColoumn,
+    BottomNav,
   },
   props: ['dataTableQuarter', 'dataTableTahun'],
   data() {

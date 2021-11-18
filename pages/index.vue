@@ -1,17 +1,15 @@
 <template>
-  <div>
-    <TemplateHome />
-  </div>
+  <TemplateLogin />
 </template>
 
 <script>
-import TemplateHome from '../components/Template/TemplateHome.vue'
+import TemplateLogin from '../components/Template/TemplateLogin.vue'
 export default {
   components: {
-    TemplateHome,
+    TemplateLogin,
   },
 }
 </script>
 
-<style scoped>
+<style>
 </style>

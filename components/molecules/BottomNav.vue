@@ -5,9 +5,9 @@
       id="bottom-navigation"
       class="block fixed inset-x-0 bottom-0 z-10 bg-white shadow"
     >
-      <div id="tabs" class="flex justify-between">
+      <div id="tabs " class="flex">
         <a
-          href="/"
+          @click="to"
           class="
             w-full
             focus:text-teal-500
@@ -55,24 +55,33 @@
           </svg>
           <span class="tab tab-home block text-xs">Home</span>
         </a>
+
         <a
           href="#"
           class="
             w-full
-            focus:text-teal-500
-            hover:text-teal-500
             justify-center
             inline-block
             text-center
             pt-2
             pb-1
+            click-pointer
           "
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             x="0px"
             y="0px"
-            class="mx-auto w-20 h-8"
+            class="
+              mx-auto
+              w-20
+              h-8
+              hover:bg-purple-700
+              focus:outline-none
+              focus:ring-2
+              focus:ring-purple-600
+              focus:ring-opacity-50
+            "
             width="50"
             height="50"
             viewBox="0 0 172 172"
@@ -132,6 +141,7 @@
         </a>
 
         <a
+          @click="logout()"
           href="#"
           class="
             w-full
@@ -186,7 +196,17 @@
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    to() {
+      this.$router.push('/home')
+    },
+    logout() {
+      localStorage.removeItem('token')
+      this.$router.push('/')
+    },
+  },
+}
 </script>
 
 <style>
