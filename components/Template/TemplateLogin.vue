@@ -112,9 +112,11 @@
               <input
                 type="checkbox"
                 class="form-checkbox h-5 w-5 text-blue-600"
+                v-model="sk"
               />
             </label>
             <a
+              @click="toggleModal = !toggleModal"
               class="
                 font-bold
                 text-blue-700
@@ -127,6 +129,75 @@
               >Syarat dan Ketentuan</a
             >
           </div>
+          <div
+            v-if="toggleModal"
+            class="
+              fixed
+              inset-0
+              flex
+              justify-center
+              items-center
+              z-50
+              min-h-screen
+              max-h-full
+            "
+          >
+            <div class="relative mx-auto max-w-2xl h-screen overflow-y-auto">
+              <div
+                class="bg-white w-auto h-auto rounded shadow-2xl flex flex-col"
+              >
+                <div class="text-2xl font-bold text-center">Header text</div>
+                <span>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Optio, similique. Lorem ipsum dolor sit amet consectetur
+                  adipisicing elit. Optio, similique. Lorem ipsum dolor sit amet
+                  consectetur adipisicing elit. Optio, similique. Lorem ipsum
+                  dolor sit amet consectetur adipisicing elit. Optio, similique.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Optio, similique. Lorem ipsum dolor sit amet consectetur
+                  adipisicing elit. Optio, similique. Lorem ipsum dolor sit amet
+                  consectetur adipisicing elit. Optio, similique. Lorem ipsum
+                  dolor sit amet consectetur adipisicing elit. Optio, similique.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Optio, similique. Lorem ipsum dolor sit amet consectetur
+                  adipisicing elit. Optio, similique. Lorem ipsum dolor sit amet
+                  consectetur adipisicing elit. Optio, similique. Lorem ipsum
+                  dolor sit amet consectetur adipisicing elit. Optio, similique.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Optio, similique. Lorem ipsum dolor sit amet consectetur
+                  adipisicing elit. Optio, similique. Lorem ipsum dolor sit amet
+                  consectetur adipisicing elit. Optio, similique. Lorem ipsum
+                  dolor sit amet consectetur adipisicing elit. Optio, similique.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Optio, similique. Lorem ipsum dolor sit amet consectetur
+                  adipisicing elit. Optio, similique. Lorem ipsum dolor sit amet
+                  consectetur adipisicing elit. Optio, similique. Lorem ipsum
+                  dolor sit amet consectetur adipisicing elit. Optio, similique.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Optio, similique. Lorem ipsum dolor sit amet consectetur
+                  adipisicing elit. Optio, similique. Lorem ipsum dolor sit amet
+                  consectetur adipisicing elit. Optio, similique. Lorem ipsum
+                  dolor sit amet consectetur adipisicing elit. Optio, similique.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Optio, similique. Lorem ipsum dolor sit amet consectetur
+                  adipisicing elit. Optio, similique. Lorem ipsum dolor sit amet
+                  consectetur adipisicing elit. Optio, similique. Lorem ipsum
+                  dolor sit amet consectetur adipisicing elit. Optio, similique.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Optio, similique. Lorem ipsum dolor sit amet consectetur
+                  adipisicing elit. Optio, similique. Lorem ipsum dolor sit amet
+                  consectetur adipisicing elit. Optio, similique. Lorem ipsum
+                  dolor sit amet consectetur adipisicing elit. Optio, similique.
+                  <button
+                    class="absolute top-0 right-0 text-white w-1/5 bg-red-500"
+                    @click="toggleModal = false"
+                  >
+                    X
+                  </button>
+                </span>
+              </div>
+            </div>
+          </div>
           <button
             @click.prevent="getLogin()"
             class="
@@ -138,7 +209,10 @@
               text-white
               py-3
               font-medium
+              disabled:opacity-50
+              cursor-not-allowed
             "
+            :disabled="sk === false"
           >
             Log in
           </button>
@@ -155,6 +229,8 @@ export default {
     return {
       username: '',
       password: '',
+      toggleModal: false,
+      sk: false,
     }
   },
   methods: {

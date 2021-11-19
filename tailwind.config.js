@@ -51,6 +51,8 @@ module.exports = {
   variants: {
     extend: {
       backgroundColor: ['active'],
+      opacity: ['disabled'],
+      textColor: ['responsive', 'hover', 'focus', 'group-hover'],
     },
   },
   plugins: [],

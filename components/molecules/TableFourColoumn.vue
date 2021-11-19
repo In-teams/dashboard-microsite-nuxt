@@ -17,7 +17,7 @@
         w-full
         mx-auto
         text-gray-800
-        border-b-2 border-r-2 border-l-2 border-gray-300
+        border-r border-l border-gray-300
       "
     >
       <slot name="trow"> </slot>

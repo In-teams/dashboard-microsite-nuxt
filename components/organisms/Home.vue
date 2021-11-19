@@ -3,7 +3,7 @@
     <Banner />
     <CardWithContent>
       <template #content>
-        <p>Hai, <span class="font-bold text-xs">{{}}</span></p>
+        <p>Hai, <span class="font-bold text-xs"></span></p>
         <p class="text-xs lg:text-blue">
           Tekan tombol dibawah ini untuk lihat detail penjualan lainnya
         </p>

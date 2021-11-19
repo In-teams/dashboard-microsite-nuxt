@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-screen">
+  <div class="w-full h-16">
     <!-- <section id="bottom-navigation" class="md:hidden block fixed inset-x-0 bottom-0 z-10 bg-white shadow"> // if shown only tablet/mobile-->
     <section
       id="bottom-navigation"
@@ -209,5 +209,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+#bottom-navigation {
+  filter: drop-shadow(0px 5px 12px rgba(0, 0, 0, 0.4));
+}
 </style>

@@ -76,7 +76,7 @@
         >
           <CardRegistrasi
             :data-title="'Foto atau Upload Formulir Registrasi'"
-            :data-img="'image/down_arrow.png'"
+            :data-img="'https://img.icons8.com/ios/50/000000/camera--v3.png'"
           />
         </nuxt-link>
         <nuxt-link
@@ -85,7 +85,7 @@
         >
           <CardRegistrasi
             :data-title="'Foto atau Upload Formulir Redemption'"
-            :data-img="'image/redemption-icon.png'"
+            :data-img="'https://img.icons8.com/ios/50/000000/camera--v3.png'"
           />
         </nuxt-link>
 
@@ -241,7 +241,7 @@
         </template>
       </Tabs>
     </div>
-        <BottomNav />
+    <BottomNav />
   </div>
 </template>
 
@@ -276,7 +276,7 @@ export default {
     TableFourColoumn,
     CardRegistrasi,
     CardWithThreeColoumn,
-    BottomNav
+    BottomNav,
   },
   data() {
     return {
