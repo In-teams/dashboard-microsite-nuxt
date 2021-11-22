@@ -4,7 +4,7 @@
     <CardWithContent>
       <template #content>
         <p>Hai, <span class="font-bold text-xs"></span></p>
-        <p class="text-xs lg:text-blue">
+        <p class="text-xxxs lg:text-blue">
           Tekan tombol dibawah ini untuk lihat detail penjualan lainnya
         </p>
         <div class="py-3">
@@ -29,7 +29,7 @@
           <template #tableContent>
             <div class="grid grid-cols-2 border-r-2 border-l-2 py-2">
               <div>
-                <p class="text-gray-400 font-bold text-xs text-center py-1">
+                <p class="text-gray-400 text-xs text-center py-1">
                   TARGET PENJUALAN
                 </p>
                 <p class="text-gray-900 font-bold text-sm text-center">
@@ -37,7 +37,7 @@
                 </p>
               </div>
               <div>
-                <p class="text-gray-400 font-bold text-xs text-center py-1">
+                <p class="text-gray-400 text-xs text-center py-1">
                   AKTUAL PENJUALAN
                 </p>
                 <p class="text-gray-900 font-bold text-sm text-center">
@@ -47,7 +47,7 @@
             </div>
             <div class="grid grid-cols-2 py-2 border-r-2 border-l-2">
               <div>
-                <p class="text-gray-400 font-bold pt-1 text-xs text-center">
+                <p class="text-gray-400 pt-1 text-xs text-center">
                   SELISIH PENJUALAN
                 </p>
               </div>
@@ -79,7 +79,7 @@
                 :points="dataTableNational.notregist"
               />
               <CardWithThreeColoumn
-                :title="'Total Outlet'"
+                :title="'Total '"
                 :icons="'image/outlet-icon.png'"
                 :points="dataTableNational.total_outlet"
               />
@@ -102,8 +102,8 @@
             >
               <Paragraph
                 class="col-span-3 self-center text-left"
-                :style-paragraph="'text-xxs text-gray-400 font-bold'"
-                :paragraph="'Tekan detail untuk lihat ringkasan penjualan'"
+                :style-paragraph="'text-xxxs text-gray-400 font-bold'"
+                :paragraph="'Tekan tombol untuk lihat detail'"
               />
               <nuxt-link to="/selling-detail">
                 <Button
@@ -128,17 +128,21 @@
               :title="data.cluster"
               :pencapaian="data.pencapaian"
             >
-              <div class="flex justify-between">
-                <h3>Target</h3>
-                <p class="font-bold text-base">Rp. {{ data.targetconvert }}</p>
+              <div class="flex justify-between border-b border-red-200">
+                <h3 class="text-sm">Target</h3>
+                <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
               </div>
-              <div class="flex justify-between py-2">
-                <h3>Aktual</h3>
-                <p class="font-bold text-base">Rp. {{ data.aktualconvert }}</p>
+              <div class="py-2">
+                <div class="flex justify-between border-b border-red-200">
+                  <h3 class="text-sm">Aktual</h3>
+                  <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
+                </div>
               </div>
               <div class="flex justify-between">
-                <h3>Pencapaian</h3>
-                <p class="font-bold text-base">{{ data.pencapaian }}</p>
+                <h3 class="text-sm">Pencapaian</h3>
+                <p class="font-bold text-sm">
+                  {{ data.pencapaian }}
+                </p>
               </div>
             </Accordion>
           </template>
@@ -168,21 +172,23 @@
                   :title="data.wilayah"
                   :pencapaian="data.percentage"
                 >
-                  <div class="flex justify-between">
-                    <h3>Target</h3>
-                    <p class="font-bold text-base">
+                  <div class="flex justify-between border-b-2">
+                    <h3 class="text-xs">Target</h3>
+                    <p class="font-bold text-sm text-purple-900">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
-                  <div class="flex justify-between py-2">
-                    <h3>Aktual</h3>
-                    <p class="font-bold text-base">
+                  <div class="flex justify-between py-2 border-b-2">
+                    <h3 class="text-xs">Aktual</h3>
+                    <p class="font-bold text-sm text-purple-900">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between">
-                    <h3>Pencapaian</h3>
-                    <p class="font-bold text-base">{{ data.pencapaian }}</p>
+                    <h3 class="text-xs">Pencapaian</h3>
+                    <p class="font-bold text-sm text-purple-900">
+                      {{ data.pencapaian }}
+                    </p>
                   </div>
                 </Accordion>
               </template>
@@ -202,21 +208,23 @@
                   :title="data.region"
                   :pencapaian="data.percentage"
                 >
-                  <div class="flex justify-between">
-                    <h3>Target</h3>
-                    <p class="font-bold text-base">
+                  <div class="flex justify-between border-b-2">
+                    <h3 class="text-xs">Target</h3>
+                    <p class="font-bold text-sm text-purple-900">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
-                  <div class="flex justify-between py-2">
-                    <h3>Aktual</h3>
-                    <p class="font-bold text-base">
+                  <div class="flex justify-between py-2 border-b-2">
+                    <h3 class="text-xs">Aktual</h3>
+                    <p class="font-bold text-sm text-purple-900">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between">
-                    <h3>Pencapaian</h3>
-                    <p class="font-bold text-base">{{ data.percentage }}</p>
+                    <h3 class="text-xs">Pencapaian</h3>
+                    <p class="font-bold text-sm text-purple-900">
+                      {{ data.percentage }}
+                    </p>
                   </div>
                 </Accordion>
               </template>
@@ -236,21 +244,23 @@
                   :title="data.area_name"
                   :pencapaian="data.percentage"
                 >
-                  <div class="flex justify-between">
-                    <h3>Target</h3>
-                    <p class="font-bold text-base">
+                  <div class="flex justify-between border-b-2">
+                    <h3 class="text-xs">Target</h3>
+                    <p class="font-bold text-sm text-purple-900">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
-                  <div class="flex justify-between py-2">
+                  <div class="flex justify-between py-2 border-b-2">
                     <h3>Aktual</h3>
-                    <p class="font-bold text-base">
+                    <p class="font-bold text-sm text-purple-900">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between">
                     <h3>Pencapaian</h3>
-                    <p class="font-bold text-base">{{ data.percentage }}</p>
+                    <p class="font-bold text-sm text-purple-900">
+                      {{ data.percentage }}
+                    </p>
                   </div>
                 </Accordion>
               </template>
@@ -270,21 +280,23 @@
                   :title="data.distributor"
                   :pencapaian="data.percentage"
                 >
-                  <div class="flex justify-between">
-                    <h3>Target</h3>
-                    <p class="font-bold text-base">
+                  <div class="flex justify-between border-b-2">
+                    <h3 class="text-xs">Target</h3>
+                    <p class="font-bold text-sm text-purple-900">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
-                  <div class="flex justify-between py-2">
-                    <h3>Aktual</h3>
-                    <p class="font-bold text-base">
+                  <div class="flex justify-between py-2 border-b-2">
+                    <h3 class="text-xs">Aktual</h3>
+                    <p class="font-bold text-sm text-purple-900">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between">
-                    <h3>Pencapaian</h3>
-                    <p class="font-bold text-base">{{ data.percentage }}</p>
+                    <h3 class="text-xs">Pencapaian</h3>
+                    <p class="font-bold text-sm text-purple-900">
+                      {{ data.percentage }}
+                    </p>
                   </div>
                 </Accordion>
               </template>
@@ -304,21 +316,23 @@
                   :title="data.outlet_name"
                   :pencapaian="data.percentage"
                 >
-                  <div class="flex justify-between">
-                    <h3>Target</h3>
-                    <p class="font-bold text-base">
+                  <div class="flex justify-between border-b-2">
+                    <h3 class="text-xs">Target</h3>
+                    <p class="font-bold text-sm text-purple-900">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
-                  <div class="flex justify-between py-2">
-                    <h3>Aktual</h3>
-                    <p class="font-bold text-base">
+                  <div class="flex justify-between py-2 border-b-2">
+                    <h3 class="text-xs">Aktual</h3>
+                    <p class="font-bold text-sm text-purple-900">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between">
-                    <h3>Pencapaian</h3>
-                    <p class="font-bold text-base">{{ data.percentage }}</p>
+                    <h3 class="text-xs">Pencapaian</h3>
+                    <p class="font-bold text-sm text-purple-900">
+                      {{ data.percentage }}
+                    </p>
                   </div>
                 </Accordion>
               </template>

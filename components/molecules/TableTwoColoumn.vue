@@ -10,6 +10,7 @@
         text-center
         px-2
         border-r-2 border-l-2
+        py-2
       "
     >
       <Title

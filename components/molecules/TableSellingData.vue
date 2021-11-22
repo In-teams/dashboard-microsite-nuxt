@@ -1,9 +1,24 @@
 <template>
   <div class="py-2 mx-auto xl:w-full">
     <div
-      v-if="title !== 'Total Pencapaian'"
+      v-if="$route.query.value == 'Distributor'"
       class="py-2 bg-purple-900 border rounded-t-2xl p-20"
     >
+      <div class="max-w-md mx-auto">
+        <Title
+          :style-title="'text-center text-white font-bold'"
+          :title="title_id"
+        />
+
+        <Subtitle
+          class="grid grid-cols-3"
+          :style-subtitle="'  text-left text-white font-bold text-xs whitespace-nowrap  '"
+          :subtitle="title"
+        />
+      </div>
+    </div>
+
+    <div v-else class="py-2 bg-purple-900 border rounded-t-2xl p-20">
       <div class="max-w-md mx-auto">
         <Title
           :style-title="'text-center text-white font-bold'"
@@ -16,6 +31,7 @@
         />
       </div>
     </div>
+
     <div
       v-if="title !== 'Total Pencapaian'"
       class="border-r-2 border-b-2 border-l-2 rounded-b-xl py-1 border-gray-300"

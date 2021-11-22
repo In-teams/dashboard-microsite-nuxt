@@ -190,7 +190,6 @@
             :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
           >
             <template #trow>
-              <h2 class="font-bold text-lg px-1">Keterangan</h2>
               <Accordion
                 v-for="data in dataDistributor"
                 :key="data.distributor"
@@ -289,12 +288,12 @@
         </template>
       </Tabs>
     </div>
-        <BottomNav />
+    <BottomNav />
   </div>
 </template>
 
  <script>
- import BottomNav from '../molecules/BottomNav.vue'
+import BottomNav from '../molecules/BottomNav.vue'
 import Accordion from '../molecules/Accordion.vue'
 import Title from '../atoms/Title.vue'
 import Subtitle from '../atoms/Subtitle.vue'
