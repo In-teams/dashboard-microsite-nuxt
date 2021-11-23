@@ -3,7 +3,7 @@
     <Banner />
     <CardWithContent>
       <template #content>
-        <p>Hai, <span class="font-bold text-xs"></span></p>
+        <p class="">Hai, <span class="font-bold text-xs"></span></p>
         <p class="text-xxxs lg:text-blue">
           Tekan tombol dibawah ini untuk lihat detail penjualan lainnya
         </p>
@@ -172,21 +172,23 @@
                   :title="data.wilayah"
                   :pencapaian="data.percentage"
                 >
-                  <div class="flex justify-between border-b-2">
-                    <h3 class="text-xs">Target</h3>
-                    <p class="font-bold text-sm text-purple-900">
+                  <div class="flex justify-between border-b border-purple-700">
+                    <h3 class="text-sm">Target</h3>
+                    <p class="font-bold text-sm">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
-                  <div class="flex justify-between py-2 border-b-2">
-                    <h3 class="text-xs">Aktual</h3>
-                    <p class="font-bold text-sm text-purple-900">
+                  <div
+                    class="flex justify-between py-2 border-b border-purple-700"
+                  >
+                    <h3 class="text-sm">Aktual</h3>
+                    <p class="font-bold text-sm">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between">
-                    <h3 class="text-xs">Pencapaian</h3>
-                    <p class="font-bold text-sm text-purple-900">
+                    <h3 class="text-sm">Pencapaian</h3>
+                    <p class="font-bold text-sm">
                       {{ data.pencapaian }}
                     </p>
                   </div>
@@ -208,21 +210,23 @@
                   :title="data.region"
                   :pencapaian="data.percentage"
                 >
-                  <div class="flex justify-between border-b-2">
-                    <h3 class="text-xs">Target</h3>
-                    <p class="font-bold text-sm text-purple-900">
+                  <div class="flex justify-between border-b border-purple-700">
+                    <h3 class="text-sm">Target</h3>
+                    <p class="font-bold text-sm">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
-                  <div class="flex justify-between py-2 border-b-2">
-                    <h3 class="text-xs">Aktual</h3>
-                    <p class="font-bold text-sm text-purple-900">
+                  <div
+                    class="flex justify-between py-2 border-b border-purple-700"
+                  >
+                    <h3 class="text-sm">Aktual</h3>
+                    <p class="font-bold text-sm">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between">
-                    <h3 class="text-xs">Pencapaian</h3>
-                    <p class="font-bold text-sm text-purple-900">
+                    <h3 class="text-sm">Pencapaian</h3>
+                    <p class="font-bold text-sm">
                       {{ data.percentage }}
                     </p>
                   </div>
@@ -244,21 +248,23 @@
                   :title="data.area_name"
                   :pencapaian="data.percentage"
                 >
-                  <div class="flex justify-between border-b-2">
-                    <h3 class="text-xs">Target</h3>
-                    <p class="font-bold text-sm text-purple-900">
+                  <div class="flex justify-between border-b border-purple-700">
+                    <h3 class="text-sm">Target</h3>
+                    <p class="font-bold text-sm">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
-                  <div class="flex justify-between py-2 border-b-2">
-                    <h3>Aktual</h3>
-                    <p class="font-bold text-sm text-purple-900">
+                  <div
+                    class="flex justify-between py-2 border-b border-purple-700"
+                  >
+                    <h3 class="text-sm">Aktual</h3>
+                    <p class="font-bold text-sm">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between">
-                    <h3>Pencapaian</h3>
-                    <p class="font-bold text-sm text-purple-900">
+                    <h3 class="text-sm">Pencapaian</h3>
+                    <p class="font-bold text-sm">
                       {{ data.percentage }}
                     </p>
                   </div>
@@ -280,20 +286,22 @@
                   :title="data.distributor"
                   :pencapaian="data.percentage"
                 >
-                  <div class="flex justify-between border-b-2">
-                    <h3 class="text-xs">Target</h3>
+                  <div class="flex justify-between border-b border-purple-700">
+                    <h3 class="text-sm">Target</h3>
                     <p class="font-bold text-sm text-purple-900">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
-                  <div class="flex justify-between py-2 border-b-2">
-                    <h3 class="text-xs">Aktual</h3>
+                  <div
+                    class="flex justify-between py-2 border-b border-purple-700"
+                  >
+                    <h3 class="text-sm">Aktual</h3>
                     <p class="font-bold text-sm text-purple-900">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between">
-                    <h3 class="text-xs">Pencapaian</h3>
+                    <h3 class="text-sm">Pencapaian</h3>
                     <p class="font-bold text-sm text-purple-900">
                       {{ data.percentage }}
                     </p>
@@ -316,21 +324,23 @@
                   :title="data.outlet_name"
                   :pencapaian="data.percentage"
                 >
-                  <div class="flex justify-between border-b-2">
-                    <h3 class="text-xs">Target</h3>
-                    <p class="font-bold text-sm text-purple-900">
+                  <div class="flex justify-between border-b border-purple-700">
+                    <h3 class="text-sm">Target</h3>
+                    <p class="font-bold text-sm">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
-                  <div class="flex justify-between py-2 border-b-2">
-                    <h3 class="text-xs">Aktual</h3>
-                    <p class="font-bold text-sm text-purple-900">
+                  <div
+                    class="flex justify-between py-2 border-b border-purple-700"
+                  >
+                    <h3 class="text-sm">Aktual</h3>
+                    <p class="font-bold text-sm">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between">
-                    <h3 class="text-xs">Pencapaian</h3>
-                    <p class="font-bold text-sm text-purple-900">
+                    <h3 class="text-sm">Pencapaian</h3>
+                    <p class="font-bold text-sm">
                       {{ data.percentage }}
                     </p>
                   </div>

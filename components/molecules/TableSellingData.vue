@@ -1,34 +1,21 @@
 <template>
   <div class="py-2 mx-auto xl:w-full">
     <div
-      v-if="$route.query.value == 'Distributor'"
-      class="py-2 bg-purple-900 border rounded-t-2xl p-20"
+      v-if="title !== 'Total Pencapaian'"
+      class="py-2 bg-purple-900 border rounded-t-2xl"
     >
       <div class="max-w-md mx-auto">
         <Title
-          :style-title="'text-center text-white font-bold'"
+          :style-title="'text-center text-sm text-white font-bold'"
           :title="title_id"
         />
-
-        <Subtitle
-          class="grid grid-cols-3"
-          :style-subtitle="'  text-left text-white font-bold text-xs whitespace-nowrap  '"
-          :subtitle="title"
-        />
-      </div>
-    </div>
-
-    <div v-else class="py-2 bg-purple-900 border rounded-t-2xl p-20">
-      <div class="max-w-md mx-auto">
-        <Title
-          :style-title="'text-center text-white font-bold'"
-          :title="title_id"
-        />
-
-        <Subtitle
-          :style-subtitle="' text-center text-white font-bold  '"
-          :subtitle="title"
-        />
+        <div class="grid grid-cols-12">
+          <Subtitle
+            class="col-span-12"
+            :style-subtitle="'text-center text-white font-bold text-xs '"
+            :subtitle="title"
+          />
+        </div>
       </div>
     </div>
 

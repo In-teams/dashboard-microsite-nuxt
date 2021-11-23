@@ -75,7 +75,7 @@
               :points="data.notregist"
             />
             <CardWithThreeColoumn
-              :title="'Total Outlet'"
+              :title="'Total'"
               :icons="'image/outlet-icon.png'"
               :points="data.outlet"
             />
@@ -123,17 +123,17 @@
             :title="data.cluster"
             :pencapaian="data.pencapaian"
           >
-            <div class="flex justify-between">
-              <h3>Target</h3>
-              <p class="font-bold text-base">Rp. {{ data.targetconvert }}</p>
+            <div class="flex justify-between border-b border-red-300">
+              <h3 class="text-sm">Target</h3>
+              <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
             </div>
-            <div class="flex justify-between py-2">
-              <h3>Aktual</h3>
-              <p class="font-bold text-base">Rp. {{ data.aktualconvert }}</p>
+            <div class="flex justify-between border-b border-red-300 py-2">
+              <h3 class="text-sm">Aktual</h3>
+              <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
             </div>
             <div class="flex justify-between">
-              <h3>Pencapaian</h3>
-              <p class="font-bold text-base">{{ data.pencapaian }}</p>
+              <h3 class="text-sm">Pencapaian</h3>
+              <p class="font-bold text-sm">{{ data.pencapaian }}</p>
             </div>
           </Accordion>
         </template>
@@ -162,21 +162,19 @@
                 :title="data.region"
                 :pencapaian="data.pencapaian"
               >
-                <div class="flex justify-between">
-                  <h3>Target</h3>
-                  <p class="font-bold text-base">
-                    Rp. {{ data.targetconvert }}
-                  </p>
+                <div class="flex justify-between border-b border-purple-300">
+                  <h3 class="text-sm">Target</h3>
+                  <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
                 </div>
-                <div class="flex justify-between py-2">
-                  <h3>Aktual</h3>
-                  <p class="font-bold text-base">
-                    Rp. {{ data.aktualconvert }}
-                  </p>
+                <div
+                  class="flex justify-between border-b border-purple-300 py-2"
+                >
+                  <h3 class="text-sm">Aktual</h3>
+                  <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
                 </div>
                 <div class="flex justify-between">
-                  <h3>Pencapaian</h3>
-                  <p class="font-bold text-base">{{ data.pencapaian }}</p>
+                  <h3 class="text-sm">Pencapaian</h3>
+                  <p class="font-bold text-sm">{{ data.pencapaian }}</p>
                 </div>
               </Accordion>
             </template>
@@ -195,21 +193,19 @@
                 :title="data.distributor"
                 :pencapaian="data.pencapaian"
               >
-                <div class="flex justify-between">
-                  <h3>Target</h3>
-                  <p class="font-bold text-base">
-                    Rp. {{ data.targetconvert }}
-                  </p>
+                <div class="flex justify-between border-b border-purple-300">
+                  <h3 class="text-sm">Target</h3>
+                  <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
                 </div>
-                <div class="flex justify-between py-2">
-                  <h3>Aktual</h3>
-                  <p class="font-bold text-base">
-                    Rp. {{ data.aktualconvert }}
-                  </p>
+                <div
+                  class="flex justify-between border-b border-purple-300 py-2"
+                >
+                  <h3 class="text-sm">Aktual</h3>
+                  <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
                 </div>
                 <div class="flex justify-between">
                   <h3>Pencapaian</h3>
-                  <p class="font-bold text-base">{{ data.pencapaian }}</p>
+                  <p class="font-bold text-sm">{{ data.pencapaian }}</p>
                 </div>
               </Accordion>
             </template>
@@ -228,21 +224,19 @@
                 :title="data.area_name"
                 :pencapaian="data.pencapaian"
               >
-                <div class="flex justify-between">
-                  <h3>Target</h3>
-                  <p class="font-bold text-base">
-                    Rp. {{ data.targetconvert }}
-                  </p>
+                <div class="flex justify-between border-b border-purple-300">
+                  <h3 class="text-sm">Target</h3>
+                  <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
                 </div>
-                <div class="flex justify-between py-2">
-                  <h3>Aktual</h3>
-                  <p class="font-bold text-base">
-                    Rp. {{ data.aktualconvert }}
-                  </p>
+                <div
+                  class="flex justify-between border-b border-purple-300 py-2"
+                >
+                  <h3 class="text-sm">Aktual</h3>
+                  <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
                 </div>
                 <div class="flex justify-between">
-                  <h3>Pencapaian</h3>
-                  <p class="font-bold text-base">{{ data.pencapaian }}</p>
+                  <h3 class="text-sm">Pencapaian</h3>
+                  <p class="font-bold text-sm">{{ data.pencapaian }}</p>
                 </div>
               </Accordion>
             </template>
@@ -262,21 +256,19 @@
                 :title="data.outlet_name"
                 :pencapaian="data.pencapaian"
               >
-                <div class="flex justify-between">
-                  <h3>Target</h3>
-                  <p class="font-bold text-base">
-                    Rp. {{ data.targetconvert }}
-                  </p>
+                <div class="flex justify-between border-b border-purple-300">
+                  <h3 class="text-sm">Target</h3>
+                  <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
                 </div>
-                <div class="flex justify-between py-2">
-                  <h3>Aktual</h3>
-                  <p class="font-bold text-base">
-                    Rp. {{ data.aktualconvert }}
-                  </p>
+                <div
+                  class="flex justify-between border-b border-purple-300 py-2"
+                >
+                  <h3 class="text-sm">Aktual</h3>
+                  <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
                 </div>
                 <div class="flex justify-between">
-                  <h3>Pencapaian</h3>
-                  <p class="font-bold text-base">{{ data.pencapaian }}</p>
+                  <h3 class="text-sm">Pencapaian</h3>
+                  <p class="font-bold text-sm">{{ data.pencapaian }}</p>
                 </div>
               </Accordion>
             </template>
@@ -284,12 +276,12 @@
         </template>
       </Tabs>
     </div>
-        <BottomNav />
+    <BottomNav />
   </div>
 </template>
 
  <script>
- import BottomNav from '../molecules/BottomNav.vue'
+import BottomNav from '../molecules/BottomNav.vue'
 import Accordion from '../molecules/Accordion.vue'
 import Title from '../atoms/Title.vue'
 import Subtitle from '../atoms/Subtitle.vue'
@@ -321,7 +313,7 @@ export default {
     CardWithThreeColoumn,
     TableTwoColoumn,
     Tabs,
-    BottomNav
+    BottomNav,
   },
   data() {
     return {

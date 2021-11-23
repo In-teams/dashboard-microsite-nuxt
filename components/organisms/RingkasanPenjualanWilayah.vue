@@ -75,7 +75,7 @@
               :points="data.notregist"
             />
             <CardWithThreeColoumn
-              :title="'Total Outlet'"
+              :title="'Total '"
               :icons="'image/outlet-icon.png'"
               :points="data.outlet"
             />
@@ -116,7 +116,6 @@
         :style-header="'px-2 py-3 bg-red-600 border-2 rounded-t-2xl'"
       >
         <template #trow>
-          <h2 class="font-bold text-lg px-1">Keterangan</h2>
           <Accordion
             v-for="data in dataPencapaian"
             :key="data.cluster"
@@ -124,16 +123,16 @@
             :title="data.cluster"
             :pencapaian="data.pencapaian"
           >
-            <div class="flex justify-between">
-              <h3>Target</h3>
+            <div class="flex justify-between border-b border-red-300">
+              <h3 class="text-sm">Target</h3>
               <p class="font-bold text-base">Rp. {{ data.targetconvert }}</p>
             </div>
-            <div class="flex justify-between py-2">
-              <h3>Aktual</h3>
+            <div class="flex justify-between border-b border-red-300 py-2">
+              <h3 class="text-sm">Aktual</h3>
               <p class="font-bold text-base">Rp. {{ data.aktualconvert }}</p>
             </div>
             <div class="flex justify-between">
-              <h3>Pencapaian</h3>
+              <h3 class="text-sm">Pencapaian</h3>
               <p class="font-bold text-base">{{ data.pencapaian }}</p>
             </div>
           </Accordion>
@@ -156,7 +155,6 @@
             :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
           >
             <template #trow>
-              <h2 class="font-bold text-lg px-1">Keterangan</h2>
               <Accordion
                 v-for="data in dataRegion"
                 :key="data.region"
@@ -164,21 +162,19 @@
                 :title="data.region"
                 :pencapaian="data.pencapaian"
               >
-                <div class="flex justify-between">
-                  <h3>Target</h3>
-                  <p class="font-bold text-base">
-                    Rp. {{ data.targetconvert }}
-                  </p>
+                <div class="flex justify-between border-b border-purple-300">
+                  <h3 class="text-sm">Target</h3>
+                  <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
                 </div>
-                <div class="flex justify-between py-2">
-                  <h3>Aktual</h3>
-                  <p class="font-bold text-base">
-                    Rp. {{ data.aktualconvert }}
-                  </p>
+                <div
+                  class="flex justify-between border-b border-purple-300 py-2"
+                >
+                  <h3 class="text-sm">Aktual</h3>
+                  <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
                 </div>
                 <div class="flex justify-between">
-                  <h3>Pencapaian</h3>
-                  <p class="font-bold text-base">{{ data.pencapaian }}</p>
+                  <h3 class="text-sm">Pencapaian</h3>
+                  <p class="font-bold text-sm">{{ data.pencapaian }}</p>
                 </div>
               </Accordion>
             </template>
@@ -197,21 +193,19 @@
                 :title="data.distributor"
                 :pencapaian="data.pencapaian"
               >
-                <div class="flex justify-between">
-                  <h3>Target</h3>
-                  <p class="font-bold text-base">
-                    Rp. {{ data.targetconvert }}
-                  </p>
+                <div class="flex justify-between border-b border-purple-300">
+                  <h3 class="text-sm">Target</h3>
+                  <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
                 </div>
-                <div class="flex justify-between py-2">
-                  <h3>Aktual</h3>
-                  <p class="font-bold text-base">
-                    Rp. {{ data.aktualconvert }}
-                  </p>
+                <div
+                  class="flex justify-between border-b border-purple-300 py-2"
+                >
+                  <h3 class="text-sm">Aktual</h3>
+                  <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
                 </div>
                 <div class="flex justify-between">
-                  <h3>Pencapaian</h3>
-                  <p class="font-bold text-base">{{ data.pencapaian }}</p>
+                  <h3 class="text-sm">Pencapaian</h3>
+                  <p class="font-bold text-sm">{{ data.pencapaian }}</p>
                 </div>
               </Accordion>
             </template>
@@ -223,7 +217,6 @@
             :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
           >
             <template #trow>
-              <h2 class="font-bold text-lg px-1">Keterangan</h2>
               <Accordion
                 v-for="data in dataArea"
                 :key="data.area_name"
@@ -231,21 +224,19 @@
                 :title="data.area_name"
                 :pencapaian="data.pencapaian"
               >
-                <div class="flex justify-between">
-                  <h3>Target</h3>
-                  <p class="font-bold text-base">
-                    Rp. {{ data.targetconvert }}
-                  </p>
+                <div class="flex justify-between border-b border-purple-300">
+                  <h3 class="text-sm">Target</h3>
+                  <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
                 </div>
-                <div class="flex justify-between py-2">
-                  <h3>Aktual</h3>
-                  <p class="font-bold text-base">
-                    Rp. {{ data.aktualconvert }}
-                  </p>
+                <div
+                  class="flex justify-between border-b border-purple-300 py-2"
+                >
+                  <h3 class="text-sm">Aktual</h3>
+                  <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
                 </div>
                 <div class="flex justify-between">
-                  <h3>Pencapaian</h3>
-                  <p class="font-bold text-base">{{ data.pencapaian }}</p>
+                  <h3 class="text-sm">Pencapaian</h3>
+                  <p class="font-bold text-sm">{{ data.pencapaian }}</p>
                 </div>
               </Accordion>
             </template>
@@ -258,7 +249,6 @@
             :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
           >
             <template #trow>
-              <h2 class="font-bold text-lg px-1">Keterangan</h2>
               <Accordion
                 v-for="data in dataOutlet"
                 :key="data.outlet_name"

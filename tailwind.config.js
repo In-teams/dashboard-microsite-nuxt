@@ -47,6 +47,9 @@ module.exports = {
       minWidth: {
         '1/4': '3.7rem',
       },
+      fontFamily: {
+        montserrat: ['Montserrat', 'sans-serif'],
+      },
     },
   },
   variants: {
