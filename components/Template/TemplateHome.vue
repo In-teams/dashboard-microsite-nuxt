@@ -56,16 +56,20 @@ export default {
     this.getdataTableOutlet()
   },
   methods: {
-    getdataTableNational() {
-      axios
-        .get(`http://api.apolo.inosis.id/api/v1/sales`, {
+    async getdataTableNational() {
+      const result = await axios.get(
+        `http://api.apolo.inosis.id/api/v1/sales`,
+        {
           headers: {
             Authorization:
               'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOiJzdXBlciIsIm5hbWUiOm51bGwsInVzZXJfcHJvZmlsZSI6IiIsImxldmVsIjoiMSIsImVtYWlsIjpudWxsLCJzY29wZSI6bnVsbCwicGhvdG8iOm51bGwsInJlZ2lkIjpudWxsfSwiaWF0IjoxNjMzMDcyNTA0fQ.C7dt8r4uYaJCaoXmi1hZpSMa3Zs2qyczWn8mvuviRR8',
           },
-        })
-        .then((res) => (this.dataTableNational = res.data.data))
-        .catch((err) => console.log(err))
+        }
+      )
+      this.dataTableNational = result.data.data
+      return result
+      // .then((res) => (this.dataTableNational = res.data.data))
+      // .catch((err) => console.log(err))
     },
     getdataTableCluster() {
       axios

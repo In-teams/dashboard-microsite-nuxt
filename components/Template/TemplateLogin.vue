@@ -244,6 +244,7 @@ export default {
           const result = response.data.data
           if (+result.level === 1) {
             localStorage.token = result.token
+            localStorage.user_id = result.user_id
             this.$router.push(`/home`)
           } else {
             console.log(this.username, this.password)

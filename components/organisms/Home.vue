@@ -1,12 +1,21 @@
 <template>
   <div>
+    <Loading
+      class="fixed min-h-full min-w-full bg-fixed bg-purple-900 z-50"
+      v-if="loading"
+    />
     <Banner />
+
     <CardWithContent>
       <template #content>
-        <p class="">Hai, <span class="font-bold text-xs"></span></p>
+        <p class="">
+          Hai,
+          <span class="font-bold text-red-900 text-xs">{{ user }}</span>
+        </p>
         <p class="text-xxxs lg:text-blue">
           Tekan tombol dibawah ini untuk lihat detail penjualan lainnya
         </p>
+
         <div class="py-3">
           <p class="bg-pink-300 px-3 py-3 rounded-full text-center text-sm">
             Periode update per tanggal :
@@ -172,14 +181,14 @@
                   :title="data.wilayah"
                   :pencapaian="data.percentage"
                 >
-                  <div class="flex justify-between border-b border-purple-700">
+                  <div class="flex justify-between border-b border-purple-300">
                     <h3 class="text-sm">Target</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
                   <div
-                    class="flex justify-between py-2 border-b border-purple-700"
+                    class="flex justify-between py-2 border-b border-purple-300"
                   >
                     <h3 class="text-sm">Aktual</h3>
                     <p class="font-bold text-sm">
@@ -210,14 +219,14 @@
                   :title="data.region"
                   :pencapaian="data.percentage"
                 >
-                  <div class="flex justify-between border-b border-purple-700">
+                  <div class="flex justify-between border-b border-purple-300">
                     <h3 class="text-sm">Target</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
                   <div
-                    class="flex justify-between py-2 border-b border-purple-700"
+                    class="flex justify-between py-2 border-b border-purple-300"
                   >
                     <h3 class="text-sm">Aktual</h3>
                     <p class="font-bold text-sm">
@@ -248,14 +257,14 @@
                   :title="data.area_name"
                   :pencapaian="data.percentage"
                 >
-                  <div class="flex justify-between border-b border-purple-700">
+                  <div class="flex justify-between border-b border-purple-300">
                     <h3 class="text-sm">Target</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
                   <div
-                    class="flex justify-between py-2 border-b border-purple-700"
+                    class="flex justify-between py-2 border-b border-purple-300"
                   >
                     <h3 class="text-sm">Aktual</h3>
                     <p class="font-bold text-sm">
@@ -286,23 +295,23 @@
                   :title="data.distributor"
                   :pencapaian="data.percentage"
                 >
-                  <div class="flex justify-between border-b border-purple-700">
+                  <div class="flex justify-between border-b border-purple-300">
                     <h3 class="text-sm">Target</h3>
-                    <p class="font-bold text-sm text-purple-900">
+                    <p class="font-bold text-sm">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
                   <div
-                    class="flex justify-between py-2 border-b border-purple-700"
+                    class="flex justify-between py-2 border-b border-purple-300"
                   >
                     <h3 class="text-sm">Aktual</h3>
-                    <p class="font-bold text-sm text-purple-900">
+                    <p class="font-bold text-sm">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between">
                     <h3 class="text-sm">Pencapaian</h3>
-                    <p class="font-bold text-sm text-purple-900">
+                    <p class="font-bold text-sm">
                       {{ data.percentage }}
                     </p>
                   </div>
@@ -324,14 +333,14 @@
                   :title="data.outlet_name"
                   :pencapaian="data.percentage"
                 >
-                  <div class="flex justify-between border-b border-purple-700">
+                  <div class="flex justify-between border-b border-purple-300">
                     <h3 class="text-sm">Target</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
                   <div
-                    class="flex justify-between py-2 border-b border-purple-700"
+                    class="flex justify-between py-2 border-b border-purple-300"
                   >
                     <h3 class="text-sm">Aktual</h3>
                     <p class="font-bold text-sm">
@@ -356,6 +365,7 @@
 </template>
 
 <script>
+import Loading from '../molecules/Loading.vue'
 import BottomNav from '../molecules/BottomNav.vue'
 import Accordion from '../molecules/Accordion.vue'
 import CardWithThreeColoumn from '../molecules/CardWithThreeColoumn.vue'
@@ -371,6 +381,7 @@ import CardWithContent from '../molecules/CardWithContent.vue'
 import Banner from '../molecules/Banner.vue'
 export default {
   components: {
+    Loading,
     Accordion,
     CardWithThreeColoumn,
     Tabs,
@@ -400,6 +411,8 @@ export default {
       listTheadCluster: ['BULAN', 'TARGET', 'AKTUAL', '%'],
       listThead: ['KETERANGAN', 'TARGET', 'AKTUAL', '%'],
       tabs: ['Wilayah', 'Region', 'Area', 'Distributor', 'Outlet'],
+      loading: true,
+      user: '',
     }
   },
 
@@ -407,6 +420,25 @@ export default {
     getPoint(key) {
       return this.dataTableNational[key]
     },
+
+    getUserId() {
+      if (localStorage.user_id) {
+        localStorage.user_id = this.user
+      }
+      return localStorage.user_id
+    },
+
+    async checkData() {
+      this.loading = true
+      const res = await this.dataTableNational
+      if (res) {
+        this.loading = false
+      }
+    },
+  },
+
+  watch: {
+    dataTableNational: 'checkData',
   },
 }
 </script>
