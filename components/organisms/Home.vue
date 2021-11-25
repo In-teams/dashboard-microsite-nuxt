@@ -31,14 +31,16 @@
           <template #tableTitle>
             <div class="px-2 py-3 bg-red-600 rounded-t-2xl p-20">
               <div class="max-w-md mx-auto">
-                <p class="text-center text-white font-bold">NASIONAL</p>
+                <p class="text-center text-white font-bold tracking-wider">
+                  NASIONAL
+                </p>
               </div>
             </div>
           </template>
           <template #tableContent>
             <div class="grid grid-cols-2 border-r-2 border-l-2 py-2">
               <div>
-                <p class="text-gray-400 text-xs text-center py-1">
+                <p class="text-gray-400 text-xs text-center py-1 tracking-wide">
                   TARGET PENJUALAN
                 </p>
                 <p class="text-gray-900 font-bold text-sm text-center">
@@ -46,7 +48,7 @@
                 </p>
               </div>
               <div>
-                <p class="text-gray-400 text-xs text-center py-1">
+                <p class="text-gray-400 text-xs text-center py-1 tracking-wide">
                   AKTUAL PENJUALAN
                 </p>
                 <p class="text-gray-900 font-bold text-sm text-center">
@@ -56,7 +58,7 @@
             </div>
             <div class="grid grid-cols-2 py-2 border-r-2 border-l-2">
               <div>
-                <p class="text-gray-400 pt-1 text-xs text-center">
+                <p class="text-gray-400 pt-1 text-xs text-center tracking-wide">
                   SELISIH PENJUALAN
                 </p>
               </div>
@@ -126,7 +128,7 @@
         </TableTwoColoumn>
         <TableFourColoumn
           :title-header="'KLUSTER PERSENTASE PENCAPAIAN'"
-          :style-header="' py-3 bg-red-600 rounded-t-2xl'"
+          :style-header="' py-3 bg-red-600 rounded-t-2xl tracking-wide'"
           :data-table-cluster="dataTableCluster"
         >
           <template #trow>
@@ -171,7 +173,7 @@
             <TableFourColoumn
               class="mb-16"
               :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
-              :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
+              :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl tracking-wide'"
             >
               <template #trow>
                 <Accordion
@@ -209,7 +211,7 @@
             <TableFourColoumn
               class="mb-16"
               :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
-              :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
+              :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl tracking-wide'"
             >
               <template #trow>
                 <Accordion
@@ -247,7 +249,7 @@
             <TableFourColoumn
               class="mb-16"
               :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
-              :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
+              :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl tracking-wide'"
             >
               <template #trow>
                 <Accordion
@@ -285,7 +287,7 @@
             <TableFourColoumn
               class="mb-16"
               :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
-              :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
+              :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl tracking-wide'"
             >
               <template #trow>
                 <Accordion
@@ -323,7 +325,7 @@
             <TableFourColoumn
               class="mb-16"
               :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
-              :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
+              :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl tracking-wide'"
             >
               <template #trow>
                 <Accordion

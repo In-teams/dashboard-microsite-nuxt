@@ -1,5 +1,9 @@
 <template>
   <div>
+    <Loading
+      class="fixed min-h-full min-w-full bg-fixed bg-purple-900 z-50 top-0"
+      v-if="loading"
+    />
     <Navbar :nav-title="'RINGKASAN DATA PENJUALAN'" />
     <div class="px-2">
       <TableTwoColoumn
@@ -22,9 +26,9 @@
           </div>
         </template>
         <template #tableContent>
-          <div class="grid grid-cols-2 border-r-2 border-l-2">
+          <div class="grid grid-cols-2 border-r-2 border-l-2 py-2">
             <div>
-              <p class="text-gray-400 font-bold text-xs text-center">
+              <p class="text-gray-400 font-bold text-xs text-center py-2">
                 TARGET PENJUALAN
               </p>
               <p class="text-gray-900 font-bold text-sm text-center">
@@ -32,7 +36,7 @@
               </p>
             </div>
             <div>
-              <p class="text-gray-400 font-bold text-xs text-center">
+              <p class="text-gray-400 font-bold text-xs text-center py-2">
                 AKTUAL PENJUALAN
               </p>
               <p class="text-gray-900 font-bold text-sm text-center">
@@ -52,7 +56,7 @@
               </p>
             </div>
           </div>
-          <div class="grid grid-cols-2 gap-1 px-1 py-1 border-r-2 border-l-2">
+          <div class="grid grid-cols-2 gap-1 px-1 py-2 border-r-2 border-l-2">
             <CardWithThreeColoumn
               :title="'Registrasi'"
               :icons="'image/left_arrow.svg'"
@@ -64,9 +68,7 @@
               :points="data.percentage"
             />
           </div>
-          <div
-            class="grid grid-cols-2 gap-1 px-1 py-2 border-r-2 border-l-2"
-          ></div>
+          <div class="grid grid-cols-2 gap-1 px-1 border-r-2 border-l-2"></div>
         </template>
       </TableTwoColoumn>
       <div class="grid grid-cols-12 gap-2 py-2">
@@ -240,6 +242,7 @@
 </template>
 
 <script>
+import Loading from '../molecules/Loading.vue'
 import BottomNav from '../molecules/BottomNav.vue'
 import Accordion from '../../components/molecules/Accordion.vue'
 import CardWithThreeColoumn from '../../components/molecules/CardWithThreeColoumn.vue'
@@ -261,6 +264,7 @@ export default {
     'dataPoin',
   ],
   components: {
+    Loading,
     Accordion,
     Title,
     Subtitle,
@@ -280,12 +284,24 @@ export default {
       listThead: ['BULAN', 'TARGET', 'AKTUAL', 'POIN'],
       tabs: ['Penjualan', 'Point Reward'],
       params: this.$route.params.name,
+      loading: true,
     }
   },
   methods: {
     getPoint(key) {
       return this.dataOutlet[key]
     },
+
+    async checkData() {
+      this.loading = true
+      const res = await this.dataOutlet
+      if (res) {
+        this.loading = false
+      }
+    },
+  },
+  watch: {
+    dataOutlet: 'checkData',
   },
 }
 </script>

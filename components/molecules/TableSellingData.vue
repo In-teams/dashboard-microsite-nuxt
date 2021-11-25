@@ -6,13 +6,13 @@
     >
       <div class="max-w-md mx-auto">
         <Title
-          :style-title="'text-center text-sm text-white font-bold'"
+          :style-title="'text-center text-md text-white tracking-wide'"
           :title="title_id"
         />
         <div class="grid grid-cols-12">
           <Subtitle
             class="col-span-12"
-            :style-subtitle="'text-center text-white font-bold text-xs '"
+            :style-subtitle="'text-center text-white text-base tracking-wide '"
             :subtitle="title"
           />
         </div>
@@ -23,9 +23,9 @@
       v-if="title !== 'Total Pencapaian'"
       class="border-r-2 border-b-2 border-l-2 rounded-b-xl py-1 border-gray-300"
     >
-      <div class="grid grid-cols-2">
+      <div class="grid grid-cols-2 py-2">
         <div>
-          <p class="text-gray-400 font-bold text-xs text-center">
+          <p class="text-gray-400 text-xs text-center py-2 tracking-wide">
             TARGET PENJUALAN
           </p>
           <p class="text-gray-900 font-bold text-md text-center">
@@ -34,7 +34,7 @@
         </div>
 
         <div>
-          <p class="text-gray-400 font-bold text-xs text-center">
+          <p class="text-gray-400 text-xs text-center py-2 tracking-wide">
             AKTUAL PENJUALAN
           </p>
           <p class="text-gray-900 font-bold text-md text-center">
@@ -45,14 +45,14 @@
 
       <div class="grid grid-cols-2 py-1">
         <div>
-          <p class="text-gray-400 font-bold pt-1 text-xs text-center">
+          <p class="text-gray-400 pt-1 text-xs text-center py-2 tracking-wide">
             SELISIH PENJUALAN
           </p>
           <p class="text-gray-900 font-bold text-md text-center">
             Rp.{{ selisih }}
           </p>
         </div>
-        <div class="self-center px-2">
+        <div class="self-center px-2 py-2">
           <CardWithThreeColoumn
             :icons="'image/pink-trophy-icon.png'"
             :title="'Pencapaian'"

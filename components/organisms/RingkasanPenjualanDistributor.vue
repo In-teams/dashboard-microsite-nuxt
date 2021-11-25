@@ -1,5 +1,9 @@
 <template>
   <div>
+    <Loading
+      class="fixed min-h-full min-w-full bg-fixed bg-purple-900 z-50 top-0"
+      v-if="loading"
+    />
     <Navbar :nav-title="'RINGKASAN DATA PENJUALAN'" />
     <div class="px-2 mt-16">
       <TableTwoColoumn
@@ -16,16 +20,16 @@
               <p class="text-center text-white font-bold">
                 {{ data.distributor_id }}
               </p>
-              <p class="text-center text-white font-bold">
+              <p class="text-center text-white">
                 {{ data.distributor }}
               </p>
             </div>
           </div>
         </template>
         <template #tableContent>
-          <div class="grid grid-cols-2 border-r-2 border-l-2">
+          <div class="grid grid-cols-2 border-r-2 border-l-2 py-1">
             <div>
-              <p class="text-gray-400 font-bold text-xs text-center">
+              <p class="text-gray-400 font-bold text-xs text-center py-2">
                 TARGET PENJUALAN
               </p>
               <p class="text-gray-900 font-bold text-sm text-center">
@@ -33,7 +37,7 @@
               </p>
             </div>
             <div>
-              <p class="text-gray-400 font-bold text-xs text-center">
+              <p class="text-gray-400 font-bold text-xs text-center py-2">
                 AKTUAL PENJUALAN
               </p>
               <p class="text-gray-900 font-bold text-sm text-center">
@@ -43,7 +47,7 @@
           </div>
           <div class="grid grid-cols-2 py-2 border-r-2 border-l-2">
             <div>
-              <p class="text-gray-400 font-bold pt-1 text-xs text-center">
+              <p class="text-gray-400 font-bold pt-1 text-xs text-center py-2">
                 SELISIH PENJUALAN
               </p>
             </div>
@@ -53,7 +57,7 @@
               </p>
             </div>
           </div>
-          <div class="grid grid-cols-2 gap-1 px-1 py-2 border-r-2 border-l-2">
+          <div class="grid grid-cols-2 gap-1 px-1 py-1 border-r-2 border-l-2">
             <CardWithThreeColoumn
               :title="'Pencapaian'"
               :icons="'image/trophy-icon.png'"
@@ -282,6 +286,7 @@
 </template>
 
  <script>
+import Loading from '../molecules/Loading.vue'
 import BottomNav from '../molecules/BottomNav.vue'
 import Accordion from '../molecules/Accordion.vue'
 import Title from '../atoms/Title.vue'
@@ -304,6 +309,7 @@ export default {
     'dataOutlet',
   ],
   components: {
+    Loading,
     Accordion,
     Title,
     Subtitle,
@@ -321,6 +327,7 @@ export default {
       datas: '',
       listThead: ['BULAN', 'TARGET', 'AKTUAL', '%'],
       tabs: ['Region', 'Distributor', 'Area', 'Outlet'],
+      loading: true,
     }
   },
   computed: {},
@@ -328,6 +335,17 @@ export default {
     getPoint(key) {
       return this.dataRingkasanWilayah[key]
     },
+
+    async checkData() {
+      this.loading = true
+      const res = await this.dataRingkasanWilayah
+      if (res) {
+        this.loading = false
+      }
+    },
+  },
+  watch: {
+    dataRingkasanWilayah: 'checkData',
   },
 }
 </script>

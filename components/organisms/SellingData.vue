@@ -1,5 +1,9 @@
 <template>
   <div>
+    <Loading
+      class="fixed min-h-full min-w-full bg-fixed bg-purple-900 z-50 top-0"
+      v-if="loading"
+    />
     <Navbar :nav-title="'DATA PENJUALAN PER WILAYAH'" />
     <div class="px-2">
       <Search @getKeyword="getKeyword" />
@@ -72,6 +76,7 @@
 </template>
 
 <script>
+import Loading from '../molecules/Loading.vue'
 import BottomNav from '../molecules/BottomNav.vue'
 import TableSellingData from '../molecules/TableSellingData.vue'
 import Search from '../molecules/Search.vue'
@@ -79,6 +84,7 @@ import Tabs from '../molecules/Tabs.vue'
 import Navbar from '../molecules/Navbar.vue'
 export default {
   components: {
+    Loading,
     Navbar,
     TableSellingData,
     Tabs,
@@ -95,6 +101,7 @@ export default {
 
   data() {
     return {
+      loading: true,
       tabs: [
         {
           name: 'Wilayah',
@@ -164,6 +171,14 @@ export default {
       this.dataOutlet = this.dataTableOutlet
     },
 
+    async checkData() {
+      this.loading = true
+      const res = await this.dataTableWilayah
+      if (res) {
+        this.loading = false
+      }
+    },
+
     addParams(value) {
       this.$router.push({
         path: `${this.$route.path}`,
@@ -176,7 +191,7 @@ export default {
     dataTableRegion: 'setData',
     dataTableArea: 'setData',
     dataTableDistributor: 'setData',
-    dataTableOutlet: 'setData',
+    dataTableOutlet: ['setData', 'checkData'],
   },
 }
 </script>

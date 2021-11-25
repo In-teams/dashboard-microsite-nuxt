@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="block">
+    <div>
       <img
-        class="h-40 ss animate-bounce mx-auto my-56 shadow-"
+        class="h-40 filter-dropshadow animate-bounce mx-auto my-56"
         src="~/assets/image/mvg-icon.svg"
         alt=""
         srcset=""
@@ -22,7 +22,7 @@ export default {}
 </script>
 
 <style scoped>
-.ss {
+.filter-dropshadow {
   filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.6));
 }
 </style>

@@ -1,5 +1,9 @@
 <template>
   <div>
+    <Loading
+      class="fixed min-h-full min-w-full bg-fixed bg-purple-900 z-50 top-0"
+      v-if="loading"
+    />
     <Navbar :nav-title="'RINGKASAN DATA PENJUALAN'" />
     <div class="px-2 mt-16">
       <TableTwoColoumn
@@ -13,19 +17,19 @@
         <template #tableTitle>
           <div class="px-2 py-3 bg-red-600 border-2 rounded-t-2xl p-20">
             <div class="max-w-md mx-auto">
-              <p class="text-center text-white font-bold">
+              <p class="text-center text-white font-bold tracking-wide">
                 {{ data.head_region_id }}
               </p>
-              <p class="text-center text-white font-bold">
+              <p class="text-center text-white font-bold tracking-wide">
                 {{ data.wilayah }}
               </p>
             </div>
           </div>
         </template>
         <template #tableContent>
-          <div class="grid grid-cols-2 border-r-2 border-l-2">
+          <div class="grid grid-cols-2 border-r-2 border-l-2 py-1">
             <div>
-              <p class="text-gray-400 font-bold text-xs text-center">
+              <p class="text-gray-400 text-xs text-center tracking-wide py-2">
                 TARGET PENJUALAN
               </p>
               <p class="text-gray-900 font-bold text-sm text-center">
@@ -33,7 +37,7 @@
               </p>
             </div>
             <div>
-              <p class="text-gray-400 font-bold text-xs text-center">
+              <p class="text-gray-400 text-xs text-center py-2 tracking-wide">
                 AKTUAL PENJUALAN
               </p>
               <p class="text-gray-900 font-bold text-sm text-center">
@@ -43,7 +47,15 @@
           </div>
           <div class="grid grid-cols-2 py-2 border-r-2 border-l-2">
             <div>
-              <p class="text-gray-400 font-bold pt-1 text-xs text-center">
+              <p
+                class="
+                  text-gray-400
+                  pt-1
+                  text-xs text-center
+                  py-2
+                  tracking-wide
+                "
+              >
                 SELISIH PENJUALAN
               </p>
             </div>
@@ -53,7 +65,7 @@
               </p>
             </div>
           </div>
-          <div class="grid grid-cols-2 gap-1 px-1 py-2 border-r-2 border-l-2">
+          <div class="grid grid-cols-2 gap-1 px-1 border-r-2 border-l-2">
             <CardWithThreeColoumn
               :title="'Pencapaian'"
               :icons="'image/trophy-icon.png'"
@@ -113,7 +125,7 @@
       </TableTwoColoumn>
       <TableFourColoumn
         :title-header="'KLUSTER PERSENTASE PENCAPAIAN'"
-        :style-header="'px-2 py-3 bg-red-600 border-2 rounded-t-2xl'"
+        :style-header="'px-2 py-3 bg-red-600 border-2 rounded-t-2xl tracking-wide'"
       >
         <template #trow>
           <Accordion
@@ -152,7 +164,7 @@
         <template #activeTab_0>
           <TableFourColoumn
             :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
-            :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
+            :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl tracking-wide'"
           >
             <template #trow>
               <Accordion
@@ -183,7 +195,7 @@
         <template #activeTab_1>
           <TableFourColoumn
             :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
-            :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
+            :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl tracking-wide'"
           >
             <template #trow>
               <Accordion
@@ -214,7 +226,7 @@
         <template #activeTab_2>
           <TableFourColoumn
             :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
-            :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
+            :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl tracking-wide'"
           >
             <template #trow>
               <Accordion
@@ -246,7 +258,7 @@
         <template #activeTab_3>
           <TableFourColoumn
             :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
-            :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
+            :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl tracking-wide'"
           >
             <template #trow>
               <Accordion
@@ -283,6 +295,7 @@
 </template>
 
  <script>
+import Loading from '../molecules/Loading.vue'
 import BottomNav from '../molecules/BottomNav.vue'
 import Accordion from '../molecules/Accordion.vue'
 import Title from '../atoms/Title.vue'
@@ -305,6 +318,7 @@ export default {
     'dataOutlet',
   ],
   components: {
+    Loading,
     BottomNav,
     Accordion,
     Title,
@@ -322,6 +336,7 @@ export default {
       datas: '',
       listThead: ['BULAN', 'TARGET', 'AKTUAL', '%'],
       tabs: ['Region', 'Distributor', 'Area', 'Outlet'],
+      loading: true,
     }
   },
   computed: {},
@@ -329,6 +344,17 @@ export default {
     getPoint(key) {
       return this.dataRingkasanWilayah[key]
     },
+
+    async checkData() {
+      this.loading = true
+      const res = await this.dataRingkasanWilayah
+      if (res) {
+        this.loading = false
+      }
+    },
+  },
+  watch: {
+    dataRingkasanWilayah: 'checkData',
   },
 }
 </script>
