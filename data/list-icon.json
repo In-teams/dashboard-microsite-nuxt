@@ -2,27 +2,27 @@
     "list": [
         {
             "name": "Wilayah",
-            "src": "https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-location-map-location-flatart-icons-outline-flatarticons-13.png",
+            "src": "image/loc-icon.png",
             "link": "/penjualan-perwilayah?value=Wilayah"
         },
         {
             "name": "Region",
-            "src": "https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-location-map-location-flatart-icons-outline-flatarticons-13.png",
+            "src": "image/loc-icon.png",
             "link": "/penjualan-perwilayah?value=Region"
         },
         {
             "name": "Area",
-            "src": "https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-location-map-location-flatart-icons-outline-flatarticons-13.png",
+            "src": "image/loc-icon.png",
             "link": "/penjualan-perwilayah?value=Area"
         },
         {
             "name": "Distributor",
-            "src": "https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-location-map-location-flatart-icons-outline-flatarticons-13.png",
+            "src": "image/loc-icon.png",
             "link": "/penjualan-perwilayah?value=Distributor"
         },
         {
             "name": "Outlet",
-            "src": "https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-location-map-location-flatart-icons-outline-flatarticons-13.png",
+            "src": "image/loc-icon.png",
             "link": "/penjualan-perwilayah?value=Outlet"
         }
     ]

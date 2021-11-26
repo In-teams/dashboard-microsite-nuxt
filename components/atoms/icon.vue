@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <img class="mx-auto" :src="src" />
-    <p class="text-xs text-youngpurple font-bold text-center">{{ text }}</p>
+    <p class="text-xs text-gray-800 font-semibold text-center">{{ text }}</p>
   </div>
 </template>
 

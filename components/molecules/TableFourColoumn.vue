@@ -11,17 +11,19 @@
         <slot name="thead"></slot>
       </table>
     </div>
-    <table
+    <div
       class="
         table-auto
         w-full
         mx-auto
         text-gray-800
-        border-r border-l border-gray-300
+        border
+        rounded-b-lg
+        border-gray-300
       "
     >
       <slot name="trow"> </slot>
-    </table>
+    </div>
   </div>
 </template>
 

@@ -1,12 +1,12 @@
 <template>
-  <div class="border-solid border-b-2">
+  <div :class="title !== 'Total Pencapaian' ? 'border-b' : 'border-none'">
     <div
       @click="isOpen = !isOpen"
       class="cursor-pointer text-left text-black font-bold"
     >
       <div
         class="flex justify-between"
-        :class="isOpen == true ? 'border-b' : 'border-none'"
+        :class="title !== 'Total Pencapaian' ? '' : 'border-none'"
       >
         <h3 class="text-xs self-center font-medium px-2">{{ title }}</h3>
         <div class="flex justify-between">
@@ -15,7 +15,16 @@
         </div>
       </div>
     </div>
-    <div class="p-2" :class="isOpen ? 'd-block' : 'hidden'">
+    <div
+      v-if="border == 'red'"
+      :class="isOpen ? 'd-block bg-red-200 px-4 py-2 rounded-lg' : 'hidden'"
+    >
+      <slot></slot>
+    </div>
+    <div
+      v-else
+      :class="isOpen ? 'd-block bg-purple-200 px-4 py-2 rounded-lg' : 'hidden'"
+    >
       <slot></slot>
     </div>
   </div>
@@ -23,7 +32,7 @@
 
 <script>
 export default {
-  props: ['title', 'pencapaian'],
+  props: ['title', 'pencapaian', 'border'],
   data() {
     return {
       isOpen: false,

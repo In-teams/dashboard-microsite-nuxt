@@ -8,21 +8,26 @@
 
     <CardWithContent>
       <template #content>
-        <p class="">
-          Hai,
-          <span class="font-bold text-red-900 text-xs">{{ user }}</span>
-        </p>
-        <p class="text-xxxs lg:text-blue">
-          Tekan tombol dibawah ini untuk lihat detail penjualan lainnya
-        </p>
+        <div class="px-4">
+          <p class="">
+            Hai,
+            <span class="font-bold text-red-900 text-xs">{{ user }}</span>
+          </p>
+          <p class="text-xxxs lg:text-blue">
+            Tekan tombol dibawah ini untuk lihat detail penjualan lainnya
+          </p>
+        </div>
 
-        <div class="py-3">
+        <div class="py-2">
           <p class="bg-pink-300 px-3 py-3 rounded-full text-center text-sm">
             Periode update per tanggal :
             <span class="font-bold"> 22 januari 2021 </span>
           </p>
         </div>
-        <ButtonGroup />
+        <div class="py-2">
+          <ButtonGroup />
+        </div>
+
         <TableTwoColoumn
           :poin-perolehan="dataTableNational.achieveconvert"
           :poin-penukaran="dataTableNational.redeemconvert"
@@ -108,6 +113,7 @@
                 mx-auto
                 px-4
                 border-r-2 border-l-2 border-b-2
+                rounded-b-2xl
                 py-2
               "
             >
@@ -126,54 +132,59 @@
             </div>
           </template>
         </TableTwoColoumn>
-        <TableFourColoumn
-          :title-header="'KLUSTER PERSENTASE PENCAPAIAN'"
-          :style-header="' py-3 bg-red-600 rounded-t-2xl tracking-wide'"
-          :data-table-cluster="dataTableCluster"
-        >
-          <template #trow>
-            <Accordion
-              class="p-2"
-              v-for="data in dataTableCluster"
-              :key="data.cluster"
-              :title="data.cluster"
-              :pencapaian="data.pencapaian"
-            >
-              <div class="flex justify-between border-b border-red-200">
-                <h3 class="text-sm">Target</h3>
-                <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
-              </div>
-              <div class="py-2">
-                <div class="flex justify-between border-b border-red-200">
+
+        <div class="py-2">
+          <TableFourColoumn
+            :title-header="'KLUSTER PERSENTASE PENCAPAIAN'"
+            :style-header="' py-3 bg-red-600 rounded-t-2xl tracking-wide'"
+            :data-table-cluster="dataTableCluster"
+          >
+            <template #trow>
+              <Accordion
+                :border="'red'"
+                class="p-2"
+                v-for="data in dataTableCluster"
+                :key="data.cluster"
+                :title="data.cluster"
+                :pencapaian="data.percentage"
+              >
+                <div class="flex justify-between border-b border-white py-2">
+                  <h3 class="text-sm">Target</h3>
+                  <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
+                </div>
+
+                <div class="flex justify-between border-b border-white py-2">
                   <h3 class="text-sm">Aktual</h3>
                   <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
                 </div>
-              </div>
-              <div class="flex justify-between">
-                <h3 class="text-sm">Pencapaian</h3>
-                <p class="font-bold text-sm">
-                  {{ data.pencapaian }}
-                </p>
-              </div>
-            </Accordion>
-          </template>
-        </TableFourColoumn>
+
+                <div class="flex justify-between pt-2">
+                  <h3 class="text-sm">Pencapaian</h3>
+                  <p class="font-bold text-sm">
+                    {{ data.pencapaian }}
+                  </p>
+                </div>
+              </Accordion>
+            </template>
+          </TableFourColoumn>
+        </div>
         <Title
-          class="pt-2"
+          class=""
           :title="'10 Besar Pencapaian Nasional'"
           :style-title="'font-bold'"
         />
 
         <Subtitle
+          class="pb-2"
           :style-subtitle="'font-normal text-xs'"
           :subtitle="'Pilih tombol yang akan ditampilkan detail penjualannya'"
         />
         <Tabs url="home" :tabs="tabs">
           <template #activeTab_0>
             <TableFourColoumn
-              class="mb-16"
+              class="mb-16 py-2"
               :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
-              :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl tracking-wide'"
+              :style-header="'py-3 bg-purple-900 rounded-t-2xl tracking-wide'"
             >
               <template #trow>
                 <Accordion
@@ -183,24 +194,22 @@
                   :title="data.wilayah"
                   :pencapaian="data.percentage"
                 >
-                  <div class="flex justify-between border-b border-purple-300">
-                    <h3 class="text-sm">Target</h3>
+                  <div class="flex justify-between border-b border-white py-2">
+                    <h3 class="text-xs uppercase">Target</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
-                  <div
-                    class="flex justify-between py-2 border-b border-purple-300"
-                  >
-                    <h3 class="text-sm">Aktual</h3>
+                  <div class="flex justify-between border-b border-white py-2">
+                    <h3 class="text-xs uppercase">Aktual</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
-                  <div class="flex justify-between">
-                    <h3 class="text-sm">Pencapaian</h3>
+                  <div class="flex justify-between pt-2">
+                    <h3 class="text-xs uppercase">Pencapaian</h3>
                     <p class="font-bold text-sm">
-                      {{ data.pencapaian }}
+                      {{ data.percentage }}
                     </p>
                   </div>
                 </Accordion>
@@ -211,7 +220,7 @@
             <TableFourColoumn
               class="mb-16"
               :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
-              :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl tracking-wide'"
+              :style-header="'py-3 bg-purple-900 rounded-t-2xl tracking-wide'"
             >
               <template #trow>
                 <Accordion
@@ -221,22 +230,20 @@
                   :title="data.region"
                   :pencapaian="data.percentage"
                 >
-                  <div class="flex justify-between border-b border-purple-300">
-                    <h3 class="text-sm">Target</h3>
+                  <div class="flex justify-between border-b border-white py-2">
+                    <h3 class="text-xs uppercase">Target</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
-                  <div
-                    class="flex justify-between py-2 border-b border-purple-300"
-                  >
-                    <h3 class="text-sm">Aktual</h3>
+                  <div class="flex justify-between border-b border-white py-2">
+                    <h3 class="text-xs uppercase">Aktual</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
-                  <div class="flex justify-between">
-                    <h3 class="text-sm">Pencapaian</h3>
+                  <div class="flex justify-between pt-2">
+                    <h3 class="text-xs uppercase">Pencapaian</h3>
                     <p class="font-bold text-sm">
                       {{ data.percentage }}
                     </p>
@@ -249,7 +256,7 @@
             <TableFourColoumn
               class="mb-16"
               :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
-              :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl tracking-wide'"
+              :style-header="'py-3 bg-purple-900 rounded-t-2xl tracking-wide'"
             >
               <template #trow>
                 <Accordion
@@ -259,22 +266,20 @@
                   :title="data.area_name"
                   :pencapaian="data.percentage"
                 >
-                  <div class="flex justify-between border-b border-purple-300">
-                    <h3 class="text-sm">Target</h3>
+                  <div class="flex justify-between border-b border-white py-2">
+                    <h3 class="text-xs uppercase">Target</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
-                  <div
-                    class="flex justify-between py-2 border-b border-purple-300"
-                  >
-                    <h3 class="text-sm">Aktual</h3>
+                  <div class="flex justify-between border-b border-white py-2">
+                    <h3 class="text-xs uppercase">Aktual</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
-                  <div class="flex justify-between">
-                    <h3 class="text-sm">Pencapaian</h3>
+                  <div class="flex justify-between pt-2">
+                    <h3 class="text-xs uppercase">Pencapaian</h3>
                     <p class="font-bold text-sm">
                       {{ data.percentage }}
                     </p>
@@ -287,7 +292,7 @@
             <TableFourColoumn
               class="mb-16"
               :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
-              :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl tracking-wide'"
+              :style-header="'py-3 bg-purple-900 rounded-t-2xl tracking-wide'"
             >
               <template #trow>
                 <Accordion
@@ -297,22 +302,20 @@
                   :title="data.distributor"
                   :pencapaian="data.percentage"
                 >
-                  <div class="flex justify-between border-b border-purple-300">
-                    <h3 class="text-sm">Target</h3>
+                  <div class="flex justify-between border-b border-white py-2">
+                    <h3 class="text-xs uppercase">Target</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
-                  <div
-                    class="flex justify-between py-2 border-b border-purple-300"
-                  >
-                    <h3 class="text-sm">Aktual</h3>
+                  <div class="flex justify-between border-b border-white py-2">
+                    <h3 class="text-xs uppercase">Aktual</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
-                  <div class="flex justify-between">
-                    <h3 class="text-sm">Pencapaian</h3>
+                  <div class="flex justify-between pt-2">
+                    <h3 class="text-xs uppercase">Pencapaian</h3>
                     <p class="font-bold text-sm">
                       {{ data.percentage }}
                     </p>
@@ -325,7 +328,7 @@
             <TableFourColoumn
               class="mb-16"
               :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
-              :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl tracking-wide'"
+              :style-header="'py-3 bg-purple-900 rounded-t-2xl tracking-wide'"
             >
               <template #trow>
                 <Accordion
@@ -335,22 +338,20 @@
                   :title="data.outlet_name"
                   :pencapaian="data.percentage"
                 >
-                  <div class="flex justify-between border-b border-purple-300">
-                    <h3 class="text-sm">Target</h3>
+                  <div class="flex justify-between border-b border-white py-2">
+                    <h3 class="text-xs uppercase">Target</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
-                  <div
-                    class="flex justify-between py-2 border-b border-purple-300"
-                  >
-                    <h3 class="text-sm">Aktual</h3>
+                  <div class="flex justify-between border-b border-white py-2">
+                    <h3 class="text-xs uppercase">Aktual</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
-                  <div class="flex justify-between">
-                    <h3 class="text-sm">Pencapaian</h3>
+                  <div class="flex justify-between pt-2">
+                    <h3 class="text-xs uppercase">Pencapaian</h3>
                     <p class="font-bold text-sm">
                       {{ data.percentage }}
                     </p>
