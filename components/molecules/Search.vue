@@ -1,6 +1,6 @@
 <template>
-  <div class="mt-16 z-30">
-    <Input @dataKeyword="keyword"> </Input>
+  <div class="mt-14">
+    <Input class="py-2" @dataKeyword="keyword"> </Input>
   </div>
 </template>
 

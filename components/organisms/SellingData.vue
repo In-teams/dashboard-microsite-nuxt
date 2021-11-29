@@ -5,7 +5,7 @@
       v-if="loading"
     />
     <Navbar :nav-title="'DATA PENJUALAN PER WILAYAH'" />
-    <div class="px-2">
+    <div class="px-2 bg-gray-100 py-4">
       <Search @getKeyword="getKeyword" />
       <Tabs @click="addParams" @getTab="getTab" :tabs="tabs">
         <template #activeTab_0>

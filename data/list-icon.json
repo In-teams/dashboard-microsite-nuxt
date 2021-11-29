@@ -1,28 +1,28 @@
 {
     "list": [
         {
+            "name": "Distributor",
+            "src": "image/distributor-icon.png",
+            "link": "/penjualan-perwilayah?value=Distributor"
+        },
+        {
+            "name": "Area",
+            "src": "image/area-icon.png",
+            "link": "/penjualan-perwilayah?value=Area"
+        },
+        {
             "name": "Wilayah",
-            "src": "image/loc-icon.png",
+            "src": "image/wilayah-icon.png",
             "link": "/penjualan-perwilayah?value=Wilayah"
         },
         {
             "name": "Region",
-            "src": "image/loc-icon.png",
+            "src": "image/region-icon.png",
             "link": "/penjualan-perwilayah?value=Region"
         },
         {
-            "name": "Area",
-            "src": "image/loc-icon.png",
-            "link": "/penjualan-perwilayah?value=Area"
-        },
-        {
-            "name": "Distributor",
-            "src": "image/loc-icon.png",
-            "link": "/penjualan-perwilayah?value=Distributor"
-        },
-        {
             "name": "Outlet",
-            "src": "image/loc-icon.png",
+            "src": "image/outlets-icon.png",
             "link": "/penjualan-perwilayah?value=Outlet"
         }
     ]

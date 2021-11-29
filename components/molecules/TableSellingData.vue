@@ -2,7 +2,7 @@
   <div class="py-2 mx-auto xl:w-full">
     <div
       v-if="title !== 'Total Pencapaian'"
-      class="py-2 bg-purple-900 border rounded-t-2xl"
+      class="py-2 bg-purple-900 rounded-t-2xl"
     >
       <div class="max-w-md mx-auto">
         <Title
@@ -12,7 +12,7 @@
         <div class="grid grid-cols-12">
           <Subtitle
             class="col-span-12"
-            :style-subtitle="'text-center text-white text-base tracking-wide '"
+            :style-subtitle="'text-center text-white text-sm tracking-wide '"
             :subtitle="title"
           />
         </div>
@@ -21,7 +21,13 @@
 
     <div
       v-if="title !== 'Total Pencapaian'"
-      class="border-r-2 border-b-2 border-l-2 rounded-b-xl py-1 border-gray-300"
+      class="
+        border-r border-b-2 border-l
+        rounded-b-xl
+        py-1
+        border-gray-300
+        bg-white
+      "
     >
       <div class="grid grid-cols-2 py-2">
         <div>
@@ -37,7 +43,10 @@
           <p class="text-gray-400 text-xs text-center py-2 tracking-wide">
             AKTUAL PENJUALAN
           </p>
-          <p class="text-gray-900 font-bold text-md text-center">
+          <p
+            :class="parseInt(aktual) < 0 ? 'text-red-500' : 'text-blue-500'"
+            class="text-gray-900 font-bold text-md text-center"
+          >
             Rp.{{ aktual }}
           </p>
         </div>
@@ -48,13 +57,16 @@
           <p class="text-gray-400 pt-1 text-xs text-center py-2 tracking-wide">
             SELISIH PENJUALAN
           </p>
-          <p class="text-gray-900 font-bold text-md text-center">
+          <p
+            :class="parseInt(selisih) < 0 ? 'text-red-500' : 'text-blue-500'"
+            class="text-gray-900 font-bold text-md text-center"
+          >
             Rp.{{ selisih }}
           </p>
         </div>
         <div class="self-center px-2 py-2">
           <CardWithThreeColoumn
-            :icons="'image/pink-trophy-icon.png'"
+            :icons="'image/trophy-icon.png'"
             :title="'Pencapaian'"
             :points="pencapaian"
           />
@@ -64,14 +76,14 @@
         <div class="col-span-7 px-2 self-center">
           <p
             class="
-              text-gray-400
+              text-xs text-gray-400
               whitespace-nowrap
               font-bold
               pt-1
-              text-xxs text-left
+              text-center
             "
           >
-            Tekan tombol lihat detail penjualan
+            Tekan tombol lihat detail
           </p>
         </div>
         <div
@@ -81,8 +93,8 @@
           <nuxt-link :to="`/ringkasan-penjualan-outlet/${title_id}`">
             <Button
               :title-button="'Detail'"
-              :style-button="'border-2 rounded-full py-1 bg-pink-300 w-full col-span-4'"
-              :style-title-button="'text-xs text-black font-bold text-center'"
+              :style-button="'border border-blue-100 text-black bg-blue-100 rounded-full py-1 w-full col-span-4'"
+              :style-title-button="'text-sm text-black font-bold text-center '"
             />
           </nuxt-link>
         </div>
@@ -93,8 +105,8 @@
           <nuxt-link :to="`/ringkasan-penjualan-wilayah/${title_id}`">
             <Button
               :title-button="'Detail'"
-              :style-button="'border-2 rounded-full py-1 bg-pink-300 w-full col-span-4'"
-              :style-title-button="'text-xs text-black font-bold text-center'"
+              :style-button="'border border-blue-100 text-black bg-blue-100 rounded-full py-1 w-full col-span-4'"
+              :style-title-button="'text-sm text-black font-bold text-center'"
             />
           </nuxt-link>
         </div>
@@ -105,8 +117,8 @@
           <nuxt-link :to="`/ringkasan-penjualan-region/${title_id}`">
             <Button
               :title-button="'Detail'"
-              :style-button="'border-2 rounded-full py-1 bg-pink-300 w-full col-span-4'"
-              :style-title-button="'text-xs text-black font-bold text-center'"
+              :style-button="'border border-purple-700 active:bg-purple-900 rounded-full py-1 w-full col-span-4'"
+              :style-title-button="'text-sm text-purple-900 hover:text-white font-bold text-center'"
             />
           </nuxt-link>
         </div>
@@ -118,8 +130,8 @@
           <nuxt-link :to="`/ringkasan-penjualan-area/${title_id}`">
             <Button
               :title-button="'Detail'"
-              :style-button="'border-2 rounded-full py-1 bg-pink-300 w-full col-span-4'"
-              :style-title-button="'text-xs text-black font-bold text-center'"
+              :style-button="'border border-purple-700 active:bg-purple-900 rounded-full py-1 w-full col-span-4'"
+              :style-title-button="'text-sm text-purple-900 hover:text-white font-bold text-center'"
             />
           </nuxt-link>
         </div>
@@ -130,8 +142,8 @@
           <nuxt-link :to="`/ringkasan-penjualan-distributor/${title_id}`">
             <Button
               :title-button="'Detail'"
-              :style-button="'border-2 rounded-full py-1 bg-pink-300 w-full col-span-4'"
-              :style-title-button="'text-xs text-black font-bold '"
+              :style-button="'border border-purple-700 active:bg-purple-900 rounded-full py-1 w-full col-span-4'"
+              :style-title-button="'text-xs text-purple-900 font-bold '"
             />
           </nuxt-link>
         </div>

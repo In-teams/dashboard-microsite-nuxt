@@ -6,8 +6,13 @@
         <p class="text-xs font-semibold self-center text-left">{{ title }}</p>
       </div>
       <div class="self-center"></div>
-      <div class="bg-gray-300 rounded-full py-2 px-1 max-w-xs min-w-1/4">
-        <p class="text-xs text-center font-bold">{{ points }}</p>
+      <div class="bg-blue-100 rounded-full py-2 px-1 max-w-xs min-w-1/4">
+        <p
+          :class="parseInt(points) < 0 ? 'text-red-500' : 'text-blue-500'"
+          class="text-xs text-center font-bold"
+        >
+          {{ points }}
+        </p>
       </div>
     </div>
   </div>

@@ -29,6 +29,13 @@ module.exports = {
       colors: {
         orange: '#F26420',
         youngpurple: '#CD92D9',
+        gray: {
+          100: '#FAFCFF',
+        },
+        white: '#FFFFFF',
+        blue: {
+          100: '#EDF2FF',
+        },
       },
       fontSize: {
         xxs: '0.65rem',

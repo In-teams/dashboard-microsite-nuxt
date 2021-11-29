@@ -1,5 +1,7 @@
 <template>
-  <p :class="styleParagraph">{{ paragraph }}</p>
+  <p :class="styleParagraph">
+    {{ paragraph }}
+  </p>
 </template>
 
 <script>

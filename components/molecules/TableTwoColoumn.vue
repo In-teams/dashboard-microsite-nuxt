@@ -1,5 +1,5 @@
 <template>
-  <div class="py-2 mx-auto xl:w-full">
+  <div class="rounded-2xl mx-auto xl:w-full bg-white">
     <slot name="tableTitle"></slot>
     <slot name="tableContent"></slot>
     <div
@@ -14,15 +14,15 @@
       "
     >
       <Title
-        :style-title="'text-xs text-gray-400 font-bold'"
+        :style-title="'text-xxs text-gray-400 uppercase'"
         :title="'Poin Perolehan'"
       />
       <Title
-        :style-title="'text-xs text-gray-400 font-bold'"
+        :style-title="'text-xxs text-gray-400 uppercase'"
         :title="'Penukaran Poin '"
       />
       <Title
-        :style-title="'text-xs text-gray-400 font-bold'"
+        :style-title="'text-xxs text-gray-400 uppercase'"
         :title="'Sisa Poin'"
       />
       <Paragraph
@@ -33,7 +33,11 @@
         :style-paragraph="'text-sm font-bold'"
         :paragraph="poinPenukaran"
       />
-      <Paragraph :style-paragraph="'text-sm font-bold'" :paragraph="sisaPoin" />
+      <Paragraph
+        :style-paragraph="'text-sm font-bold'"
+        :paragraph="sisaPoin"
+        :class="parseInt(sisaPoin) <= 0 ? 'text-red-500' : 'text-black'"
+      />
     </div>
     <slot name="buttonDetail"></slot>
   </div>

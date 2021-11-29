@@ -1,5 +1,5 @@
 <template>
-  <div class="py-1">
+  <div class="bg-white rounded-xl">
     <div :class="styleHeader">
       <div class="max-w-md mx-auto py-2">
         <p class="text-center text-white font-bold text-base">

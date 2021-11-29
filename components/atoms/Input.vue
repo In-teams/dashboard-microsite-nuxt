@@ -1,24 +1,20 @@
 <template>
   <div>
-    <div class="relative flex w-full flex-wrap items-stretch mb-3">
+    <div class="flex w-full flex-wrap items-stretch mb-3">
       <input
         type="text"
         placeholder="Ketik di sini untuk pencarian data"
         class="
-          z-30
           border-opacity-50
           px-3
           py-3
           placeholder-gray-400
           text-gray-600
-          relative
           bg-white bg-white
-          rounded-tl-lg
+          rounded-tl-lg rounded-bl-lg
           text-sm
           border border-gray-400
           outline-none
-          focus:ring-1 focus:ring-purple-900
-          focus-within:text-balck
           w-7/7
           pl-10
         "
@@ -35,7 +31,8 @@
               w-11
               h-12
               py-3
-              rounded-tr-lg
+              border border-gray-400
+              rounded-tr-lg rounded-br-lg
               active:bg-purple-900
             "
             fill="currentColor"

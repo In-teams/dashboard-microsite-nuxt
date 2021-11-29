@@ -17,13 +17,13 @@
     </div>
     <div
       v-if="border == 'red'"
-      :class="isOpen ? 'd-block bg-red-200 px-4 py-2 rounded-lg' : 'hidden'"
+      :class="isOpen ? 'd-block bg-red-200 px-4 pb-2 rounded-lg' : 'hidden'"
     >
       <slot></slot>
     </div>
     <div
       v-else
-      :class="isOpen ? 'd-block bg-purple-200 px-4 py-2 rounded-lg' : 'hidden'"
+      :class="isOpen ? 'd-block bg-purple-200 px-4 pb-2 rounded-lg' : 'hidden'"
     >
       <slot></slot>
     </div>

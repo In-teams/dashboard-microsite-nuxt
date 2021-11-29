@@ -8,22 +8,22 @@
       >
         <li
           v-if="$route.path === '/penjualan-perwilayah'"
-          class="cursor-pointer py-3 px-4 rounded-full transition"
+          class="cursor-pointer py-2 px-3 rounded-full transition"
           :class="
             $route.query.value === tab.name
               ? 'bg-purple-900 text-white '
-              : '  text-gray-500'
+              : ' bg-white text-gray-500'
           "
           @click="activeTab = index"
           v-text="tab.name"
         ></li>
         <li
           v-else
-          class="cursor-pointer py-3 px-4 rounded-full transition"
+          class="cursor-pointer py-2 px-3 rounded-full transition"
           :class="
             activeTab === index
               ? 'bg-purple-900 text-white '
-              : '  text-gray-500'
+              : ' bg-white text-gray-500'
           "
           @click="activeTab = index"
           v-text="tab"

@@ -19,9 +19,11 @@
         </div>
 
         <div class="py-2">
-          <p class="bg-pink-300 px-3 py-3 rounded-full text-center text-sm">
+          <p
+            class="px-3 py-3 rounded-lg text-center text-sm border bg-blue-100"
+          >
             Periode update per tanggal :
-            <span class="font-bold"> 22 januari 2021 </span>
+            <span class="font-bold text-red-500"> 22 januari 2021 </span>
           </p>
         </div>
         <div class="py-2">
@@ -31,7 +33,7 @@
         <TableTwoColoumn
           :poin-perolehan="dataTableNational.achieveconvert"
           :poin-penukaran="dataTableNational.redeemconvert"
-          :sisa-poin="dataTableNational.diffconvert"
+          :sisa-poin="dataTableNational.diff_poinconvert"
         >
           <template #tableTitle>
             <div class="px-2 py-3 bg-red-600 rounded-t-2xl p-20">
@@ -43,7 +45,7 @@
             </div>
           </template>
           <template #tableContent>
-            <div class="grid grid-cols-2 border-r-2 border-l-2 py-2">
+            <div class="grid grid-cols-2 border-r border-l py-2">
               <div>
                 <p class="text-gray-400 text-xs text-center py-1 tracking-wide">
                   TARGET PENJUALAN
@@ -68,7 +70,14 @@
                 </p>
               </div>
               <div>
-                <p class="text-gray-900 font-bold text-sm text-center">
+                <p
+                  :class="
+                    parseInt(dataTableNational.diffconvert) < 0
+                      ? 'text-red-500'
+                      : 'text-black'
+                  "
+                  class="text-gray-900 font-bold text-sm text-center"
+                >
                   Rp.{{ dataTableNational.diffconvert }}
                 </p>
               </div>
@@ -125,7 +134,7 @@
               <nuxt-link to="/selling-detail">
                 <Button
                   :title-button="'Detail'"
-                  :style-button="'border-2 rounded-full py-1 bg-pink-300 text-center'"
+                  :style-button="'border-2 rounded-full py-1 bg-blue-100 text-center items-center flex justify-center'"
                   :style-title-button="'text-xs text-black font-bold'"
                 />
               </nuxt-link>
@@ -133,7 +142,7 @@
           </template>
         </TableTwoColoumn>
 
-        <div class="py-2">
+        <div class="py-4">
           <TableFourColoumn
             :title-header="'KLUSTER PERSENTASE PENCAPAIAN'"
             :style-header="' py-3 bg-red-600 rounded-t-2xl tracking-wide'"
@@ -168,21 +177,22 @@
             </template>
           </TableFourColoumn>
         </div>
-        <Title
-          class=""
-          :title="'10 Besar Pencapaian Nasional'"
-          :style-title="'font-bold'"
-        />
+        <div class="py-2">
+          <Title
+            class=""
+            :title="'10 Besar Pencapaian Nasional'"
+            :style-title="'font-bold'"
+          />
 
-        <Subtitle
-          class="pb-2"
-          :style-subtitle="'font-normal text-xs'"
-          :subtitle="'Pilih tombol yang akan ditampilkan detail penjualannya'"
-        />
-        <Tabs url="home" :tabs="tabs">
+          <Subtitle
+            :style-subtitle="'font-normal text-xs'"
+            :subtitle="'Pilih tombol yang akan ditampilkan detail penjualannya'"
+          />
+        </div>
+        <Tabs class="" url="home" :tabs="tabs">
           <template #activeTab_0>
             <TableFourColoumn
-              class="mb-16 py-2"
+              class="mb-16"
               :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
               :style-header="'py-3 bg-purple-900 rounded-t-2xl tracking-wide'"
             >

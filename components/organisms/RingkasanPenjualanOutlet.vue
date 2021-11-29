@@ -5,9 +5,9 @@
       v-if="loading"
     />
     <Navbar :nav-title="'RINGKASAN DATA PENJUALAN'" />
-    <div class="px-2">
+    <div class="px-2 py-2 bg-gray-100">
       <TableTwoColoumn
-        class="border-b-2 mt-16"
+        class="border-b-2 mt-14"
         v-show="data.outlet_name != 'Total Pencapaian'"
         v-for="data in dataOutlet"
         :key="data.outlet_name"
@@ -39,7 +39,14 @@
               <p class="text-gray-400 font-bold text-xs text-center py-2">
                 AKTUAL PENJUALAN
               </p>
-              <p class="text-gray-900 font-bold text-sm text-center">
+              <p
+                :class="
+                  parseInt(data.aktualconvert) <= 0
+                    ? 'text-red-500'
+                    : 'text-black'
+                "
+                class="text-gray-900 font-bold text-sm text-center"
+              >
                 Rp. {{ data.aktualconvert }}
               </p>
             </div>
@@ -51,7 +58,12 @@
               </p>
             </div>
             <div>
-              <p class="text-gray-900 font-bold text-sm text-center">
+              <p
+                :class="
+                  parseInt(data.diff) <= 0 ? 'text-red-500' : 'text-black'
+                "
+                class="text-gray-900 font-bold text-sm text-center"
+              >
                 Rp. {{ data.diff }}
               </p>
             </div>
@@ -71,7 +83,7 @@
           <div class="grid grid-cols-2 gap-1 px-1 border-r-2 border-l-2"></div>
         </template>
       </TableTwoColoumn>
-      <div class="grid grid-cols-12 gap-2 py-2">
+      <div class="grid grid-cols-12 gap-2 py-5">
         <nuxt-link
           class="col-span-6"
           :to="`/formulir-registrasi/${$route.params.name}`"
@@ -92,11 +104,13 @@
         </nuxt-link>
 
         <CardRegistrasi
+          class="py-2"
           :data-title="'Cek Data Registrasi'"
           :data-img="'image/regist-icon.png'"
         />
 
         <CardRegistrasi
+          class="py-2"
           :data-title="'Transaksi Penukaran'"
           :data-img="'image/gift-icon.png'"
         />
@@ -112,11 +126,12 @@
         :style-subtitle="'font-normal text-sm'"
         :subtitle="'Pilih tombol yang akan ditampilkan detail penjualannya'"
       />
+
       <Tabs url="home" :tabs="tabs">
         <template #activeTab_0>
           <TableFourColoumn
             :title-header="'RINGKASAN PENJUALAN PER QUARTER'"
-            :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
+            :style-header="'px-2 py-3 bg-purple-900  rounded-t-2xl'"
           >
             <template #trow>
               <Accordion
@@ -143,40 +158,46 @@
               </Accordion>
             </template>
           </TableFourColoumn>
-          <TableFourColoumn
-            :title-header="'RINGKASAN PENJUALAN PER TAHUN'"
-            :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
-          >
-            <template #trow>
-              <Accordion
-                v-for="data in dataMonth"
-                :key="data.bulan"
-                class="p-2"
-                :title="data.bulan"
-                :pencapaian="data.pencapaian"
-              >
-                <div class="flex justify-between border-b border-purple-700">
-                  <h3 class="text-sm">Target</h3>
-                  <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
-                </div>
-                <div
-                  class="flex justify-between border-b border-purple-700 py-2"
+          <div class="py-4">
+            <TableFourColoumn
+              :title-header="'RINGKASAN PENJUALAN PER TAHUN'"
+              :style-header="'px-2 py-3 bg-purple-900  rounded-t-2xl'"
+            >
+              <template #trow>
+                <Accordion
+                  v-for="data in dataMonth"
+                  :key="data.bulan"
+                  class="p-2"
+                  :title="data.bulan"
+                  :pencapaian="data.pencapaian"
                 >
-                  <h3 class="text-sm">Aktual</h3>
-                  <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
-                </div>
-                <div class="flex justify-between">
-                  <h3 class="text-sm">Pencapaian</h3>
-                  <p class="font-bold text-sm">{{ data.pencapaian }}</p>
-                </div>
-              </Accordion>
-            </template>
-          </TableFourColoumn>
+                  <div class="flex justify-between border-b border-purple-700">
+                    <h3 class="text-sm">Target</h3>
+                    <p class="font-bold text-sm">
+                      Rp. {{ data.targetconvert }}
+                    </p>
+                  </div>
+                  <div
+                    class="flex justify-between border-b border-purple-700 py-2"
+                  >
+                    <h3 class="text-sm">Aktual</h3>
+                    <p class="font-bold text-sm">
+                      Rp. {{ data.aktualconvert }}
+                    </p>
+                  </div>
+                  <div class="flex justify-between">
+                    <h3 class="text-sm">Pencapaian</h3>
+                    <p class="font-bold text-sm">{{ data.pencapaian }}</p>
+                  </div>
+                </Accordion>
+              </template>
+            </TableFourColoumn>
+          </div>
         </template>
         <template #activeTab_1>
           <TableFourColoumn
             :title-header="'RINGKASAN PENJUALAN PER QUARTER'"
-            :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
+            :style-header="'px-2 py-3 bg-purple-900  rounded-t-2xl'"
           >
             <template #trow>
               <Accordion
@@ -203,37 +224,39 @@
               </Accordion>
             </template>
           </TableFourColoumn>
-          <TableFourColoumn
-            :title-header="'RINGKASAN PENJUALAN PER TAHUN'"
-            :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
-          >
-            <template #trow>
-              <Accordion
-                v-for="data in dataPoin"
-                :key="data.month"
-                class="p-2"
-                :title="data.month"
-                :pencapaian="data.achieveconvert"
-              >
-                <div class="flex justify-between">
-                  <h3>Target</h3>
-                  <p class="font-bold text-base">
-                    Rp. {{ data.targetconvert }}
-                  </p>
-                </div>
-                <div class="flex justify-between py-2">
-                  <h3>Aktual</h3>
-                  <p class="font-bold text-base">
-                    Rp. {{ data.aktualconvert }}
-                  </p>
-                </div>
-                <div class="flex justify-between">
-                  <h3>Pencapaian</h3>
-                  <p class="font-bold text-base">{{ data.achieveconvert }}</p>
-                </div>
-              </Accordion>
-            </template>
-          </TableFourColoumn>
+          <div class="py-4">
+            <TableFourColoumn
+              :title-header="'RINGKASAN PENJUALAN PER TAHUN'"
+              :style-header="'px-2 py-3 bg-purple-900  rounded-t-2xl'"
+            >
+              <template #trow>
+                <Accordion
+                  v-for="data in dataPoin"
+                  :key="data.month"
+                  class="p-2"
+                  :title="data.month"
+                  :pencapaian="data.achieveconvert"
+                >
+                  <div class="flex justify-between">
+                    <h3>Target</h3>
+                    <p class="font-bold text-base">
+                      Rp. {{ data.targetconvert }}
+                    </p>
+                  </div>
+                  <div class="flex justify-between py-2">
+                    <h3>Aktual</h3>
+                    <p class="font-bold text-base">
+                      Rp. {{ data.aktualconvert }}
+                    </p>
+                  </div>
+                  <div class="flex justify-between">
+                    <h3>Pencapaian</h3>
+                    <p class="font-bold text-base">{{ data.achieveconvert }}</p>
+                  </div>
+                </Accordion>
+              </template>
+            </TableFourColoumn>
+          </div>
         </template>
       </Tabs>
     </div>
