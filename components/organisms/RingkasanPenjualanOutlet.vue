@@ -131,7 +131,7 @@
         <template #activeTab_0>
           <TableFourColoumn
             :title-header="'RINGKASAN PENJUALAN PER QUARTER'"
-            :style-header="'px-2 py-3 bg-purple-900  rounded-t-2xl'"
+            :style-header="' py-3 bg-purple-900  rounded-t-2xl'"
           >
             <template #trow>
               <Accordion
@@ -141,18 +141,16 @@
                 :title="data.kuartal"
                 :pencapaian="data.pencapaian"
               >
-                <div class="flex justify-between border-b border-purple-700">
-                  <h3 class="text-sm">Target</h3>
+                <div class="flex justify-between border-b border-white py-2">
+                  <h3 class="text-xs uppercase">Target</h3>
                   <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
                 </div>
-                <div
-                  class="flex justify-between border-b border-purple-700 py-2"
-                >
-                  <h3 class="text-sm">Aktual</h3>
+                <div class="flex justify-between border-b border-white py-2">
+                  <h3 class="text-xs uppercase">Aktual</h3>
                   <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
                 </div>
-                <div class="flex justify-between">
-                  <h3 class="text-sm">Pencapaian</h3>
+                <div class="flex justify-between pt-2">
+                  <h3 class="text-xs uppercase">Pencapaian</h3>
                   <p class="font-bold text-sm">{{ data.pencapaian }}</p>
                 </div>
               </Accordion>
@@ -171,22 +169,20 @@
                   :title="data.bulan"
                   :pencapaian="data.pencapaian"
                 >
-                  <div class="flex justify-between border-b border-purple-700">
-                    <h3 class="text-sm">Target</h3>
+                  <div class="flex justify-between border-b border-white py-2">
+                    <h3 class="text-xs uppercase">Target</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
-                  <div
-                    class="flex justify-between border-b border-purple-700 py-2"
-                  >
-                    <h3 class="text-sm">Aktual</h3>
+                  <div class="flex justify-between border-b border-white py-2">
+                    <h3 class="text-xs uppercase">Aktual</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
-                  <div class="flex justify-between">
-                    <h3 class="text-sm">Pencapaian</h3>
+                  <div class="flex justify-between pt-2">
+                    <h3 class="text-xs uppercase">Pencapaian</h3>
                     <p class="font-bold text-sm">{{ data.pencapaian }}</p>
                   </div>
                 </Accordion>
@@ -207,18 +203,16 @@
                 :title="data.quarter"
                 :pencapaian="data.achieveconvert"
               >
-                <div class="flex justify-between border-b border-purple-700">
-                  <h3 class="text-sm">Target</h3>
+                <div class="flex justify-between border-b border-white py-2">
+                  <h3 class="text-xs uppercase">Target</h3>
                   <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
                 </div>
-                <div
-                  class="flex justify-between border-b border-purple-700 py-2"
-                >
-                  <h3 class="text-sm">Aktual</h3>
+                <div class="flex justify-between border-b border-white py-2">
+                  <h3 class="text-xs uppercase">Aktual</h3>
                   <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
                 </div>
-                <div class="flex justify-between">
-                  <h3 class="text-sm">Pencapaian</h3>
+                <div class="flex justify-between pt-2">
+                  <h3 class="text-xs uppercase">Pencapaian</h3>
                   <p class="font-bold text-sm">{{ data.achieveconvert }}</p>
                 </div>
               </Accordion>
@@ -237,20 +231,20 @@
                   :title="data.month"
                   :pencapaian="data.achieveconvert"
                 >
-                  <div class="flex justify-between">
-                    <h3>Target</h3>
+                  <div class="flex justify-between border-b border-white py-2">
+                    <h3 class="text-xs uppercase">Target</h3>
                     <p class="font-bold text-base">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
-                  <div class="flex justify-between py-2">
-                    <h3>Aktual</h3>
+                  <div class="flex justify-between border-b border-white py-2">
+                    <h3 class="text-xs uppercase">Aktual</h3>
                     <p class="font-bold text-base">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
-                  <div class="flex justify-between">
-                    <h3>Pencapaian</h3>
+                  <div class="flex justify-between pt-2">
+                    <h3 class="text-xs uppercase">Pencapaian</h3>
                     <p class="font-bold text-base">{{ data.achieveconvert }}</p>
                   </div>
                 </Accordion>

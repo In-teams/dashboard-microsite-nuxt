@@ -13,7 +13,7 @@
           bg-white bg-white
           rounded-tl-lg rounded-bl-lg
           text-sm
-          border border-gray-400
+          border-b border-t border-l border-gray-500
           outline-none
           w-7/7
           pl-10
@@ -31,9 +31,8 @@
               w-11
               h-12
               py-3
-              border border-gray-400
+              border-r border-b border-t border-gray-400
               rounded-tr-lg rounded-br-lg
-              active:bg-purple-900
             "
             fill="currentColor"
             src="image/search.svg"

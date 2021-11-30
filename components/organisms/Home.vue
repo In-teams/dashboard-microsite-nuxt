@@ -45,74 +45,82 @@
             </div>
           </template>
           <template #tableContent>
-            <div class="grid grid-cols-2 border-r border-l py-2">
-              <div>
-                <p class="text-gray-400 text-xs text-center py-1 tracking-wide">
-                  TARGET PENJUALAN
-                </p>
-                <p class="text-gray-900 font-bold text-sm text-center">
-                  Rp.{{ dataTableNational.targetconvert }}
-                </p>
+            <div class="border-r border-l">
+              <div class="grid grid-cols-2 py-2">
+                <div>
+                  <p
+                    class="text-gray-400 text-xs text-center py-1 tracking-wide"
+                  >
+                    TARGET PENJUALAN
+                  </p>
+                  <p class="text-gray-900 font-bold text-sm text-center">
+                    Rp.{{ dataTableNational.targetconvert }}
+                  </p>
+                </div>
+                <div>
+                  <p
+                    class="text-gray-400 text-xs text-center py-1 tracking-wide"
+                  >
+                    AKTUAL PENJUALAN
+                  </p>
+                  <p class="text-gray-900 font-bold text-sm text-center">
+                    Rp.{{ dataTableNational.aktualconvert }}
+                  </p>
+                </div>
               </div>
-              <div>
-                <p class="text-gray-400 text-xs text-center py-1 tracking-wide">
-                  AKTUAL PENJUALAN
-                </p>
-                <p class="text-gray-900 font-bold text-sm text-center">
-                  Rp.{{ dataTableNational.aktualconvert }}
-                </p>
+              <div class="grid grid-cols-2 py-2">
+                <div>
+                  <p
+                    class="text-gray-400 pt-1 text-xs text-center tracking-wide"
+                  >
+                    SELISIH PENJUALAN
+                  </p>
+                </div>
+                <div>
+                  <p
+                    :class="
+                      parseInt(dataTableNational.diffconvert) < 0
+                        ? 'text-red-500'
+                        : 'text-black'
+                    "
+                    class="text-gray-900 font-bold text-sm text-center"
+                  >
+                    Rp.{{ dataTableNational.diffconvert }}
+                  </p>
+                </div>
               </div>
-            </div>
-            <div class="grid grid-cols-2 py-2 border-r-2 border-l-2">
-              <div>
-                <p class="text-gray-400 pt-1 text-xs text-center tracking-wide">
-                  SELISIH PENJUALAN
-                </p>
+              <div class="grid grid-cols-2 gap-1 px-2 py-2">
+                <CardWithThreeColoumn
+                  :title="'Pencapaian'"
+                  :icons="'image/trophy-icon.png'"
+                  :points="dataTableNational.percentage"
+                />
+                <CardWithThreeColoumn
+                  :title="'AO/RO'"
+                  :icons="'image/vs-icon.png'"
+                  :points="dataTableNational.aoro"
+                />
+                <CardWithThreeColoumn
+                  :title="'Registrasi'"
+                  :icons="'image/check-icon.png'"
+                  :points="dataTableNational.regist"
+                />
+                <CardWithThreeColoumn
+                  :title="'Registrasi'"
+                  :icons="'image/x-icon.png'"
+                  :points="dataTableNational.notregist"
+                />
+                <CardWithThreeColoumn
+                  :title="'Total '"
+                  :icons="'image/outlet-icon.png'"
+                  :points="dataTableNational.total_outlet"
+                />
+                <CardWithThreeColoumn
+                  :title="'Progres'"
+                  :icons="'image/loading-icon.png'"
+                  :points="dataTableNational.percen_regist"
+                />
               </div>
-              <div>
-                <p
-                  :class="
-                    parseInt(dataTableNational.diffconvert) < 0
-                      ? 'text-red-500'
-                      : 'text-black'
-                  "
-                  class="text-gray-900 font-bold text-sm text-center"
-                >
-                  Rp.{{ dataTableNational.diffconvert }}
-                </p>
-              </div>
-            </div>
-            <div class="grid grid-cols-2 gap-1 px-2 py-2 border-r-2 border-l-2">
-              <CardWithThreeColoumn
-                :title="'Pencapaian'"
-                :icons="'image/trophy-icon.png'"
-                :points="dataTableNational.percentage"
-              />
-              <CardWithThreeColoumn
-                :title="'AO/RO'"
-                :icons="'image/vs-icon.png'"
-                :points="dataTableNational.aoro"
-              />
-              <CardWithThreeColoumn
-                :title="'Registrasi'"
-                :icons="'image/check-icon.png'"
-                :points="dataTableNational.regist"
-              />
-              <CardWithThreeColoumn
-                :title="'Registrasi'"
-                :icons="'image/x-icon.png'"
-                :points="dataTableNational.notregist"
-              />
-              <CardWithThreeColoumn
-                :title="'Total '"
-                :icons="'image/outlet-icon.png'"
-                :points="dataTableNational.total_outlet"
-              />
-              <CardWithThreeColoumn
-                :title="'Progres'"
-                :icons="'image/loading-icon.png'"
-                :points="dataTableNational.percen_regist"
-              />
             </div>
           </template>
           <template #buttonDetail>
@@ -121,7 +129,7 @@
                 grid grid-cols-4
                 mx-auto
                 px-4
-                border-r-2 border-l-2 border-b-2
+                border-r border-l border-b
                 rounded-b-2xl
                 py-2
               "
@@ -134,7 +142,7 @@
               <nuxt-link to="/selling-detail">
                 <Button
                   :title-button="'Detail'"
-                  :style-button="'border-2 rounded-full py-1 bg-blue-100 text-center items-center flex justify-center'"
+                  :style-button="'border rounded-full py-1 bg-blue-100 text-center items-center flex justify-center'"
                   :style-title-button="'text-xs text-black font-bold'"
                 />
               </nuxt-link>
@@ -155,20 +163,20 @@
                 v-for="data in dataTableCluster"
                 :key="data.cluster"
                 :title="data.cluster"
-                :pencapaian="data.percentage"
+                :pencapaian="data.pencapaian"
               >
                 <div class="flex justify-between border-b border-white py-2">
-                  <h3 class="text-sm">Target</h3>
+                  <h3 class="text-xs uppercase">Target</h3>
                   <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
                 </div>
 
                 <div class="flex justify-between border-b border-white py-2">
-                  <h3 class="text-sm">Aktual</h3>
+                  <h3 class="text-xs uppercase">Aktual</h3>
                   <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
                 </div>
 
                 <div class="flex justify-between pt-2">
-                  <h3 class="text-sm">Pencapaian</h3>
+                  <h3 class="text-xs uppercase">Pencapaian</h3>
                   <p class="font-bold text-sm">
                     {{ data.pencapaian }}
                   </p>

@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <img class="mx-auto" :src="src" />
+    <img class="mx-auto h-7" :src="src" />
   </div>
 </template>
 

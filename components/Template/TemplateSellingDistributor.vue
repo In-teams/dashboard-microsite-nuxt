@@ -1,5 +1,5 @@
 <template>
-  <SellingDetailWilayah
+  <SellingDetailDistributor
     :data-table-quarter="dataTableQuarter"
     :data-table-tahun="dataTableTahun"
   />
@@ -7,10 +7,10 @@
 
 <script>
 import axios from 'axios'
-import SellingDetailWilayah from '../organisms/SellingDetailWilayah.vue'
+import SellingDetailDistributor from '../organisms/SellingDetailDistributor.vue'
 export default {
   components: {
-    SellingDetailWilayah,
+    SellingDetailDistributor,
   },
   data() {
     return {

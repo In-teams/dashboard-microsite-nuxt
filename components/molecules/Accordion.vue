@@ -9,18 +9,21 @@
         :class="title !== 'Total Pencapaian' ? '' : 'border-none'"
       >
         <h3 class="text-xs self-center font-medium px-2">{{ title }}</h3>
+
         <div class="flex justify-between">
           <h3>{{ pencapaian }}</h3>
           <img src="~/assets/image/down_arrow.png" alt="" srcset="" />
         </div>
       </div>
     </div>
+
     <div
       v-if="border == 'red'"
       :class="isOpen ? 'd-block bg-red-200 px-4 pb-2 rounded-lg' : 'hidden'"
     >
       <slot></slot>
     </div>
+
     <div
       v-else
       :class="isOpen ? 'd-block bg-purple-200 px-4 pb-2 rounded-lg' : 'hidden'"

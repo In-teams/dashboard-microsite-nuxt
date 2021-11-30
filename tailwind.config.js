@@ -36,6 +36,9 @@ module.exports = {
         blue: {
           100: '#EDF2FF',
         },
+        red: {
+          200: '#ffe6e6',
+        },
       },
       fontSize: {
         xxs: '0.65rem',

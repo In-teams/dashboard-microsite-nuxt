@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-2xl mx-auto xl:w-full bg-white">
+  <div class="rounded-2xl mx-auto xl:w-full bg-white shadow-md">
     <slot name="tableTitle"></slot>
     <slot name="tableContent"></slot>
     <div
@@ -9,8 +9,8 @@
         mx-auto
         text-center
         px-2
-        border-r-2 border-l-2
         py-2
+        border-r border-l
       "
     >
       <Title
