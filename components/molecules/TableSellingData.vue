@@ -157,11 +157,13 @@ export default {
   },
   data() {
     return {
+      currentPage: 1,
       content: listContentCard.list_2,
     }
   },
 }
 </script>
 
-<style>
+
+<style scoped>
 </style>

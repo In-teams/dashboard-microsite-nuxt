@@ -6,6 +6,8 @@
       :data-table-area="dataTableArea"
       :data-table-distributor="dataTableDistributor"
       :data-table-outlet="dataTableOutlet"
+      :data-page="dataPage"
+      :test="queryRoute"
     />
   </div>
 </template>
@@ -34,6 +36,10 @@ export default {
       dataTableOutlet: {
         data: [],
       },
+      dataPage: {
+        data: [],
+      },
+      queryRoute: this.$route.query.page,
     }
   },
   mounted() {
@@ -42,6 +48,8 @@ export default {
     this.getdataTableArea()
     this.getdataTableDistributor()
     this.getdataTableOutlet()
+    this.getPage()
+    this.testArinda()
   },
   methods: {
     getdataTableWilayah() {
@@ -78,6 +86,21 @@ export default {
         .catch((err) => console.log(err))
     },
     getdataTableDistributor() {
+      console.log('calling,,,')
+      axios
+        .get(`http://api.apolo.inosis.id/api/v1/sales/summary/distributor`, {
+          params: {
+            page: `${this.$route.query.page}`,
+          },
+          headers: {
+            Authorization:
+              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOiJzdXBlciIsIm5hbWUiOm51bGwsInVzZXJfcHJvZmlsZSI6IiIsImxldmVsIjoiMSIsImVtYWlsIjpudWxsLCJzY29wZSI6bnVsbCwicGhvdG8iOm51bGwsInJlZ2lkIjpudWxsfSwiaWF0IjoxNjMzMDcyNTA0fQ.C7dt8r4uYaJCaoXmi1hZpSMa3Zs2qyczWn8mvuviRR8',
+          },
+        })
+        .then((res) => (this.dataTableDistributor = res.data.data.asc))
+        .catch((err) => console.log(err))
+    },
+    getPage() {
       axios
         .get(`http://api.apolo.inosis.id/api/v1/sales/summary/distributor`, {
           headers: {
@@ -85,7 +108,7 @@ export default {
               'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOiJzdXBlciIsIm5hbWUiOm51bGwsInVzZXJfcHJvZmlsZSI6IiIsImxldmVsIjoiMSIsImVtYWlsIjpudWxsLCJzY29wZSI6bnVsbCwicGhvdG8iOm51bGwsInJlZ2lkIjpudWxsfSwiaWF0IjoxNjMzMDcyNTA0fQ.C7dt8r4uYaJCaoXmi1hZpSMa3Zs2qyczWn8mvuviRR8',
           },
         })
-        .then((res) => (this.dataTableDistributor = res.data.data.asc))
+        .then((res) => (this.dataPage = res.data.data.totalPage))
         .catch((err) => console.log(err))
     },
     getdataTableOutlet() {
@@ -98,6 +121,9 @@ export default {
         })
         .then((res) => (this.dataTableOutlet = res.data.data.asc))
         .catch((err) => console.log(err))
+    },
+    testArinda() {
+      console.log('arinda', this.queryRoute)
     },
   },
 }

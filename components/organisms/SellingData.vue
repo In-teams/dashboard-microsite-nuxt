@@ -7,6 +7,7 @@
     <Navbar :nav-title="'DATA PENJUALAN PER WILAYAH'" />
     <div class="px-2 bg-gray-100 py-2">
       <Search @getKeyword="getKeyword" />
+
       <Tabs @click="addParams" @getTab="getTab" :tabs="tabs">
         <template #activeTab_0>
           <TableSellingData
@@ -55,7 +56,15 @@
             :selisih="data.diffconvert"
             :aktual="data.aktualconvert"
             :pencapaian="data.pencapaian"
-          />
+          >
+          </TableSellingData>
+          <pagination
+            :records="+dataPage"
+            v-model="page"
+            :per-page="3"
+            @paginate="myCallback"
+          >
+          </pagination>
         </template>
         <template #activeTab_4>
           <TableSellingData
@@ -71,11 +80,13 @@
         </template>
       </Tabs>
     </div>
+
     <BottomNav />
   </div>
 </template>
 
 <script>
+import Pagination from 'vue-pagination-2'
 import Loading from '../molecules/Loading.vue'
 import BottomNav from '../molecules/BottomNav.vue'
 import TableSellingData from '../molecules/TableSellingData.vue'
@@ -90,6 +101,7 @@ export default {
     Tabs,
     Search,
     BottomNav,
+    Pagination,
   },
   props: [
     'dataTableWilayah',
@@ -97,11 +109,14 @@ export default {
     'dataTableArea',
     'dataTableDistributor',
     'dataTableOutlet',
+    'dataPage',
+    'test',
   ],
 
   data() {
     return {
       loading: true,
+      page: 1,
       tabs: [
         {
           name: 'Wilayah',
@@ -126,6 +141,7 @@ export default {
       dataArea: [],
       dataDistributor: [],
       dataOutlet: [],
+      route: this.$route.query.page,
     }
   },
 
@@ -145,7 +161,6 @@ export default {
           return data.region.toLowerCase().includes(value.toLowerCase())
         })
         this.dataRegion = data
-        console.log(data, 'sadasd')
       } else if (this.$route.query.value === `Area`) {
         const data = this.dataTableArea.filter((data) => {
           return data.area_name.toLowerCase().includes(value.toLowerCase())
@@ -182,7 +197,13 @@ export default {
     addParams(value) {
       this.$router.push({
         path: `${this.$route.path}`,
-        query: { value },
+        query: { value, page: 1 },
+      })
+    },
+    myCallback(page) {
+      this.$router.push({
+        path: `${this.$route.fullPath}`,
+        query: { page },
       })
     },
   },
@@ -192,9 +213,17 @@ export default {
     dataTableArea: 'setData',
     dataTableDistributor: 'setData',
     dataTableOutlet: ['setData', 'checkData'],
+    route: 'dataDistributor',
   },
 }
 </script>
 
-<style>
+<style scoped>
+/deep/ .VuePagination {
+  @apply flex justify-center;
+}
+
+/* /deep/ .VuePagination__count {
+  @apply hidden;
+} */
 </style>
