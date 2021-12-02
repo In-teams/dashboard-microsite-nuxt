@@ -7,7 +7,7 @@
         class="
           border-opacity-50
           px-3
-          py-3
+          py-2
           placeholder-gray-400
           text-gray-600
           bg-white bg-white

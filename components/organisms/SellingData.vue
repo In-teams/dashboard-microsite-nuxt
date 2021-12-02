@@ -5,8 +5,14 @@
       v-if="loading"
     />
     <Navbar :nav-title="'DATA PENJUALAN PER WILAYAH'" />
-    <div class="px-2 bg-gray-100 py-2">
-      <Search @getKeyword="getKeyword" />
+    <div class="px-2 bg-gray-100">
+      <div class="mt-20 mb-8">
+        <autocomplete
+          class="shadow-sm border py-2 rounded-md"
+          placeholder="Pencarian"
+          :search="search"
+        ></autocomplete>
+      </div>
 
       <Tabs @click="addParams" @getTab="getTab" :tabs="tabs">
         <template #activeTab_0>
@@ -63,6 +69,7 @@
             v-model="page"
             :per-page="3"
             @paginate="myCallback"
+            :class="routes !== routes ? 'page-item.active page-link ' : ''"
           >
           </pagination>
         </template>
@@ -86,11 +93,11 @@
 </template>
 
 <script>
+import Autocomplete from '@trevoreyre/autocomplete-vue'
 import Pagination from 'vue-pagination-2'
 import Loading from '../molecules/Loading.vue'
 import BottomNav from '../molecules/BottomNav.vue'
 import TableSellingData from '../molecules/TableSellingData.vue'
-import Search from '../molecules/Search.vue'
 import Tabs from '../molecules/Tabs.vue'
 import Navbar from '../molecules/Navbar.vue'
 export default {
@@ -99,9 +106,9 @@ export default {
     Navbar,
     TableSellingData,
     Tabs,
-    Search,
     BottomNav,
     Pagination,
+    Autocomplete,
   },
   props: [
     'dataTableWilayah',
@@ -141,7 +148,7 @@ export default {
       dataArea: [],
       dataDistributor: [],
       dataOutlet: [],
-      route: this.$route.query.page,
+      routes: this.$route.query.page,
     }
   },
 
@@ -150,34 +157,7 @@ export default {
       this.tabCategories = value
       console.log(this.$route.query)
     },
-    getKeyword(value) {
-      if (this.$route.query.value === `Wilayah`) {
-        const data = this.dataTableWilayah.filter((data) => {
-          return data.wilayah.toLowerCase().includes(value.toLowerCase())
-        })
-        this.dataWilayah = data
-      } else if (this.$route.query.value === `Region`) {
-        const data = this.dataTableRegion.filter((data) => {
-          return data.region.toLowerCase().includes(value.toLowerCase())
-        })
-        this.dataRegion = data
-      } else if (this.$route.query.value === `Area`) {
-        const data = this.dataTableArea.filter((data) => {
-          return data.area_name.toLowerCase().includes(value.toLowerCase())
-        })
-        this.dataArea = data
-      } else if (this.$route.query.value === `Distributor`) {
-        const data = this.dataTableDistributor.filter((data) => {
-          return data.distributor.toLowerCase().includes(value.toLowerCase())
-        })
-        this.dataDistributor = data
-      } else if (this.$route.query.value === `Outlet`) {
-        const data = this.dataTableOutlet.filter((data) => {
-          return data.outlet_name.toLowerCase().includes(value.toLowerCase())
-        })
-        this.dataOutlet = data
-      }
-    },
+
     setData() {
       this.dataWilayah = this.dataTableWilayah
       this.dataRegion = this.dataTableRegion
@@ -206,6 +186,37 @@ export default {
         query: { page },
       })
     },
+    search(input) {
+      if (input.length < 0) {
+        return []
+      }
+      if (this.$route.query.value === `Wilayah`) {
+        const data = this.dataTableWilayah.filter((data) => {
+          return data.wilayah.toLowerCase().includes(input.toLowerCase())
+        })
+        this.dataWilayah = data
+      } else if (this.$route.query.value === `Region`) {
+        const data = this.dataTableRegion.filter((data) => {
+          return data.region.toLowerCase().includes(input.toLowerCase())
+        })
+        this.dataRegion = data
+      } else if (this.$route.query.value === `Area`) {
+        const data = this.dataTableArea.filter((data) => {
+          return data.area_name.toLowerCase().includes(input.toLowerCase())
+        })
+        this.dataArea = data
+      } else if (this.$route.query.value === `Distributor`) {
+        const data = this.dataTableDistributor.filter((data) => {
+          return data.distributor.toLowerCase().includes(input.toLowerCase())
+        })
+        this.dataDistributor = data
+      } else if (this.$route.query.value === `Outlet`) {
+        const data = this.dataTableOutlet.filter((data) => {
+          return data.outlet_name.toLowerCase().includes(input.toLowerCase())
+        })
+        this.dataOutlet = data
+      }
+    },
   },
   watch: {
     dataTableWilayah: 'setData',
@@ -213,7 +224,9 @@ export default {
     dataTableArea: 'setData',
     dataTableDistributor: 'setData',
     dataTableOutlet: ['setData', 'checkData'],
-    route: 'dataDistributor',
+    '$route.query.page'() {
+      window.location.reload()
+    },
   },
 }
 </script>
@@ -223,6 +236,24 @@ export default {
   @apply flex justify-center;
 }
 
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+/deep/ .autocomplete-input {
+  @apply px-3;
+}
+
+/deep/ .autocomplete {
+  @apply static;
+}
+
+/deep/ input {
+  @apply w-full py-1;
+}
 /* /deep/ .VuePagination__count {
   @apply hidden;
 } */

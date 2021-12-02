@@ -2,7 +2,7 @@
   <div
     :class="
       title !== 'Total Pencapaian'
-        ? 'bg-blue-100 rounded-xl shadow'
+        ? 'bg-blue-100 rounded-xl shadow-sm'
         : 'border-none'
     "
   >

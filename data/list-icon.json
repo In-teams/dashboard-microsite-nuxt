@@ -3,27 +3,27 @@
         {
             "name": "Wilayah",
             "src": "image/wilayah-icon.png",
-            "link": "/penjualan-perwilayah?value=Wilayah"
+            "link": "/penjualan-perwilayah?value=Wilayah&page=1"
         },
         {
             "name": "Region",
             "src": "image/region-icon.png",
-            "link": "/penjualan-perwilayah?value=Region"
+            "link": "/penjualan-perwilayah?value=Region&page=1"
         },
         {
             "name": "Area",
             "src": "image/area-icon.png",
-            "link": "/penjualan-perwilayah?value=Area"
+            "link": "/penjualan-perwilayah?value=Area&page=1"
         },
         {
             "name": "Distributor",
             "src": "image/distributor-icon.png",
-            "link": "/penjualan-perwilayah?value=Distributor"
+            "link": "/penjualan-perwilayah?value=Distributor&page=1"
         },
         {
             "name": "Outlet",
             "src": "image/outlets-icon.png",
-            "link": "/penjualan-perwilayah?value=Outlet"
+            "link": "/penjualan-perwilayah?value=Outlet&page=1"
         }
     ]
 }
