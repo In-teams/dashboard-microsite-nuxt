@@ -5,7 +5,7 @@
       v-if="loading"
     />
     <Navbar :nav-title="'RINGKASAN DATA PENJUALAN'" />
-    <div class="px-2 py-2 bg-gray-100">
+    <div class="px-2 py-2 bg-gray-100 mt-2">
       <TableTwoColoumn
         class="border-b-2 mt-14"
         v-show="data.outlet_name != 'Total Pencapaian'"
@@ -16,7 +16,7 @@
         :sisa-poin="data.diffconvert"
       >
         <template #tableTitle>
-          <div class="px-2 py-3 bg-red-600 border-2 rounded-t-2xl p-20">
+          <div class="px-2 py-3 bg-red-600 rounded-t-2xl p-20">
             <div class="max-w-md mx-auto">
               <p class="text-center text-white font-bold">{{ params }}</p>
               <p class="text-center text-white font-bold">
@@ -68,22 +68,28 @@
               </p>
             </div>
           </div>
-          <div class="grid grid-cols-2 gap-1 px-1 py-2 border-r-2 border-l-2">
-            <CardWithThreeColoumn
-              :title="'Registrasi'"
-              :icons="'image/left_arrow.svg'"
-              :points="data.regist"
-            />
-            <CardWithThreeColoumn
-              :title="'Pencapaian'"
-              :icons="'image/trophy-icon.png'"
-              :points="data.percentage"
-            />
+        </template>
+        <template #table>
+          <div class="grid grid-cols-12 gap-1 px-1 py-2">
+            <ListAccordionHome
+              class="col-span-12 px-1"
+              :pencapaian="'Tekan untuk melihat detail list'"
+            >
+              <CardWithThreeColoumn
+                :title="'Registrasi'"
+                :icons="'image/left_arrow.svg'"
+                :points="data.regist"
+              />
+              <CardWithThreeColoumn
+                :title="'Pencapaian'"
+                :icons="'image/trophy-icon.png'"
+                :points="data.percentage"
+              />
+            </ListAccordionHome>
           </div>
-          <div class="grid grid-cols-2 gap-1 px-1 border-r-2 border-l-2"></div>
         </template>
       </TableTwoColoumn>
-      <div class="grid grid-cols-12 gap-2 py-5">
+      <div class="grid grid-cols-12 gap-2 py-4">
         <nuxt-link
           class="col-span-6"
           :to="`/formulir-registrasi/${$route.params.name}`"
@@ -123,7 +129,7 @@
       />
 
       <Subtitle
-        :style-subtitle="'font-normal text-sm'"
+        :style-subtitle="'font-normal text-xs pt-1'"
         :subtitle="'Pilih tombol yang akan ditampilkan detail penjualannya'"
       />
 
@@ -259,6 +265,7 @@
 </template>
 
 <script>
+import ListAccordionHome from '../molecules/ListAccordionHome.vue'
 import Loading from '../molecules/Loading.vue'
 import BottomNav from '../molecules/BottomNav.vue'
 import Accordion from '../../components/molecules/Accordion.vue'
@@ -281,6 +288,7 @@ export default {
     'dataPoin',
   ],
   components: {
+    ListAccordionHome,
     Loading,
     Accordion,
     Title,

@@ -2,6 +2,7 @@
   <div class="rounded-2xl mx-auto xl:w-full bg-white shadow-md">
     <slot name="tableTitle"></slot>
     <slot name="tableContent"></slot>
+
     <div
       class="
         grid grid-cols-3
@@ -40,6 +41,7 @@
       />
     </div>
     <slot name="buttonDetail"></slot>
+    <slot name="table"></slot>
   </div>
 </template>
 

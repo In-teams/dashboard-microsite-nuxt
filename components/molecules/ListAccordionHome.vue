@@ -1,11 +1,5 @@
 <template>
-  <div
-    :class="
-      title !== 'Total Pencapaian'
-        ? 'bg-blue-100 rounded-xl shadow-sm'
-        : 'border-none'
-    "
-  >
+  <div :class="title !== 'Total Pencapaian' ? '' : 'border-none'">
     <div
       @click="isOpen = !isOpen"
       class="cursor-pointer text-left text-black font-bold"
@@ -15,7 +9,9 @@
         :class="title !== 'Total Pencapaian' ? '' : 'border-none'"
       >
         <div class="inline-block self-center px-2 py-2">
-          <h3 class="text-xs self-center font-medium px-2">{{ pencapaian }}</h3>
+          <h3 class="text-xs self-center text-gray-400 font-medium px-2">
+            {{ pencapaian }}
+          </h3>
           <h3 class="text-xs self-center font-medium px-2">{{ title }}</h3>
         </div>
         <div class="px-2 self-center">
@@ -32,11 +28,7 @@
 
     <div
       v-if="border !== 'red'"
-      :class="
-        isOpen
-          ? 'd-block bg-purple-200 shadow-md px-2.5 pb-2 py-2 mt-4 rounded-lg'
-          : 'hidden'
-      "
+      :class="isOpen ? 'd-block pb-2 pt-2 ' : 'hidden'"
     >
       <slot></slot>
     </div>
@@ -62,6 +54,7 @@ export default {
     rgba(255, 255, 255, 0) 112.89%
   );
 }
+
 .rotate180 {
   transform: rotate(180deg);
 }

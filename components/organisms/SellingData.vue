@@ -65,6 +65,7 @@
           >
           </TableSellingData>
           <pagination
+            class="mb-4"
             :records="+dataPage"
             v-model="page"
             :per-page="3"
@@ -254,7 +255,11 @@ export default {
 /deep/ input {
   @apply w-full py-1;
 }
-/* /deep/ .VuePagination__count {
+/deep/ .VuePagination__count {
   @apply hidden;
-} */
+}
+
+/deep/ .autocomplete-input {
+  outline: none;
+}
 </style>

@@ -89,63 +89,67 @@
                   </p>
                 </div>
               </div>
-              <div class="grid grid-cols-2 gap-1 px-2 py-2">
-                <CardWithThreeColoumn
-                  :title="'Pencapaian'"
-                  :icons="'image/trophy-icon.png'"
-                  :points="dataTableNational.percentage"
-                />
-                <CardWithThreeColoumn
-                  :title="'AO/RO'"
-                  :icons="'image/vs-icon.png'"
-                  :points="dataTableNational.aoro"
-                />
-                <CardWithThreeColoumn
-                  :title="'Registrasi'"
-                  :icons="'image/check-icon.png'"
-                  :points="dataTableNational.regist"
-                />
-                <CardWithThreeColoumn
-                  :title="'Registrasi'"
-                  :icons="'image/x-icon.png'"
-                  :points="dataTableNational.notregist"
-                />
-                <CardWithThreeColoumn
-                  :title="'Total '"
-                  :icons="'image/outlet-icon.png'"
-                  :points="dataTableNational.total_outlet"
-                />
-                <CardWithThreeColoumn
-                  :title="'Progres'"
-                  :icons="'image/loading-icon.png'"
-                  :points="dataTableNational.percen_regist"
-                />
-              </div>
             </div>
           </template>
           <template #buttonDetail>
-            <div
-              class="
-                grid grid-cols-4
-                mx-auto
-                px-4
-                border-r border-l border-b
-                rounded-b-2xl
-                py-2
-              "
-            >
-              <Paragraph
-                class="col-span-3 self-center text-left"
-                :style-paragraph="'text-xxxs text-gray-400 font-bold'"
-                :paragraph="'Tekan tombol untuk lihat detail'"
-              />
-              <nuxt-link to="/selling-detail">
-                <Button
-                  :title-button="'Detail'"
-                  :style-button="'border rounded-full py-1 bg-blue-100 text-center items-center flex justify-center'"
-                  :style-title-button="'text-xs text-black font-bold'"
+            <div class="px-4 py-2">
+              <div class="flex justify-between">
+                <Paragraph
+                  class="self-center text-left"
+                  :style-paragraph="'text-xs text-gray-400 font-semibold'"
+                  :paragraph="'Tekan tombol untuk lihat detail'"
                 />
-              </nuxt-link>
+                <nuxt-link to="/selling-detail">
+                  <Button
+                    :title-button="'Detail'"
+                    :style-button="'  text-center items-center flex justify-center '"
+                    :style-title-button="' bg-blue-200 p-2 rounded-2xl text-blue-500 text-xs text-black font-bold'"
+                  />
+                </nuxt-link>
+              </div>
+            </div>
+          </template>
+          <template #table>
+            <div>
+              <div class="grid grid-cols-12 gap-1 px-1 py-2">
+                <ListAccordionHome
+                  class="col-span-12 px-1"
+                  :pencapaian="'Tekan untuk melihat detail list'"
+                >
+                  <CardWithThreeColoumn
+                    class=""
+                    :title="'Persentase Pencapaian'"
+                    :icons="'image/trophy-icon.png'"
+                    :points="dataTableNational.percentage"
+                  />
+                  <CardWithThreeColoumn
+                    class="col-span-5"
+                    :title="'AO/RO'"
+                    :icons="'image/vs-icon.png'"
+                    :points="dataTableNational.aoro"
+                  />
+                  <CardWithThreeColoumn
+                    :title="'Sudah Registrasi'"
+                    :icons="'image/check-icon.png'"
+                    :points="dataTableNational.regist"
+                  />
+                  <CardWithThreeColoumn
+                    :title="'Belum Registrasi'"
+                    :icons="'image/x-icon.png'"
+                    :points="dataTableNational.notregist"
+                  />
+                  <CardWithThreeColoumn
+                    :title="'Total Peserta'"
+                    :icons="'image/outlet-icon.png'"
+                    :points="dataTableNational.total_outlet"
+                  />
+                  <CardWithThreeColoumn
+                    :title="'Progres Registrasi'"
+                    :icons="'image/loading-icon.png'"
+                    :points="dataTableNational.percen_regist"
+                  />
+                </ListAccordionHome>
+              </div>
             </div>
           </template>
         </TableTwoColoumn>
@@ -386,6 +390,7 @@
 </template>
 
 <script>
+import ListAccordionHome from '../molecules/ListAccordionHome.vue'
 import Loading from '../molecules/Loading.vue'
 import BottomNav from '../molecules/BottomNav.vue'
 import Accordion from '../molecules/Accordion.vue'
@@ -402,6 +407,7 @@ import CardWithContent from '../molecules/CardWithContent.vue'
 import Banner from '../molecules/Banner.vue'
 export default {
   components: {
+    ListAccordionHome,
     Loading,
     Accordion,
     CardWithThreeColoumn,

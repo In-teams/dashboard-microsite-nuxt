@@ -5,7 +5,7 @@
       v-if="loading"
     />
     <Navbar :nav-title="'RINGKASAN DATA PENJUALAN'" />
-    <div class="px-2 mt-16">
+    <div class="px-2 mt-20">
       <TableTwoColoumn
         v-show="data.area_name != 'Total Pencapaian'"
         v-for="data in dataArea"
@@ -58,9 +58,16 @@
                 </p>
               </div>
             </div>
-            <div class="grid grid-cols-2 gap-1 px-1 py-1">
+          </div>
+        </template>
+        <template #table>
+          <div class="grid grid-cols-12 gap-1 px-1 py-2">
+            <ListAccordionHome
+              class="col-span-12 px-1"
+              :pencapaian="'Tekan untuk melihat detail list'"
+            >
               <CardWithThreeColoumn
-                :title="'Pencapaian'"
+                :title="'Persentase Pencapaian'"
                 :icons="'image/trophy-icon.png'"
                 :points="data.percentage"
               />
@@ -70,49 +77,40 @@
                 :points="data.aoro"
               />
               <CardWithThreeColoumn
-                :title="'Registrasi'"
+                :title="'Sudah Registrasi'"
                 :icons="'image/check-icon.png'"
                 :points="data.regist"
               />
               <CardWithThreeColoumn
-                :title="'Registrasi'"
+                :title="'Belum Registrasi'"
                 :icons="'image/x-icon.png'"
                 :points="data.notregist"
               />
               <CardWithThreeColoumn
-                :title="'Total'"
+                :title="'Total Peserta'"
                 :icons="'image/outlet-icon.png'"
                 :points="data.outlet"
               />
               <CardWithThreeColoumn
-                :title="'Progres'"
+                :title="'Progres Registrasi'"
                 :icons="'image/loading-icon.png'"
                 :points="data.regist_progress"
               />
-            </div>
+            </ListAccordionHome>
           </div>
         </template>
         <template #buttonDetail>
-          <div
-            class="
-              grid grid-cols-4
-              mx-auto
-              px-4
-              border-r border-l border-b
-              rounded-b-2xl
-              py-2
-            "
-          >
+          <div class="flex justify-between mx-auto px-4 py-2">
             <Paragraph
-              class="col-span-3 self-center text-left"
-              :style-paragraph="'text-xxs text-gray-400'"
+              class="self-center text-left"
+              :style-paragraph="'text-xs text-gray-400 font-medium'"
               :paragraph="'Tekan tombol untuk lihat detail'"
             />
             <nuxt-link :to="`/selling-detail-area/${data.area_id}`">
               <Button
                 :title-button="'Detail'"
-                :style-button="'border-2 rounded-full py-1 bg-blue-100 text-center items-center flex justify-center'"
-                :style-title-button="'text-xs text-black font-bold'"
+                :style-button="'text-center items-center flex justify-center'"
+                :style-title-button="'bg-blue-200 p-2 rounded-2xl text-blue-500 text-xs text-black font-bold'"
               />
             </nuxt-link>
           </div>
@@ -155,7 +153,7 @@
       />
 
       <Subtitle
-        :style-subtitle="'font-normal text-sm'"
+        :style-subtitle="'font-normal text-xs pt-1'"
         :subtitle="'Pilih tombol yang akan ditampilkan detail penjualannya'"
       />
       <Tabs url="home" :tabs="tabs">
@@ -287,6 +285,7 @@
 </template>
 
  <script>
+import ListAccordionHome from '../molecules/ListAccordionHome.vue'
 import Loading from '../molecules/Loading.vue'
 import BottomNav from '../molecules/BottomNav.vue'
 import Accordion from '../molecules/Accordion.vue'
@@ -310,6 +309,7 @@ export default {
     'dataOutlet',
   ],
   components: {
+    ListAccordionHome,
     Loading,
     Accordion,
     Title,

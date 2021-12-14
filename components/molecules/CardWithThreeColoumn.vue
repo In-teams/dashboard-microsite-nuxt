@@ -1,19 +1,77 @@
 <template>
-  <div class="container py-1">
-    <div class="flex justify-between border-2 gap-2.5 rounded-full shadow-sm">
-      <div class="flex justify-between">
-        <img class="w-8 h-4 px-2 self-center" :src="icons" />
-        <p class="text-xs font-semibold self-center text-left">{{ title }}</p>
+  <div class="container px-4">
+    <div
+      v-if="
+        this.$route.name == 'home-name' ||
+        this.$route.name == 'ringkasan-penjualan-distributor-name' ||
+        this.$route.name == 'ringkasan-penjualan-area-name' ||
+        this.$route.name == 'ringkasan-penjualan-region-name' ||
+        this.$route.name == 'ringkasan-penjualan-wilayah-name' ||
+        this.$route.name == 'ringkasan-penjualan-outlet-name'
+      "
+      :class="
+        this.title == 'Progres Registrasi' || this.title == 'Pencapaian'
+          ? 'border-none'
+          : ' '
+      "
+      class="block justify-between border-b"
+    >
+      <div class="">
+        <div class="flex justify-between py-3">
+          <div class="flex">
+            <img class="w-6 h-6 self-center" :src="icons" />
+            <p class="text-xs font-semibold px-1.5 self-center text-left">
+              {{ title }}
+            </p>
+          </div>
+          <div class="self-center">
+            <p
+              :class="
+                parseInt(points) < 0 ? 'text-red-500' : 'text-black font-bold'
+              "
+              class="text-xs text-center font-bold pl-8"
+            >
+              {{ points }}
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="self-center"></div>
-      <div class="bg-blue-100 rounded-full py-2 px-1 max-w-xs min-w-1/4">
-        <p
-          :class="parseInt(points) < 0 ? 'text-red-500' : 'text-blue-500'"
-          class="text-xs text-center font-bold"
-        >
-          {{ points }}
-        </p>
+
+      <!-- <div class="col-span-6 bg-blue-100 rounded-full py-1.5"></div> -->
+    </div>
+    <div
+      v-else
+      class="
+        block
+        justify-between
+        border
+        w-auto
+        rounded-full
+        shadow-sm
+        px-2
+        py-2
+      "
+    >
+      <div class="">
+        <div class="flex justify-between">
+          <div class="flex">
+            <img class="w-10 h-6 px-2 self-center" :src="icons" />
+            <p class="text-xs font-semibold self-center text-left">
+              {{ title }}
+            </p>
+          </div>
+          <div class="self-center">
+            <p
+              :class="parseInt(points) < 0 ? 'text-red-500' : 'text-blue-300'"
+              class="text-xs text-center font-bold pl-8"
+            >
+              {{ points }}
+            </p>
+          </div>
+        </div>
       </div>
+
+      <!-- <div class="col-span-6 bg-blue-100 rounded-full py-1.5"></div> -->
     </div>
   </div>
 </template>

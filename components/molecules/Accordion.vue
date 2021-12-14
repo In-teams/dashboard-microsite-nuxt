@@ -12,7 +12,12 @@
 
         <div class="flex justify-between">
           <h3>{{ pencapaian }}</h3>
-          <img src="~/assets/image/down_arrow.png" alt="" srcset="" />
+          <img
+            :class="isOpen == true ? 'rotate180' : ''"
+            src="~/assets/image/down_arrow.png"
+            alt=""
+            srcset=""
+          />
         </div>
       </div>
     </div>
@@ -44,5 +49,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.rotate180 {
+  transform: rotate(180deg);
+}
 </style>

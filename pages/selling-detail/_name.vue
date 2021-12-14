@@ -1,5 +1,5 @@
 <template>
-  <div class="xl:w-2/4 container mx-auto">
+  <div>
     <TemplateSellingDetail />
   </div>
 </template>

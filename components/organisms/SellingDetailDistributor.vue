@@ -5,7 +5,7 @@
       v-if="loading"
     />
     <Navbar :nav-title="'RINGKASAN DATA PENJUALAN'" />
-    <div class="mt-16 px-2">
+    <div class="mt-20 px-2">
       <TableFourColoumn
         :title-header="'RINGKASAN PENJUALAN PER QUARTER'"
         :style-header="'px-2 py-3 bg-purple-900 rounded-t-2xl'"
