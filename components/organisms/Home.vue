@@ -8,17 +8,7 @@
 
     <CardWithContent>
       <template #content>
-        <div class="px-4">
-          <p class="">
-            Hai,
-            <span class="font-bold text-red-900 text-xs">{{ user }}</span>
-          </p>
-          <p class="text-xxxs lg:text-blue">
-            Tekan tombol dibawah ini untuk lihat detail penjualan lainnya
-          </p>
-        </div>
-
-        <div class="py-2">
+        <div class="py-2 px-2">
           <p
             class="px-3 py-3 rounded-lg text-center text-sm border bg-blue-100"
           >
@@ -26,6 +16,17 @@
             <span class="font-bold text-red-500"> 22 januari 2021 </span>
           </p>
         </div>
+
+        <div class="px-4">
+          <p class="">
+            Hai,
+            <span class="font-bold text-red-900 text-xs">{{ user }}</span>
+          </p>
+          <p class="text-xxxs lg:text-blue">
+            Tekan tombol dibawah ini untuk lihat detail penjualan
+          </p>
+        </div>
+
         <div class="py-2">
           <ButtonGroup />
         </div>
@@ -45,7 +46,7 @@
             </div>
           </template>
           <template #tableContent>
-            <div class="border-r border-l">
+            <div class="">
               <div class="grid grid-cols-2 py-2">
                 <div>
                   <p
@@ -102,8 +103,8 @@
                 <nuxt-link to="/selling-detail">
                   <Button
                     :title-button="'Detail'"
-                    :style-button="'  text-center items-center flex justify-center '"
-                    :style-title-button="' bg-blue-200 p-2 rounded-2xl text-blue-500 text-xs text-black font-bold'"
+                    :style-button="'text-center items-center flex justify-center '"
+                    :style-title-button="'border-2 border-indigo-200 bg-blue-100 p-2 rounded-2xl text-xs text-black font-bold'"
                   />
                 </nuxt-link>
               </div>
@@ -116,45 +117,81 @@
                   class="col-span-12 px-1"
                   :pencapaian="'Tekan untuk melihat detail list'"
                 >
-                  <CardWithThreeColoumn
-                    class=""
-                    :title="'Persentase Pencapaian'"
-                    :icons="'image/trophy-icon.png'"
-                    :points="dataTableNational.percentage"
-                  />
-                  <CardWithThreeColoumn
-                    class="col-span-5"
-                    :title="'AO/RO'"
-                    :icons="'image/vs-icon.png'"
-                    :points="dataTableNational.aoro"
-                  />
-                  <CardWithThreeColoumn
-                    :title="'Sudah Registrasi'"
-                    :icons="'image/check-icon.png'"
-                    :points="dataTableNational.regist"
-                  />
-                  <CardWithThreeColoumn
-                    :title="'Belum Registrasi'"
-                    :icons="'image/x-icon.png'"
-                    :points="dataTableNational.notregist"
-                  />
-                  <CardWithThreeColoumn
-                    :title="'Total Peserta'"
-                    :icons="'image/outlet-icon.png'"
-                    :points="dataTableNational.total_outlet"
-                  />
-                  <CardWithThreeColoumn
-                    :title="'Progres Registrasi'"
-                    :icons="'image/loading-icon.png'"
-                    :points="dataTableNational.percen_regist"
-                  />
+                  <div class="px-4">
+                    <CardWithThreeColoumn
+                      class=""
+                      :title="'Persentase Pencapaian'"
+                      :icons="'https://i.ibb.co/FKNcqtn/trophy-icon.png'"
+                      :points="dataTableNational.percentage"
+                    />
+                    <CardWithThreeColoumn
+                      class="col-span-5"
+                      :title="'AO/RO'"
+                      :icons="'https://i.ibb.co/3cq5cB1/vs-icon.png'"
+                      :points="dataTableNational.aoro"
+                    />
+                    <CardWithThreeColoumn
+                      :title="'Sudah Registrasi'"
+                      :icons="'https://i.ibb.co/frcsgQB/check-icon.png'"
+                      :points="dataTableNational.regist"
+                    />
+                    <CardWithThreeColoumn
+                      :title="'Belum Registrasi'"
+                      :icons="'https://i.ibb.co/3fHkCYc/x-icon.png'"
+                      :points="dataTableNational.notregist"
+                    />
+                    <CardWithThreeColoumn
+                      :title="'Total Peserta'"
+                      :icons="'https://i.ibb.co/znLrr3W/outlet-icon.png'"
+                      :points="dataTableNational.total_outlet"
+                    />
+                    <CardWithThreeColoumn
+                      :title="'Progres Registrasi'"
+                      :icons="'https://i.ibb.co/4mLKSvS/loading-icon.png'"
+                      :points="dataTableNational.percen_regist"
+                    />
+                  </div>
                 </ListAccordionHome>
               </div>
             </div>
           </template>
         </TableTwoColoumn>
-
         <div class="py-4">
+          <TableFourColoumn
+            :title-header="'REGISTRASI'"
+            :style-header="' py-3 bg-red-600 rounded-t-2xl tracking-wide'"
+            :data-table-registrasi="dataTableRegistrasi"
+          >
+            <template #trow>
+              <Accordion
+                :border="'red'"
+                class="p-2"
+                v-for="data in dataTableRegistrasi"
+                :key="data.area"
+                :title="data.area"
+                :pencapaian="data.percentage"
+              >
+                <div class="flex justify-between border-b border-white py-2">
+                  <h3 class="text-xs uppercase">Target penjualan</h3>
+                  <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
+                </div>
+
+                <div class="flex justify-between border-b border-white py-2">
+                  <h3 class="text-xs uppercase">Aktual penjualan</h3>
+                  <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
+                </div>
+
+                <div class="flex justify-between pt-2">
+                  <h3 class="text-xs uppercase">Selisih penjualan</h3>
+                  <p class="font-bold text-sm">
+                    {{ data.pencapaian }}
+                  </p>
+                </div>
+              </Accordion>
+            </template>
+          </TableFourColoumn>
+        </div>
+        <div class="pb-2">
           <TableFourColoumn
             :title-header="'KLUSTER PERSENTASE PENCAPAIAN'"
             :style-header="' py-3 bg-red-600 rounded-t-2xl tracking-wide'"
@@ -170,17 +207,17 @@
                 :pencapaian="data.pencapaian"
               >
                 <div class="flex justify-between border-b border-white py-2">
-                  <h3 class="text-xs uppercase">Target</h3>
+                  <h3 class="text-xs uppercase">Target penjualan</h3>
                   <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
                 </div>
 
                 <div class="flex justify-between border-b border-white py-2">
-                  <h3 class="text-xs uppercase">Aktual</h3>
+                  <h3 class="text-xs uppercase">Aktual penjualan</h3>
                   <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
                 </div>
 
                 <div class="flex justify-between pt-2">
-                  <h3 class="text-xs uppercase">Pencapaian</h3>
+                  <h3 class="text-xs uppercase">Selisih penjualan</h3>
                   <p class="font-bold text-sm">
                     {{ data.pencapaian }}
                   </p>
@@ -189,6 +226,7 @@
             </template>
           </TableFourColoumn>
         </div>
+
         <div class="py-2">
           <Title
             class=""
@@ -217,21 +255,28 @@
                   :pencapaian="data.percentage"
                 >
                   <div class="flex justify-between border-b border-white py-2">
-                    <h3 class="text-xs uppercase">Target</h3>
+                    <h3 class="text-xs uppercase">Target Penjualan</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between border-b border-white py-2">
-                    <h3 class="text-xs uppercase">Aktual</h3>
+                    <h3 class="text-xs uppercase">Aktual Penjualan</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between pt-2">
-                    <h3 class="text-xs uppercase">Pencapaian</h3>
-                    <p class="font-bold text-sm">
-                      {{ data.percentage }}
+                    <h3 class="text-xs uppercase">Selisih Penjualan</h3>
+                    <p
+                      :class="
+                        parseInt(data.diffconvert) < 0
+                          ? 'text-red-500'
+                          : 'text-black'
+                      "
+                      class="font-bold text-sm"
+                    >
+                      Rp. {{ data.diffconvert }}
                     </p>
                   </div>
                 </Accordion>
@@ -253,21 +298,28 @@
                   :pencapaian="data.percentage"
                 >
                   <div class="flex justify-between border-b border-white py-2">
-                    <h3 class="text-xs uppercase">Target</h3>
+                    <h3 class="text-xs uppercase">Target penjualan</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between border-b border-white py-2">
-                    <h3 class="text-xs uppercase">Aktual</h3>
+                    <h3 class="text-xs uppercase">Aktual penjualan</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between pt-2">
-                    <h3 class="text-xs uppercase">Pencapaian</h3>
-                    <p class="font-bold text-sm">
-                      {{ data.percentage }}
+                    <h3 class="text-xs uppercase">Selisih penjualan</h3>
+                    <p
+                      :class="
+                        parseInt(data.diffconvert) < 0
+                          ? 'text-red-500'
+                          : 'text-black'
+                      "
+                      class="font-bold text-sm"
+                    >
+                      Rp. {{ data.diffconvert }}
                     </p>
                   </div>
                 </Accordion>
@@ -289,21 +341,28 @@
                   :pencapaian="data.percentage"
                 >
                   <div class="flex justify-between border-b border-white py-2">
-                    <h3 class="text-xs uppercase">Target</h3>
+                    <h3 class="text-xs uppercase">Target penjualan</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between border-b border-white py-2">
-                    <h3 class="text-xs uppercase">Aktual</h3>
+                    <h3 class="text-xs uppercase">Aktual penjualan</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between pt-2">
-                    <h3 class="text-xs uppercase">Pencapaian</h3>
-                    <p class="font-bold text-sm">
-                      {{ data.percentage }}
+                    <h3 class="text-xs uppercase">selisih penjualan</h3>
+                    <p
+                      :class="
+                        parseInt(data.diffconvert) < 0
+                          ? 'text-red-500'
+                          : 'text-black'
+                      "
+                      class="font-bold text-sm"
+                    >
+                      Rp. {{ data.diffconvert }}
                     </p>
                   </div>
                 </Accordion>
@@ -325,21 +384,28 @@
                   :pencapaian="data.percentage"
                 >
                   <div class="flex justify-between border-b border-white py-2">
-                    <h3 class="text-xs uppercase">Target</h3>
+                    <h3 class="text-xs uppercase">Target penjualan</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between border-b border-white py-2">
-                    <h3 class="text-xs uppercase">Aktual</h3>
+                    <h3 class="text-xs uppercase">Aktual penjualan</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between pt-2">
-                    <h3 class="text-xs uppercase">Pencapaian</h3>
-                    <p class="font-bold text-sm">
-                      {{ data.percentage }}
+                    <h3 class="text-xs uppercase">Pencapaian penjualan</h3>
+                    <p
+                      :class="
+                        parseInt(data.diffconvert) < 0
+                          ? 'text-red-500'
+                          : 'text-black'
+                      "
+                      class="font-bold text-sm"
+                    >
+                      Rp. {{ data.diffconvert }}
                     </p>
                   </div>
                 </Accordion>
@@ -361,21 +427,28 @@
                   :pencapaian="data.percentage"
                 >
                   <div class="flex justify-between border-b border-white py-2">
-                    <h3 class="text-xs uppercase">Target</h3>
+                    <h3 class="text-xs uppercase">Target penjualan</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between border-b border-white py-2">
-                    <h3 class="text-xs uppercase">Aktual</h3>
+                    <h3 class="text-xs uppercase">Aktual penjualan</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between pt-2">
-                    <h3 class="text-xs uppercase">Pencapaian</h3>
-                    <p class="font-bold text-sm">
-                      {{ data.percentage }}
+                    <h3 class="text-xs uppercase">selisih penjualan</h3>
+                    <p
+                      :class="
+                        parseInt(data.diffconvert) < 0
+                          ? 'text-red-500'
+                          : 'text-black'
+                      "
+                      class="font-bold text-sm"
+                    >
+                      Rp. {{ data.diffconvert }}
                     </p>
                   </div>
                 </Accordion>
@@ -432,6 +505,7 @@ export default {
     'dataTableArea',
     'dataTableDistributor',
     'dataTableOutlet',
+    'dataTableRegistrasi',
   ],
   data() {
     return {
@@ -448,15 +522,15 @@ export default {
       return this.dataTableNational[key]
     },
 
-    getUserId() {
-      if (localStorage.user_id) {
-        localStorage.user_id = this.user
-      }
-      return localStorage.user_id
-    },
+    // getUserId() {
+    //   if (localStorage.user_id) {
+    //     localStorage.user_id = this.user
+    //   }
+    // },
 
     async checkData() {
       this.loading = true
+
       const res = await this.dataTableNational
       if (res) {
         this.loading = false

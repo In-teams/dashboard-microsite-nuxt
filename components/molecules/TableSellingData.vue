@@ -35,9 +35,7 @@
               </div>
               <div class="self-center">
                 <p
-                  :class="
-                    parseInt(aktual) < 0 ? 'text-red-500' : 'text-blue-500'
-                  "
+                  :class="parseInt(aktual) < 0 ? 'text-red-500' : 'text-black'"
                   class="text-gray-900 font-bold text-md text-center"
                 >
                   Rp.{{ aktual }}
@@ -53,16 +51,14 @@
               </div>
               <div class="self-center">
                 <p
-                  :class="
-                    parseInt(selisih) < 0 ? 'text-red-500' : 'text-blue-500'
-                  "
+                  :class="parseInt(selisih) < 0 ? 'text-red-500' : 'text-black'"
                   class="text-gray-900 font-bold text-md text-center"
                 >
                   Rp.{{ selisih }}
                 </p>
               </div>
             </div>
-            <div class="flex justify-between gap-2">
+            <div class="flex justify-between">
               <div class="self-center py-2">
                 <CardWithThreeColoumn
                   :icons="'image/trophy-icon.png'"
@@ -72,7 +68,7 @@
               </div>
 
               <div
-                class="self-center text-center w-full"
+                class="self-center text-center w-28"
                 v-if="
                   $route.fullPath == '/penjualan-perwilayah?value=Outlet&page=1'
                 "
@@ -80,13 +76,13 @@
                 <nuxt-link :to="`/ringkasan-penjualan-outlet/${title_id}`">
                   <Button
                     :title-button="'Detail'"
-                    :style-button="'border border-blue-100 text-black bg-blue-100 rounded-full py-1 w-full col-span-4'"
+                    :style-button="'border-2 border-indigo-300 text-black bg-blue-100 rounded-full py-1 '"
                     :style-title-button="'text-sm text-purple-900 hover:text-white font-bold text-center '"
                   />
                 </nuxt-link>
               </div>
               <div
-                class="self-center text-center w-full"
+                class="self-center text-center w-32"
                 v-if="
                   $route.fullPath ==
                   '/penjualan-perwilayah?value=Wilayah&page=1'
@@ -95,13 +91,13 @@
                 <nuxt-link :to="`/ringkasan-penjualan-wilayah/${title_id}`">
                   <Button
                     :title-button="'Detail'"
-                    :style-button="'border border-blue-100 text-black bg-blue-100 rounded-full py-1 w-full col-span-4'"
+                    :style-button="'border-2 border-indigo-300 text-black bg-blue-100 rounded-full py-1 '"
                     :style-title-button="'text-sm text-purple-900 hover:text-white font-bold text-center'"
                   />
                 </nuxt-link>
               </div>
               <div
-                class="self-center text-center w-full"
+                class="self-center text-center w-32"
                 v-if="
                   $route.fullPath == '/penjualan-perwilayah?value=Region&page=1'
                 "
@@ -109,14 +105,14 @@
                 <nuxt-link :to="`/ringkasan-penjualan-region/${title_id}`">
                   <Button
                     :title-button="'Detail'"
-                    :style-button="'border border-blue-100 text-black bg-blue-100 rounded-full py-1 w-full col-span-4'"
+                    :style-button="'border-2 border-indigo-300 text-black bg-blue-100 rounded-full py-1 '"
                     :style-title-button="'text-sm text-purple-900 hover:text-white font-bold text-center'"
                   />
                 </nuxt-link>
               </div>
 
               <div
-                class="self-center text-center w-full"
+                class="self-center text-center w-32"
                 v-if="
                   $route.fullPath == '/penjualan-perwilayah?value=Area&page=1'
                 "
@@ -124,13 +120,13 @@
                 <nuxt-link :to="`/ringkasan-penjualan-area/${title_id}`">
                   <Button
                     :title-button="'Detail'"
-                    :style-button="'border border-blue-100 text-black bg-blue-100 rounded-full py-1 w-full col-span-4'"
+                    :style-button="'border-2 border-indigo-300 text-black bg-blue-100 rounded-full py-1 '"
                     :style-title-button="'text-sm text-purple-900 hover:text-white font-bold text-center'"
                   />
                 </nuxt-link>
               </div>
               <div
-                class="self-center text-center w-full"
+                class="self-center text-center w-32"
                 v-if="
                   $route.fullPath ==
                   '/penjualan-perwilayah?value=Distributor&page=1'
@@ -139,7 +135,7 @@
                 <nuxt-link :to="`/ringkasan-penjualan-distributor/${title_id}`">
                   <Button
                     :title-button="'Detail'"
-                    :style-button="'border border-blue-100 text-black bg-blue-100 rounded-full py-1 w-full col-span-4'"
+                    :style-button="'border-2 border-indigo-300 text-black bg-blue-100 rounded-full py-1 '"
                     :style-title-button="'text-sm text-purple-900 hover:text-white font-bold text-center'"
                   />
                 </nuxt-link>

@@ -9,6 +9,7 @@
       <div class="mt-20 mb-8">
         <autocomplete
           class="shadow-sm border py-2 rounded-md"
+          style="z-index: -999"
           placeholder="Pencarian"
           :search="search"
         ></autocomplete>
@@ -22,7 +23,7 @@
             :title="data.wilayah"
             :target="data.targetconvert"
             :aktual="data.aktualconvert"
-            :pencapaian="data.pencapaian"
+            :pencapaian="data.percentage"
             :selisih="data.diffconvert"
             :title_id="data.head_region_id"
           />
@@ -36,7 +37,7 @@
             :target="data.targetconvert"
             :selisih="data.diffconvert"
             :aktual="data.aktualconvert"
-            :pencapaian="data.pencapaian"
+            :pencapaian="data.percentage"
           />
         </template>
 
@@ -49,7 +50,7 @@
             :target="data.targetconvert"
             :selisih="data.diffconvert"
             :aktual="data.aktualconvert"
-            :pencapaian="data.pencapaian"
+            :pencapaian="data.percentage"
           />
         </template>
         <template #activeTab_3>
@@ -61,7 +62,7 @@
             :target="data.targetconvert"
             :selisih="data.diffconvert"
             :aktual="data.aktualconvert"
-            :pencapaian="data.pencapaian"
+            :pencapaian="data.percentage"
           >
           </TableSellingData>
           <pagination
@@ -83,7 +84,7 @@
             :target="data.targetconvert"
             :selisih="data.diffconvert"
             :aktual="data.aktualconvert"
-            :pencapaian="data.pencapaian"
+            :pencapaian="data.percentage"
           />
         </template>
       </Tabs>
@@ -169,7 +170,7 @@ export default {
 
     async checkData() {
       this.loading = true
-      const res = await this.dataTableWilayah
+      const res = await this.dataTableOutlet
       if (res) {
         this.loading = false
       }
@@ -261,5 +262,9 @@ export default {
 
 /deep/ .autocomplete-input {
   outline: none;
+}
+
+/deep/ .autocomplete {
+  position: unset !important;
 }
 </style>

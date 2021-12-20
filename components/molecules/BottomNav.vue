@@ -20,7 +20,11 @@
           "
         >
           <div class="mx-auto flex justify-center">
-            <img src="image/Home_fill.png" alt="" srcset="" />
+            <img
+              src="https://i.ibb.co/M8wvVGc/Home-fill.png"
+              alt=""
+              srcset=""
+            />
           </div>
           <span class="tab tab-home block text-xs">Home</span>
         </a>
@@ -38,7 +42,7 @@
           "
         >
           <div class="flex justify-center">
-            <img src="image/Whatsapp.png" alt="" srcset="" />
+            <img src="https://i.ibb.co/1b698ND/WhatsApp.png" alt="" srcset="" />
           </div>
           <span class="tab tab-kategori block text-xs">Whatsapp</span>
         </a>
@@ -58,7 +62,7 @@
           "
         >
           <div class="flex justify-center">
-            <img src="image/Sign_out.png" alt="" srcset="" />
+            <img src="https://i.ibb.co/MfNMK07/Sign-out.png" alt="" srcset="" />
           </div>
           <span class="tab tab-account block text-xs">Log Out</span>
         </a>

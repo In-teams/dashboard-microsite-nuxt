@@ -13,10 +13,10 @@
         :key="data.outlet_name"
         :poin-perolehan="data.achieveconvert"
         :poin-penukaran="data.redeemconvert"
-        :sisa-poin="data.diffconvert"
+        :sisa-poin="data.diff_pointconvert"
       >
         <template #tableTitle>
-          <div class="px-2 py-3 bg-red-600 rounded-t-2xl p-20">
+          <div class="px-2 py-2 bg-red-600 rounded-t-2xl p-20">
             <div class="max-w-md mx-auto">
               <p class="text-center text-white font-bold">{{ params }}</p>
               <p class="text-center text-white font-bold">
@@ -26,9 +26,9 @@
           </div>
         </template>
         <template #tableContent>
-          <div class="grid grid-cols-2 border-r-2 border-l-2 py-2">
+          <div class="grid grid-cols-2 py-2">
             <div>
-              <p class="text-gray-400 font-bold text-xs text-center py-2">
+              <p class="text-gray-400 text-xs text-center tracking-wide py-2">
                 TARGET PENJUALAN
               </p>
               <p class="text-gray-900 font-bold text-sm text-center">
@@ -36,7 +36,7 @@
               </p>
             </div>
             <div>
-              <p class="text-gray-400 font-bold text-xs text-center py-2">
+              <p class="text-gray-400 text-xs text-center tracking-wide py-2">
                 AKTUAL PENJUALAN
               </p>
               <p
@@ -51,20 +51,22 @@
               </p>
             </div>
           </div>
-          <div class="grid grid-cols-2 py-2 border-r-2 border-l-2">
+          <div class="grid grid-cols-2 py-2">
             <div>
-              <p class="text-gray-400 font-bold pt-1 text-xs text-center">
+              <p class="text-gray-400 text-xs text-center tracking-wide">
                 SELISIH PENJUALAN
               </p>
             </div>
             <div>
               <p
                 :class="
-                  parseInt(data.diff) <= 0 ? 'text-red-500' : 'text-black'
+                  parseInt(data.diffconvert) <= 0
+                    ? 'text-red-500'
+                    : 'text-black'
                 "
                 class="text-gray-900 font-bold text-sm text-center"
               >
-                Rp. {{ data.diff }}
+                Rp. {{ data.diffconvert }}
               </p>
             </div>
           </div>
@@ -75,16 +77,19 @@
               class="col-span-12 px-1"
               :pencapaian="'Tekan untuk melihat detail list'"
             >
-              <CardWithThreeColoumn
-                :title="'Registrasi'"
-                :icons="'image/left_arrow.svg'"
-                :points="data.regist"
-              />
-              <CardWithThreeColoumn
-                :title="'Pencapaian'"
-                :icons="'image/trophy-icon.png'"
-                :points="data.percentage"
-              />
+              <div class="px-4">
+                <CardWithThreeColoumn
+                  :title="'Sudah Registrasi'"
+                  :icons="'https://i.ibb.co/frcsgQB/check-icon.png'"
+                  :points="data.registStatus"
+                />
+                <CardWithThreeColoumn
+                  :border-none="false"
+                  :title="'Persentase Pencapaian'"
+                  :icons="'https://i.ibb.co/FKNcqtn/trophy-icon.png'"
+                  :points="data.percentage"
+                />
+              </div>
             </ListAccordionHome>
           </div>
         </template>
@@ -112,13 +117,13 @@
         <CardRegistrasi
           class="py-2"
           :data-title="'Cek Data Registrasi'"
-          :data-img="'image/regist-icon.png'"
+          :data-img="'https://i.ibb.co/YPx4n41/regist-icon.png'"
         />
 
         <CardRegistrasi
           class="py-2"
           :data-title="'Transaksi Penukaran'"
-          :data-img="'image/gift-icon.png'"
+          :data-img="'https://i.ibb.co/8x2Y1hg/gift-icon.png'"
         />
       </div>
 
@@ -136,7 +141,7 @@
       <Tabs url="home" :tabs="tabs">
         <template #activeTab_0>
           <TableFourColoumn
-            :title-header="'RINGKASAN PENJUALAN PER QUARTER'"
+            :title-header="'RINGKASAN PER QUARTER'"
             :style-header="' py-3 bg-purple-900  rounded-t-2xl'"
           >
             <template #trow>
@@ -148,23 +153,32 @@
                 :pencapaian="data.pencapaian"
               >
                 <div class="flex justify-between border-b border-white py-2">
-                  <h3 class="text-xs uppercase">Target</h3>
+                  <h3 class="text-xs uppercase">Perolehan penjualan</h3>
                   <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
                 </div>
                 <div class="flex justify-between border-b border-white py-2">
-                  <h3 class="text-xs uppercase">Aktual</h3>
+                  <h3 class="text-xs uppercase">Penukaran penjualan</h3>
                   <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
                 </div>
                 <div class="flex justify-between pt-2">
-                  <h3 class="text-xs uppercase">Pencapaian</h3>
-                  <p class="font-bold text-sm">{{ data.pencapaian }}</p>
+                  <h3 class="text-xs uppercase">Sisa penjualan</h3>
+                  <p
+                    :class="
+                      parseInt(data.diffconvert) <= 0
+                        ? 'text-red-500'
+                        : 'text-black'
+                    "
+                    class="font-bold text-sm"
+                  >
+                    Rp. {{ data.diffconvert }}
+                  </p>
                 </div>
               </Accordion>
             </template>
           </TableFourColoumn>
           <div class="py-4">
             <TableFourColoumn
-              :title-header="'RINGKASAN PENJUALAN PER TAHUN'"
+              :title-header="'RINGKASAN PER TAHUN'"
               :style-header="'px-2 py-3 bg-purple-900  rounded-t-2xl'"
             >
               <template #trow>
@@ -176,20 +190,29 @@
                   :pencapaian="data.pencapaian"
                 >
                   <div class="flex justify-between border-b border-white py-2">
-                    <h3 class="text-xs uppercase">Target</h3>
+                    <h3 class="text-xs uppercase">Perolehan penjualan</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between border-b border-white py-2">
-                    <h3 class="text-xs uppercase">Aktual</h3>
+                    <h3 class="text-xs uppercase">Penukaran penjualan</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between pt-2">
-                    <h3 class="text-xs uppercase">Pencapaian</h3>
-                    <p class="font-bold text-sm">{{ data.pencapaian }}</p>
+                    <h3 class="text-xs uppercase">Sisa penjualan</h3>
+                    <p
+                      :class="
+                        parseInt(data.diffconvert) <= 0
+                          ? 'text-red-500'
+                          : 'text-black'
+                      "
+                      class="font-bold text-sm"
+                    >
+                      Rp. {{ data.diffconvert }}
+                    </p>
                   </div>
                 </Accordion>
               </template>
@@ -198,7 +221,7 @@
         </template>
         <template #activeTab_1>
           <TableFourColoumn
-            :title-header="'RINGKASAN PENJUALAN PER QUARTER'"
+            :title-header="'RINGKASAN PER QUARTER'"
             :style-header="'px-2 py-3 bg-purple-900  rounded-t-2xl'"
           >
             <template #trow>
@@ -210,15 +233,15 @@
                 :pencapaian="data.achieveconvert"
               >
                 <div class="flex justify-between border-b border-white py-2">
-                  <h3 class="text-xs uppercase">Target</h3>
+                  <h3 class="text-xs uppercase">Perolehan penjualan</h3>
                   <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
                 </div>
                 <div class="flex justify-between border-b border-white py-2">
-                  <h3 class="text-xs uppercase">Aktual</h3>
+                  <h3 class="text-xs uppercase">Penukaran penjualan</h3>
                   <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
                 </div>
                 <div class="flex justify-between pt-2">
-                  <h3 class="text-xs uppercase">Pencapaian</h3>
+                  <h3 class="text-xs uppercase">Sisa penjualan</h3>
                   <p class="font-bold text-sm">{{ data.achieveconvert }}</p>
                 </div>
               </Accordion>
@@ -226,7 +249,7 @@
           </TableFourColoumn>
           <div class="py-4">
             <TableFourColoumn
-              :title-header="'RINGKASAN PENJUALAN PER TAHUN'"
+              :title-header="'RINGKASAN PER TAHUN'"
               :style-header="'px-2 py-3 bg-purple-900  rounded-t-2xl'"
             >
               <template #trow>
@@ -238,19 +261,19 @@
                   :pencapaian="data.achieveconvert"
                 >
                   <div class="flex justify-between border-b border-white py-2">
-                    <h3 class="text-xs uppercase">Target</h3>
+                    <h3 class="text-xs uppercase">Perolehan penjualan</h3>
                     <p class="font-bold text-base">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between border-b border-white py-2">
-                    <h3 class="text-xs uppercase">Aktual</h3>
+                    <h3 class="text-xs uppercase">Penukaran penjualan</h3>
                     <p class="font-bold text-base">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between pt-2">
-                    <h3 class="text-xs uppercase">Pencapaian</h3>
+                    <h3 class="text-xs uppercase">Sisa penjualan</h3>
                     <p class="font-bold text-base">{{ data.achieveconvert }}</p>
                   </div>
                 </Accordion>

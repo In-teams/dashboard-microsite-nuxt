@@ -208,18 +208,18 @@ export default {
   methods: {
     getLogin() {
       axios
-        .post(`http://api.apolo.inosis.id/api/v1/auth`, {
+        .post(`http://api.apolo.inosis.id/api/v1/auth/`, {
           username: this.username,
           password: this.password,
         })
         .then((response) => {
           const result = response.data.data
-          if (+result.level === 1) {
+          if (+result.level !== null) {
             localStorage.token = result.token
             localStorage.user_id = result.user_id
             this.$router.push(`/home`)
           } else {
-            console.log(this.username, this.password)
+            console.log('asdasdasd')
           }
         })
         .catch((error) => console.log(error))

@@ -56,8 +56,7 @@ export default {
             region_id: this.$route.params.name,
           },
           headers: {
-            Authorization:
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOiJzdXBlciIsIm5hbWUiOm51bGwsInVzZXJfcHJvZmlsZSI6IiIsImxldmVsIjoiMSIsImVtYWlsIjpudWxsLCJzY29wZSI6bnVsbCwicGhvdG8iOm51bGwsInJlZ2lkIjpudWxsfSwiaWF0IjoxNjMzMDcyNTA0fQ.C7dt8r4uYaJCaoXmi1hZpSMa3Zs2qyczWn8mvuviRR8',
+            Authorization: localStorage.token,
           },
         })
         .then((res) => (this.dataTableRingkasan = res.data.data))
@@ -70,8 +69,7 @@ export default {
             region_id: this.$route.params.name,
           },
           headers: {
-            Authorization:
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOiJzdXBlciIsIm5hbWUiOm51bGwsInVzZXJfcHJvZmlsZSI6IiIsImxldmVsIjoiMSIsImVtYWlsIjpudWxsLCJzY29wZSI6bnVsbCwicGhvdG8iOm51bGwsInJlZ2lkIjpudWxsfSwiaWF0IjoxNjMzMDcyNTA0fQ.C7dt8r4uYaJCaoXmi1hZpSMa3Zs2qyczWn8mvuviRR8',
+            Authorization: localStorage.token,
           },
         })
         .then((res) => (this.dataTablePencapaian = res.data.data))
@@ -84,11 +82,10 @@ export default {
             region_id: this.$route.params.name,
           },
           headers: {
-            Authorization:
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOiJzdXBlciIsIm5hbWUiOm51bGwsInVzZXJfcHJvZmlsZSI6IiIsImxldmVsIjoiMSIsImVtYWlsIjpudWxsLCJzY29wZSI6bnVsbCwicGhvdG8iOm51bGwsInJlZ2lkIjpudWxsfSwiaWF0IjoxNjMzMDcyNTA0fQ.C7dt8r4uYaJCaoXmi1hZpSMa3Zs2qyczWn8mvuviRR8',
+            Authorization: localStorage.token,
           },
         })
-        .then((res) => (this.dataTableRegion = res.data.data.asc))
+        .then((res) => (this.dataTableRegion = res.data.data.desc))
         .catch((err) => console.log(err))
     },
     getTableDistributor() {
@@ -98,11 +95,10 @@ export default {
             region_id: this.$route.params.name,
           },
           headers: {
-            Authorization:
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOiJzdXBlciIsIm5hbWUiOm51bGwsInVzZXJfcHJvZmlsZSI6IiIsImxldmVsIjoiMSIsImVtYWlsIjpudWxsLCJzY29wZSI6bnVsbCwicGhvdG8iOm51bGwsInJlZ2lkIjpudWxsfSwiaWF0IjoxNjMzMDcyNTA0fQ.C7dt8r4uYaJCaoXmi1hZpSMa3Zs2qyczWn8mvuviRR8',
+            Authorization: localStorage.token,
           },
         })
-        .then((res) => (this.dataTableDistributor = res.data.data.asc))
+        .then((res) => (this.dataTableDistributor = res.data.data.desc))
         .catch((err) => console.log(err))
     },
     getTableArea() {
@@ -112,11 +108,10 @@ export default {
             region_id: this.$route.params.name,
           },
           headers: {
-            Authorization:
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOiJzdXBlciIsIm5hbWUiOm51bGwsInVzZXJfcHJvZmlsZSI6IiIsImxldmVsIjoiMSIsImVtYWlsIjpudWxsLCJzY29wZSI6bnVsbCwicGhvdG8iOm51bGwsInJlZ2lkIjpudWxsfSwiaWF0IjoxNjMzMDcyNTA0fQ.C7dt8r4uYaJCaoXmi1hZpSMa3Zs2qyczWn8mvuviRR8',
+            Authorization: localStorage.token,
           },
         })
-        .then((res) => (this.dataTableArea = res.data.data.asc))
+        .then((res) => (this.dataTableArea = res.data.data.desc))
         .catch((err) => console.log(err))
     },
     getTableOutlet() {
@@ -126,11 +121,10 @@ export default {
             region_id: this.$route.params.name,
           },
           headers: {
-            Authorization:
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOiJzdXBlciIsIm5hbWUiOm51bGwsInVzZXJfcHJvZmlsZSI6IiIsImxldmVsIjoiMSIsImVtYWlsIjpudWxsLCJzY29wZSI6bnVsbCwicGhvdG8iOm51bGwsInJlZ2lkIjpudWxsfSwiaWF0IjoxNjMzMDcyNTA0fQ.C7dt8r4uYaJCaoXmi1hZpSMa3Zs2qyczWn8mvuviRR8',
+            Authorization: localStorage.token,
           },
         })
-        .then((res) => (this.dataTableOutlet = res.data.data.asc))
+        .then((res) => (this.dataTableOutlet = res.data.data.desc))
         .catch((err) => console.log(err))
     },
   },

@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar :NavTitle="'FORMULIR REGISTRASI'" />
-    <div class="px-2 mt-16">
+    <div class="px-2 mt-20">
       <Title
         :styleTitle="'text-black font-bold'"
         :title="'Foto atau Unggah Formulir Registrasi'"
@@ -11,7 +11,7 @@
         :styleSubtitle="'text-xs'"
       />
 
-      <div class="py-2">
+      <div class="py-2 mt-4">
         <div class="border-2 border-gray-400 rounded-xl py-10 text-center">
           <label
             v-show="this.images == null"
@@ -76,11 +76,12 @@
       />
 
       <Title
-        class="pt-2"
+        class="pt-4"
         :styleTitle="'text-black font-bold'"
         :title="'Formulir Registrasi'"
       />
       <Subtitle
+        class="pb-2"
         :subtitle="'Tekan foto di bawah ini untuk melihat detail'"
         :styleSubtitle="'text-xs'"
       />

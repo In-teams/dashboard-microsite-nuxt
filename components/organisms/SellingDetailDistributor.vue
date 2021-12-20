@@ -19,16 +19,25 @@
             :pencapaian="data.pencapaian"
           >
             <div class="flex justify-between border-b border-white py-2">
-              <h3 class="text-xs uppercase">Target</h3>
+              <h3 class="text-xs uppercase">Target penjualan</h3>
               <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
             </div>
             <div class="flex justify-between border-b border-white py-2">
-              <h3 class="text-xs uppercase">Aktual</h3>
+              <h3 class="text-xs uppercase">Aktual penjualan</h3>
               <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
             </div>
             <div class="flex justify-between pt-2">
-              <h3 class="text-xs uppercase">Pencapaian</h3>
-              <p class="font-bold text-sm">{{ data.pencapaian }}</p>
+              <h3 class="text-xs uppercase">selisih penjualan</h3>
+              <p
+                :class="
+                  parseInt(data.diffconvert) <= 0
+                    ? 'text-red-500'
+                    : 'text-black'
+                "
+                class="font-bold text-sm"
+              >
+                Rp. {{ data.diffconvert }}
+              </p>
             </div>
           </Accordion>
         </template>
@@ -48,16 +57,16 @@
               :pencapaian="data.pencapaian"
             >
               <div class="flex justify-between border-b border-white py-2">
-                <h3 class="text-xs uppercase">Target</h3>
+                <h3 class="text-xs uppercase">Target penjualan</h3>
                 <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
               </div>
               <div class="flex justify-between border-b border-white py-2">
-                <h3 class="text-xs uppercase">Aktual</h3>
+                <h3 class="text-xs uppercase">Aktual penjualan</h3>
                 <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
               </div>
               <div class="flex justify-between pt-2">
-                <h3 class="text-xs uppercase">Pencapaian</h3>
-                <p class="font-bold text-sm">{{ data.pencapaian }}</p>
+                <h3 class="text-xs uppercase">selisih penjualan</h3>
+                <p class="font-bold text-sm">Rp. {{ data.diffconvert }}</p>
               </div>
             </Accordion>
           </template>

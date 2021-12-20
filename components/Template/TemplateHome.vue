@@ -9,6 +9,7 @@
       :data-table-area="dataTableArea"
       :data-table-distributor="dataTableDistributor"
       :data-table-outlet="dataTableOutlet"
+      :data-table-registrasi="dataTableRegistrasi"
     />
   </div>
 </template>
@@ -44,6 +45,9 @@ export default {
       dataTableOutlet: {
         data: [],
       },
+      dataTableRegistrasi: {
+        data: [],
+      },
     }
   },
   mounted() {
@@ -54,6 +58,7 @@ export default {
     this.getdataTableArea()
     this.getdataTableDistributor()
     this.getdataTableOutlet()
+    this.getdataTableRegistrasi()
   },
   methods: {
     async getdataTableNational() {
@@ -61,8 +66,7 @@ export default {
         `http://api.apolo.inosis.id/api/v1/sales`,
         {
           headers: {
-            Authorization:
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOiJzdXBlciIsIm5hbWUiOm51bGwsInVzZXJfcHJvZmlsZSI6IiIsImxldmVsIjoiMSIsImVtYWlsIjpudWxsLCJzY29wZSI6bnVsbCwicGhvdG8iOm51bGwsInJlZ2lkIjpudWxsfSwiaWF0IjoxNjMzMDcyNTA0fQ.C7dt8r4uYaJCaoXmi1hZpSMa3Zs2qyczWn8mvuviRR8',
+            Authorization: localStorage.token,
           },
         }
       )
@@ -75,8 +79,7 @@ export default {
       axios
         .get(`http://api.apolo.inosis.id/api/v1/sales/summary/achieve`, {
           headers: {
-            Authorization:
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOiJzdXBlciIsIm5hbWUiOm51bGwsInVzZXJfcHJvZmlsZSI6IiIsImxldmVsIjoiMSIsImVtYWlsIjpudWxsLCJzY29wZSI6bnVsbCwicGhvdG8iOm51bGwsInJlZ2lkIjpudWxsfSwiaWF0IjoxNjMzMDcyNTA0fQ.C7dt8r4uYaJCaoXmi1hZpSMa3Zs2qyczWn8mvuviRR8',
+            Authorization: localStorage.token,
           },
         })
         .then((res) => (this.dataTableCluster = res.data.data))
@@ -86,55 +89,63 @@ export default {
       axios
         .get(`http://api.apolo.inosis.id/api/v1/sales/summary/region`, {
           headers: {
-            Authorization:
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOiJzdXBlciIsIm5hbWUiOm51bGwsInVzZXJfcHJvZmlsZSI6IiIsImxldmVsIjoiMSIsImVtYWlsIjpudWxsLCJzY29wZSI6bnVsbCwicGhvdG8iOm51bGwsInJlZ2lkIjpudWxsfSwiaWF0IjoxNjMzMDcyNTA0fQ.C7dt8r4uYaJCaoXmi1hZpSMa3Zs2qyczWn8mvuviRR8',
+            Authorization: localStorage.token,
           },
         })
-        .then((res) => (this.dataTableRegion = res.data.data.asc))
+        .then((res) => (this.dataTableRegion = res.data.data.desc))
         .catch((err) => console.log(err))
     },
     getdataTableWilayah() {
       axios
         .get(`http://api.apolo.inosis.id/api/v1/sales/summary/hr`, {
           headers: {
-            Authorization:
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOiJzdXBlciIsIm5hbWUiOm51bGwsInVzZXJfcHJvZmlsZSI6IiIsImxldmVsIjoiMSIsImVtYWlsIjpudWxsLCJzY29wZSI6bnVsbCwicGhvdG8iOm51bGwsInJlZ2lkIjpudWxsfSwiaWF0IjoxNjMzMDcyNTA0fQ.C7dt8r4uYaJCaoXmi1hZpSMa3Zs2qyczWn8mvuviRR8',
+            Authorization: localStorage.token,
           },
         })
-        .then((res) => (this.dataTableWilayah = res.data.data.asc))
+        .then((res) => (this.dataTableWilayah = res.data.data.desc))
         .catch((err) => console.log(err))
     },
     getdataTableArea() {
       axios
         .get(`http://api.apolo.inosis.id/api/v1/sales/summary/area`, {
           headers: {
-            Authorization:
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOiJzdXBlciIsIm5hbWUiOm51bGwsInVzZXJfcHJvZmlsZSI6IiIsImxldmVsIjoiMSIsImVtYWlsIjpudWxsLCJzY29wZSI6bnVsbCwicGhvdG8iOm51bGwsInJlZ2lkIjpudWxsfSwiaWF0IjoxNjMzMDcyNTA0fQ.C7dt8r4uYaJCaoXmi1hZpSMa3Zs2qyczWn8mvuviRR8',
+            Authorization: localStorage.token,
           },
         })
-        .then((res) => (this.dataTableArea = res.data.data.asc))
+        .then((res) => (this.dataTableArea = res.data.data.desc))
         .catch((err) => console.log(err))
     },
     getdataTableDistributor() {
       axios
         .get(`http://api.apolo.inosis.id/api/v1/sales/summary/distributor`, {
           headers: {
-            Authorization:
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOiJzdXBlciIsIm5hbWUiOm51bGwsInVzZXJfcHJvZmlsZSI6IiIsImxldmVsIjoiMSIsImVtYWlsIjpudWxsLCJzY29wZSI6bnVsbCwicGhvdG8iOm51bGwsInJlZ2lkIjpudWxsfSwiaWF0IjoxNjMzMDcyNTA0fQ.C7dt8r4uYaJCaoXmi1hZpSMa3Zs2qyczWn8mvuviRR8',
+            Authorization: localStorage.token,
           },
         })
-        .then((res) => (this.dataTableDistributor = res.data.data.asc))
+        .then((res) => (this.dataTableDistributor = res.data.data.desc))
         .catch((err) => console.log(err))
     },
     getdataTableOutlet() {
       axios
         .get(`http://api.apolo.inosis.id/api/v1/sales/summary/outlet`, {
           headers: {
-            Authorization:
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOiJzdXBlciIsIm5hbWUiOm51bGwsInVzZXJfcHJvZmlsZSI6IiIsImxldmVsIjoiMSIsImVtYWlsIjpudWxsLCJzY29wZSI6bnVsbCwicGhvdG8iOm51bGwsInJlZ2lkIjpudWxsfSwiaWF0IjoxNjMzMDcyNTA0fQ.C7dt8r4uYaJCaoXmi1hZpSMa3Zs2qyczWn8mvuviRR8',
+            Authorization: localStorage.token,
           },
         })
-        .then((res) => (this.dataTableOutlet = res.data.data.asc))
+        .then((res) => (this.dataTableOutlet = res.data.data.desc))
+        .catch((err) => console.log(err))
+    },
+    getdataTableRegistrasi() {
+      axios
+        .get(`http://api.apolo.inosis.id/api/v1/registration/summary/area`, {
+          params: {
+            sort: 'DESC',
+          },
+          headers: {
+            Authorization: localStorage.token,
+          },
+        })
+        .then((res) => (this.dataTableRegistrasi = res.data.data))
         .catch((err) => console.log(err))
     },
   },

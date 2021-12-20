@@ -3,17 +3,7 @@
     <slot name="tableTitle"></slot>
     <slot name="tableContent"></slot>
 
-    <div
-      class="
-        grid grid-cols-3
-        gap-1
-        mx-auto
-        text-center
-        px-2
-        py-2
-        border-r border-l
-      "
-    >
+    <div class="grid grid-cols-3 gap-1 mx-auto text-center px-2 py-2">
       <Title
         :style-title="'text-xxs text-gray-400 uppercase'"
         :title="'Poin Perolehan'"
