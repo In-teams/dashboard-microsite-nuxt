@@ -127,12 +127,53 @@
               <Button
                 :title-button="'Detail'"
                 :style-button="'text-center items-center flex justify-center '"
-                :style-title-button="' bg-blue-100 p-2 rounded-2xl text-xs text-black font-bold'"
+                :style-title-button="'border-2 border-indigo-200 bg-blue-100 p-2 rounded-2xl text-xs text-black font-bold'"
               />
             </nuxt-link>
           </div>
         </template>
       </TableTwoColoumn>
+      <TableFourColoumn
+        :title-header="'REGISTRASI'"
+        :style-header="' py-3 bg-red-600 rounded-t-2xl tracking-wide'"
+        :data-table-registrasi="dataTableRegistrasi"
+      >
+        <template #trow>
+          <Accordion
+            :border="'red'"
+            class="p-2"
+            v-for="data in dataTableRegistrasi"
+            :key="data.wilayah"
+            :title="data.wilayah"
+            :pencapaian="data.total"
+          >
+            <div class="flex justify-between border-b border-white py-2">
+              <h3 class="text-xs uppercase">level 1</h3>
+              <p class="font-bold text-sm">{{ data.Level1 }}</p>
+            </div>
+
+            <div class="flex justify-between border-b border-white py-2">
+              <h3 class="text-xs uppercase">level 2</h3>
+              <p class="font-bold text-sm">{{ data.Level2 }}</p>
+            </div>
+            <div class="flex justify-between border-b border-white py-2">
+              <h3 class="text-xs uppercase">level 3</h3>
+              <p class="font-bold text-sm">{{ data.Level3 }}</p>
+            </div>
+            <div class="flex justify-between border-b border-white py-2">
+              <h3 class="text-xs uppercase">level 4</h3>
+              <p class="font-bold text-sm">{{ data.Level4 }}</p>
+            </div>
+
+            <div class="flex justify-between pt-2">
+              <h3 class="text-xs uppercase">total level</h3>
+              <p class="font-bold text-sm">
+                {{ data.total }}
+              </p>
+            </div>
+          </Accordion>
+        </template>
+      </TableFourColoumn>
       <TableFourColoumn
         class="mt-6"
         :title-header="'KLUSTER PERSENTASE PENCAPAIAN'"
@@ -218,10 +259,10 @@
           >
             <template #trow>
               <Accordion
-                v-for="data in dataDistributor"
-                :key="data.distributor"
+                v-for="data in dataArea"
+                :key="data.area_name"
                 class="p-2"
-                :title="data.distributor"
+                :title="data.area_name"
                 :pencapaian="data.percentage"
               >
                 <div class="flex justify-between border-b border-white py-2">
@@ -256,10 +297,10 @@
           >
             <template #trow>
               <Accordion
-                v-for="data in dataArea"
-                :key="data.area_name"
+                v-for="data in dataDistributor"
+                :key="data.distributor"
                 class="p-2"
-                :title="data.area_name"
+                :title="data.distributor"
                 :pencapaian="data.percentage"
               >
                 <div class="flex justify-between border-b border-white py-2">
@@ -359,6 +400,7 @@ export default {
     'dataDistributor',
     'dataArea',
     'dataOutlet',
+    'dataTableRegistrasi',
   ],
   components: {
     ListAccordionHome,
@@ -379,7 +421,7 @@ export default {
     return {
       datas: '',
       listThead: ['BULAN', 'TARGET', 'AKTUAL', '%'],
-      tabs: ['Region', 'Distributor', 'Area', 'Outlet'],
+      tabs: ['Region', 'Area', 'Distributor', 'Outlet'],
       loading: true,
     }
   },

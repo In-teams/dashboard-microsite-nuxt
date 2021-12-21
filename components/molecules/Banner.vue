@@ -2,7 +2,7 @@
   <div
     class="my-auto mx-auto max-h-screen h-screen bg-purple-900 xl:w-2/4 fixed"
   >
-    <Logo :src="'image/Group3221.png'" />
+    <Logo :src="'https://i.ibb.co/BZD3bjx/Group3221.png'" />
     <Title
       :style-title="'text-2xl italic text-yellow-300 font-normal text-center'"
       :title="'Loyalti Progam'"

@@ -2,7 +2,7 @@
   <div class="">
     <div
       v-if="
-        this.$route.name == 'home-name' ||
+        this.$route.name == 'home-name-id' ||
         this.$route.name == 'ringkasan-penjualan-distributor-name' ||
         this.$route.name == 'ringkasan-penjualan-area-name' ||
         this.$route.name == 'ringkasan-penjualan-region-name' ||
@@ -58,8 +58,6 @@
           </div>
         </div>
       </div>
-
-      <!-- <div class="col-span-6 bg-blue-100 rounded-full py-1.5"></div> -->
     </div>
   </div>
 </template>

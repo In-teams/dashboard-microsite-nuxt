@@ -75,7 +75,9 @@
 export default {
   methods: {
     to() {
-      this.$router.push('/home')
+      this.$router.push(
+        '/home/' + `${localStorage.user_id}/${localStorage.level}`
+      )
     },
     logout() {
       localStorage.removeItem('token')

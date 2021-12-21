@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import TemplateHome from '../../components/Template/TemplateHome.vue'
+import TemplateHome from '../../../components/Template/TemplateHome.vue'
 export default {
   components: {
     TemplateHome,

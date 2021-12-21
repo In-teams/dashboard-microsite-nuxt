@@ -7,6 +7,7 @@
       :data-distributor="dataTableDistributor"
       :data-area="dataTableArea"
       :data-outlet="dataTableOutlet"
+      :data-table-registrasi="dataTableRegistrasi"
     />
   </div>
 </template>
@@ -38,6 +39,9 @@ export default {
       dataTableOutlet: {
         data: [],
       },
+      dataTableRegistrasi: {
+        data: [],
+      },
     }
   },
   mounted() {
@@ -47,6 +51,7 @@ export default {
     this.getTableDistributor()
     this.getTableArea()
     this.getTableOutlet()
+    this.getdataTableRegistrasi()
   },
   methods: {
     getTableRingkasan() {
@@ -125,6 +130,20 @@ export default {
           },
         })
         .then((res) => (this.dataTableOutlet = res.data.data.desc))
+        .catch((err) => console.log(err))
+    },
+    getdataTableRegistrasi() {
+      axios
+        .get(`http://api.apolo.inosis.id/api/v1/registration/summary/region`, {
+          params: {
+            sort: 'DESC',
+            region_id: this.$route.params.name,
+          },
+          headers: {
+            Authorization: localStorage.token,
+          },
+        })
+        .then((res) => (this.dataTableRegistrasi = res.data.data))
         .catch((err) => console.log(err))
     },
   },

@@ -79,27 +79,24 @@
               <a class="pl-2 outline-none border-none"> Lupa Password </a>
             </button>
           </div>
-          <div class="flex self-center">
-            <label class="inline-flex items-center">
+          <div class="flex items-start">
+            <label class="inline-flex">
               <input
                 type="checkbox"
-                class="form-checkbox h-5 w-5 text-blue-600"
+                class="form-checkbox h-6 w-4 text-blue-600"
                 v-model="sk"
               />
             </label>
-            <a
-              @click="toggleModal = !toggleModal"
-              class="
-                font-bold
-                text-blue-700
-                hover:bg-blue-200 hover:underline
-                rounded-full
-                item-center
-                px-2
-              "
-              href="#"
-              >Syarat dan Ketentuan</a
-            >
+            <a class="font-bold text-black px-2 text-xxs text-justify" href="#"
+              >Mohon dibaca
+              <span
+                class="text-blue-700 underline"
+                @click="toggleModal = !toggleModal"
+                >Syarat dan ketentuan</span
+              >
+              jika anda setuju, silahkan lanjutkan menekan tombol centang untuk
+              Login kedalam aplikasi.
+            </a>
           </div>
           <div
             v-if="toggleModal"
@@ -217,7 +214,8 @@ export default {
           if (+result.level !== null) {
             localStorage.token = result.token
             localStorage.user_id = result.user_id
-            this.$router.push(`/home`)
+            localStorage.level = result.level
+            this.$router.push(`/home/` + `${result.user_id}/${result.level}`)
           } else {
             console.log('asdasdasd')
           }

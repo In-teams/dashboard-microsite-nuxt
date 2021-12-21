@@ -20,9 +20,11 @@
         <div class="px-4">
           <p class="">
             Hai,
-            <span class="font-bold text-red-900 text-xs">{{ user }}</span>
+            <span class="font-bold text-red-500 text-base uppercase">{{
+              user
+            }}</span>
           </p>
-          <p class="text-xxxs lg:text-blue">
+          <p class="text-xs lg:text-blue">
             Tekan tombol dibawah ini untuk lihat detail penjualan
           </p>
         </div>
@@ -169,22 +171,30 @@
                 v-for="data in dataTableRegistrasi"
                 :key="data.area"
                 :title="data.area"
-                :pencapaian="data.percentage"
+                :pencapaian="data.total"
               >
                 <div class="flex justify-between border-b border-white py-2">
-                  <h3 class="text-xs uppercase">Target penjualan</h3>
-                  <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
+                  <h3 class="text-xs uppercase">level 1</h3>
+                  <p class="font-bold text-sm">{{ data.Level1 }}</p>
                 </div>
 
                 <div class="flex justify-between border-b border-white py-2">
-                  <h3 class="text-xs uppercase">Aktual penjualan</h3>
-                  <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
+                  <h3 class="text-xs uppercase">level 2</h3>
+                  <p class="font-bold text-sm">{{ data.Level2 }}</p>
+                </div>
+                <div class="flex justify-between border-b border-white py-2">
+                  <h3 class="text-xs uppercase">level 3</h3>
+                  <p class="font-bold text-sm">{{ data.Level3 }}</p>
+                </div>
+                <div class="flex justify-between border-b border-white py-2">
+                  <h3 class="text-xs uppercase">level 4</h3>
+                  <p class="font-bold text-sm">{{ data.Level4 }}</p>
                 </div>
 
                 <div class="flex justify-between pt-2">
-                  <h3 class="text-xs uppercase">Selisih penjualan</h3>
+                  <h3 class="text-xs uppercase">total level</h3>
                   <p class="font-bold text-sm">
-                    {{ data.pencapaian }}
+                    {{ data.total }}
                   </p>
                 </div>
               </Accordion>
@@ -239,7 +249,7 @@
             :subtitle="'Pilih tombol yang akan ditampilkan detail penjualannya'"
           />
         </div>
-        <Tabs class="" url="home" :tabs="tabs">
+        <Tabs :level="level" class="" url="home" :tabs="tabs">
           <template #activeTab_0>
             <TableFourColoumn
               class="mb-16"
@@ -513,7 +523,8 @@ export default {
       listThead: ['KETERANGAN', 'TARGET', 'AKTUAL', '%'],
       tabs: ['Wilayah', 'Region', 'Area', 'Distributor', 'Outlet'],
       loading: true,
-      user: '',
+      user: this.$route.params.name,
+      level: this.$route.params.id,
     }
   },
 
