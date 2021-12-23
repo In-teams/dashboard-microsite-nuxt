@@ -137,10 +137,7 @@ export default {
     },
     getdataTableRegistrasi() {
       axios
-        .get(`http://api.apolo.inosis.id/api/v1/registration/summary/area`, {
-          params: {
-            sort: 'DESC',
-          },
+        .get(`http://api.apolo.inosis.id/api/v1/registration/summary/level`, {
           headers: {
             Authorization: localStorage.token,
           },

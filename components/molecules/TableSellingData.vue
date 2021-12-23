@@ -9,7 +9,7 @@
           >
             <div class="flex justify-between gap-4 border-b">
               <div>
-                <p class="text-black text-xs text-center py-3 tracking-wide">
+                <p class="text-black text-xs py-3 tracking-wide">
                   TARGET PENJUALAN
                 </p>
               </div>
@@ -29,7 +29,7 @@
 
             <div class="flex justify-between gap-4 border-b">
               <div>
-                <p class="text-black text-xs text-center py-3 tracking-wide">
+                <p class="text-black text-xs py-3 tracking-wide">
                   AKTUAL PENJUALAN
                 </p>
               </div>
@@ -45,7 +45,7 @@
 
             <div class="flex justify-between gap-4 border-b">
               <div>
-                <p class="text-black text-xs text-center py-3 tracking-wide">
+                <p class="text-black text-xs py-3 tracking-wide">
                   SELISIH PENJUALAN
                 </p>
               </div>

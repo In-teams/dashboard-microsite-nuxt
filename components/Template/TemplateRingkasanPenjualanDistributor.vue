@@ -134,18 +134,14 @@ export default {
     },
     getdataTableRegistrasi() {
       axios
-        .get(
-          `http://api.apolo.inosis.id/api/v1/registration/summary/distributor`,
-          {
-            params: {
-              sort: 'DESC',
-              distributor_id: this.$route.params.name,
-            },
-            headers: {
-              Authorization: localStorage.token,
-            },
-          }
-        )
+        .get(`http://api.apolo.inosis.id/api/v1/registration/summary/level`, {
+          params: {
+            distributor_id: this.$route.params.name,
+          },
+          headers: {
+            Authorization: localStorage.token,
+          },
+        })
         .then((res) => (this.dataTableRegistrasi = res.data.data))
         .catch((err) => console.log(err))
     },

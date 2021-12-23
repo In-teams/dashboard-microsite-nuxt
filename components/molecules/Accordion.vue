@@ -1,5 +1,11 @@
 <template>
-  <div :class="title !== 'Total Pencapaian' ? 'border-b' : 'border-none'">
+  <div
+    :class="
+      title !== 'Total Pencapaian' && title !== 'Level 4'
+        ? 'border-b'
+        : 'border-none'
+    "
+  >
     <div
       @click="isOpen = !isOpen"
       class="cursor-pointer text-left text-black font-bold"
@@ -9,7 +15,6 @@
         :class="title !== 'Total Pencapaian' ? '' : 'border-none'"
       >
         <h3 class="text-xs self-center font-medium px-2">{{ title }}</h3>
-
         <div class="flex justify-between">
           <h3>{{ pencapaian }}</h3>
           <img

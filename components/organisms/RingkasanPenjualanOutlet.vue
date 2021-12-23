@@ -150,18 +150,18 @@
                 :key="data.kuartal"
                 class="p-2"
                 :title="data.kuartal"
-                :pencapaian="data.pencapaian"
+                :pencapaian="data.diffconvert"
               >
                 <div class="flex justify-between border-b border-white py-2">
-                  <h3 class="text-xs uppercase">Perolehan penjualan</h3>
+                  <h3 class="text-xs uppercase">Target penjualan</h3>
                   <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
                 </div>
                 <div class="flex justify-between border-b border-white py-2">
-                  <h3 class="text-xs uppercase">Penukaran penjualan</h3>
+                  <h3 class="text-xs uppercase">aktual penjualan</h3>
                   <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
                 </div>
                 <div class="flex justify-between pt-2">
-                  <h3 class="text-xs uppercase">Sisa penjualan</h3>
+                  <h3 class="text-xs uppercase">Selisih penjualan</h3>
                   <p
                     :class="
                       parseInt(data.diffconvert) <= 0
@@ -190,19 +190,19 @@
                   :pencapaian="data.pencapaian"
                 >
                   <div class="flex justify-between border-b border-white py-2">
-                    <h3 class="text-xs uppercase">Perolehan penjualan</h3>
+                    <h3 class="text-xs uppercase">target penjualan</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.targetconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between border-b border-white py-2">
-                    <h3 class="text-xs uppercase">Penukaran penjualan</h3>
+                    <h3 class="text-xs uppercase">aktual penjualan</h3>
                     <p class="font-bold text-sm">
                       Rp. {{ data.aktualconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between pt-2">
-                    <h3 class="text-xs uppercase">Sisa penjualan</h3>
+                    <h3 class="text-xs uppercase">selisih penjualan</h3>
                     <p
                       :class="
                         parseInt(data.diffconvert) <= 0
@@ -230,19 +230,19 @@
                 :key="data.quarter"
                 class="p-2"
                 :title="data.quarter"
-                :pencapaian="data.achieveconvert"
+                :pencapaian="data.diffconvert"
               >
                 <div class="flex justify-between border-b border-white py-2">
                   <h3 class="text-xs uppercase">Perolehan Poin</h3>
-                  <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
+                  <p class="font-bold text-sm">{{ data.achieveconvert }}</p>
                 </div>
                 <div class="flex justify-between border-b border-white py-2">
                   <h3 class="text-xs uppercase">Penukaran poin</h3>
-                  <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
+                  <p class="font-bold text-sm">{{ data.redeemconvert }}</p>
                 </div>
                 <div class="flex justify-between pt-2">
                   <h3 class="text-xs uppercase">Sisa poin</h3>
-                  <p class="font-bold text-sm">{{ data.achieveconvert }}</p>
+                  <p class="font-bold text-sm">{{ data.diffconvert }}</p>
                 </div>
               </Accordion>
             </template>
@@ -258,23 +258,23 @@
                   :key="data.month"
                   class="p-2"
                   :title="data.month"
-                  :pencapaian="data.achieveconvert"
+                  :pencapaian="data.diffconvert"
                 >
                   <div class="flex justify-between border-b border-white py-2">
                     <h3 class="text-xs uppercase">Perolehan Poin</h3>
                     <p class="font-bold text-base">
-                      Rp. {{ data.targetconvert }}
+                      {{ data.achieveconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between border-b border-white py-2">
                     <h3 class="text-xs uppercase">Penukaran Poin</h3>
                     <p class="font-bold text-base">
-                      Rp. {{ data.aktualconvert }}
+                      {{ data.redeemconvert }}
                     </p>
                   </div>
                   <div class="flex justify-between pt-2">
                     <h3 class="text-xs uppercase">Sisa Poin</h3>
-                    <p class="font-bold text-base">{{ data.achieveconvert }}</p>
+                    <p class="font-bold text-base">{{ data.diffconvert }}</p>
                   </div>
                 </Accordion>
               </template>

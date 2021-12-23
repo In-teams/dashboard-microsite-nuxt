@@ -136,33 +136,151 @@
               :border="'red'"
               class="p-2"
               v-for="data in dataTableRegistrasi"
-              :key="data.region"
-              :title="data.region"
+              :key="data.level"
+              :title="data.level"
               :pencapaian="data.total"
             >
-              <div class="flex justify-between border-b border-white py-2">
-                <h3 class="text-xs uppercase">level 1</h3>
-                <p class="font-bold text-sm">{{ data.Level1 }}</p>
-              </div>
-
-              <div class="flex justify-between border-b border-white py-2">
-                <h3 class="text-xs uppercase">level 2</h3>
-                <p class="font-bold text-sm">{{ data.Level2 }}</p>
-              </div>
-              <div class="flex justify-between border-b border-white py-2">
-                <h3 class="text-xs uppercase">level 3</h3>
-                <p class="font-bold text-sm">{{ data.Level3 }}</p>
-              </div>
-              <div class="flex justify-between border-b border-white py-2">
-                <h3 class="text-xs uppercase">level 4</h3>
-                <p class="font-bold text-sm">{{ data.Level4 }}</p>
-              </div>
-
-              <div class="flex justify-between pt-2">
-                <h3 class="text-xs uppercase">total level</h3>
-                <p class="font-bold text-sm">
-                  {{ data.total }}
-                </p>
+              <div>
+                <div id="level1" class="block">
+                  <div
+                    v-if="data.level == 'Level 1'"
+                    class="flex justify-between py-2"
+                    v-show="data['1A'] !== 0"
+                  >
+                    <h3 class="text-xs uppercase self-center">LEVEL 1A</h3>
+                    <p class="font-bold text-sm">
+                      {{ data['1A'] }} / {{ data['1Apercent'] }}
+                    </p>
+                  </div>
+                  <div
+                    v-if="data.level == 'Level 1'"
+                    class="flex justify-between py-2"
+                    v-show="data['1A'] !== 0"
+                  >
+                    <h3 class="text-xs uppercase self-center">STATUS</h3>
+                    <p class="font-bold text-sm">
+                      {{ data['1Astatus'].split('-').shift() }}
+                    </p>
+                  </div>
+                  <div
+                    v-if="data.level == 'Level 1'"
+                    class="block"
+                    v-show="data['1A'] !== 0"
+                  >
+                    <div class="flex justify-between">
+                      <p
+                        class="font-bold text-sm self-center py-2 text-red-400"
+                      >
+                        {{ data['1Astatus'].split('-').pop() }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div id="level2" class="block">
+                  <div
+                    v-if="data.level == 'Level 2'"
+                    class="flex justify-between py-2"
+                    v-show="data['2A'] !== 0"
+                  >
+                    <h3 class="text-xs uppercase self-center">LEVEL 2A</h3>
+                    <p class="font-bold text-sm">
+                      {{ data['2A'] }} / {{ data['2Apercent'] }}
+                    </p>
+                  </div>
+                  <div
+                    v-if="data.level == 'Level 2'"
+                    class="flex justify-between py-2"
+                    v-show="data['2A'] !== 0"
+                  >
+                    <h3 class="text-xs uppercase self-center">STATUS</h3>
+                    <p class="font-bold text-sm">
+                      {{ data['2Astatus'].split('-').shift() }}
+                    </p>
+                  </div>
+                  <div
+                    v-if="data.level == 'Level 2'"
+                    class="block"
+                    v-show="data['2A'] !== 0"
+                  >
+                    <div class="flex justify-between">
+                      <p
+                        class="font-bold text-sm self-center py-2 text-red-400"
+                      >
+                        {{ data['2Astatus'].split('-').pop() }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div id="level3" class="block">
+                  <div
+                    v-if="data.level == 'Level 3'"
+                    class="flex justify-between py-2"
+                    v-show="data['3E'] !== 0"
+                  >
+                    <h3 class="text-xs uppercase self-center">LEVEL 3E</h3>
+                    <p class="font-bold text-sm">
+                      {{ data['3E'] }} / {{ data['3Epercent'] }}
+                    </p>
+                  </div>
+                  <div
+                    v-if="data.level == 'Level 3'"
+                    class="flex justify-between py-2"
+                    v-show="data['3E'] !== 0"
+                  >
+                    <h3 class="text-xs uppercase self-center">STATUS</h3>
+                    <p class="font-bold text-sm">
+                      {{ data['3Estatus'].split('-').shift() }}
+                    </p>
+                  </div>
+                  <div
+                    v-if="data.level == 'Level 3'"
+                    class="block"
+                    v-show="data['3E'] !== 0"
+                  >
+                    <div class="flex justify-between">
+                      <p
+                        class="font-bold text-sm self-center py-2 text-red-400"
+                      >
+                        {{ data['3Estatus'].split('-').pop() }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div id="level4" class="block">
+                  <div
+                    v-if="data.level == 'Level 4'"
+                    class="flex justify-between py-2"
+                    v-show="data['4C'] !== 0"
+                  >
+                    <h3 class="text-xs uppercase self-center">LEVEL 4C</h3>
+                    <p class="font-bold text-sm">
+                      {{ data['4C'] }} / {{ data['4Cpercent'] }}
+                    </p>
+                  </div>
+                  <div
+                    v-if="data.level == 'Level 4'"
+                    class="flex justify-between py-2"
+                    v-show="data['4C'] !== 0"
+                  >
+                    <h3 class="text-xs uppercase self-center">STATUS</h3>
+                    <p class="font-bold text-sm">
+                      {{ data['4Cstatus'].split('-').shift() }}
+                    </p>
+                  </div>
+                  <div
+                    v-if="data.level == 'Level 4'"
+                    class="block"
+                    v-show="data['4C'] !== 0"
+                  >
+                    <div class="flex justify-between">
+                      <p
+                        class="font-bold text-sm self-center py-2 text-red-400"
+                      >
+                        {{ data['4Cstatus'].split('-').pop() }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </Accordion>
           </template>
@@ -183,16 +301,25 @@
               :pencapaian="data.pencapaian"
             >
               <div class="flex justify-between border-b border-white py-2">
-                <h3 class="text-xs uppercase">Target</h3>
+                <h3 class="text-xs uppercase">Target penjualan</h3>
                 <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
               </div>
               <div class="flex justify-between border-b border-white py-2">
-                <h3 class="text-xs uppercase">Aktual</h3>
+                <h3 class="text-xs uppercase">Aktual penjualan</h3>
                 <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
               </div>
               <div class="flex justify-between pt-2">
-                <h3 class="text-xs uppercase">Pencapaian</h3>
-                <p class="font-bold text-sm">{{ data.pencapaian }}</p>
+                <h3 class="text-xs uppercase">sisa penjualan</h3>
+                <p
+                  :class="
+                    parseInt(data.pencapaian) < 0
+                      ? 'text-red-500'
+                      : 'text-black'
+                  "
+                  class="font-bold text-sm"
+                >
+                  {{ data.pencapaian }}
+                </p>
               </div>
             </Accordion>
           </template>
@@ -210,44 +337,6 @@
       />
       <Tabs class="mb-4" url="home" :tabs="tabs">
         <template #activeTab_0>
-          <TableFourColoumn
-            :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
-            :style-header="'px-2 py-3 bg-purple-900 rounded-t-2xl'"
-          >
-            <template #trow>
-              <Accordion
-                class="p-2"
-                v-for="data in dataRegion"
-                :key="data.region"
-                :title="data.region"
-                :pencapaian="data.percentage"
-              >
-                <div class="flex justify-between border-b border-white py-2">
-                  <h3 class="text-xs uppercase">Target penjualan</h3>
-                  <p class="font-bold text-sm">Rp. {{ data.targetconvert }}</p>
-                </div>
-                <div class="flex justify-between border-b border-white py-2">
-                  <h3 class="text-xs uppercase">Aktual penjualan</h3>
-                  <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
-                </div>
-                <div class="flex justify-between pt-2">
-                  <h3 class="text-xs uppercase">Sisa penjualan</h3>
-                  <p
-                    :class="
-                      parseInt(data.diffconvert) < 0
-                        ? 'text-red-500'
-                        : 'text-black'
-                    "
-                    class="font-bold text-sm"
-                  >
-                    Rp. {{ data.diffconvert }}
-                  </p>
-                </div>
-              </Accordion>
-            </template>
-          </TableFourColoumn>
-        </template>
-        <template #activeTab_1>
           <TableFourColoumn
             :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
             :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
@@ -285,7 +374,7 @@
             </template>
           </TableFourColoumn>
         </template>
-        <template #activeTab_2>
+        <template #activeTab_1>
           <TableFourColoumn
             :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
             :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
@@ -324,7 +413,7 @@
           </TableFourColoumn>
         </template>
 
-        <template #activeTab_3>
+        <template #activeTab_2>
           <TableFourColoumn
             :title-header="'RINGKASAN PENJUALAN 10 BESAR'"
             :style-header="'px-2 py-3 bg-purple-900 border-2 rounded-t-2xl'"
@@ -412,7 +501,7 @@ export default {
     return {
       datas: '',
       listThead: ['BULAN', 'TARGET', 'AKTUAL', '%'],
-      tabs: ['Region', 'Area', 'Distributor', 'Outlet'],
+      tabs: ['Area', 'Distributor', 'Outlet'],
       loading: true,
     }
   },

@@ -134,9 +134,8 @@ export default {
     },
     getdataTableRegistrasi() {
       axios
-        .get(`http://api.apolo.inosis.id/api/v1/registration/summary/area`, {
+        .get(`http://api.apolo.inosis.id/api/v1/registration/summary/level`, {
           params: {
-            sort: 'DESC',
             area_id: this.$route.params.name,
           },
           headers: {

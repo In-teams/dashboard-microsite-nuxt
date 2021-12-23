@@ -1,6 +1,42 @@
 <template>
   <div class="mx-auto">
-    <ul class="flex justify-evenly text-xs items-center my-2">
+    <ul
+      v-if="
+        this.$route.name == 'ringkasan-penjualan-distributor-name' ||
+        this.$route.name == 'ringkasan-penjualan-area-name'
+      "
+      class="flex text-xs items-center my-2"
+    >
+      <a
+        @click="$emit('click', tab.name)"
+        v-for="(tab, index) in tabs"
+        :key="index"
+      >
+        <li
+          v-if="$route.path === '/penjualan-perwilayah'"
+          class="cursor-pointer py-2 px-3 rounded-full transition"
+          :class="
+            $route.query.value === tab.name
+              ? 'bg-purple-900 text-white '
+              : ' bg-white text-gray-500'
+          "
+          @click="activeTab = index"
+          v-text="tab.name"
+        ></li>
+        <li
+          v-else
+          class="cursor-pointer py-2 px-3 rounded-full transition"
+          :class="
+            activeTab === index
+              ? 'bg-purple-900 text-white '
+              : ' bg-white text-gray-500'
+          "
+          @click="activeTab = index"
+          v-text="tab"
+        ></li>
+      </a>
+    </ul>
+    <ul v-else class="flex justify-evenly text-xs items-center my-2">
       <a
         @click="$emit('click', tab.name)"
         v-for="(tab, index) in tabs"
