@@ -22,7 +22,7 @@
                     text-md text-center
                   "
                 >
-                  Rp.{{ target }}
+                  Rp. {{ target }}
                 </p>
               </div>
             </div>
@@ -38,7 +38,7 @@
                   :class="parseInt(aktual) < 0 ? 'text-red-500' : 'text-black'"
                   class="text-gray-900 font-bold text-md text-center"
                 >
-                  Rp.{{ aktual }}
+                  Rp. {{ aktual }}
                 </p>
               </div>
             </div>
@@ -54,7 +54,7 @@
                   :class="parseInt(selisih) < 0 ? 'text-red-500' : 'text-black'"
                   class="text-gray-900 font-bold text-md text-center"
                 >
-                  Rp.{{ selisih }}
+                  Rp. {{ selisih }}
                 </p>
               </div>
             </div>

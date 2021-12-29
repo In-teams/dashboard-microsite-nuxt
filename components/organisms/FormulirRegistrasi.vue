@@ -165,6 +165,16 @@ export default {
             }
           })
         })
+        .catch(() => {
+          Swal.fire({
+            title: 'Upload Gagal',
+            icon: 'fail',
+          }).then((result) => {
+            if (result.value) {
+              this.images = null
+            }
+          })
+        })
     },
   },
 }

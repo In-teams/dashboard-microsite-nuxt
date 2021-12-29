@@ -31,7 +31,7 @@
               :class="
                 parseInt(points) < 0 ? 'text-red-500' : 'text-black font-bold'
               "
-              class="text-xs text-center font-bold pl-8 whitespace-nowrap"
+              class="text-sm text-right font-bold pl-8"
             >
               {{ points }}
             </p>
@@ -64,7 +64,7 @@
 
 <script>
 export default {
-  props: ['title', 'points', 'icons', 'borderNone'],
+  props: ['title', 'points', 'icons', 'borderNone', 'textRight'],
   data() {
     return {}
   },

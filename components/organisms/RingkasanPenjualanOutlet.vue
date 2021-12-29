@@ -79,6 +79,7 @@
             >
               <div class="px-4">
                 <CardWithThreeColoumn
+                  :text-right="false"
                   :title="'Sudah Registrasi'"
                   :icons="'https://i.ibb.co/frcsgQB/check-icon.png'"
                   :points="data.registStatus"

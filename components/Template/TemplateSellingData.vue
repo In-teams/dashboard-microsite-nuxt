@@ -7,8 +7,8 @@
       :data-table-distributor="dataTableDistributor"
       :data-table-outlet="dataTableOutlet"
       :data-page="dataPage"
-      :test="queryRoute"
     />
+    {{ this.search }}
   </div>
 </template>
 
@@ -40,6 +40,7 @@ export default {
         data: [],
       },
       queryRoute: this.$route.query.page,
+      search: '',
     }
   },
   mounted() {
@@ -49,9 +50,11 @@ export default {
     this.getdataTableDistributor()
     this.getdataTableOutlet()
     this.getPage()
-    this.testArinda()
   },
   methods: {
+    getDataVal(val) {
+      this.search = val
+    },
     getdataTableWilayah() {
       axios
         .get(`http://api.apolo.inosis.id/api/v1/sales/summary/hr`, {
@@ -83,7 +86,6 @@ export default {
         .catch((err) => console.log(err))
     },
     getdataTableDistributor() {
-      console.log('calling,,,')
       axios
         .get(`http://api.apolo.inosis.id/api/v1/sales/summary/distributor`, {
           params: {
@@ -115,9 +117,6 @@ export default {
         })
         .then((res) => (this.dataTableOutlet = res.data.data.desc))
         .catch((err) => console.log(err))
-    },
-    testArinda() {
-      console.log('arinda', this.queryRoute)
     },
   },
 }

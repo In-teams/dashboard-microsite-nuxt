@@ -3,7 +3,8 @@
     <ul
       v-if="
         this.$route.name == 'ringkasan-penjualan-distributor-name' ||
-        this.$route.name == 'ringkasan-penjualan-area-name'
+        this.$route.name == 'ringkasan-penjualan-area-name' ||
+        this.$route.name == 'ringkasan-penjualan-outlet-name'
       "
       class="flex text-xs items-center my-2"
     >

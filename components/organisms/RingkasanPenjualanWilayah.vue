@@ -13,6 +13,7 @@
         :poin-perolehan="data.achieveconvert"
         :poin-penukaran="data.redeemconvert"
         :selisih-poin="data.diff_pointconvert"
+        :sisa-poin="data.diff_pointconvert"
       >
         <template #tableTitle>
           <div class="px-2 py-2 bg-red-600 rounded-t-2xl p-20">
@@ -34,7 +35,7 @@
                   TARGET PENJUALAN
                 </p>
                 <p class="text-gray-900 font-bold text-sm text-center">
-                  Rp.{{ data.targetconvert }}
+                  Rp. {{ data.targetconvert }}
                 </p>
               </div>
               <div>
@@ -324,7 +325,7 @@
                 "
                 class="font-bold text-sm"
               >
-                {{ data.diffconvert }}
+                Rp. {{ data.diffconvert }}
               </p>
             </div>
           </Accordion>

@@ -14,7 +14,9 @@
         class="flex justify-between"
         :class="title !== 'Total Pencapaian' ? '' : 'border-none'"
       >
-        <h3 class="text-xs self-center font-medium px-2">{{ title }}</h3>
+        <h3 class="text-xs self-center uppercase font-medium px-2">
+          {{ title }}
+        </h3>
         <div class="flex justify-between">
           <h3>{{ pencapaian }}</h3>
           <img

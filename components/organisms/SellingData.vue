@@ -13,6 +13,13 @@
           placeholder="Pencarian"
           :search="search"
         ></autocomplete>
+        <!-- <button
+          class="border bg-red-500 text-center"
+          @click="sendKeyword"
+          type=" button"
+        >
+          click
+        </button> -->
       </div>
 
       <Tabs @click="addParams" @getTab="getTab" :tabs="tabs">
@@ -119,7 +126,6 @@ export default {
     'dataTableDistributor',
     'dataTableOutlet',
     'dataPage',
-    'test',
   ],
 
   data() {
@@ -151,13 +157,17 @@ export default {
       dataDistributor: [],
       dataOutlet: [],
       routes: this.$route.query.page,
+      values: '',
     }
   },
 
   methods: {
     getTab(value) {
       this.tabCategories = value
-      console.log(this.$route.query)
+    },
+
+    passData() {
+      this.$emit('sendData', this.values)
     },
 
     setData() {
@@ -188,7 +198,9 @@ export default {
         query: { page },
       })
     },
+
     search(input) {
+      this.values = input
       if (input.length < 0) {
         return []
       }
@@ -219,6 +231,13 @@ export default {
         this.dataOutlet = data
       }
     },
+
+    sendKeyword() {
+      this.$router.push({
+        path: `${this.$route.fullPath}`,
+        query: { keyword: this.values },
+      })
+    },
   },
   watch: {
     dataTableWilayah: 'setData',
@@ -227,6 +246,9 @@ export default {
     dataTableDistributor: 'setData',
     dataTableOutlet: ['setData', 'checkData'],
     '$route.query.page'() {
+      window.location.reload()
+    },
+    '$route.query.keyword'() {
       window.location.reload()
     },
   },

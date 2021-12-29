@@ -34,7 +34,7 @@
       v-if="border !== 'red'"
       :class="
         isOpen
-          ? 'd-block bg-purple-200 shadow-md px-2.5 pb-2 py-2 mt-4 rounded-lg'
+          ? 'd-block bg-purple-200 shadow-md px-2.5 pb-2 py-2 mt-2 rounded-lg'
           : 'hidden'
       "
     >

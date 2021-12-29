@@ -312,13 +312,13 @@
                 <h3 class="text-xs uppercase">sisa penjualan</h3>
                 <p
                   :class="
-                    parseInt(data.pencapaian) < 0
+                    parseInt(data.diffconvert) < 0
                       ? 'text-red-500'
                       : 'text-black'
                   "
                   class="font-bold text-sm"
                 >
-                  {{ data.pencapaian }}
+                  Rp. {{ data.diffconvert }}
                 </p>
               </div>
             </Accordion>
