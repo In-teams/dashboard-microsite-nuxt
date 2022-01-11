@@ -7,8 +7,12 @@
       :data-table-distributor="dataTableDistributor"
       :data-table-outlet="dataTableOutlet"
       :data-page="dataPage"
+      :data-page-area="dataPageArea"
+      :data-page-outlet="dataPageOutlet"
+      @onFunc="getKeyword"
+      @onFuncArea="getKeywordArea"
+      @onFuncOutlet="getKeywordOutlet"
     />
-    {{ this.search }}
   </div>
 </template>
 
@@ -39,8 +43,17 @@ export default {
       dataPage: {
         data: [],
       },
+      dataPageArea: {
+        data: [],
+      },
+      dataPageOutlet: {
+        data: [],
+      },
       queryRoute: this.$route.query.page,
-      search: '',
+
+      keySearch: '',
+      keySearchArea: '',
+      keySearchOutlet: '',
     }
   },
   mounted() {
@@ -50,10 +63,18 @@ export default {
     this.getdataTableDistributor()
     this.getdataTableOutlet()
     this.getPage()
+    this.getPageArea()
+    this.getPageOutlet()
   },
   methods: {
-    getDataVal(val) {
-      this.search = val
+    getKeyword(keyword) {
+      this.keySearch = keyword
+    },
+    getKeywordArea(keyword) {
+      this.keySearchArea = keyword
+    },
+    getKeywordOutlet(keyword) {
+      this.keySearchOutlet = keyword
     },
     getdataTableWilayah() {
       axios
@@ -76,8 +97,16 @@ export default {
         .catch((err) => console.log(err))
     },
     getdataTableArea() {
+      const params = {
+        page: `${this.$route.query.page}`,
+        keyword: this.keySearchArea,
+      }
+      if (this.keySearchArea === '') {
+        delete params.keyword
+      }
       axios
         .get(`http://api.apolo.inosis.id/api/v1/sales/summary/area`, {
+          params,
           headers: {
             Authorization: localStorage.token,
           },
@@ -85,12 +114,28 @@ export default {
         .then((res) => (this.dataTableArea = res.data.data.desc))
         .catch((err) => console.log(err))
     },
+    getPageArea() {
+      axios
+        .get(`http://api.apolo.inosis.id/api/v1/sales/summary/area`, {
+          headers: {
+            Authorization: localStorage.token,
+          },
+        })
+        .then((res) => (this.dataPageArea = res.data.data.totalPage))
+        .catch((err) => console.log(err))
+    },
     getdataTableDistributor() {
+      const params = {
+        page: `${this.$route.query.page}`,
+        keyword: this.keySearch,
+      }
+      if (this.keySearch === '') {
+        delete params.keyword
+      }
+
       axios
         .get(`http://api.apolo.inosis.id/api/v1/sales/summary/distributor`, {
-          params: {
-            page: `${this.$route.query.page}`,
-          },
+          params,
           headers: {
             Authorization: localStorage.token,
           },
@@ -109,8 +154,16 @@ export default {
         .catch((err) => console.log(err))
     },
     getdataTableOutlet() {
+      const params = {
+        page: `${this.$route.query.page}`,
+        keyword: this.keySearchOutlet,
+      }
+      if (this.keySearchOutlet === '') {
+        delete params.keyword
+      }
       axios
         .get(`http://api.apolo.inosis.id/api/v1/sales/summary/outlet`, {
+          params,
           headers: {
             Authorization: localStorage.token,
           },
@@ -118,6 +171,21 @@ export default {
         .then((res) => (this.dataTableOutlet = res.data.data.desc))
         .catch((err) => console.log(err))
     },
+    getPageOutlet() {
+      axios
+        .get(`http://api.apolo.inosis.id/api/v1/sales/summary/outlet`, {
+          headers: {
+            Authorization: localStorage.token,
+          },
+        })
+        .then((res) => (this.dataPageOutlet = res.data.data.totalPage))
+        .catch((err) => console.log(err))
+    },
+  },
+  watch: {
+    keySearch: 'getdataTableDistributor',
+    keySearchArea: 'getdataTableArea',
+    keySearchOutlet: 'getdataTableOutlet',
   },
 }
 </script>

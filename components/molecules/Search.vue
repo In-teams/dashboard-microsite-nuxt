@@ -10,7 +10,7 @@ export default {
   components: { Input },
   methods: {
     keyword(value) {
-      this.$emit('getKeyword', value)
+      this.$emit('getKeywordDistributor', value)
     },
   },
 }

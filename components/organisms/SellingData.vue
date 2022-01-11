@@ -50,7 +50,7 @@
 
         <template #activeTab_2>
           <TableSellingData
-            v-for="data in dataArea"
+            v-for="data in dataTableArea"
             :key="data.area_name"
             :title="data.area_name"
             :title_id="data.area_id"
@@ -58,11 +58,20 @@
             :selisih="data.diffconvert"
             :aktual="data.aktualconvert"
             :pencapaian="data.percentage"
-          />
+          >
+          </TableSellingData>
+          <pagination
+            class="mb-4"
+            :records="+dataPageArea"
+            v-model="page"
+            :per-page="1"
+            @paginate="myCallback"
+          >
+          </pagination>
         </template>
         <template #activeTab_3>
           <TableSellingData
-            v-for="data in dataDistributor"
+            v-for="data in dataTableDistributor"
             :key="data.distributor"
             :title="data.distributor"
             :title_id="data.distributor_id"
@@ -76,9 +85,8 @@
             class="mb-4"
             :records="+dataPage"
             v-model="page"
-            :per-page="3"
+            :per-page="4"
             @paginate="myCallback"
-            :class="routes !== routes ? 'page-item.active page-link ' : ''"
           >
           </pagination>
         </template>
@@ -93,6 +101,14 @@
             :aktual="data.aktualconvert"
             :pencapaian="data.percentage"
           />
+          <pagination
+            class="mb-4"
+            :records="+dataPageOutlet"
+            v-model="page"
+            :per-page="104"
+            @paginate="myCallback"
+          >
+          </pagination>
         </template>
       </Tabs>
     </div>
@@ -126,12 +142,17 @@ export default {
     'dataTableDistributor',
     'dataTableOutlet',
     'dataPage',
+    'dataPageArea',
+    'dataPageOutlet',
+    'onFunc',
+    'onFuncArea',
+    'onFuncOutlet',
   ],
 
   data() {
     return {
       loading: true,
-      page: 1,
+      page: +this.$route.query.page,
       tabs: [
         {
           name: 'Wilayah',
@@ -158,16 +179,14 @@ export default {
       dataOutlet: [],
       routes: this.$route.query.page,
       values: '',
+      valuesArea: '',
+      valuesOutlet: '',
     }
   },
 
   methods: {
     getTab(value) {
       this.tabCategories = value
-    },
-
-    passData() {
-      this.$emit('sendData', this.values)
     },
 
     setData() {
@@ -200,35 +219,27 @@ export default {
     },
 
     search(input) {
-      this.values = input
+      if (this.$route.query.value === 'Distributor') {
+        this.values = input
+      } else if (this.$route.query.value === 'Area') {
+        this.valuesArea = input
+      } else if (this.$route.query.value === 'Outlet') {
+        this.valuesOutlet = input
+      }
+
       if (input.length < 0) {
         return []
       }
       if (this.$route.query.value === `Wilayah`) {
-        const data = this.dataTableWilayah.filter((data) => {
-          return data.wilayah.toLowerCase().includes(input.toLowerCase())
-        })
-        this.dataWilayah = data
+        this.dataWilayah = this.dataTableWilayah
       } else if (this.$route.query.value === `Region`) {
-        const data = this.dataTableRegion.filter((data) => {
-          return data.region.toLowerCase().includes(input.toLowerCase())
-        })
-        this.dataRegion = data
+        this.dataRegion = this.dataTableRegion
       } else if (this.$route.query.value === `Area`) {
-        const data = this.dataTableArea.filter((data) => {
-          return data.area_name.toLowerCase().includes(input.toLowerCase())
-        })
-        this.dataArea = data
+        this.dataArea = this.dataTableArea
       } else if (this.$route.query.value === `Distributor`) {
-        const data = this.dataTableDistributor.filter((data) => {
-          return data.distributor.toLowerCase().includes(input.toLowerCase())
-        })
-        this.dataDistributor = data
+        this.dataDistributor = this.dataTableDistributor
       } else if (this.$route.query.value === `Outlet`) {
-        const data = this.dataTableOutlet.filter((data) => {
-          return data.outlet_name.toLowerCase().includes(input.toLowerCase())
-        })
-        this.dataOutlet = data
+        this.dataOutlet = this.dataTableOutlet
       }
     },
 
@@ -237,6 +248,15 @@ export default {
         path: `${this.$route.fullPath}`,
         query: { keyword: this.values },
       })
+    },
+    getKeyword() {
+      this.$emit('onFunc', this.values)
+    },
+    getKeywordArea() {
+      this.$emit('onFuncArea', this.valuesArea)
+    },
+    getKeywordOutlet() {
+      this.$emit('onFuncOutlet', this.valuesOutlet)
     },
   },
   watch: {
@@ -251,6 +271,9 @@ export default {
     '$route.query.keyword'() {
       window.location.reload()
     },
+    values: 'getKeyword',
+    valuesArea: 'getKeywordArea',
+    valuesOutlet: 'getKeywordOutlet',
   },
 }
 </script>

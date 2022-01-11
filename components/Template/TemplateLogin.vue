@@ -117,46 +117,12 @@
               >
                 <div class="text-2xl font-bold text-center">Header text</div>
                 <span>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Optio, similique. Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Optio, similique. Lorem ipsum dolor sit amet
-                  consectetur adipisicing elit. Optio, similique. Lorem ipsum
-                  dolor sit amet consectetur adipisicing elit. Optio, similique.
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Optio, similique. Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Optio, similique. Lorem ipsum dolor sit amet
-                  consectetur adipisicing elit. Optio, similique. Lorem ipsum
-                  dolor sit amet consectetur adipisicing elit. Optio, similique.
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Optio, similique. Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Optio, similique. Lorem ipsum dolor sit amet
-                  consectetur adipisicing elit. Optio, similique. Lorem ipsum
-                  dolor sit amet consectetur adipisicing elit. Optio, similique.
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Optio, similique. Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Optio, similique. Lorem ipsum dolor sit amet
-                  consectetur adipisicing elit. Optio, similique. Lorem ipsum
-                  dolor sit amet consectetur adipisicing elit. Optio, similique.
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Optio, similique. Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Optio, similique. Lorem ipsum dolor sit amet
-                  consectetur adipisicing elit. Optio, similique. Lorem ipsum
-                  dolor sit amet consectetur adipisicing elit. Optio, similique.
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Optio, similique. Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Optio, similique. Lorem ipsum dolor sit amet
-                  consectetur adipisicing elit. Optio, similique. Lorem ipsum
-                  dolor sit amet consectetur adipisicing elit. Optio, similique.
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Optio, similique. Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Optio, similique. Lorem ipsum dolor sit amet
-                  consectetur adipisicing elit. Optio, similique. Lorem ipsum
-                  dolor sit amet consectetur adipisicing elit. Optio, similique.
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Optio, similique. Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Optio, similique. Lorem ipsum dolor sit amet
-                  consectetur adipisicing elit. Optio, similique. Lorem ipsum
-                  dolor sit amet consectetur adipisicing elit. Optio, similique.
+                  <img
+                    class="w-96 h-80"
+                    src="image/area-icon.png"
+                    alt=""
+                    srcset=""
+                  />
                   <button
                     class="absolute top-0 right-0 text-white w-1/5 bg-red-500"
                     @click="toggleModal = false"

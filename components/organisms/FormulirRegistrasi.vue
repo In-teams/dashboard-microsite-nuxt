@@ -85,14 +85,47 @@
         :subtitle="'Tekan foto di bawah ini untuk melihat detail'"
         :styleSubtitle="'text-xs'"
       />
-      <div class="grid grid-cols-12 gap-2">
+      <div
+        class="grid grid-cols-12 gap-2"
+        v-for="data in dataRegistrasi"
+        :key="data.id"
+      >
         <CardPhoto
+          @popupImage="togglePopup"
           class="col-span-6"
-          v-for="data in dataRegistrasi"
-          :key="data.id"
           :tanggal-upload="data.tgl_upload"
           :img="data.filename"
-        />
+        >
+        </CardPhoto>
+        <div
+          v-if="modal == false"
+          class="
+            fixed
+            inset-0
+            flex
+            justify-center
+            items-center
+            z-50
+            min-h-screen
+            max-h-full
+          "
+        >
+          <div class="relative mx-auto max-w-2xl h-screen overflow-y-auto">
+            <div class="bg-white h-full rounded shadow-2xl flex flex-col">
+              <span>
+                <div class="my-28">
+                  <img class="w-screen h-full" :src="data.filename" alt="" />
+                </div>
+                <button
+                  @click="modal = true"
+                  class="absolute top-0 right-0 text-white w-1/5 bg-red-500"
+                >
+                  X
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <BottomNav />
@@ -121,9 +154,13 @@ export default {
   data() {
     return {
       images: null,
+      modal: true,
     }
   },
   methods: {
+    togglePopup() {
+      this.modal = !this.modal
+    },
     uploadFile(event) {
       this.images = event.target.files[0]
       this.createBase64Image(this.images)
