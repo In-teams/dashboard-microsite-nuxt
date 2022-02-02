@@ -63,7 +63,7 @@ export default {
   methods: {
     async getdataTableNational() {
       const result = await axios.get(
-        `http://api.apolo.inosis.id/api/v1/sales`,
+        `https://api.apolo.inosis.id/api/v1/sales`,
         {
           headers: {
             Authorization: localStorage.token,
@@ -77,7 +77,7 @@ export default {
     },
     getdataTableCluster() {
       axios
-        .get(`http://api.apolo.inosis.id/api/v1/sales/summary/achieve`, {
+        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/achieve`, {
           headers: {
             Authorization: localStorage.token,
           },
@@ -87,7 +87,7 @@ export default {
     },
     getdataTableRegion() {
       axios
-        .get(`http://api.apolo.inosis.id/api/v1/sales/summary/region`, {
+        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/region`, {
           headers: {
             Authorization: localStorage.token,
           },
@@ -97,7 +97,7 @@ export default {
     },
     getdataTableWilayah() {
       axios
-        .get(`http://api.apolo.inosis.id/api/v1/sales/summary/hr`, {
+        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/hr`, {
           headers: {
             Authorization: localStorage.token,
           },
@@ -107,7 +107,7 @@ export default {
     },
     getdataTableArea() {
       axios
-        .get(`http://api.apolo.inosis.id/api/v1/sales/summary/area`, {
+        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/area`, {
           headers: {
             Authorization: localStorage.token,
           },
@@ -117,7 +117,7 @@ export default {
     },
     getdataTableDistributor() {
       axios
-        .get(`http://api.apolo.inosis.id/api/v1/sales/summary/distributor`, {
+        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/distributor`, {
           headers: {
             Authorization: localStorage.token,
           },
@@ -127,7 +127,7 @@ export default {
     },
     getdataTableOutlet() {
       axios
-        .get(`http://api.apolo.inosis.id/api/v1/sales/summary/outlet`, {
+        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/outlet`, {
           headers: {
             Authorization: localStorage.token,
           },
@@ -137,7 +137,7 @@ export default {
     },
     getdataTableRegistrasi() {
       axios
-        .get(`http://api.apolo.inosis.id/api/v1/registration/summary/level`, {
+        .get(`https://api.apolo.inosis.id/api/v1/registration/summary/level`, {
           headers: {
             Authorization: localStorage.token,
           },

@@ -29,7 +29,7 @@ export default {
   methods: {
     getdataTableQuarter() {
       axios
-        .get(`http://api.apolo.inosis.id/api/v1/sales/summary/sem`, {
+        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/sem`, {
           headers: {
             Authorization: localStorage.token,
           },
@@ -39,7 +39,7 @@ export default {
     },
     getdataTableTahun() {
       axios
-        .get(`http://api.apolo.inosis.id/api/v1/sales/summary/quarter`, {
+        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/quarter`, {
           headers: {
             Authorization: localStorage.token,
           },

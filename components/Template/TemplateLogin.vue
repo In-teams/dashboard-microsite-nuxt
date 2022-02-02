@@ -171,7 +171,7 @@ export default {
   methods: {
     getLogin() {
       axios
-        .post(`http://api.apolo.inosis.id/api/v1/auth/`, {
+        .post(`https://api.apolo.inosis.id/api/v1/auth/`, {
           username: this.username,
           password: this.password,
         })

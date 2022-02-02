@@ -46,7 +46,7 @@ export default {
   methods: {
     getTableOutlet() {
       axios
-        .get(`http://api.apolo.inosis.id/api/v1/sales/summary/outlet`, {
+        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/outlet`, {
           params: {
             outlet_id: this.$route.params.name,
           },
@@ -59,7 +59,7 @@ export default {
     },
     getTableQuarter() {
       axios
-        .get(`http://api.apolo.inosis.id/api/v1/sales/summary/sem`, {
+        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/sem`, {
           params: {
             outlet_id: this.$route.params.name,
           },
@@ -72,7 +72,7 @@ export default {
     },
     getTableMonth() {
       axios
-        .get(`http://api.apolo.inosis.id/api/v1/sales/summary/quarter`, {
+        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/quarter`, {
           params: {
             outlet_id: this.$route.params.name,
           },
@@ -85,7 +85,7 @@ export default {
     },
     getTablePoin() {
       axios
-        .get(`http://api.apolo.inosis.id/api/v1/redeem/summary/month`, {
+        .get(`https://api.apolo.inosis.id/api/v1/redeem/summary/month`, {
           params: {
             outlet_id: this.$route.params.name,
           },
@@ -98,7 +98,7 @@ export default {
     },
     getTablePoinQuarter() {
       axios
-        .get(`http://api.apolo.inosis.id/api/v1/redeem/summary/quarter`, {
+        .get(`https://api.apolo.inosis.id/api/v1/redeem/summary/quarter`, {
           params: {
             outlet_id: this.$route.params.name,
           },

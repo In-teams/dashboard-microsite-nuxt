@@ -56,7 +56,7 @@ export default {
   methods: {
     getTableRingkasan() {
       axios
-        .get(`http://api.apolo.inosis.id/api/v1/sales/summary/hr`, {
+        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/hr`, {
           params: {
             wilayah_id: this.$route.params.name,
           },
@@ -69,7 +69,7 @@ export default {
     },
     getTablePencapaian() {
       axios
-        .get(`http://api.apolo.inosis.id/api/v1/sales/summary/achieve`, {
+        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/achieve`, {
           params: {
             wilayah_id: this.$route.params.name,
           },
@@ -82,7 +82,7 @@ export default {
     },
     getTableRegion() {
       axios
-        .get(`http://api.apolo.inosis.id/api/v1/sales/summary/region`, {
+        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/region`, {
           params: {
             wilayah_id: this.$route.params.name,
           },
@@ -95,7 +95,7 @@ export default {
     },
     getTableDistributor() {
       axios
-        .get(`http://api.apolo.inosis.id/api/v1/sales/summary/distributor`, {
+        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/distributor`, {
           params: {
             wilayah_id: this.$route.params.name,
           },
@@ -108,7 +108,7 @@ export default {
     },
     getTableArea() {
       axios
-        .get(`http://api.apolo.inosis.id/api/v1/sales/summary/area`, {
+        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/area`, {
           params: {
             wilayah_id: this.$route.params.name,
           },
@@ -121,7 +121,7 @@ export default {
     },
     getTableOutlet() {
       axios
-        .get(`http://api.apolo.inosis.id/api/v1/sales/summary/outlet`, {
+        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/outlet`, {
           params: {
             wilayah_id: this.$route.params.name,
           },
@@ -134,7 +134,7 @@ export default {
     },
     getdataTableRegistrasi() {
       axios
-        .get(`http://api.apolo.inosis.id/api/v1/registration/summary/level`, {
+        .get(`https://api.apolo.inosis.id/api/v1/registration/summary/level`, {
           params: {
             wilayah_id: this.$route.params.name,
           },
