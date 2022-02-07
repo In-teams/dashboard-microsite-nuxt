@@ -1,9 +1,9 @@
 <template>
   <div>
-    <Loading
+    <!-- <Loading
       class="fixed min-h-full min-w-full bg-fixed bg-purple-900 z-50 top-0"
       v-if="loading"
-    />
+    /> -->
     <Navbar :nav-title="'DATA PENJUALAN PER WILAYAH'" />
     <div class="px-2 bg-gray-100">
       <div class="mt-20 mb-8">
@@ -13,56 +13,30 @@
           placeholder="Pencarian"
           :search="search"
         ></autocomplete>
-        <!-- <button
-          class="border bg-red-500 text-center"
-          @click="sendKeyword"
-          type=" button"
-        >
-          click
-        </button> -->
       </div>
-
       <Tabs @click="addParams" @getTab="getTab" :tabs="tabs">
         <template #activeTab_0>
-          <TableSellingData
-            v-for="data in dataWilayah"
-            :key="data.wilayah"
-            :title="data.wilayah"
-            :target="data.targetconvert"
-            :aktual="data.aktualconvert"
-            :pencapaian="data.percentage"
-            :selisih="data.diffconvert"
-            :title_id="data.head_region_id"
+          <TabSellingData
+            v-if="$route.query.value == 'Wilayah'"
+            :hirarki="'hr'"
           />
         </template>
         <template #activeTab_1>
-          <TableSellingData
-            v-for="data in dataRegion"
-            :key="data.region"
-            :title="data.region"
-            :title_id="data.region_id"
-            :target="data.targetconvert"
-            :selisih="data.diffconvert"
-            :aktual="data.aktualconvert"
-            :pencapaian="data.percentage"
+          <TabSellingData
+            v-if="$route.query.value == 'Region'"
+            :hirarki="'region'"
           />
         </template>
 
         <template #activeTab_2>
-          <TableSellingData
-            v-for="data in dataTableArea"
-            :key="data.area_name"
-            :title="data.area_name"
-            :title_id="data.area_id"
-            :target="data.targetconvert"
-            :selisih="data.diffconvert"
-            :aktual="data.aktualconvert"
-            :pencapaian="data.percentage"
-          >
-          </TableSellingData>
+          <TabSellingData
+            v-if="$route.query.value == 'Area'"
+            :hirarki="'area'"
+          />
+
           <pagination
             class="mb-4"
-            :records="+dataPageArea"
+            :records="5"
             v-model="page"
             :per-page="1"
             @paginate="myCallback"
@@ -70,42 +44,33 @@
           </pagination>
         </template>
         <template #activeTab_3>
-          <TableSellingData
-            v-for="data in dataTableDistributor"
-            :key="data.distributor"
-            :title="data.distributor"
-            :title_id="data.distributor_id"
-            :target="data.targetconvert"
-            :selisih="data.diffconvert"
-            :aktual="data.aktualconvert"
-            :pencapaian="data.percentage"
-          >
-          </TableSellingData>
+          <TabSellingData
+            v-if="$route.query.value == 'Distributor'"
+            :hirarki="'distributor'"
+          />
+
           <pagination
             class="mb-4"
-            :records="+dataPage"
+            :records="5"
             v-model="page"
-            :per-page="4"
+            :per-page="1"
             @paginate="myCallback"
           >
           </pagination>
         </template>
         <template #activeTab_4>
-          <TableSellingData
-            v-for="data in dataOutlet"
-            :key="data.outlet_name"
-            :title="data.outlet_name"
-            :title_id="data.outlet_id"
-            :target="data.targetconvert"
-            :selisih="data.diffconvert"
-            :aktual="data.aktualconvert"
-            :pencapaian="data.percentage"
+          <TabSellingData
+            v-if="$route.query.value == 'Outlet'"
+            :hirarki="'outlet'"
+            :keys="values"
+            @sendTable="sendTable"
           />
+
           <pagination
             class="mb-4"
-            :records="+dataPageOutlet"
             v-model="page"
-            :per-page="104"
+            :records="5"
+            :per-page="1"
             @paginate="myCallback"
           >
           </pagination>
@@ -120,34 +85,23 @@
 <script>
 import Autocomplete from '@trevoreyre/autocomplete-vue'
 import Pagination from 'vue-pagination-2'
-import Loading from '../molecules/Loading.vue'
+// import Loading from '../molecules/Loading.vue'
 import BottomNav from '../molecules/BottomNav.vue'
-import TableSellingData from '../molecules/TableSellingData.vue'
+// import TableSellingData from '../molecules/TableSellingData.vue'
+import TabSellingData from '../molecules/TabSellingData.vue'
 import Tabs from '../molecules/Tabs.vue'
 import Navbar from '../molecules/Navbar.vue'
 export default {
   components: {
-    Loading,
+    TabSellingData,
+    // Loading,
     Navbar,
-    TableSellingData,
+    // TableSellingData,
     Tabs,
     BottomNav,
     Pagination,
     Autocomplete,
   },
-  props: [
-    'dataTableWilayah',
-    'dataTableRegion',
-    'dataTableArea',
-    'dataTableDistributor',
-    'dataTableOutlet',
-    'dataPage',
-    'dataPageArea',
-    'dataPageOutlet',
-    'onFunc',
-    'onFuncArea',
-    'onFuncOutlet',
-  ],
 
   data() {
     return {
@@ -181,6 +135,7 @@ export default {
       values: '',
       valuesArea: '',
       valuesOutlet: '',
+      getTables: [],
     }
   },
 
@@ -189,20 +144,16 @@ export default {
       this.tabCategories = value
     },
 
+    sendTable(value) {
+      this.getTables = value
+    },
+
     setData() {
       this.dataWilayah = this.dataTableWilayah
       this.dataRegion = this.dataTableRegion
       this.dataArea = this.dataTableArea
       this.dataDistributor = this.dataTableDistributor
       this.dataOutlet = this.dataTableOutlet
-    },
-
-    async checkData() {
-      this.loading = true
-      const res = await this.dataTableOutlet
-      if (res) {
-        this.loading = false
-      }
     },
 
     addParams(value) {
@@ -219,27 +170,19 @@ export default {
     },
 
     search(input) {
-      if (this.$route.query.value === 'Distributor') {
+      if (this.$route.query.value === 'Outlet') {
         this.values = input
-      } else if (this.$route.query.value === 'Area') {
-        this.valuesArea = input
-      } else if (this.$route.query.value === 'Outlet') {
-        this.valuesOutlet = input
       }
 
       if (input.length < 0) {
         return []
       }
-      if (this.$route.query.value === `Wilayah`) {
-        this.dataWilayah = this.dataTableWilayah
-      } else if (this.$route.query.value === `Region`) {
-        this.dataRegion = this.dataTableRegion
-      } else if (this.$route.query.value === `Area`) {
-        this.dataArea = this.dataTableArea
-      } else if (this.$route.query.value === `Distributor`) {
-        this.dataDistributor = this.dataTableDistributor
-      } else if (this.$route.query.value === `Outlet`) {
-        this.dataOutlet = this.dataTableOutlet
+      if (this.$route.query.value === 'Outlet') {
+        return this.getTables.filter((outlet) => {
+          return outlet.outlet_name
+            .toLowerCase()
+            .startsWith(input.toLowerCase())
+        })
       }
     },
 
@@ -249,31 +192,19 @@ export default {
         query: { keyword: this.values },
       })
     },
-    getKeyword() {
-      this.$emit('onFunc', this.values)
-    },
-    getKeywordArea() {
-      this.$emit('onFuncArea', this.valuesArea)
-    },
-    getKeywordOutlet() {
-      this.$emit('onFuncOutlet', this.valuesOutlet)
-    },
   },
   watch: {
     dataTableWilayah: 'setData',
     dataTableRegion: 'setData',
     dataTableArea: 'setData',
     dataTableDistributor: 'setData',
-    dataTableOutlet: ['setData', 'checkData'],
+    dataOutlet: ['setData'],
     '$route.query.page'() {
       window.location.reload()
     },
     '$route.query.keyword'() {
       window.location.reload()
     },
-    values: 'getKeyword',
-    valuesArea: 'getKeywordArea',
-    valuesOutlet: 'getKeywordOutlet',
   },
 }
 </script>
