@@ -7,12 +7,20 @@
     <Navbar :nav-title="'DATA PENJUALAN PER WILAYAH'" />
     <div class="px-2 bg-gray-100">
       <div class="mt-20 mb-8">
-        <autocomplete
-          class="shadow-sm border py-2 rounded-md"
-          style="z-index: -999"
-          placeholder="Pencarian"
-          :search="search"
-        ></autocomplete>
+        <input
+          class="
+            drop-shadow-2xl
+            border-2 border-gray-200
+            w-12
+            h-12
+            focus:outline-none focus:shadow-outline
+            px-4
+          "
+          type="search"
+          name=""
+          placeholder=" Pencarian"
+          id=""
+        />
       </div>
       <Tabs @click="addParams" @getTab="getTab" :tabs="tabs">
         <template #activeTab_0>
@@ -83,7 +91,6 @@
 </template>
 
 <script>
-import Autocomplete from '@trevoreyre/autocomplete-vue'
 import Pagination from 'vue-pagination-2'
 // import Loading from '../molecules/Loading.vue'
 import BottomNav from '../molecules/BottomNav.vue'
@@ -100,7 +107,6 @@ export default {
     Tabs,
     BottomNav,
     Pagination,
-    Autocomplete,
   },
 
   data() {
@@ -167,6 +173,21 @@ export default {
         path: `${this.$route.fullPath}`,
         query: { page },
       })
+    },
+
+    onChange(value) {
+      if (value && value.length < 0) {
+        this.getTables = this.dataOutlet.filter((i) => {
+          const val = value.toLowerCase()
+          const title = i.outlet_name.toLowerCase()
+          if (val && title.indexOf(val) > 1) {
+            return true
+          }
+          return false
+        })
+      } else {
+        this.getTables = this.dataOutlet
+      }
     },
 
     search(input) {
