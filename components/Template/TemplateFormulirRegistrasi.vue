@@ -23,7 +23,7 @@ export default {
     getDataRegistrasi() {
       axios
         .get(
-          `${process.env.BASE_URL}/registration/file/${this.$route.params.name}`,
+          `https://api.apolo.inosis.id/api/v1/registration/file/${this.$route.params.name}`,
           {
             headers: {
               Authorization:

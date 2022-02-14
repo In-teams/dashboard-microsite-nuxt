@@ -198,8 +198,8 @@ export default {
             icon: 'Success',
           }).then((result) => {
             if (result.value) {
-              this.images = null
               window.location.reload()
+              this.images = null
             }
           })
         })
@@ -209,8 +209,8 @@ export default {
             icon: 'fail',
           }).then((result) => {
             if (result.value) {
-              this.images = null
               window.location.reload()
+              this.images = null
             }
           })
         })

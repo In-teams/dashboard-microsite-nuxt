@@ -1,5 +1,8 @@
 <template>
-  <div class="bg-purple-900 fixed w-full top-0">
+  <div
+    class="block fixed mx-auto inset-x-0 top-0 z-10 bg-purple-900"
+    style="min-width: 340px; max-width: 640px"
+  >
     <div class="flex py-3 px-4">
       <a @click="to" class="mr-auto self-center">
         <img class="w-8" src="~/assets/image/left_arrow.svg" alt="" />

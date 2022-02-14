@@ -1,9 +1,10 @@
 <template>
   <div>
-    <Loading
-      class="fixed min-h-full min-w-full bg-fixed bg-purple-900 z-50 top-0"
+    <!-- <Loading
+      style="min-width: 340px; max-width: 640px"
+      class="fixed min-h-full w-full bg-fixed bg-purple-900 z-50 top-0"
       v-if="loading"
-    />
+    /> -->
     <Navbar :nav-title="'RINGKASAN DATA PENJUALAN'" />
     <div class="mt-20 px-2">
       <TableFourColoumn
@@ -11,7 +12,9 @@
         :style-header="'px-2 py-3 bg-purple-900 rounded-t-2xl'"
       >
         <template #trow>
+             <Skeleton v-if="isLoading" />
           <Accordion
+          v-else
             class="p-2"
             v-for="data in dataTableQuarter"
             :key="data.kuartal"
@@ -48,7 +51,9 @@
           :style-header="'px-2 py-3 bg-purple-900 rounded-t-2xl'"
         >
           <template #trow>
+               <Skeleton v-if="isLoading" />
             <Accordion
+            v-else
               class="p-2"
               v-for="data in dataTableTahun"
               :key="data.bulan"
@@ -86,14 +91,14 @@
 </template>
 
 <script>
-import Loading from '../molecules/Loading.vue'
+import Skeleton from '../atoms/Skeleton.vue'
 import BottomNav from '../molecules/BottomNav.vue'
 import Accordion from '../molecules/Accordion.vue'
 import TableFourColoumn from '../molecules/TableFourColoumn.vue'
 import Navbar from '../molecules/Navbar.vue'
 export default {
   components: {
-    Loading,
+   Skeleton,
     Accordion,
     Navbar,
     TableFourColoumn,
@@ -102,17 +107,17 @@ export default {
   props: ['dataTableQuarter', 'dataTableTahun'],
   data() {
     return {
-      loading: true,
+      isLoading: true,
       listThead: ['QUARTER', 'TARGET', 'AKTUAL', '%'],
       listTheadBulan: ['BULAN', 'TARGET', 'AKTUAL', '%'],
     }
   },
   methods: {
     async checkData() {
-      this.loading = true
+      this.isLoading = true
       const res = await this.dataTableTahun
       if (res) {
-        this.loading = false
+        this.isLoading = false
       }
     },
   },

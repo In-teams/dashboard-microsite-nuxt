@@ -1,27 +1,12 @@
 <template>
   <div>
     <!-- <Loading
-      class="fixed min-h-full min-w-full bg-fixed bg-purple-900 z-50 top-0"
+      class="fixed min-h-full w-full bg-fixed bg-purple-900 z-50 top-0"
       v-if="loading"
     /> -->
     <Navbar :nav-title="'DATA PENJUALAN PER WILAYAH'" />
     <div class="px-2 bg-gray-100">
-      <div class="mt-20 mb-8">
-        <input
-          class="
-            drop-shadow-2xl
-            border-2 border-gray-200
-            w-12
-            h-12
-            focus:outline-none focus:shadow-outline
-            px-4
-          "
-          type="search"
-          name=""
-          placeholder=" Pencarian"
-          id=""
-        />
-      </div>
+      <div class="mt-20 mb-8"></div>
       <Tabs @click="addParams" @getTab="getTab" :tabs="tabs">
         <template #activeTab_0>
           <TabSellingData
@@ -173,21 +158,6 @@ export default {
         path: `${this.$route.fullPath}`,
         query: { page },
       })
-    },
-
-    onChange(value) {
-      if (value && value.length < 0) {
-        this.getTables = this.dataOutlet.filter((i) => {
-          const val = value.toLowerCase()
-          const title = i.outlet_name.toLowerCase()
-          if (val && title.indexOf(val) > 1) {
-            return true
-          }
-          return false
-        })
-      } else {
-        this.getTables = this.dataOutlet
-      }
     },
 
     search(input) {

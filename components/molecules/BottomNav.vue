@@ -3,7 +3,8 @@
     <!-- <section id="bottom-navigation" class="md:hidden block fixed inset-x-0 bottom-0 z-10 bg-white shadow"> // if shown only tablet/mobile-->
     <section
       id="bottom-navigation"
-      class="block fixed inset-x-0 bottom-0 z-10 bg-white shadow"
+      style="min-width: 340px; max-width: 640px"
+      class="block fixed mx-auto inset-x-0 bottom-0 z-10 bg-white shadow"
     >
       <div id="tabs " class="flex">
         <a

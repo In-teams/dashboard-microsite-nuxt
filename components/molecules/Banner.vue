@@ -1,6 +1,7 @@
 <template>
   <div
-    class="my-auto mx-auto max-h-screen h-screen bg-purple-900 xl:w-2/4 fixed"
+    class="my-auto mx-auto max-h-screen h-screen bg-purple-900 fixed"
+    style="min-width: 340px; max-width: 640px"
   >
     <Logo :src="'https://i.ibb.co/BZD3bjx/Group3221.png'" />
     <Title

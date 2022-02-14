@@ -71,6 +71,7 @@ export default {
         }
       )
       this.dataTableNational = result.data.data
+
       return result
       // .then((res) => (this.dataTableNational = res.data.data))
       // .catch((err) => console.log(err))
