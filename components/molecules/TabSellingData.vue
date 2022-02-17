@@ -64,9 +64,8 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 import TableSellingData from '../molecules/TableSellingData.vue'
+
 export default {
   components: {
     TableSellingData,
@@ -96,16 +95,15 @@ export default {
       // if (this.keySearch === '') {
       //   delete params.keyword
       // }
-      axios
-        .get(
-          `https://api.apolo.v2.inosis.id/api/v2/sales/summary/${this.hirarki}`,
-          {
-            headers: {
-              Authorization: localStorage.token,
-            },
+      this.$axios.$get(
+        `/api/v2/sales/summary/${this.hirarki}`,
+        {
+          headers: {
+            Authorization: localStorage.token
           }
-        )
-        .then((res) => (this.items = res.data.data.desc))
+        }
+      )
+        .then((res) => (this.items = res.data.desc))
         .catch((err) => console.log(err))
     },
   },
