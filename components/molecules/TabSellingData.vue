@@ -102,9 +102,9 @@
 </template>
 
 <script>
-import axios from 'axios'
 import Spinner from '../atoms/Spinner'
 import TableSellingData from '../molecules/TableSellingData.vue'
+
 export default {
   components: {
     TableSellingData,
@@ -145,19 +145,18 @@ export default {
         this.isLoading = true
       }
 
-      axios
-        .get(
-          `https://api.apolo.v2.inosis.id/api/v2/sales/summary/${this.hirarki}`,
-          {
+      this.$axios.$get(
+        `/api/v2/sales/summary/${this.hirarki}`,
+        {
             params,
-            headers: {
-              Authorization: localStorage.token,
-            },
+          headers: {
+            Authorization: localStorage.token
           }
-        )
+        }
+      )
         .then((res) => {
           this.isLoading = false
-          this.items = res.data.data.desc
+          this.items = res.data.desc
         })
         .catch(() => (this.loading = false))
     },

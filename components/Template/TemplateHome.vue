@@ -15,8 +15,9 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 import Home from '../organisms/Home.vue'
+
 export default {
   components: {
     Home,
@@ -62,88 +63,80 @@ export default {
   },
   methods: {
     async getdataTableNational() {
-      const result = await axios.get(
-        `https://api.apolo.inosis.id/api/v1/sales`,
+      const result = await this.$axios.$get(
+        `/api/v1/sales`,
         {
           headers: {
-            Authorization: localStorage.token,
-          },
+            Authorization: localStorage.token
+          }
         }
       )
-      this.dataTableNational = result.data.data
-
+      this.dataTableNational = result.data
       return result
       // .then((res) => (this.dataTableNational = res.data.data))
       // .catch((err) => console.log(err))
     },
     getdataTableCluster() {
-      axios
-        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/achieve`, {
-          headers: {
-            Authorization: localStorage.token,
-          },
-        })
-        .then((res) => (this.dataTableCluster = res.data.data))
+      this.$axios.$get(`/api/v2/sales/summary/achieve`, {
+        headers: {
+          Authorization: localStorage.token
+        }
+      })
+        .then((res) => (this.dataTableCluster = res.data))
         .catch((err) => console.log(err))
     },
     getdataTableRegion() {
-      axios
-        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/region`, {
-          headers: {
-            Authorization: localStorage.token,
-          },
-        })
-        .then((res) => (this.dataTableRegion = res.data.data.desc))
+      this.$axios.$get(`/api/v2/sales/summary/region`, {
+        headers: {
+          Authorization: localStorage.token
+        }
+      })
+        .then((res) => (this.dataTableRegion = res.data.desc))
         .catch((err) => console.log(err))
     },
     getdataTableWilayah() {
-      axios
-        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/hr`, {
-          headers: {
-            Authorization: localStorage.token,
-          },
-        })
-        .then((res) => (this.dataTableWilayah = res.data.data.desc))
+      this.$axios.$get(`/api/v2/sales/summary/hr`, {
+        headers: {
+          Authorization: localStorage.token
+        }
+      })
+        .then((res) => (this.dataTableWilayah = res.data.desc))
         .catch((err) => console.log(err))
     },
     getdataTableArea() {
-      axios
-        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/area`, {
-          headers: {
-            Authorization: localStorage.token,
-          },
-        })
-        .then((res) => (this.dataTableArea = res.data.data.desc))
+      this.$axios.$get(`/api/v2/sales/summary/area`, {
+        headers: {
+          Authorization: localStorage.token
+        }
+      })
+        .then((res) => (this.dataTableArea = res.data.desc))
         .catch((err) => console.log(err))
     },
     getdataTableDistributor() {
-      axios
-        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/distributor`, {
-          headers: {
-            Authorization: localStorage.token,
-          },
-        })
-        .then((res) => (this.dataTableDistributor = res.data.data.desc))
+      this.$axios.$get(`/api/v2/sales/summary/distributor`, {
+        headers: {
+          Authorization: localStorage.token
+        }
+      })
+        .then((res) => (this.dataTableDistributor = res.data.desc))
         .catch((err) => console.log(err))
     },
     getdataTableOutlet() {
-      axios
-        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/outlet`, {
-          headers: {
-            Authorization: localStorage.token,
-          },
-        })
-        .then((res) => (this.dataTableOutlet = res.data.data.desc))
+      this.$axios.$get(`/api/v2/sales/summary/outlet`, {
+        headers: {
+          Authorization: localStorage.token
+        }
+      })
+        .then((res) => (this.dataTableOutlet = res.data.desc))
         .catch((err) => console.log(err))
     },
     getdataTableRegistrasi() {
-      axios
-        .get(`https://api.apolo.inosis.id/api/v1/registration/summary/level`, {
-          headers: {
-            Authorization: localStorage.token,
-          },
-        })
-        .then((res) => (this.dataTableRegistrasi = res.data.data))
+      this.$axios.$get(`/api/v1/registration/summary/level`, {
+        headers: {
+          Authorization: localStorage.token
+        }
+      })
+        .then((res) => (this.dataTableRegistrasi = res.data))
         .catch((err) => console.log(err))
     },
   },
