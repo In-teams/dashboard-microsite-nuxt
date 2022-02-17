@@ -1,11 +1,12 @@
 <template>
-  <div>
+  <div class="mb-4">
     <div v-if="this.$route.query.value == 'Wilayah'">
+      <Spinner v-if="isLoading" />
       <TableSellingData
         v-for="item in items"
         :key="item.wilayah"
         :title="item.wilayah"
-        :title_id="item.wilayah_head_id"
+        :title_id="item.head_region_id"
         :target="item.targetconvert"
         :selisih="item.diffconvert"
         :aktual="item.aktualconvert"
@@ -13,6 +14,7 @@
       />
     </div>
     <div v-if="this.$route.query.value == 'Region'">
+      <Spinner v-if="isLoading" />
       <TableSellingData
         v-for="item in items"
         :key="item.region_name"
@@ -25,6 +27,7 @@
       />
     </div>
     <div v-if="this.$route.query.value == 'Area'">
+      <Spinner v-if="isLoading" />
       <TableSellingData
         v-for="item in items"
         :key="item.area_name"
@@ -37,7 +40,24 @@
       />
     </div>
     <div v-if="this.$route.query.value == 'Distributor'">
+      <div class="mt-6 mb-8">
+        <input
+          v-model="search"
+          class="
+            drop-shadow-2xl
+            border-2 border-gray-200
+            w-12
+            h-12
+            focus:outline-none focus:shadow-outline
+            px-4
+          "
+          type="search"
+          placeholder=" Pencarian"
+        />
+      </div>
+      <Spinner v-if="isLoading" />
       <TableSellingData
+        v-else
         v-for="item in items"
         :key="item.distributor_name"
         :title="item.distributor_name"
@@ -49,9 +69,27 @@
       />
     </div>
     <div v-if="this.$route.query.value == 'Outlet'">
+      <div class="mt-6 mb-4">
+        <input
+          v-model="search"
+          class="
+            drop-shadow-2xl
+            border-2 border-gray-200
+            w-12
+            h-12
+            focus:outline-none focus:shadow-outline
+            px-4
+          "
+          type="search"
+          placeholder=" Pencarian"
+        />
+      </div>
+
+      <Spinner v-if="isLoading" />
       <TableSellingData
-        v-for="item in items"
-        :key="item.outlet_name"
+        v-else
+        v-for="(item, index) in items"
+        :key="index"
         :title="item.outlet_name"
         :title_id="item.outlet_id"
         :target="item.targetconvert"
@@ -64,17 +102,21 @@
 </template>
 
 <script>
+import Spinner from '../atoms/Spinner'
 import TableSellingData from '../molecules/TableSellingData.vue'
 
 export default {
   components: {
     TableSellingData,
+    Spinner,
   },
 
   data() {
     return {
-      keySearch: this.keys,
+      search: '',
       items: [],
+      isLoading: true,
+      awaitSearch: false,
     }
   },
   props: ['hirarki', 'keys'],
@@ -82,34 +124,56 @@ export default {
     this.getdataTable()
   },
 
-  methods: {
-    sendTable() {
-      this.$emit('sendTable', this.items)
-    },
+  computed: {
+    // filteredOutlet() {
+    //   return this.items.filter((outlet) =>
+    //     outlet.outlet_name.toLowerCase().includes(this.search.toLowerCase())
+    //   )
+    // },
+  },
 
+  methods: {
     getdataTable() {
-      // const params = {
-      //   page: `${this.$route.query.page}`,
-      //   keyword: this.keySearch,
-      // }
-      // if (this.keySearch === '') {
-      //   delete params.keyword
-      // }
+      const params = {
+        page: `${this.$route.query.page}`,
+        keyword: this.search,
+      }
+      if (this.search === '') {
+        delete params.keyword
+      } else if (this.search) {
+        delete params.page
+        this.isLoading = true
+      }
+
       this.$axios.$get(
         `/api/v2/sales/summary/${this.hirarki}`,
         {
+            params,
           headers: {
             Authorization: localStorage.token
           }
         }
       )
-        .then((res) => (this.items = res.data.desc))
-        .catch((err) => console.log(err))
+        .then((res) => {
+          this.isLoading = false
+          this.items = res.data.desc
+        })
+        .catch(() => (this.loading = false))
     },
   },
   watch: {
-    keySearch: ['getdataTable'],
-    items: ['sendTable'],
+    search: {
+      handler() {
+        if (!this.awaitSearch) {
+          setTimeout(() => {
+            this.awaitSearch = false
+            this.isLoading = true
+            this.getdataTable()
+          }, 1000)
+        }
+        this.awaitSearch = true
+      },
+    },
   },
 }
 </script>

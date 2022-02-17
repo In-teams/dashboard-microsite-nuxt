@@ -3,7 +3,10 @@
     <slot name="tableTitle"></slot>
     <slot name="tableContent"></slot>
 
-    <div class="grid grid-cols-3 gap-1 mx-auto text-center px-2 py-2">
+    <div
+      class="grid grid-cols-3 gap-1 mx-auto text-center px-2 py-2"
+      v-if="!isLoading"
+    >
       <Title
         :style-title="'text-xxs text-gray-400 uppercase'"
         :title="'Poin Perolehan'"
@@ -39,7 +42,7 @@
 import Paragraph from '../atoms/Paragraph.vue'
 import Title from '../atoms/Title.vue'
 export default {
-  props: ['poinPerolehan', 'poinPenukaran', 'sisaPoin'],
+  props: ['poinPerolehan', 'poinPenukaran', 'sisaPoin', 'isLoading'],
   components: {
     Title,
     Paragraph,

@@ -1,9 +1,10 @@
 <template>
   <div>
-    <Loading
-      class="fixed min-h-full min-w-full bg-fixed bg-purple-900 z-50"
+    <!-- <Loading
+      style="min-width: 340px; max-width: 640px"
+      class="fixed min-h-full w-full bg-fixed bg-purple-900 z-50"
       v-if="loading"
-    />
+    /> -->
     <Banner />
 
     <CardWithContent>
@@ -37,6 +38,7 @@
           :poin-perolehan="dataTableNational.achieveconvert"
           :poin-penukaran="dataTableNational.redeemconvert"
           :sisa-poin="dataTableNational.diff_poinconvert"
+          :isLoading="isLoading"
         >
           <template #tableTitle>
             <div class="px-2 py-3 bg-red-600 rounded-t-2xl p-20">
@@ -48,8 +50,9 @@
             </div>
           </template>
           <template #tableContent>
-            <div class="">
-              <div class="grid grid-cols-2 py-2">
+            <Skeleton v-if="isLoading" />
+            <div>
+              <div v-if="!isLoading" class="grid grid-cols-2 py-2">
                 <div>
                   <p
                     class="text-gray-400 text-xs text-center py-1 tracking-wide"
@@ -71,7 +74,7 @@
                   </p>
                 </div>
               </div>
-              <div class="grid grid-cols-2 py-2">
+              <div v-if="!isLoading" class="grid grid-cols-2 py-2">
                 <div>
                   <p
                     class="text-gray-400 pt-1 text-xs text-center tracking-wide"
@@ -94,7 +97,7 @@
               </div>
             </div>
           </template>
-          <template #buttonDetail>
+          <template v-if="!isLoading" #buttonDetail>
             <div class="px-4 py-2">
               <div class="flex justify-between">
                 <Paragraph
@@ -112,7 +115,7 @@
               </div>
             </div>
           </template>
-          <template #table>
+          <template v-if="!isLoading" #table>
             <div>
               <div class="grid grid-cols-12 gap-1 px-1 py-2">
                 <ListAccordionHome
@@ -165,7 +168,9 @@
             :data-table-registrasi="dataTableRegistrasi"
           >
             <template #trow>
+              <Skeleton v-if="isLoading" />
               <Accordion
+                v-else
                 :border="'red'"
                 class="p-2"
                 v-for="data in dataTableRegistrasi"
@@ -350,7 +355,9 @@
             :data-table-cluster="dataTableCluster"
           >
             <template #trow>
+              <Skeleton v-if="isLoading" />
               <Accordion
+                v-else
                 :border="'red'"
                 class="p-2"
                 v-for="data in dataTableCluster"
@@ -406,7 +413,9 @@
               :style-header="'py-3 bg-purple-900 rounded-t-2xl tracking-wide'"
             >
               <template #trow>
+                <Skeleton v-if="isLoading" />
                 <Accordion
+                  v-else
                   v-for="data in dataTableWilayah"
                   :key="data.wilayah"
                   class="p-2"
@@ -628,8 +637,9 @@
 </template>
 
 <script>
+import Skeleton from '../atoms/Skeleton.vue'
 import ListAccordionHome from '../molecules/ListAccordionHome.vue'
-import Loading from '../molecules/Loading.vue'
+// import Loading from '../molecules/Loading.vue'
 import BottomNav from '../molecules/BottomNav.vue'
 import Accordion from '../molecules/Accordion.vue'
 import CardWithThreeColoumn from '../molecules/CardWithThreeColoumn.vue'
@@ -646,7 +656,8 @@ import Banner from '../molecules/Banner.vue'
 export default {
   components: {
     ListAccordionHome,
-    Loading,
+    Skeleton,
+    // Loading,
     Accordion,
     CardWithThreeColoumn,
     Tabs,
@@ -678,6 +689,7 @@ export default {
       listThead: ['KETERANGAN', 'TARGET', 'AKTUAL', '%'],
       tabs: ['Wilayah', 'Region', 'Area', 'Distributor', 'Outlet'],
       loading: true,
+      isLoading: true,
       user: this.$route.params.name,
       level: this.$route.params.id,
     }
@@ -695,11 +707,12 @@ export default {
     // },
 
     async checkData() {
-      this.loading = true
+      this.isLoading = true
 
       const res = await this.dataTableNational
+
       if (res) {
-        this.loading = false
+        this.isLoading = false
       }
     },
   },

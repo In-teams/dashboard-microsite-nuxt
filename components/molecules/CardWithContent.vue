@@ -1,5 +1,5 @@
 <template>
-  <div class="py-72 mx-auto xl:w-full absolute h-screen w-screen">
+  <div class="py-72 xl:py-80 mx-auto h-screen" style="">
     <div class="px-2.5 py-3 rounded-t-2xl p-20 shadow-custom bg-gray-100">
       <div class="max-w-md mx-auto">
         <slot name="content"></slot>

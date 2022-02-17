@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar :NavTitle="'FORMULIR REDEMPTION'" />
-    <div class="px-2 mt-16">
+    <div class="px-2 mt-20 mb-4">
       <Title
         :styleTitle="'text-black font-bold'"
         :title="'Foto atau Unggah Formulir Redemption'"
@@ -86,7 +86,7 @@
       />
       <CardPhoto
         class="col-span-6"
-        v-for="data in dataRedemption"
+        v-for="data in dataRedeem.file"
         :key="data.id"
         :tanggal-upload="data.tgl_upload"
         :img="data.filename"
@@ -114,7 +114,7 @@ export default {
     Title,
     BottomNav,
   },
-  props: ['dataRedemption'],
+  props: ['dataRedeem'],
   data() {
     return {
       images: null,
@@ -149,7 +149,7 @@ export default {
           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOiJNZGx6MDEiLCJuYW1lIjoiIiwidXNlcl9wcm9maWxlIjoiUkVHSU9OICBKQVZBIDEgLSBHUkVBVEVSIEpBS0FSVEEiLCJsZXZlbCI6IjIiLCJlbWFpbCI6IiIsInNjb3BlIjoiUjEiLCJwaG90byI6bnVsbCwicmVnaWQiOiJjZU1yNEM3aGFvMDpBUEE5MWJINXc4OG51REYyWGs0eXpYN2dMWWh1b180Mkt1S1Bma0dqNkduc2p1dmFIcDg3SjY4MjF6ZnVLOXMwV1o2MURNUS03bHV6Skp2TkpnYU5wUVFOT1RjcGlKRXlzTzlBOWJ0MUNNdm82a3Ribmhna1FIV0Ridkc5TGVMTlZ2TUlUVVZoNzJGZyJ9LCJpYXQiOjE2MzYwMDg0NjZ9.pFIalrX5sXFt5E47oOxXiOB4ZqpRZg2wwk2fy7l4yhI',
       }
       axios
-        .post(`${process.env.BASE_URL}/redeem/`, formData, {
+        .post(`https://api.apolo.inosis.id/api/v1/redeem/`, formData, {
           headers,
         })
         .then(() => {
@@ -158,6 +158,7 @@ export default {
             icon: 'Success',
           }).then((result) => {
             if (result.value) {
+              window.location.reload()
               this.images = null
             }
           })

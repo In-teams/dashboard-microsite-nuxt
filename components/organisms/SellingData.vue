@@ -1,19 +1,12 @@
 <template>
   <div>
     <!-- <Loading
-      class="fixed min-h-full min-w-full bg-fixed bg-purple-900 z-50 top-0"
+      class="fixed min-h-full w-full bg-fixed bg-purple-900 z-50 top-0"
       v-if="loading"
     /> -->
     <Navbar :nav-title="'DATA PENJUALAN PER WILAYAH'" />
     <div class="px-2 bg-gray-100">
-      <div class="mt-20 mb-8">
-        <autocomplete
-          class="shadow-sm border py-2 rounded-md"
-          style="z-index: -999"
-          placeholder="Pencarian"
-          :search="search"
-        ></autocomplete>
-      </div>
+      <div class="mt-20 mb-8"></div>
       <Tabs @click="addParams" @getTab="getTab" :tabs="tabs">
         <template #activeTab_0>
           <TabSellingData
@@ -83,7 +76,6 @@
 </template>
 
 <script>
-import Autocomplete from '@trevoreyre/autocomplete-vue'
 import Pagination from 'vue-pagination-2'
 // import Loading from '../molecules/Loading.vue'
 import BottomNav from '../molecules/BottomNav.vue'
@@ -100,7 +92,6 @@ export default {
     Tabs,
     BottomNav,
     Pagination,
-    Autocomplete,
   },
 
   data() {

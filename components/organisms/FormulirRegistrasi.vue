@@ -164,7 +164,7 @@ export default {
     uploadFile(event) {
       this.images = event.target.files[0]
       this.createBase64Image(this.images)
-      console.log(event, 'ini')
+      // console.log(event, 'ini')
     },
     createBase64Image(fileObject) {
       const reader = new FileReader()
@@ -198,6 +198,7 @@ export default {
             icon: 'Success',
           }).then((result) => {
             if (result.value) {
+              window.location.reload()
               this.images = null
             }
           })
@@ -208,6 +209,7 @@ export default {
             icon: 'fail',
           }).then((result) => {
             if (result.value) {
+              window.location.reload()
               this.images = null
             }
           })

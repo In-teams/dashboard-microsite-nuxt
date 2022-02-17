@@ -1,9 +1,10 @@
 <template>
   <div>
-    <Loading
-      class="fixed min-h-full min-w-full bg-fixed bg-purple-900 z-50 top-0"
+    <!-- <Loading
+     style="min-width: 340px; max-width: 640px"
+      class="fixed min-h-full w-full bg-fixed bg-purple-900 z-50 top-0"
       v-if="loading"
-    />
+    /> -->
     <Navbar :nav-title="'RINGKASAN DATA PENJUALAN'" />
     <div class="px-2 mt-20">
       <TableTwoColoumn
@@ -13,6 +14,7 @@
         :poin-perolehan="data.achieveconvert"
         :poin-penukaran="data.redeemconvert"
         :sisa-poin="data.diff_pointconvert"
+        :isLoading="isLoading"
       >
         <template #tableTitle>
           <div class="px-2 py-3 bg-red-600 rounded-t-2xl p-20">
@@ -27,7 +29,8 @@
           </div>
         </template>
         <template #tableContent>
-          <div class="border-r border-l">
+          <Skeleton v-if="isLoading" />
+          <div v-if="!isLoading" class="border-r border-l">
             <div class="grid grid-cols-2 py-1">
               <div>
                 <p class="text-gray-400 text-xs text-center py-2">
@@ -67,7 +70,7 @@
             </div>
           </div>
         </template>
-        <template #table>
+        <template v-if="!isLoading" #table>
           <div class="grid grid-cols-12 gap-1 px-1 py-2">
             <ListAccordionHome
               class="col-span-12 px-1"
@@ -108,7 +111,7 @@
             </ListAccordionHome>
           </div>
         </template>
-        <template #buttonDetail>
+        <template v-if="!isLoading" #buttonDetail>
           <div class="flex justify-between mx-auto px-4 py-2">
             <Paragraph
               class="self-center text-left"
@@ -134,7 +137,9 @@
           :data-table-registrasi="dataTableRegistrasi"
         >
           <template #trow>
+            <Skeleton v-if="isLoading" />
             <Accordion
+              v-else
               :border="'red'"
               class="p-2"
               v-for="data in dataTableRegistrasi"
@@ -294,7 +299,9 @@
           :style-header="'px-2 py-3 bg-red-600  rounded-t-2xl'"
         >
           <template #trow>
+            <Skeleton v-if="isLoading" />
             <Accordion
+              v-else
               :border="'red'"
               class="p-2"
               v-for="data in dataPencapaian"
@@ -344,7 +351,9 @@
             :style-header="'px-2 py-3 bg-purple-900  rounded-t-2xl'"
           >
             <template #trow>
+              <Skeleton v-if="isLoading" />
               <Accordion
+                v-else
                 class="p-2"
                 v-for="data in dataOutlet"
                 :key="data.outlet_name"
@@ -384,7 +393,7 @@
 
  <script>
 import ListAccordionHome from '../molecules/ListAccordionHome.vue'
-import Loading from '../molecules/Loading.vue'
+import Skeleton from '../atoms/Skeleton.vue'
 import BottomNav from '../molecules/BottomNav.vue'
 import Accordion from '../molecules/Accordion.vue'
 import Title from '../atoms/Title.vue'
@@ -409,7 +418,7 @@ export default {
   ],
   components: {
     ListAccordionHome,
-    Loading,
+    Skeleton,
     Accordion,
     Title,
     Subtitle,
@@ -427,7 +436,7 @@ export default {
       datas: '',
       listThead: ['BULAN', 'TARGET', 'AKTUAL', '%'],
       tabs: ['Outlet'],
-      loading: true,
+      isLoading: true,
     }
   },
   computed: {},
@@ -437,10 +446,10 @@ export default {
     },
 
     async checkData() {
-      this.loading = true
-      const res = await this.dataRingkasanWilayah
+      this.isLoading = true
+      const res = await this.dataDistributor
       if (res) {
-        this.loading = false
+        this.isLoading = false
       }
     },
   },
