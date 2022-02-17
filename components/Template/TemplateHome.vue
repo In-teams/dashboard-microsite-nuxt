@@ -77,7 +77,7 @@ export default {
       // .catch((err) => console.log(err))
     },
     getdataTableCluster() {
-      this.$axios.$get(`/api/v1/sales/summary/achieve`, {
+      this.$axios.$get(`/api/v2/sales/summary/achieve`, {
         headers: {
           Authorization: localStorage.token
         }
@@ -86,7 +86,7 @@ export default {
         .catch((err) => console.log(err))
     },
     getdataTableRegion() {
-      this.$axios.$get(`/api/v1/sales/summary/region`, {
+      this.$axios.$get(`/api/v2/sales/summary/region`, {
         headers: {
           Authorization: localStorage.token
         }
@@ -95,7 +95,7 @@ export default {
         .catch((err) => console.log(err))
     },
     getdataTableWilayah() {
-      this.$axios.$get(`/api/v1/sales/summary/hr`, {
+      this.$axios.$get(`/api/v2/sales/summary/hr`, {
         headers: {
           Authorization: localStorage.token
         }
@@ -104,7 +104,7 @@ export default {
         .catch((err) => console.log(err))
     },
     getdataTableArea() {
-      this.$axios.$get(`/api/v1/sales/summary/area`, {
+      this.$axios.$get(`/api/v2/sales/summary/area`, {
         headers: {
           Authorization: localStorage.token
         }
@@ -113,7 +113,7 @@ export default {
         .catch((err) => console.log(err))
     },
     getdataTableDistributor() {
-      this.$axios.$get(`/api/v1/sales/summary/distributor`, {
+      this.$axios.$get(`/api/v2/sales/summary/distributor`, {
         headers: {
           Authorization: localStorage.token
         }
@@ -122,7 +122,7 @@ export default {
         .catch((err) => console.log(err))
     },
     getdataTableOutlet() {
-      this.$axios.$get(`/api/v1/sales/summary/outlet`, {
+      this.$axios.$get(`/api/v2/sales/summary/outlet`, {
         headers: {
           Authorization: localStorage.token
         }
