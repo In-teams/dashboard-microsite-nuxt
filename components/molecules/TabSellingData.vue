@@ -125,18 +125,14 @@ export default {
   },
 
   computed: {
-    filteredOutlet() {
-      return this.items.filter((outlet) =>
-        outlet.outlet_name.toLowerCase().includes(this.search.toLowerCase())
-      )
-    },
+    // filteredOutlet() {
+    //   return this.items.filter((outlet) =>
+    //     outlet.outlet_name.toLowerCase().includes(this.search.toLowerCase())
+    //   )
+    // },
   },
 
   methods: {
-    sendTable() {
-      this.$emit('sendTable', this.items)
-    },
-
     getdataTable() {
       const params = {
         page: `${this.$route.query.page}`,
@@ -146,12 +142,12 @@ export default {
         delete params.keyword
       } else if (this.search) {
         delete params.page
-        this.isLoading = false
+        this.isLoading = true
       }
 
       axios
         .get(
-          `https://api.apolo.inosis.id/api/v1/sales/summary/${this.hirarki}`,
+          `https://api.apolo.v2.inosis.id/api/v2/sales/summary/${this.hirarki}`,
           {
             params,
             headers: {
@@ -160,21 +156,19 @@ export default {
           }
         )
         .then((res) => {
-          this.items = res.data.data.desc
           this.isLoading = false
+          this.items = res.data.data.desc
         })
         .catch(() => (this.loading = false))
     },
   },
   watch: {
-    keySearch: ['getdataTable'],
-    items: ['sendTable'],
     search: {
       handler() {
         if (!this.awaitSearch) {
           setTimeout(() => {
-            this.isLoading = true
             this.awaitSearch = false
+            this.isLoading = true
             this.getdataTable()
           }, 1000)
         }
