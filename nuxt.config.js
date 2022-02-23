@@ -59,14 +59,14 @@ export default {
       target:
         process.env.NODE_ENV === 'production'
           ? 'https://api.apolo.v2.inosis.id/api/v1/'
-          : 'http://localhost:2000/api/v1/',
+          : 'https://api.apolo.v2.inosis.id/api/v1/',
       pathRewrite: { '^/api/v1/': '' }
     },
     '/api/v2/': {
       target:
         process.env.NODE_ENV === 'production'
           ? 'https://api.apolo.v2.inosis.id/api/v2/'
-          : 'http://localhost:2000/api/v2/',
+          : 'https://api.apolo.v2.inosis.id/api/v2/',
       pathRewrite: { '^/api/v2/': '' }
     }
   },
