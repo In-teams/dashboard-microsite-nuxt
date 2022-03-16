@@ -9,23 +9,29 @@
       <div class="mt-20 mb-8"></div>
       <Tabs @click="addParams" @getTab="getTab" :tabs="tabs">
         <template #activeTab_0>
-          <TabSellingData
-            v-if="$route.query.value == 'Wilayah'"
-            :hirarki="'hr'"
-          />
+          <keep-alive>
+            <TabSellingData
+              v-if="$route.query.value == 'Wilayah'"
+              :hirarki="'hr'"
+            />
+          </keep-alive>
         </template>
         <template #activeTab_1>
-          <TabSellingData
-            v-if="$route.query.value == 'Region'"
-            :hirarki="'region'"
-          />
+          <keep-alive>
+            <TabSellingData
+              v-if="$route.query.value == 'Region'"
+              :hirarki="'region'"
+            />
+          </keep-alive>
         </template>
 
         <template #activeTab_2>
-          <TabSellingData
-            v-if="$route.query.value == 'Area'"
-            :hirarki="'area'"
-          />
+          <keep-alive>
+            <TabSellingData
+              v-if="$route.query.value == 'Area'"
+              :hirarki="'area'"
+            />
+          </keep-alive>
 
           <pagination
             class="mb-4"
@@ -37,10 +43,12 @@
           </pagination>
         </template>
         <template #activeTab_3>
-          <TabSellingData
-            v-if="$route.query.value == 'Distributor'"
-            :hirarki="'distributor'"
-          />
+          <keep-alive>
+            <TabSellingData
+              v-if="$route.query.value == 'Distributor'"
+              :hirarki="'distributor'"
+            />
+          </keep-alive>
 
           <pagination
             class="mb-4"
@@ -52,12 +60,14 @@
           </pagination>
         </template>
         <template #activeTab_4>
-          <TabSellingData
-            v-if="$route.query.value == 'Outlet'"
-            :hirarki="'outlet'"
-            :keys="values"
-            @sendTable="sendTable"
-          />
+          <keep-alive>
+            <TabSellingData
+              v-if="$route.query.value == 'Outlet'"
+              :hirarki="'outlet'"
+              :keys="values"
+              @sendTable="sendTable"
+            />
+          </keep-alive>
 
           <pagination
             class="mb-4"
@@ -158,23 +168,6 @@ export default {
         path: `${this.$route.fullPath}`,
         query: { page },
       })
-    },
-
-    search(input) {
-      if (this.$route.query.value === 'Outlet') {
-        this.values = input
-      }
-
-      if (input.length < 0) {
-        return []
-      }
-      if (this.$route.query.value === 'Outlet') {
-        return this.getTables.filter((outlet) => {
-          return outlet.outlet_name
-            .toLowerCase()
-            .startsWith(input.toLowerCase())
-        })
-      }
     },
 
     sendKeyword() {

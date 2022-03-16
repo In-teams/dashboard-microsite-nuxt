@@ -69,9 +69,7 @@
 
               <div
                 class="self-center text-center w-28"
-                v-if="
-                  $route.fullPath == '/penjualan-perwilayah?value=Outlet&page=1'
-                "
+                v-if="$route.query.value == 'Outlet'"
               >
                 <nuxt-link :to="`/ringkasan-penjualan-outlet/${title_id}`">
                   <Button
@@ -83,10 +81,7 @@
               </div>
               <div
                 class="self-center text-center w-32"
-                v-if="
-                  $route.fullPath ==
-                  '/penjualan-perwilayah?value=Wilayah&page=1'
-                "
+                v-if="$route.query.value == 'Wilayah'"
               >
                 <nuxt-link :to="`/ringkasan-penjualan-wilayah/${title_id}`">
                   <Button
@@ -98,9 +93,7 @@
               </div>
               <div
                 class="self-center text-center w-32"
-                v-if="
-                  $route.fullPath == '/penjualan-perwilayah?value=Region&page=1'
-                "
+                v-if="$route.query.value == 'Region'"
               >
                 <nuxt-link :to="`/ringkasan-penjualan-region/${title_id}`">
                   <Button
@@ -113,9 +106,7 @@
 
               <div
                 class="self-center text-center w-32"
-                v-if="
-                  $route.fullPath == '/penjualan-perwilayah?value=Area&page=1'
-                "
+                v-if="$route.query.value == 'Area'"
               >
                 <nuxt-link :to="`/ringkasan-penjualan-area/${title_id}`">
                   <Button
@@ -127,10 +118,7 @@
               </div>
               <div
                 class="self-center text-center w-32"
-                v-if="
-                  $route.fullPath ==
-                  '/penjualan-perwilayah?value=Distributor&page=1'
-                "
+                v-if="$route.query.value == 'Distributor'"
               >
                 <nuxt-link :to="`/ringkasan-penjualan-distributor/${title_id}`">
                   <Button

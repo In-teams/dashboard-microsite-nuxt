@@ -27,8 +27,24 @@
       />
     </div>
     <div v-if="this.$route.query.value == 'Area'">
+      <div class="mt-6 mb-8">
+        <input
+          v-model="search"
+          class="
+            drop-shadow-2xl
+            border-2 border-gray-200
+            w-12
+            h-12
+            focus:outline-none focus:shadow-outline
+            px-4
+          "
+          type="search"
+          placeholder=" Pencarian"
+        />
+      </div>
       <Spinner v-if="isLoading" />
       <TableSellingData
+        v-else
         v-for="item in items"
         :key="item.area_name"
         :title="item.area_name"
@@ -145,15 +161,13 @@ export default {
         this.isLoading = true
       }
 
-      this.$axios.$get(
-        `/api/v2/sales/summary/${this.hirarki}`,
-        {
-            params,
+      this.$axios
+        .$get(`/api/v2/sales/summary/${this.hirarki}`, {
+          params,
           headers: {
-            Authorization: localStorage.token
-          }
-        }
-      )
+            Authorization: localStorage.token,
+          },
+        })
         .then((res) => {
           this.isLoading = false
           this.items = res.data.desc
@@ -169,7 +183,7 @@ export default {
             this.awaitSearch = false
             this.isLoading = true
             this.getdataTable()
-          }, 1000)
+          }, 2000)
         }
         this.awaitSearch = true
       },

@@ -305,7 +305,7 @@
               v-for="data in dataPencapaian"
               :key="data.cluster"
               :title="data.cluster"
-              :pencapaian="data.pencapaian"
+              :pencapaian="data.percentage"
             >
               <div class="flex justify-between border-b border-white py-2">
                 <h3 class="text-xs uppercase">Target penjualan</h3>
@@ -364,6 +364,7 @@
                 </div>
                 <div class="flex justify-between border-b border-white py-2 p">
                   <h3 class="text-xs uppercase">Aktual penjualan</h3>
+
                   <p class="font-bold text-sm">Rp. {{ data.aktualconvert }}</p>
                 </div>
                 <div class="flex justify-between pt-2">
@@ -449,9 +450,7 @@ import Navbar from '../molecules/Navbar.vue'
 
 export default {
   props: [
-    'dataRingkasanWilayah',
     'dataPencapaian',
-    'dataRegion',
     'dataDistributor',
     'dataArea',
     'dataOutlet',
@@ -483,7 +482,7 @@ export default {
   computed: {},
   methods: {
     getPoint(key) {
-      return this.dataRingkasanWilayah[key]
+      return this.dataArea[key]
     },
     async checkData() {
       this.isLoading = true
@@ -495,7 +494,7 @@ export default {
   },
 
   watch: {
-    dataRingkasanWilayah: 'checkData',
+    dataArea: 'checkData',
   },
 }
 </script>

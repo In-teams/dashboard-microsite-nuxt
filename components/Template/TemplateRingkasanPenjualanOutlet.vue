@@ -44,70 +44,71 @@ export default {
     this.getTablePoinQuarter()
   },
   methods: {
-    getTableOutlet() {
-      axios
-        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/outlet`, {
-          params: {
-            outlet_id: this.$route.params.name,
-          },
-          headers: {
-            Authorization: localStorage.token,
-          },
-        })
-        .then((res) => (this.dataTableOutlet = res.data.data.desc))
-        .catch((err) => console.log(err))
+    async getTableOutlet() {
+      const result = await this.$axios.$get('api/v2/sales/summary/outlet', {
+        headers: {
+          Authorization: localStorage.token2,
+        },
+        params: {
+          outlet_id: this.$route.params.name,
+        },
+      })
+      this.dataTableOutlet = result.data.desc
+      return result
     },
-    getTableQuarter() {
-      axios
-        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/sem`, {
-          params: {
-            outlet_id: this.$route.params.name,
-          },
-          headers: {
-            Authorization: localStorage.token,
-          },
-        })
-        .then((res) => (this.dataTableQuarter = res.data.data))
-        .catch((err) => console.log(err))
+    async getTableQuarter() {
+      const result = await this.$axios.$get('api/v2/sales/summary/sem', {
+        headers: {
+          Authorization: localStorage.token2,
+        },
+        params: {
+          outlet_id: this.$route.params.name,
+        },
+      })
+      this.dataTableQuarter = result.data
+      return result
     },
-    getTableMonth() {
-      axios
-        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/quarter`, {
-          params: {
-            outlet_id: this.$route.params.name,
-          },
-          headers: {
-            Authorization: localStorage.token,
-          },
-        })
-        .then((res) => (this.dataTableMonth = res.data.data))
-        .catch((err) => console.log(err))
+    async getTableMonth() {
+      const result = await this.$axios.$get('api/v2/sales/summary/quarter', {
+        headers: {
+          Authorization: localStorage.token2,
+        },
+        params: {
+          outlet_id: this.$route.params.name,
+        },
+      })
+      this.dataTableMonth = result.data
+      return result
     },
-    getTablePoin() {
-      axios
-        .get(`https://api.apolo.inosis.id/api/v1/redeem/summary/month`, {
+    async getTablePoin() {
+      const result = await axios.get(
+        'https://api.apolo.inosis.id/api/v1/redeem/summary/month',
+        {
+          headers: {
+            Authorization: localStorage.token2,
+          },
           params: {
             outlet_id: this.$route.params.name,
           },
-          headers: {
-            Authorization: localStorage.token,
-          },
-        })
-        .then((res) => (this.dataTablePoin = res.data.data))
-        .catch((err) => console.log(err))
+        }
+      )
+      this.dataTablePoin = result.data.data
+      return result
     },
-    getTablePoinQuarter() {
-      axios
-        .get(`https://api.apolo.inosis.id/api/v1/redeem/summary/quarter`, {
+    async getTablePoinQuarter() {
+      const result = await axios.get(
+        'https://api.apolo.inosis.id/api/v1/redeem/summary/quarter',
+        {
+          headers: {
+            Authorization: localStorage.token2,
+          },
           params: {
             outlet_id: this.$route.params.name,
           },
-          headers: {
-            Authorization: localStorage.token,
-          },
-        })
-        .then((res) => (this.dataTablePoinQuarter = res.data.data))
-        .catch((err) => console.log(err))
+        }
+      )
+      this.dataTablePoinQuarter = result.data.data
+      return result
     },
   },
 }

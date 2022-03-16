@@ -77,11 +77,15 @@ export default {
   methods: {
     to() {
       this.$router.push(
-        '/home/' + `${localStorage.user_id}/${localStorage.level}`
+        '/home/' + `${localStorage.user_id2}/${localStorage.level}`
       )
     },
     logout() {
       localStorage.removeItem('token')
+      localStorage.removeItem('token2')
+      localStorage.removeItem('user_id')
+      localStorage.removeItem('user_id2')
+      localStorage.removeItem('level')
       this.$router.push('/')
     },
   },

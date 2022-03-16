@@ -307,7 +307,7 @@
               v-for="data in dataPencapaian"
               :key="data.cluster"
               :title="data.cluster"
-              :pencapaian="data.pencapaian"
+              :pencapaian="data.percentage"
             >
               <div class="flex justify-between border-b border-white py-2">
                 <h3 class="text-xs uppercase">Target penjualan</h3>
@@ -410,9 +410,7 @@ export default {
   props: [
     'dataRingkasanWilayah',
     'dataPencapaian',
-    'dataRegion',
     'dataDistributor',
-    'dataArea',
     'dataOutlet',
     'dataTableRegistrasi',
   ],
@@ -442,7 +440,7 @@ export default {
   computed: {},
   methods: {
     getPoint(key) {
-      return this.dataRingkasanWilayah[key]
+      return this.dataDistributor[key]
     },
 
     async checkData() {
@@ -454,7 +452,7 @@ export default {
     },
   },
   watch: {
-    dataRingkasanWilayah: 'checkData',
+    dataDistributor: 'checkData',
   },
 }
 </script>

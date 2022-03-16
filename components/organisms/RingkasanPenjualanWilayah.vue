@@ -314,7 +314,7 @@
             :key="data.cluster"
             class="p-2"
             :title="data.cluster"
-            :pencapaian="data.pencapaian"
+            :pencapaian="data.percentage"
           >
             <div class="flex justify-between border-b border-white py-2">
               <h3 class="text-xs uppercase self-center">Target penjualan</h3>

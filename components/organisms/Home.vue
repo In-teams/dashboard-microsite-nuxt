@@ -363,7 +363,7 @@
                 v-for="data in dataTableCluster"
                 :key="data.cluster"
                 :title="data.cluster"
-                :pencapaian="data.pencapaian"
+                :pencapaian="data.percentage"
               >
                 <div class="flex justify-between border-b border-white py-2">
                   <h3 class="text-xs uppercase">Target penjualan</h3>
@@ -701,8 +701,8 @@ export default {
     },
 
     // getUserId() {
-    //   if (localStorage.user_id) {
-    //     localStorage.user_id = this.user
+    //   if (localStorage.user_id2) {
+    //     localStorage.user_id2 = this.user
     //   }
     // },
 
