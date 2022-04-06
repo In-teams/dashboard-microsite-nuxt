@@ -7,6 +7,7 @@
         </div>
         <div class="ml-4 my-4">
           <h1 class="text-xl font-semibold">Data Registrasi</h1>
+
           <p class="text-base font-light">Mohon Lengkapi data dibawah ini</p>
         </div>
       </div>
@@ -239,7 +240,11 @@
         <div class="py-10 text-center" v-if="Outlet.jenis_badan === 'personal'">
           <label for="forImage">
             <img
-              class="object-contain w-16 mx-auto cursor-pointer"
+              :class="
+                Outlet.ektp_file
+                  ? 'object-fill h-auto w-full mx-auto cursor-pointer'
+                  : 'object-contain w-16 mx-auto cursor-pointer'
+              "
               :src="`${
                 !Outlet.ektp_file
                   ? require('../../assets/image/upload.svg')
@@ -254,16 +259,22 @@
             type="file"
             id="forImage"
             class="hidden invisible"
-            accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps"
           />
           <h1 class="text-center font-normal text-base mt-2">
             {{ `${Outlet.ektp_file ? 'Foto Ktp Anda' : 'Upload KTP Anda'}` }}
           </h1>
         </div>
-        <div class="py-10" v-if="Outlet.jenis_badan === 'PT/CV/FIRMA'">
+        <div
+          class="py-10 text-center"
+          v-if="Outlet.jenis_badan === 'PT/CV/FIRMA'"
+        >
           <label for="forImage3">
             <img
-              class="object-contain w-16 mx-auto cursor-pointer"
+              :class="
+                Outlet.npwp_file
+                  ? 'object-fill h-auto w-full mx-auto cursor-pointer'
+                  : 'object-contain w-16 mx-auto cursor-pointer'
+              "
               :src="`${
                 !Outlet.npwp_file
                   ? require('../../assets/image/upload.svg')
@@ -278,7 +289,6 @@
             type="file"
             id="forImage3"
             class="hidden invisible"
-            accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps"
           />
           <h1 class="text-center font-normal text-base mt-2">
             {{ `${Outlet.npwp_file ? 'Foto NPWP Anda' : 'Upload NPWP Anda'}` }}
@@ -382,7 +392,11 @@
         <div class="py-10 text-center">
           <label for="forImage2">
             <img
-              class="object-contain w-16 cursor-pointer"
+              :class="
+                Outlet.bank_file
+                  ? 'object-fill h-auto w-full mx-auto cursor-pointer'
+                  : 'object-contain w-16 mx-auto cursor-pointer'
+              "
               :src="`${
                 !Outlet.bank_file
                   ? require('../../assets/image/upload.svg')
@@ -397,7 +411,6 @@
             type="file"
             id="forImage2"
             class="hidden invisible"
-            accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps"
           />
           <h1 class="text-center font-normal text-base mt-2">
             {{
@@ -433,6 +446,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
 import axios from 'axios'
 export default {
   data() {
@@ -563,7 +577,6 @@ export default {
     },
     async sendData(event) {
       event.preventDefault()
-
       const ektpFile = this.Outlet.ektp_file
       const npwpFile = this.Outlet.npwp_file
       const bankFile = this.Outlet.bank_file
@@ -571,103 +584,105 @@ export default {
         this.Outlet.jenis_badan === 'personal' ||
         this.Outlet.jenis_badan === 'PT/CV/FIRMA'
       ) {
-        if (ektpFile !== null && npwpFile !== null && bankFile !== null) {
-          const objData = {
-            ...this.Outlet,
-            outle_name: this.Outlet.outlet_name,
-            ektp: this.Outlet.ektp,
-            npwp: this.Outlet.npwp,
-            no_wa: this.Outlet.no_wa,
-            alamat1: this.Outlet.alamat1,
-            rtrw: this.Outlet.rtrw,
-            kodepos: this.Outlet.kodepos,
-            propinsi: this.Outlet.propinsi,
-            kabupaten: this.Outlet.kabupaten,
-            kecamatan: this.Outlet.kecamatan,
-            kelurahan: this.Outlet.kelurahan,
-            nama_rekening: this.Outlet.nama_rekening,
-            nomor_rekening: this.Outlet.nomor_rekening,
-            nama_bank: this.Outlet.nama_bank,
-            cabang_bank: this.Outlet.cabang_bank,
-            kota_bank: this.Outlet.kota_bank,
+        if (this.findType === 'ektp') {
+          if (ektpFile?.includes('https')) {
+            delete this.Outlet.ektp_file
+            delete this.Outlet.npwp
+            delete this.Outlet.npwp_file
+          } else {
+            delete this.Outlet.npwp
+            delete this.Outlet.npwp_file
           }
-          const result = await this.$axios.$put(
-            `/api/v1/outlet/${this.$route.params.id}`,
-            objData,
-            {
-              headers: {
-                Authorization: localStorage.getItem('token2'),
-              },
-            }
-          )
-          console.log(result, 'res')
-          // // if (!result.error) {
-          // //   this.$router.go(-1)
-          // // }
-        } else {
-          alert('Foto Belum di Upload')
+        } else if (this.findType === 'npwp') {
+          if (npwpFile?.includes('https')) {
+            delete this.Outlet.npwp_file
+            delete this.Outlet.ektp
+            delete this.Outlet.ektp_file
+          } else {
+            delete this.Outlet.ektp
+            delete this.Outlet.ektp_file
+            console.log('asdasdasd')
+          }
         }
+        if (bankFile?.includes('https')) {
+          delete this.Outlet.bank_file
+        }
+        const formData = {
+          ...this.Outlet,
+          type: this.findType,
+        }
+
+        const result = await this.$axios.put(
+          `/api/v1/registration/${this.$route.params.id}`,
+          formData,
+          {
+            headers: {
+              Authorization: localStorage.getItem('token2'),
+            },
+          }
+        )
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Data Berhasil Diubah',
+          showConfirmButton: true,
+          // timer: 1500,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.reload()
+          }
+        })
+
+        return result
       } else {
         alert('Jenis Badan Harus Personal atau PT/CV/FIRMA')
       }
-
-      //     if (this.Outlet.ektp) {
-      //       if (ektpFile?.includes('https')) {
-      //         delete this.Outlet.ektp_file
-      //         delete this.Outlet.npwp
-      //         delete this.Outlet.npwp_file
-      //       } else {
-      //         delete this.Outlet.npwp
-      //         delete this.Outlet.npwp_file
-      //       }
-      //     } else if (this.Outlet.npwp) {
-      //       if (npwpFile?.includes('https')) {
-      //         delete this.Outlet.npwp_file
-      //         delete this.Outlet.ektp
-      //         delete this.Outlet.ektp_file
-      //       } else {
-      //         delete this.Outlet.ektp
-      //         delete this.Outlet.ektp_file
-      //       }
-      //     }
-      // if (bankFile?.includes('https')) {
-      //   delete this.Outlet.bank_file
-      // }
-      // delete this.Outlet.fill_alamat
-      // delete this.Outlet.fill_data_bank
-      // delete this.Outlet.outlet_name
-      // delete this.Outlet.bank_file_ext
-      // delete this.Outlet.npwp_file_ext
-      // delete this.Outlet.ektp_file_ext
     },
 
     base64File(file, cb) {
       const reader = new FileReader()
       reader.readAsDataURL(file)
       reader.onload = function () {
-        cb(null, reader.result)
+        cb(reader.result)
       }
       reader.onerror = function (error) {
-        cb(error, null)
+        cb(error)
       }
     },
-    sendImage(event) {
-      const file = event.target.files[0]
-      console.log(file, 'asdas')
-      this.base64File(file, (result) => {
-        if (result) {
-          if (event.target.name === 'ektp_file') this.Outlet.ektp_file = result
-          if (event.target.name === 'bank_file') this.Outlet.bank_file = result
-          if (event.target.name === 'npwp_file') this.Outlet.npwp_file = result
-        }
-        console.log(result, 'asdasdsss')
-      })
+    async sendImage(event) {
+      try {
+        const file = await event.target.files[0]
+        this.base64File(file, (result) => {
+          if (result) {
+            if (event.target.name === 'ektp_file')
+              this.Outlet.ektp_file = result
+            if (event.target.name === 'bank_file')
+              this.Outlet.bank_file = result
+            if (event.target.name === 'npwp_file')
+              this.Outlet.npwp_file = result
+          }
+        })
+      } catch (err) {
+        console.log(err)
+      }
     },
   },
   watch: {
     'Outlet.propinsi': 'getDataCities',
     'Outlet.kabupaten': 'getDataDistrict',
     'Outlet.kecamatan': 'getDataSubDistrict',
+  },
+  computed: {
+    findType() {
+      let typeEktp = ''
+      const jenis = this.Outlet.jenis_badan
+      if (jenis === 'PT/CV/FIRMA' || jenis === 'personal') {
+        typeEktp = 'ektp'
+      } else {
+        typeEktp = 'npwp'
+      }
+      return typeEktp
+    },
   },
   mounted() {
     this.getDataOutlet()
