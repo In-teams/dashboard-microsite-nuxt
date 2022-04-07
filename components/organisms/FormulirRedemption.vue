@@ -84,13 +84,45 @@
         :subtitle="'Tekan foto di bawah ini untuk melihat detail'"
         :styleSubtitle="'text-xs'"
       />
-      <CardPhoto
-        class="col-span-6"
-        v-for="data in dataRedeem.file"
-        :key="data.id"
-        :tanggal-upload="data.tgl_upload"
-        :img="data.filename"
-      />
+      <div v-for="data in dataRedeem.file" :key="data.id">
+        <div
+          v-show="modal === false"
+          class="
+            fixed
+            inset-0
+            flex
+            justify-center
+            items-center
+            z-50
+            min-h-screen
+            max-h-full
+          "
+        >
+          <div class="relative mx-auto max-w-2xl h-screen overflow-y-auto">
+            <div class="bg-white h-full rounded shadow-2xl flex flex-col">
+              <span>
+                <div class="my-28">
+                  <img class="w-screen h-full" :src="modalImage" alt="" />
+                </div>
+                <button
+                  @click="modal = true"
+                  class="absolute top-0 right-0 text-white w-1/5 bg-red-500"
+                >
+                  X
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <CardPhoto
+          @popupImage="togglePopup(data.filename)"
+          class="col-span-6"
+          :tanggal-upload="data.tgl_upload"
+          :img="data.filename"
+        >
+        </CardPhoto>
+      </div>
     </div>
     <BottomNav />
   </div>
@@ -118,9 +150,15 @@ export default {
   data() {
     return {
       images: null,
+      modal: true,
+      modalImage: null,
     }
   },
   methods: {
+    togglePopup(object) {
+      this.modal = !this.modal
+      this.modalImage = object
+    },
     uploadFile(event) {
       this.images = event.target.files[0]
       this.createBase64Image(this.images)
@@ -156,6 +194,18 @@ export default {
           Swal.fire({
             title: 'Sukses Upload',
             icon: 'Success',
+          }).then((result) => {
+            if (result.value) {
+              window.location.reload()
+              this.images = null
+            }
+          })
+        })
+        .catch(() => {
+          Swal.fire({
+            title: 'Sudah Upload',
+            text: 'Upload hanya bisa dilakukan 1 kali',
+            icon: 'fail',
           }).then((result) => {
             if (result.value) {
               window.location.reload()

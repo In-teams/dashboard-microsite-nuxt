@@ -91,7 +91,7 @@
         :key="data.id"
       >
         <CardPhoto
-          @popupImage="togglePopup"
+          @popupImage="togglePopup(data.filename)"
           class="col-span-6"
           :tanggal-upload="data.tgl_upload"
           :img="data.filename"
@@ -114,7 +114,7 @@
             <div class="bg-white h-full rounded shadow-2xl flex flex-col">
               <span>
                 <div class="my-28">
-                  <img class="w-screen h-full" :src="data.filename" alt="" />
+                  <img class="w-screen h-full" :src="modalImage" alt="" />
                 </div>
                 <button
                   @click="modal = true"
@@ -155,11 +155,13 @@ export default {
     return {
       images: null,
       modal: true,
+      modalImage: null,
     }
   },
   methods: {
-    togglePopup() {
+    togglePopup(object) {
       this.modal = !this.modal
+      this.modalImage = object
     },
     uploadFile(event) {
       this.images = event.target.files[0]
@@ -205,7 +207,8 @@ export default {
         })
         .catch(() => {
           Swal.fire({
-            title: 'Upload Gagal',
+            title: 'Sudah Upload',
+            text: 'Upload hanya bisa dilakukan 1 kali',
             icon: 'fail',
           }).then((result) => {
             if (result.value) {
