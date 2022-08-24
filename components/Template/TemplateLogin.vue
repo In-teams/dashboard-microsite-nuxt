@@ -169,24 +169,39 @@ export default {
     }
   },
   methods: {
-    getLogin() {
-      axios
-        .post(`https://api.apolo.inosis.id/api/v1/auth/`, {
+    async getLogin() {
+      const axiosrequest1 = axios.post(
+        `https://api.app-quarter.inosis.id/api/v1/auth/login`,
+        {
           username: this.username,
           password: this.password,
+        }
+      )
+      const axiosrequest2 = axios.post(
+        `https://api.apolo.inosis.id/api/v1/auth/`,
+        {
+          username: this.username,
+          password: this.password,
+        }
+      )
+      let response1 = {}
+      let response2 = {}
+      await axios.all([axiosrequest1, axiosrequest2]).then(
+        axios.spread(function (res1, res2) {
+          response1 = res1
+          response2 = res2
+          localStorage.setItem('token', res1.data.data.token)
+          localStorage.setItem('user_id', res1.data.data.user_id)
+          localStorage.setItem('token2', res2.data.data.token)
+          localStorage.setItem('user_id2', res2.data.data.user_id)
         })
-        .then((response) => {
-          const result = response.data.data
-          if (+result.level !== null) {
-            localStorage.token = result.token
-            localStorage.user_id = result.user_id
-            localStorage.level = result.level
-            this.$router.push(`/home/` + `${result.user_id}/${result.level}`)
-          } else {
-            console.log('asdasdasd')
-          }
-        })
-        .catch((error) => console.log(error))
+      )
+      if (response1.status === 200 && response2.status === 200) {
+        this.$router.push(
+          `/home/` +
+            `${response1.data.data.user_id}/${response2.data.data.level}`
+        )
+      }
     },
   },
 }
@@ -208,7 +223,6 @@ export default {
 .label {
   transition: all 0.2s ease-out;
   top: 0.1rem;
-
   left: 0;
 }
 </style>

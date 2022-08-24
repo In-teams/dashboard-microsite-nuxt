@@ -82,6 +82,9 @@ export default {
     },
     logout() {
       localStorage.removeItem('token')
+      localStorage.removeItem('token2')
+      localStorage.removeItem('user_id')
+      localStorage.removeItem('user_id2')
       this.$router.push('/')
     },
   },

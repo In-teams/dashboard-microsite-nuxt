@@ -61,7 +61,7 @@ export default {
             distributor_id: this.$route.params.name,
           },
           headers: {
-            Authorization: localStorage.token,
+            Authorization: localStorage.token2,
           },
         })
         .then((res) => (this.dataTableRingkasan = res.data.data))
@@ -74,7 +74,7 @@ export default {
             distributor_id: this.$route.params.name,
           },
           headers: {
-            Authorization: localStorage.token,
+            Authorization: localStorage.token2,
           },
         })
         .then((res) => (this.dataTablePencapaian = res.data.data))
@@ -87,7 +87,7 @@ export default {
             distributor_id: this.$route.params.name,
           },
           headers: {
-            Authorization: localStorage.token,
+            Authorization: localStorage.token2,
           },
         })
         .then((res) => (this.dataTableRegion = res.data.data.desc))
@@ -100,7 +100,7 @@ export default {
             distributor_id: this.$route.params.name,
           },
           headers: {
-            Authorization: localStorage.token,
+            Authorization: localStorage.token2,
           },
         })
         .then((res) => (this.dataTableDistributor = res.data.data.desc))
@@ -113,7 +113,7 @@ export default {
             distributor_id: this.$route.params.name,
           },
           headers: {
-            Authorization: localStorage.token,
+            Authorization: localStorage.token2,
           },
         })
         .then((res) => (this.dataTableArea = res.data.data.desc))
@@ -126,7 +126,7 @@ export default {
             distributor_id: this.$route.params.name,
           },
           headers: {
-            Authorization: localStorage.token,
+            Authorization: localStorage.token2,
           },
         })
         .then((res) => (this.dataTableOutlet = res.data.data.desc))
@@ -139,7 +139,7 @@ export default {
             distributor_id: this.$route.params.name,
           },
           headers: {
-            Authorization: localStorage.token,
+            Authorization: localStorage.token2,
           },
         })
         .then((res) => (this.dataTableRegistrasi = res.data.data))

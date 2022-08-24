@@ -51,7 +51,7 @@ export default {
             outlet_id: this.$route.params.name,
           },
           headers: {
-            Authorization: localStorage.token,
+            Authorization: localStorage.token2,
           },
         })
         .then((res) => (this.dataTableOutlet = res.data.data.desc))
@@ -64,7 +64,7 @@ export default {
             outlet_id: this.$route.params.name,
           },
           headers: {
-            Authorization: localStorage.token,
+            Authorization: localStorage.token2,
           },
         })
         .then((res) => (this.dataTableQuarter = res.data.data))
@@ -77,7 +77,7 @@ export default {
             outlet_id: this.$route.params.name,
           },
           headers: {
-            Authorization: localStorage.token,
+            Authorization: localStorage.token2,
           },
         })
         .then((res) => (this.dataTableMonth = res.data.data))
@@ -90,7 +90,7 @@ export default {
             outlet_id: this.$route.params.name,
           },
           headers: {
-            Authorization: localStorage.token,
+            Authorization: localStorage.token2,
           },
         })
         .then((res) => (this.dataTablePoin = res.data.data))
@@ -103,7 +103,7 @@ export default {
             outlet_id: this.$route.params.name,
           },
           headers: {
-            Authorization: localStorage.token,
+            Authorization: localStorage.token2,
           },
         })
         .then((res) => (this.dataTablePoinQuarter = res.data.data))

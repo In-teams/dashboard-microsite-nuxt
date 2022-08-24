@@ -34,7 +34,7 @@ export default {
             region_id: this.$route.params.name,
           },
           headers: {
-            Authorization: localStorage.token,
+            Authorization: localStorage.token2,
           },
         })
         .then((res) => (this.dataTableQuarter = res.data.data))
@@ -47,7 +47,7 @@ export default {
             region_id: this.$route.params.name,
           },
           headers: {
-            Authorization: localStorage.token,
+            Authorization: localStorage.token2,
           },
         })
         .then((res) => (this.dataTableTahun = res.data.data))

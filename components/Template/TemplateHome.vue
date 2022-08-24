@@ -63,79 +63,83 @@ export default {
   },
   methods: {
     async getdataTableNational() {
-      const result = await this.$axios.$get(
-        `/api/v1/sales`,
-        {
-          headers: {
-            Authorization: localStorage.token
-          }
-        }
-      )
+      const result = await this.$axios.$get(`/api/v1/sales`, {
+        headers: {
+          Authorization: localStorage.token2,
+        },
+      })
       this.dataTableNational = result.data
       return result
       // .then((res) => (this.dataTableNational = res.data.data))
       // .catch((err) => console.log(err))
     },
     getdataTableCluster() {
-      this.$axios.$get(`/api/v2/sales/summary/achieve`, {
-        headers: {
-          Authorization: localStorage.token
-        }
-      })
+      this.$axios
+        .$get(`/api/v2/sales/summary/achieve`, {
+          headers: {
+            Authorization: localStorage.token2,
+          },
+        })
         .then((res) => (this.dataTableCluster = res.data))
         .catch((err) => console.log(err))
     },
     getdataTableRegion() {
-      this.$axios.$get(`/api/v2/sales/summary/region`, {
-        headers: {
-          Authorization: localStorage.token
-        }
-      })
+      this.$axios
+        .$get(`/api/v2/sales/summary/region`, {
+          headers: {
+            Authorization: localStorage.token2,
+          },
+        })
         .then((res) => (this.dataTableRegion = res.data.desc))
         .catch((err) => console.log(err))
     },
     getdataTableWilayah() {
-      this.$axios.$get(`/api/v2/sales/summary/hr`, {
-        headers: {
-          Authorization: localStorage.token
-        }
-      })
+      this.$axios
+        .$get(`/api/v2/sales/summary/hr`, {
+          headers: {
+            Authorization: localStorage.token2,
+          },
+        })
         .then((res) => (this.dataTableWilayah = res.data.desc))
         .catch((err) => console.log(err))
     },
     getdataTableArea() {
-      this.$axios.$get(`/api/v2/sales/summary/area`, {
-        headers: {
-          Authorization: localStorage.token
-        }
-      })
+      this.$axios
+        .$get(`/api/v2/sales/summary/area`, {
+          headers: {
+            Authorization: localStorage.token2,
+          },
+        })
         .then((res) => (this.dataTableArea = res.data.desc))
         .catch((err) => console.log(err))
     },
     getdataTableDistributor() {
-      this.$axios.$get(`/api/v2/sales/summary/distributor`, {
-        headers: {
-          Authorization: localStorage.token
-        }
-      })
+      this.$axios
+        .$get(`/api/v2/sales/summary/distributor`, {
+          headers: {
+            Authorization: localStorage.token2,
+          },
+        })
         .then((res) => (this.dataTableDistributor = res.data.desc))
         .catch((err) => console.log(err))
     },
     getdataTableOutlet() {
-      this.$axios.$get(`/api/v2/sales/summary/outlet`, {
-        headers: {
-          Authorization: localStorage.token
-        }
-      })
+      this.$axios
+        .$get(`/api/v2/sales/summary/outlet`, {
+          headers: {
+            Authorization: localStorage.token2,
+          },
+        })
         .then((res) => (this.dataTableOutlet = res.data.desc))
         .catch((err) => console.log(err))
     },
     getdataTableRegistrasi() {
-      this.$axios.$get(`/api/v1/registration/summary/level`, {
-        headers: {
-          Authorization: localStorage.token
-        }
-      })
+      this.$axios
+        .$get(`/api/v1/registration/summary/level`, {
+          headers: {
+            Authorization: localStorage.token2,
+          },
+        })
         .then((res) => (this.dataTableRegistrasi = res.data))
         .catch((err) => console.log(err))
     },

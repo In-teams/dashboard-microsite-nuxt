@@ -31,7 +31,7 @@ export default {
       axios
         .get(`https://api.apolo.inosis.id/api/v1/sales/summary/sem`, {
           headers: {
-            Authorization: localStorage.token,
+            Authorization: localStorage.token2,
           },
         })
         .then((res) => (this.dataTableQuarter = res.data.data))
@@ -41,7 +41,7 @@ export default {
       axios
         .get(`https://api.apolo.inosis.id/api/v1/sales/summary/quarter`, {
           headers: {
-            Authorization: localStorage.token,
+            Authorization: localStorage.token2,
           },
         })
         .then((res) => (this.dataTableTahun = res.data.data))
