@@ -73,7 +73,7 @@ export default {
     // },
     // getdataTableWilayah() {
     //   axios
-    //     .get(`https://api.apolo.inosis.id/api/v1/sales/summary/hr`, {
+    //     .get(`/api/v1/sales/summary/hr`, {
     //       headers: {
     //         Authorization: localStorage.token,
     //       },
@@ -83,7 +83,7 @@ export default {
     // },
     // getdataTableRegion() {
     //   axios
-    //     .get(`https://api.apolo.inosis.id/api/v1/sales/summary/region`, {
+    //     .get(`/api/v1/sales/summary/region`, {
     //       headers: {
     //         Authorization: localStorage.token,
     //       },
@@ -100,7 +100,7 @@ export default {
     //     delete params.keyword
     //   }
     //   axios
-    //     .get(`https://api.apolo.inosis.id/api/v1/sales/summary/area`, {
+    //     .get(`/api/v1/sales/summary/area`, {
     //       params,
     //       headers: {
     //         Authorization: localStorage.token,
@@ -111,7 +111,7 @@ export default {
     // },
     // getPageArea() {
     //   axios
-    //     .get(`https://api.apolo.inosis.id/api/v1/sales/summary/area`, {
+    //     .get(`/api/v1/sales/summary/area`, {
     //       headers: {
     //         Authorization: localStorage.token,
     //       },
@@ -128,7 +128,7 @@ export default {
     //     delete params.keyword
     //   }
     //   axios
-    //     .get(`https://api.apolo.inosis.id/api/v1/sales/summary/distributor`, {
+    //     .get(`/api/v1/sales/summary/distributor`, {
     //       params,
     //       headers: {
     //         Authorization: localStorage.token,
@@ -139,7 +139,7 @@ export default {
     // },
     // getPage() {
     //   axios
-    //     .get(`https://api.apolo.inosis.id/api/v1/sales/summary/distributor`, {
+    //     .get(`/api/v1/sales/summary/distributor`, {
     //       headers: {
     //         Authorization: localStorage.token,
     //       },
@@ -156,7 +156,7 @@ export default {
     //     delete params.keyword
     //   }
     //   axios
-    //     .get(`https://api.apolo.inosis.id/api/v1/sales/summary/outlet`, {
+    //     .get(`/api/v1/sales/summary/outlet`, {
     //       params,
     //       headers: {
     //         Authorization: localStorage.token,
@@ -167,7 +167,7 @@ export default {
     // },
     // getPageOutlet() {
     //   axios
-    //     .get(`https://api.apolo.inosis.id/api/v1/sales/summary/outlet`, {
+    //     .get(`/api/v1/sales/summary/outlet`, {
     //       headers: {
     //         Authorization: localStorage.token,
     //       },

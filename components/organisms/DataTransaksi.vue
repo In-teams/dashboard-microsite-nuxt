@@ -48,7 +48,9 @@ export default {
     // },
     async getListTransaksi() {
       const result = await this.$axios.$get(
-        `api/v1/outlet/${this.$route.params.id}/redemptions`,
+        `api/v1/outlet/${encodeURIComponent(
+          this.$route.params.id
+        )}/redemptions`,
         {
           params: {
             include: ['items.product', 'status_transaksi'],

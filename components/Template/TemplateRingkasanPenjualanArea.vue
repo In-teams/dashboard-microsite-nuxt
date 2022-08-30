@@ -103,17 +103,14 @@ export default {
     },
 
     async getdataTableRegistrasi() {
-      const result = await axios.get(
-        'https://api.apolo.inosis.id/api/v1/registration/summary/level',
-        {
-          headers: {
-            Authorization: localStorage.token2,
-          },
-          params: {
-            area_id: this.$route.params.name,
-          },
-        }
-      )
+      const result = await axios.get('/api/v1/registration/summary/level', {
+        headers: {
+          Authorization: localStorage.token2,
+        },
+        params: {
+          area_id: this.$route.params.name,
+        },
+      })
       this.dataTableRegistrasi = result.data.data
     },
   },

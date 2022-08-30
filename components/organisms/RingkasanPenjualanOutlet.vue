@@ -99,24 +99,15 @@
         </template>
       </TableTwoColoumn>
       <div class="grid grid-cols-12 gap-2 py-4">
-        <nuxt-link
-          class="col-span-6"
-          :to="`/formulir-registrasi/${$route.params.name}`"
-        >
-          <CardRegistrasi
-            :data-title="'Foto atau Upload Formulir Registrasi'"
-            :data-img="'https://img.icons8.com/ios/50/000000/camera--v3.png'"
-          />
-        </nuxt-link>
-        <nuxt-link
-          class="col-span-6"
-          :to="`/formulir-redemption/${$route.params.name}`"
-        >
-          <CardRegistrasi
-            :data-title="'Foto atau Upload Formulir Redemption'"
-            :data-img="'https://img.icons8.com/ios/50/000000/camera--v3.png'"
-          />
-        </nuxt-link>
+        <CardRegistrasi
+          :data-title="'Foto atau Upload Formulir Registrasi'"
+          :data-img="'https://img.icons8.com/ios/50/000000/camera--v3.png'"
+        />
+
+        <CardRegistrasi
+          :data-title="'Foto atau Upload Formulir Redemption'"
+          :data-img="'https://img.icons8.com/ios/50/000000/camera--v3.png'"
+        />
 
         <CardRegistrasi
           class="py-2"
@@ -156,7 +147,7 @@
                 :key="data.kuartal"
                 class="p-2"
                 :title="data.kuartal"
-                :pencapaian="data.diffconvert"
+                :pencapaian="data.pencapaian"
               >
                 <div class="flex justify-between border-b border-white py-2">
                   <h3 class="text-xs uppercase">Target penjualan</h3>

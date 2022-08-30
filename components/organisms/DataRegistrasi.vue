@@ -469,7 +469,7 @@ export default {
   methods: {
     async getDataOutlet() {
       const result = await axios.get(
-        `https://api.apolo.v2.inosis.id/api/v1/registration/${this.$route.params.id}`,
+        `/api/v1/registration/${encodeURIComponent(this.$route.params.id)}`,
         {
           headers: {
             Authorization: localStorage.token2,
@@ -676,9 +676,9 @@ export default {
     findType() {
       let typeEktp = ''
       const jenis = this.Outlet.jenis_badan
-      if (jenis === 'PT/CV/FIRMA' || jenis === 'personal') {
+      if (jenis === 'personal') {
         typeEktp = 'ektp'
-      } else {
+      } else if (jenis === 'PT/CV/FIRMA') {
         typeEktp = 'npwp'
       }
       return typeEktp

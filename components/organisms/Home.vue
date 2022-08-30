@@ -262,84 +262,460 @@
                     </div>
                   </div>
                   <div id="level3" class="block">
-                    <div
-                      v-if="data.level == 'Level 3'"
-                      class="flex justify-between py-2"
-                      v-show="data['3E'] !== 0"
-                    >
-                      <h3 class="text-xs uppercase self-center">LEVEL 3E</h3>
-                      <p class="font-bold text-sm">
-                        {{ data['3E'] }} / {{ data['3Epercent'] }}
-                      </p>
-                    </div>
-                    <div
-                      v-if="data.level == 'Level 3'"
-                      class="flex justify-between py-2"
-                      v-show="data['3E'] !== 0"
-                    >
-                      <h3 class="text-xs uppercase self-center">STATUS</h3>
-                      <p class="font-bold text-sm">
-                        {{ data['3Estatus'].split('-').shift() }}
-                      </p>
-                    </div>
-                    <div
-                      v-if="data.level == 'Level 3'"
-                      class="block"
-                      v-show="data['3E'] !== 0"
-                    >
-                      <div class="flex justify-between">
-                        <p
-                          class="
-                            font-bold
-                            text-sm
-                            self-center
-                            py-2
-                            text-red-400
-                          "
-                        >
-                          {{ data['3Estatus'].split('-').pop() }}
+                    <div>
+                      <div
+                        v-if="data.level == 'Level 3'"
+                        class="flex justify-between py-2"
+                        v-show="data['3A'] !== 0"
+                      >
+                        <h3 class="text-xs uppercase self-center">LEVEL 3A</h3>
+                        <p class="font-bold text-sm">
+                          {{ data['3A'] }} / {{ data['3Apercent'] }}
                         </p>
+                      </div>
+                      <div
+                        v-if="data.level == 'Level 3'"
+                        class="flex justify-between py-2"
+                        v-show="data['3A'] !== 0"
+                      >
+                        <h3 class="text-xs uppercase self-center">STATUS</h3>
+                        <p class="font-bold text-sm">
+                          {{ data['3Astatus'].split('-').shift() }}
+                        </p>
+                      </div>
+                      <div
+                        v-if="data.level == 'Level 3'"
+                        class="block"
+                        v-show="data['3A'] !== 0"
+                      >
+                        <div class="flex justify-between">
+                          <p
+                            class="
+                              font-bold
+                              text-sm
+                              self-center
+                              py-2
+                              text-red-400
+                            "
+                          >
+                            {{ data['3Astatus'].split('-').pop() }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div
+                        v-if="data.level == 'Level 3'"
+                        class="flex justify-between py-2"
+                        v-show="data['3B'] !== 0"
+                      >
+                        <h3 class="text-xs uppercase self-center">LEVEL 3B</h3>
+                        <p class="font-bold text-sm">
+                          {{ data['3B'] }} / {{ data['3Epercent'] }}
+                        </p>
+                      </div>
+                      <div
+                        v-if="data.level == 'Level 3'"
+                        class="flex justify-between py-2"
+                        v-show="data['3B'] !== 0"
+                      >
+                        <h3 class="text-xs uppercase self-center">STATUS</h3>
+                        <p class="font-bold text-sm">
+                          {{ data['3Bstatus'].split('-').shift() }}
+                        </p>
+                      </div>
+                      <div
+                        v-if="data.level == 'Level 3'"
+                        class="block"
+                        v-show="data['3B'] !== 0"
+                      >
+                        <div class="flex justify-between">
+                          <p
+                            class="
+                              font-bold
+                              text-sm
+                              self-center
+                              py-2
+                              text-red-400
+                            "
+                          >
+                            {{ data['3Bstatus'].split('-').pop() }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div
+                        v-if="data.level == 'Level 3'"
+                        class="flex justify-between py-2"
+                        v-show="data['3C'] !== 0"
+                      >
+                        <h3 class="text-xs uppercase self-center">LEVEL 3C</h3>
+                        <p class="font-bold text-sm">
+                          {{ data['3C'] }} / {{ data['3Cpercent'] }}
+                        </p>
+                      </div>
+                      <div
+                        v-if="data.level == 'Level 3'"
+                        class="flex justify-between py-2"
+                        v-show="data['3C'] !== 0"
+                      >
+                        <h3 class="text-xs uppercase self-center">STATUS</h3>
+                        <p class="font-bold text-sm">
+                          {{ data['3Cstatus'].split('-').shift() }}
+                        </p>
+                      </div>
+                      <div
+                        v-if="data.level == 'Level 3'"
+                        class="block"
+                        v-show="data['3C'] !== 0"
+                      >
+                        <div class="flex justify-between">
+                          <p
+                            class="
+                              font-bold
+                              text-sm
+                              self-center
+                              py-2
+                              text-red-400
+                            "
+                          >
+                            {{ data['3Cstatus'].split('-').pop() }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div
+                        v-if="data.level == 'Level 3'"
+                        class="flex justify-between py-2"
+                        v-show="data['3D'] !== 0"
+                      >
+                        <h3 class="text-xs uppercase self-center">LEVEL 3D</h3>
+                        <p class="font-bold text-sm">
+                          {{ data['3D'] }} / {{ data['3Dpercent'] }}
+                        </p>
+                      </div>
+                      <div
+                        v-if="data.level == 'Level 3'"
+                        class="flex justify-between py-2"
+                        v-show="data['3D'] !== 0"
+                      >
+                        <h3 class="text-xs uppercase self-center">STATUS</h3>
+                        <p class="font-bold text-sm">
+                          {{ data['3Dstatus'].split('-').shift() }}
+                        </p>
+                      </div>
+                      <div
+                        v-if="data.level == 'Level 3'"
+                        class="block"
+                        v-show="data['3D'] !== 0"
+                      >
+                        <div class="flex justify-between">
+                          <p
+                            class="
+                              font-bold
+                              text-sm
+                              self-center
+                              py-2
+                              text-red-400
+                            "
+                          >
+                            {{ data['3Dstatus'].split('-').pop() }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div
+                        v-if="data.level == 'Level 3'"
+                        class="flex justify-between py-2"
+                        v-show="data['3E'] !== 0"
+                      >
+                        <h3 class="text-xs uppercase self-center">LEVEL 3E</h3>
+                        <p class="font-bold text-sm">
+                          {{ data['3E'] }} / {{ data['3Epercent'] }}
+                        </p>
+                      </div>
+                      <div
+                        v-if="data.level == 'Level 3'"
+                        class="flex justify-between py-2"
+                        v-show="data['3E'] !== 0"
+                      >
+                        <h3 class="text-xs uppercase self-center">STATUS</h3>
+                        <p class="font-bold text-sm">
+                          {{ data['3Estatus'].split('-').shift() }}
+                        </p>
+                      </div>
+                      <div
+                        v-if="data.level == 'Level 3'"
+                        class="block"
+                        v-show="data['3E'] !== 0"
+                      >
+                        <div class="flex justify-between">
+                          <p
+                            class="
+                              font-bold
+                              text-sm
+                              self-center
+                              py-2
+                              text-red-400
+                            "
+                          >
+                            {{ data['3Estatus'].split('-').pop() }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div
+                        v-if="data.level == 'Level 3'"
+                        class="flex justify-between py-2"
+                        v-show="data['3F'] !== 0"
+                      >
+                        <h3 class="text-xs uppercase self-center">LEVEL 3F</h3>
+                        <p class="font-bold text-sm">
+                          {{ data['3F'] }} / {{ data['3Fpercent'] }}
+                        </p>
+                      </div>
+                      <div
+                        v-if="data.level == 'Level 3'"
+                        class="flex justify-between py-2"
+                        v-show="data['3F'] !== 0"
+                      >
+                        <h3 class="text-xs uppercase self-center">STATUS</h3>
+                        <p class="font-bold text-sm">
+                          {{ data['3Fstatus'].split('-').shift() }}
+                        </p>
+                      </div>
+                      <div
+                        v-if="data.level == 'Level 3'"
+                        class="block"
+                        v-show="data['3F'] !== 0"
+                      >
+                        <div class="flex justify-between">
+                          <p
+                            class="
+                              font-bold
+                              text-sm
+                              self-center
+                              py-2
+                              text-red-400
+                            "
+                          >
+                            {{ data['3Fstatus'].split('-').pop() }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div
+                        v-if="data.level == 'Level 3'"
+                        class="flex justify-between py-2"
+                        v-show="data['3G'] !== 0"
+                      >
+                        <h3 class="text-xs uppercase self-center">LEVEL 3G</h3>
+                        <p class="font-bold text-sm">
+                          {{ data['3G'] }} / {{ data['3Gpercent'] }}
+                        </p>
+                      </div>
+                      <div
+                        v-if="data.level == 'Level 3'"
+                        class="flex justify-between py-2"
+                        v-show="data['3G'] !== 0"
+                      >
+                        <h3 class="text-xs uppercase self-center">STATUS</h3>
+                        <p class="font-bold text-sm">
+                          {{ data['3Gstatus'].split('-').shift() }}
+                        </p>
+                      </div>
+                      <div
+                        v-if="data.level == 'Level 3'"
+                        class="block"
+                        v-show="data['3G'] !== 0"
+                      >
+                        <div class="flex justify-between">
+                          <p
+                            class="
+                              font-bold
+                              text-sm
+                              self-center
+                              py-2
+                              text-red-400
+                            "
+                          >
+                            {{ data['3Gstatus'].split('-').pop() }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div
+                        v-if="data.level == 'Level 3'"
+                        class="flex justify-between py-2"
+                        v-show="data['3H'] !== 0"
+                      >
+                        <h3 class="text-xs uppercase self-center">LEVEL 3H</h3>
+                        <p class="font-bold text-sm">
+                          {{ data['3H'] }} / {{ data['3Hpercent'] }}
+                        </p>
+                      </div>
+                      <div
+                        v-if="data.level == 'Level 3'"
+                        class="flex justify-between py-2"
+                        v-show="data['3H'] !== 0"
+                      >
+                        <h3 class="text-xs uppercase self-center">STATUS</h3>
+                        <p class="font-bold text-sm">
+                          {{ data['3Hstatus'].split('-').shift() }}
+                        </p>
+                      </div>
+                      <div
+                        v-if="data.level == 'Level 3'"
+                        class="block"
+                        v-show="data['3H'] !== 0"
+                      >
+                        <div class="flex justify-between">
+                          <p
+                            class="
+                              font-bold
+                              text-sm
+                              self-center
+                              py-2
+                              text-red-400
+                            "
+                          >
+                            {{ data['3Hstatus'].split('-').pop() }}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
                   <div id="level4" class="block">
-                    <div
-                      v-if="data.level == 'Level 4'"
-                      class="flex justify-between py-2"
-                      v-show="data['4C'] !== 0"
-                    >
-                      <h3 class="text-xs uppercase self-center">LEVEL 4C</h3>
-                      <p class="font-bold text-sm">
-                        {{ data['4C'] }} / {{ data['4Cpercent'] }}
-                      </p>
-                    </div>
-                    <div
-                      v-if="data.level == 'Level 4'"
-                      class="flex justify-between py-2"
-                      v-show="data['4C'] !== 0"
-                    >
-                      <h3 class="text-xs uppercase self-center">STATUS</h3>
-                      <p class="font-bold text-sm">
-                        {{ data['4Cstatus'].split('-').shift() }}
-                      </p>
-                    </div>
-                    <div
-                      v-if="data.level == 'Level 4'"
-                      class="block"
-                      v-show="data['4C'] !== 0"
-                    >
-                      <div class="flex justify-between">
-                        <p
-                          class="
-                            font-bold
-                            text-sm
-                            self-center
-                            py-2
-                            text-red-400
-                          "
-                        >
-                          {{ data['4Cstatus'].split('-').pop() }}
+                    <div class="">
+                      <div
+                        v-if="data.level == 'Level 4'"
+                        class="flex justify-between py-2"
+                        v-show="data['4A'] !== 0"
+                      >
+                        <h3 class="text-xs uppercase self-center">LEVEL 4A</h3>
+                        <p class="font-bold text-sm">
+                          {{ data['4A'] }} / {{ data['4Apercent'] }}
                         </p>
+                      </div>
+                      <div
+                        v-if="data.level == 'Level 4'"
+                        class="flex justify-between py-2"
+                        v-show="data['4A'] !== 0"
+                      >
+                        <h3 class="text-xs uppercase self-center">STATUS</h3>
+                        <p class="font-bold text-sm">
+                          {{ data['4Astatus'].split('-').shift() }}
+                        </p>
+                      </div>
+                      <div
+                        v-if="data.level == 'Level 4'"
+                        class="block"
+                        v-show="data['4A'] !== 0"
+                      >
+                        <div class="flex justify-between">
+                          <p
+                            class="
+                              font-bold
+                              text-sm
+                              self-center
+                              py-2
+                              text-red-400
+                            "
+                          >
+                            {{ data['4Cstatus'].split('-').pop() }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="">
+                      <div
+                        v-if="data.level == 'Level 4'"
+                        class="flex justify-between py-2"
+                        v-show="data['4B'] !== 0"
+                      >
+                        <h3 class="text-xs uppercase self-center">LEVEL 4B</h3>
+                        <p class="font-bold text-sm">
+                          {{ data['4B'] }} / {{ data['4Bpercent'] }}
+                        </p>
+                      </div>
+                      <div
+                        v-if="data.level == 'Level 4'"
+                        class="flex justify-between py-2"
+                        v-show="data['4B'] !== 0"
+                      >
+                        <h3 class="text-xs uppercase self-center">STATUS</h3>
+                        <p class="font-bold text-sm">
+                          {{ data['4Bstatus'].split('-').shift() }}
+                        </p>
+                      </div>
+                      <div
+                        v-if="data.level == 'Level 4'"
+                        class="block"
+                        v-show="data['4B'] !== 0"
+                      >
+                        <div class="flex justify-between">
+                          <p
+                            class="
+                              font-bold
+                              text-sm
+                              self-center
+                              py-2
+                              text-red-400
+                            "
+                          >
+                            {{ data['4Cstatus'].split('-').pop() }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div
+                        v-if="data.level == 'Level 4'"
+                        class="flex justify-between py-2"
+                        v-show="data['4C'] !== 0"
+                      >
+                        <h3 class="text-xs uppercase self-center">LEVEL 4C</h3>
+                        <p class="font-bold text-sm">
+                          {{ data['4C'] }} / {{ data['4Cpercent'] }}
+                        </p>
+                      </div>
+
+                      <div
+                        v-if="data.level == 'Level 4'"
+                        class="flex justify-between py-2"
+                        v-show="data['4C'] !== 0"
+                      >
+                        <h3 class="text-xs uppercase self-center">STATUS</h3>
+                        <p class="font-bold text-sm">
+                          {{ data['4Cstatus'].split('-').shift() }}
+                        </p>
+                      </div>
+                      <div
+                        v-if="data.level == 'Level 4'"
+                        class="block"
+                        v-show="data['4C'] !== 0"
+                      >
+                        <div class="flex justify-between">
+                          <p
+                            class="
+                              font-bold
+                              text-sm
+                              self-center
+                              py-2
+                              text-red-400
+                            "
+                          >
+                            {{ data['4Cstatus'].split('-').pop() }}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>

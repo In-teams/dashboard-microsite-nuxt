@@ -177,13 +177,10 @@ export default {
           password: this.password,
         }
       )
-      const axiosrequest2 = axios.post(
-        `https://api.apolo.inosis.id/api/v1/auth/`,
-        {
-          username: this.username,
-          password: this.password,
-        }
-      )
+      const axiosrequest2 = axios.post(`/api/v1/auth/`, {
+        username: this.username,
+        password: this.password,
+      })
       let response1 = {}
       let response2 = {}
       await axios.all([axiosrequest1, axiosrequest2]).then(

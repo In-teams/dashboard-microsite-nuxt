@@ -120,7 +120,11 @@
                 class="self-center text-center w-32"
                 v-if="$route.query.value == 'Distributor'"
               >
-                <nuxt-link :to="`/ringkasan-penjualan-distributor/${title_id}`">
+                <nuxt-link
+                  :to="`/ringkasan-penjualan-distributor/${decodeURIComponent(
+                    title_id
+                  )}`"
+                >
                   <Button
                     :title-button="'Detail'"
                     :style-button="'border-2 border-indigo-300 text-black bg-blue-100 rounded-full py-1 '"

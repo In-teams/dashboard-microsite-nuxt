@@ -4,7 +4,7 @@
       v-if="this.$route.name == 'data-transaksi-id'"
       :class="`flex flex-row h-10 items-center bg-white fixed w-full ${styleCustom}`"
     >
-      <div class="absolute">
+      <div class="absolute px-2">
         <img
           @click="back"
           class="w-8 h-8"

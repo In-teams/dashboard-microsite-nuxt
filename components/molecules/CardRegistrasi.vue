@@ -3,7 +3,7 @@
     <div
       class="grid grid-cols-12 py-1.5 bg-white border-2 rounded-lg shadow-lg"
       v-if="dataTitle == 'Cek Data Registrasi'"
-      @click="jumpToRegistrasi"
+      @click="jumpToDataRegistrasi"
     >
       <a class="col-span-3 px-2 self-center">
         <img class="w-5" :src="dataImg" />
@@ -18,7 +18,7 @@
     <div
       class="grid grid-cols-12 py-1.5 bg-white border-2 rounded-lg shadow-lg"
       v-if="dataTitle == 'Transaksi Penukaran'"
-      @click="jumpToTransaksi"
+      @click="jumpToTransaksiPenukaran"
     >
       <a class="col-span-3 px-2 self-center">
         <img class="w-5" :src="dataImg" />
@@ -33,6 +33,7 @@
     <div
       class="grid grid-cols-12 py-1.5 bg-white border-2 rounded-lg shadow-lg"
       v-if="dataTitle == 'Foto atau Upload Formulir Registrasi'"
+      @click="jumpToRegistrasi"
     >
       <a class="col-span-3 px-2 self-center">
         <img class="w-5" :src="dataImg" />
@@ -47,6 +48,7 @@
     <div
       class="grid grid-cols-12 py-1.5 bg-white border-2 rounded-lg shadow-lg"
       v-if="dataTitle == 'Foto atau Upload Formulir Redemption'"
+      @click="jumpToTransaksi"
     >
       <a class="col-span-3 px-2 self-center">
         <img class="w-5" :src="dataImg" />
@@ -66,10 +68,36 @@ export default {
   props: ['dataTitle', 'dataImg'],
   methods: {
     jumpToRegistrasi() {
-      this.$router.push(`/data-registrasi/${this.$route.params.name}`)
+      const id = encodeURIComponent(this.$route.params.name)
+      if (id) {
+        this.$router.push(`/formulir-registrasi/${id}`)
+      } else {
+        console.log('error')
+      }
     },
     jumpToTransaksi() {
-      this.$router.push(`/data-transaksi/${this.$route.params.name}`)
+      const id = encodeURIComponent(this.$route.params.name)
+      if (id) {
+        this.$router.push(`/formulir-redemption/${id}`)
+      } else {
+        console.log('error')
+      }
+    },
+    jumpToTransaksiPenukaran() {
+      const id = encodeURIComponent(this.$route.params.name)
+      if (id) {
+        this.$router.push(`/data-transaksi/${id}`)
+      } else {
+        console.log('error')
+      }
+    },
+    jumpToDataRegistrasi() {
+      const id = encodeURIComponent(this.$route.params.name)
+      if (id) {
+        this.$router.push(`/data-registrasi/${id}`)
+      } else {
+        console.log('error')
+      }
     },
   },
 }

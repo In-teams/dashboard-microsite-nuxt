@@ -81,32 +81,26 @@ export default {
       return result
     },
     async getTablePoin() {
-      const result = await axios.get(
-        'https://api.apolo.inosis.id/api/v1/redeem/summary/month',
-        {
-          headers: {
-            Authorization: localStorage.token2,
-          },
-          params: {
-            outlet_id: this.$route.params.name,
-          },
-        }
-      )
+      const result = await axios.get('/api/v1/redeem/summary/month', {
+        headers: {
+          Authorization: localStorage.token2,
+        },
+        params: {
+          outlet_id: this.$route.params.name,
+        },
+      })
       this.dataTablePoin = result.data.data
       return result
     },
     async getTablePoinQuarter() {
-      const result = await axios.get(
-        'https://api.apolo.inosis.id/api/v1/redeem/summary/quarter',
-        {
-          headers: {
-            Authorization: localStorage.token2,
-          },
-          params: {
-            outlet_id: this.$route.params.name,
-          },
-        }
-      )
+      const result = await axios.get('/api/v1/redeem/summary/quarter', {
+        headers: {
+          Authorization: localStorage.token2,
+        },
+        params: {
+          outlet_id: this.$route.params.name,
+        },
+      })
       this.dataTablePoinQuarter = result.data.data
       return result
     },

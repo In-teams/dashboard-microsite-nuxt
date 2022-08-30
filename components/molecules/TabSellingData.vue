@@ -107,7 +107,7 @@
         v-for="(item, index) in items"
         :key="index"
         :title="item.outlet_name"
-        :title_id="item.outlet_id"
+        :title_id="`${encodeURIComponent(item.outlet_id)}`"
         :target="item.targetconvert"
         :selisih="item.diffconvert"
         :aktual="item.aktualconvert"

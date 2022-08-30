@@ -29,7 +29,7 @@ export default {
   methods: {
     getdataTableQuarter() {
       axios
-        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/sem`, {
+        .get(`/api/v1/sales/summary/sem`, {
           params: {
             region_id: this.$route.params.name,
           },
@@ -42,7 +42,7 @@ export default {
     },
     getdataTableTahun() {
       axios
-        .get(`https://api.apolo.inosis.id/api/v1/sales/summary/quarter`, {
+        .get(`/api/v1/sales/summary/quarter`, {
           params: {
             region_id: this.$route.params.name,
           },
