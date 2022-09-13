@@ -1,7 +1,7 @@
 <template>
   <div>
     <p
-      class="bg-red-400 rounded-lg font-bold w-40 text-center py-1"
+      class="bg-red-400 rounded-lg font-bold w-28 text-center py-1 text-white"
       v-if="title == null"
     >
       -
@@ -9,9 +9,9 @@
     <p
       :class="
         title.status_terima == 'TELAH DITERIMA'
-          ? 'bg-green-300 font-bold text-base text-white rounded-lg w-40 text-center py-1'
+          ? 'bg-green-300 font-bold text-base text-white rounded-lg px-2 text-center py-1'
           : '' || title.status_terima == 'PROSES PENGIRIMAN'
-          ? 'bg-yellow-300 font-bold text-base text-white rounded-lg w-40 text-center py-1'
+          ? 'bg-yellow-300 font-bold text-base text-white rounded-lg px-2 text-center py-1'
           : ''
       "
       v-else

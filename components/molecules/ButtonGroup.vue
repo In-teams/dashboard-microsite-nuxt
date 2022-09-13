@@ -2,10 +2,7 @@
   <div class="py-2 grid grid-cols-5 gap-5 px-4">
     <div v-for="(icon, i) in icons" :key="i">
       <a @click="linkTo(icon.link)">
-        <Icon
-          class="bg-blue-100 shadow-custom p-2 rounded-2xl"
-          :src="icon.src"
-        />
+        <Icon class="bg-blue-100 shadow-sm p-2 rounded-2xl" :src="icon.src" />
       </a>
       <div class="grid grid-cols-12 pt-2">
         <p class="col-span-12 text-center text-xs">{{ icon.name }}</p>
@@ -35,7 +32,4 @@ export default {
 </script>
 
 <style scoped>
-.shadow-custom {
-  filter: drop-shadow(0px 2px 2px rgba(37, 0, 0, 0.2));
-}
 </style>

@@ -95,6 +95,8 @@
           class="col-span-6"
           :tanggal-upload="data.tgl_upload"
           :img="data.filename"
+          :extension-file="data.filename_ext"
+          :file="data.file"
         >
         </CardPhoto>
         <div
@@ -158,6 +160,7 @@ export default {
       modalImage: null,
     }
   },
+
   methods: {
     togglePopup(object) {
       this.modal = !this.modal

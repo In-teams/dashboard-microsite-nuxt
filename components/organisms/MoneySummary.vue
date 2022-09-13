@@ -2,7 +2,7 @@
   <div class="bg-white rounded-md pb-4">
     <div class="p-3">
       <h1 class="text-lg font-medium">Detail Pengiriman</h1>
-
+      <div class="mt-2 border-b"></div>
       <div class="mt-2"></div>
       <div class="mt-3">
         <h2 class="text-base font-medium">{{ this.$route.params.id }}</h2>

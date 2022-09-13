@@ -12,7 +12,7 @@
           alt=""
         />
       </div>
-      <div class="text-center mx-auto">
+      <div class="flex justify-center xl:w-6/12 w-full">
         <h1 class="text-xl font-medium tracking-wide">{{ title }}</h1>
       </div>
     </div>

@@ -31,7 +31,7 @@
         <input
           v-model="search"
           class="
-            drop-shadow-2xl
+            drop-shadow-sm
             border-2 border-gray-200
             w-12
             h-12
@@ -60,7 +60,7 @@
         <input
           v-model="search"
           class="
-            drop-shadow-2xl
+            drop-shadow-sm
             border-2 border-gray-200
             w-12
             h-12
@@ -89,7 +89,7 @@
         <input
           v-model="search"
           class="
-            drop-shadow-2xl
+            drop-shadow-sm
             border-2 border-gray-200
             w-12
             h-12

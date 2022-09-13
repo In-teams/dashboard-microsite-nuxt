@@ -1,7 +1,7 @@
 <template>
   <div class="col-span-6">
     <div
-      class="grid grid-cols-12 py-1.5 bg-white border-2 rounded-lg shadow-lg"
+      class="grid grid-cols-12 py-1.5 bg-white border-2 rounded-lg shadow-md"
       v-if="dataTitle == 'Cek Data Registrasi'"
       @click="jumpToDataRegistrasi"
     >
@@ -16,7 +16,7 @@
       </div>
     </div>
     <div
-      class="grid grid-cols-12 py-1.5 bg-white border-2 rounded-lg shadow-lg"
+      class="grid grid-cols-12 py-1.5 bg-white border-2 rounded-lg shadow-md"
       v-if="dataTitle == 'Transaksi Penukaran'"
       @click="jumpToTransaksiPenukaran"
     >
@@ -31,7 +31,7 @@
       </div>
     </div>
     <div
-      class="grid grid-cols-12 py-1.5 bg-white border-2 rounded-lg shadow-lg"
+      class="grid grid-cols-12 py-1.5 bg-white border-2 rounded-lg shadow-md"
       v-if="dataTitle == 'Foto atau Upload Formulir Registrasi'"
       @click="jumpToRegistrasi"
     >
@@ -46,7 +46,7 @@
       </div>
     </div>
     <div
-      class="grid grid-cols-12 py-1.5 bg-white border-2 rounded-lg shadow-lg"
+      class="grid grid-cols-12 py-1.5 bg-white border-2 rounded-lg shadow-md"
       v-if="dataTitle == 'Foto atau Upload Formulir Redemption'"
       @click="jumpToTransaksi"
     >

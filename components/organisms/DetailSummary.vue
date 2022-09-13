@@ -4,15 +4,28 @@
     <div class="fixed">
       <img class="w-full" src="../../assets/image/banner-2.png" alt="" />
     </div>
-    <div class="bg-white absolute rounded-t-2xl h-auto w-full mt-64">
+    <div
+      class="
+        bg-white
+        absolute
+        rounded-t-2xl
+        h-auto
+        w-full
+        mt-64
+        xl:max-w-3xl xl:mt-96
+      "
+    >
       <div
-        class="px-4 py-3 md:px-6 md:py-8"
+        class="px-4 py-3 xl:px-6 xl:py-8"
         v-for="ewallet in ewallets.items"
         :key="ewallet"
       >
         <EwalletSummary
           :title="title"
           :no_wa="no_wa"
+          :nama_penerima="nama_penerima.nama_penerima"
+          :tgl_terima="ewallets.status_transaksi.tanggal_terima"
+          :tgl_kirim="ewallets.status_transaksi.tanggal_kirim"
           v-if="
             ewallet.product.category === 'PULSA' ||
             ewallet.product.category === 'EWALLET'
@@ -27,7 +40,8 @@
             1X145 Poin
               </p> -->
               <p class="text-base font-semibold">
-                {{ ewallet.point_satuan }} Poin
+                {{ ewallet.point_satuan }} Poin x {{ ewallet.quantity }} Pcs =
+                {{ ewallet.total_point }} Poin
               </p>
             </div>
             <hr class="h-6" />
@@ -50,7 +64,8 @@
 
             <div class="flex flex-row justify-between w-10/12 mt-2 mb-6">
               <p class="text-base font-semibold">
-                {{ ewallet.point_satuan }} Poin
+                {{ ewallet.point_satuan }} Poin x {{ ewallet.quantity }} Pcs =
+                {{ ewallet.total_point }} Poin
               </p>
             </div>
             <hr class="h-10" />
