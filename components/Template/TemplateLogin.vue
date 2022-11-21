@@ -13,7 +13,12 @@
     >
       <div class="bg-white md:shadow-lg shadow-none rounded p-4 w-full">
         <a aria-label="Linkedin" href="#">
-          <img class="h-28 mx-auto" src="image/mvg-icon.png" alt="" srcset="" />
+          <img
+            class="h-28 mx-auto"
+            src="https://i.ibb.co/B6y97CP/image.png"
+            alt=""
+            srcset=""
+          />
         </a>
         <form class="space-y-5 mt-5">
           <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">

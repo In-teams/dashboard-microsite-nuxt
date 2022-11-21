@@ -6,16 +6,16 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
         rel: 'stylesheet',
         type: 'text/css',
-        href: 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css'
-      }
-    ]
+        href: 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css',
+      },
+    ],
   },
   // loading: '~/components/molecules/Loading.vue',
 
@@ -33,7 +33,7 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -41,7 +41,9 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    'nuxt-leaflet',
+    'vue-geolocation-api/nuxt',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -50,8 +52,8 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en'
-    }
+      lang: 'en',
+    },
   },
 
   proxy: {
@@ -60,17 +62,17 @@ export default {
         process.env.NODE_ENV === 'production'
           ? 'https://api.apolo.v2.inosis.id/api/v1/'
           : 'https://api.apolo.v2.inosis.id/api/v1/',
-      pathRewrite: { '^/api/v1/': '' }
+      pathRewrite: { '^/api/v1/': '' },
     },
     '/api/v2/': {
       target:
         process.env.NODE_ENV === 'production'
           ? 'https://api.apolo.v2.inosis.id/api/v2/'
           : 'https://api.apolo.v2.inosis.id/api/v2/',
-      pathRewrite: { '^/api/v2/': '' }
-    }
+      pathRewrite: { '^/api/v2/': '' },
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
+  build: {},
 }

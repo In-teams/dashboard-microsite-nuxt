@@ -23,7 +23,7 @@
         <EwalletSummary
           :title="title"
           :no_wa="no_wa"
-          :nama_penerima="nama_penerima.nama_penerima"
+          :nama_penerima="nama_penerima"
           :tgl_terima="ewallets.status_transaksi.tanggal_terima"
           :tgl_kirim="ewallets.status_transaksi.tanggal_kirim"
           v-if="
@@ -52,6 +52,9 @@
           :nama_rekening="nama_rekening"
           :nama_bank="nama_bank"
           :nomor_rekening="nomor_rekening"
+          :nama_penerima="nama_penerima"
+          :tgl_terima="tgl_terima"
+          :tgl_kirim="tgl_kirim"
           v-if="
             ewallet.product.category === 'REBATE' ||
             ewallet.product.category === 'POINT2CASH'
@@ -126,6 +129,9 @@ export default {
       kode_pos: '',
       rt_rw: '',
       nama_penerima: '',
+      nama_penerima_pulsa: '',
+      tgl_kirim: '',
+      tgl_terima: '',
     }
   },
   components: {
@@ -161,6 +167,10 @@ export default {
       this.kelurahan = response.data.outlet.kelurahan
       this.kode_pos = response.data.outlet.kodepos
       this.rt_rw = response.data.outlet.rtrw
+      this.nama_penerima = response.data.status_transaksi.nama_penerima
+      this.tgl_kirim = response.data.status_transaksi.tanggal_kirim
+      this.tgl_terima = response.data.status_transaksi.tanggal_terima
+
       return response
     },
   },

@@ -9,6 +9,16 @@
 
     <CardWithContent>
       <template #content>
+        <!-- <div id="map-wrap" style="height: 50vh">
+          <client-only>
+            <l-map :zoom="13" :center="[55.9464489, 8.1277519]">
+              <l-tile-layer
+                url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+              ></l-tile-layer>
+              <l-marker :lat-lng="[55.9464489, 8.1277519]"></l-marker>
+            </l-map>
+          </client-only>
+        </div> -->
         <div class="py-2 px-2">
           <p
             class="px-3 py-3 rounded-lg text-center text-sm border bg-blue-100"
@@ -1068,6 +1078,8 @@ export default {
       isLoading: true,
       user: this.$route.params.name,
       level: this.$route.params.id,
+      map: null,
+      location: null,
     }
   },
 

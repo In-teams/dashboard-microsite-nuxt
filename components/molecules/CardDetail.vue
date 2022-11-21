@@ -1,10 +1,18 @@
 <template>
   <div
     class="bg-white flex flex-row items-center w-full mb-3 py-2 px-3 border-b"
-    @click="onDetail"
+    @click="onDetail()"
   >
     <div class="px-3 py-4">
-      <img class="w-20 h-14" :src="image" alt="" />
+      <div v-if="title.includes('VOUCHER PULSA')">
+        <img class="w-20 h-14" src="@/assets/image/pulsa.jpeg" alt="" />
+      </div>
+      <div v-else-if="title.includes('VOUCHER POINT2CASH')">
+        <img class="w-20 h-14" src="@/assets/image/p2c.png" alt="" />
+      </div>
+      <div v-else>
+        <img class="w-20 h-14" src="@/assets/image/ewallet.jpeg" alt="" />
+      </div>
     </div>
     <div class="w-full">
       <h1 class="text-sm font-semibold w-40">
@@ -56,6 +64,7 @@ export default {
       if (this.isLink === true && this.linkDetail) {
         this.$router.push(this.linkDetail)
       }
+   
     },
   },
 }

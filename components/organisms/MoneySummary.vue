@@ -24,6 +24,18 @@
             <h1 class="text-sm text-gray-400">No. Rekening</h1>
             <p class="font-medium mt-1">{{ nomor_rekening }}</p>
           </div>
+          <div>
+            <h1 class="text-sm text-gray-400">No. Refrensi</h1>
+            <p class="font-medium mt-1">{{ nama_penerima }}</p>
+          </div>
+          <div>
+            <h1 class="text-sm text-gray-400">Tanggal Kirim</h1>
+            <p class="font-medium mt-1">{{ tgl_kirim }}</p>
+          </div>
+          <div>
+            <h1 class="text-sm text-gray-400">Tanggal Terima</h1>
+            <p class="font-medium mt-1">{{ tgl_terima }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -39,7 +51,15 @@ export default {
   components: {
     Badge,
   },
-  props: ['title', 'nomor_rekening', 'nama_bank', 'nama_rekening'],
+  props: [
+    'title',
+    'nomor_rekening',
+    'nama_bank',
+    'nama_rekening',
+    'nama_penerima',
+    'tgl_kirim',
+    'tgl_terima',
+  ],
   methods: {},
 }
 </script>
